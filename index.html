@@ -2726,6 +2726,32 @@ button{font-family:inherit}
 .ln-hc-b .pill-btn{margin:0}
 .pill-btn.ghost{background:var(--background-page); color:var(--content-primary)}
 .qa-ic{display:grid; place-items:center; margin-bottom:auto; margin-top:12px; width:40px; height:40px}
+
+/* ===================== test panel on a phone: floating button + bottom sheet ===================== */
+.tp-fab, .tp-scrim, .tp-sheet-head{display:none}
+@media (max-width:500px){
+  html, body{overflow:hidden; overscroll-behavior:none}
+  .tp-wrap{position:fixed; inset:0; z-index:150000; display:block; margin:0; pointer-events:none}
+  .tp-scrim{display:block; position:absolute; inset:0; background:rgba(0,0,0,.4); opacity:0; transition:opacity .25s ease; pointer-events:none}
+  .tp-wrap .tp-panel, .tp-wrap .tp-panel[hidden]{position:absolute; left:0; right:0; bottom:0; width:auto; max-width:none; max-height:82dvh; overflow-y:auto; overscroll-behavior:contain;
+    border-radius:20px 20px 0 0; padding:0 10px calc(14px + env(safe-area-inset-bottom, 0px)); box-shadow:0 -12px 40px rgba(0,0,0,.35);
+    transform:translateY(105%); transition:transform .32s cubic-bezier(.32,.72,0,1); pointer-events:none; visibility:hidden}
+  .tp-wrap.open .tp-scrim{opacity:1; pointer-events:auto}
+  .tp-wrap.open .tp-panel{transform:none; pointer-events:auto; visibility:visible}
+  .tp-sheet-head{display:flex; align-items:center; gap:10px; position:sticky; top:0; z-index:2; margin:0 -10px; padding:14px 14px 10px; background:#232323; border-radius:20px 20px 0 0}
+  .tp-sheet-head::before{content:''; position:absolute; top:6px; left:50%; width:36px; height:4px; margin-left:-18px; border-radius:2px; background:#555}
+  .tp-sheet-head b{font-size:14px; color:#fff; font-weight:700}
+  .tp-sheet-head small{flex:1; min-width:0; font-size:11.5px; color:#9E9E9E; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .tp-sheet-x{flex:none; width:32px; height:32px; border:0; border-radius:50%; background:#333; color:#E6E6E6; font-size:15px; cursor:pointer}
+  .tp-wrap .tp-select select{height:44px; font-size:14px}
+  .tp-fab{display:grid; place-items:center; position:fixed; z-index:150001; width:46px; height:46px; border:0; border-radius:50%; padding:0;
+    background:rgba(28,28,28,.82); color:#F2D9A6; box-shadow:0 6px 18px rgba(0,0,0,.3); cursor:pointer; touch-action:none;
+    -webkit-tap-highlight-color:transparent; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); transition:opacity .2s ease, transform .2s ease}
+  .tp-fab.dragging{transition:none; transform:scale(1.08)}
+  .tp-fab.hide{opacity:0; pointer-events:none}
+  .tp-wrap .tp-sheet-head{order:-2}
+  .tp-wrap .tp-card:has(#tpJump){order:-1}            /* the most used control first */
+}
 </style>
 </head>
 <body>
@@ -4154,7 +4180,9 @@ button{font-family:inherit}
         حالت تست: <b id="tpCurrent"></b>
         <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m6 15 6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
+      <div class="tp-scrim" id="tpScrim"></div>
       <div class="tp-panel" id="tpPanel" hidden>
+        <div class="tp-sheet-head"><b>پنل تست</b><small id="tpSheetCur"></small><button type="button" class="tp-sheet-x" id="tpSheetX" aria-label="بستن پنل تست">✕</button></div>
         <section class="tp-card">
           <h4>کاربر</h4>
           <div class="scenario full" data-t="login"><button type="button" data-v="0">مهمان</button><button type="button" data-v="1">واردشده</button></div>
@@ -7309,6 +7337,54 @@ button{font-family:inherit}
     if (k !== 'account') applyTest();          // clean slate in the current test state
     JUMPS[k](); if (!wide()) setPanel(false);
   });
+
+
+  /* ---------- test panel on a phone: a draggable floating button opens it as a bottom sheet ----------
+     Desktop keeps the panel under the phone frame. «پرش به صفحه» and «فهرست پیامک‌ها» close the sheet so the result shows. */
+  (() => {
+    const mq = matchMedia('(max-width:500px)'), wrapEl = $('.tp-wrap');
+    const fab = document.createElement('button');
+    fab.type = 'button'; fab.className = 'tp-fab'; fab.id = 'tpFab'; fab.setAttribute('aria-label', 'پنل تست');
+    fab.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6.2L4.6 18.4A1.7 1.7 0 0 0 6.1 21h11.8a1.7 1.7 0 0 0 1.5-2.6L14 9.2V3"/><path d="M7.2 14.5h9.6"/></svg>';
+    document.body.appendChild(fab);
+    const KEY = 'zarpin-tp-fab';
+    let pos = null; try { pos = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    function place(){
+      const W = innerWidth, H = innerHeight, s = 46, m = 8;
+      const p = pos || { side:'right', y:0.42 };
+      fab.style.top = Math.max(m + 40, Math.min(H - s - 90, p.y * H)) + 'px';
+      fab.style.left = p.side === 'left' ? m + 'px' : (W - s - m) + 'px';
+    }
+    const isOpen = () => wrapEl.classList.contains('open');
+    function openSheet(){ $('#tpSheetCur').textContent = $('#tpCurrent').textContent; wrapEl.classList.add('open'); fab.classList.add('hide'); }
+    function closeSheet(){ wrapEl.classList.remove('open'); fab.classList.remove('hide'); }
+    let drag = null;
+    fab.addEventListener('pointerdown', e => { drag = { x:e.clientX, y:e.clientY, l:fab.offsetLeft, t:fab.offsetTop, moved:false }; fab.setPointerCapture(e.pointerId); });
+    fab.addEventListener('pointermove', e => {
+      if (!drag) return; const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.moved && Math.hypot(dx, dy) < 6) return;
+      drag.moved = true; fab.classList.add('dragging');
+      fab.style.left = Math.max(0, Math.min(innerWidth - 46, drag.l + dx)) + 'px'; fab.style.top = Math.max(0, Math.min(innerHeight - 46, drag.t + dy)) + 'px';
+    });
+    fab.addEventListener('pointerup', () => {
+      if (!drag) return; const moved = drag.moved; drag = null; fab.classList.remove('dragging');
+      if (!moved) return;                                                    // a plain tap opens on «click» (so the same tap can't land on the scrim)
+      justDragged = true; setTimeout(() => { justDragged = false; }, 350);
+      pos = { side: fab.offsetLeft + 23 < innerWidth / 2 ? 'left' : 'right', y: fab.offsetTop / innerHeight };   // snap to the nearest edge
+      try { localStorage.setItem(KEY, JSON.stringify(pos)); } catch (e) {}
+      place();
+    });
+    let justDragged = false;
+    fab.addEventListener('click', () => { if (!justDragged) openSheet(); });
+    fab.addEventListener('pointercancel', () => { drag = null; fab.classList.remove('dragging'); place(); });
+    $('#tpScrim').addEventListener('click', closeSheet);
+    $('#tpSheetX').addEventListener('click', closeSheet);
+    $('#tpJump').addEventListener('change', () => { if (mq.matches) setTimeout(closeSheet, 60); });
+    $('#tpSmsOpen').addEventListener('click', () => { if (mq.matches) closeSheet(); });
+    new MutationObserver(() => { if (isOpen()) $('#tpSheetCur').textContent = $('#tpCurrent').textContent; }).observe($('#tpCurrent'), { childList:true, characterData:true, subtree:true });
+    addEventListener('resize', place); place();
+    mq.addEventListener('change', () => { if (!mq.matches) closeSheet(); });
+  })();
 
   /* ---------- toast ---------- */
   const toast = $('#toast'); let toastT = null;
