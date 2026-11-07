@@ -2624,6 +2624,108 @@ button{font-family:inherit}
 #afIps{flex-direction:row; align-items:flex-start}
 #device .rl{white-space:nowrap}
 
+
+/* ===================== وام با وثیقه‌ی طلا (loan) ===================== */
+.ln-form{padding-top:12px !important}
+.ln-cap{margin:0; padding:14px 16px; border-radius:16px; background:var(--background-surface); font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
+.ln-cap b{color:var(--content-primary); font-weight:700}
+.ln-label{margin-top:18px; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
+.ln-provs{margin-top:8px; display:flex; flex-direction:column; gap:8px}
+.ln-prov{width:100%; display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--border-subtle); border-radius:14px; background:var(--background-page); font:inherit; color:var(--content-primary); text-align:right; cursor:pointer}
+.ln-prov.on{background:var(--background-surface); border-color:var(--content-primary); box-shadow:inset 0 0 0 .5px var(--content-primary)}
+.ln-logo{flex:none; width:36px; height:36px; border-radius:50%; background:var(--background-surface); display:grid; place-items:center; color:var(--content-primary)}
+.ln-prov.on .ln-logo{background:var(--background-page)}
+.ln-pt{flex:1; min-width:0; display:flex; flex-direction:column}
+.ln-pt b{display:flex; align-items:center; gap:6px; font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700}
+.ln-pt small{font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.ln-tag{font-style:normal; font-size:var(--font-size-caption-small); line-height:var(--line-height-caption-small); font-weight:700; padding:1px 8px; border-radius:10px; background:var(--components-tag-green-bg); color:var(--green-700)}
+.ln-range{flex:none; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
+.ln-slider{-webkit-appearance:none; appearance:none; width:100%; height:4px; margin:18px 0 0; border-radius:2px; outline:none; cursor:pointer; direction:ltr; transform:scaleX(-1);   /* RTL: minimum on the right */
+  background:linear-gradient(to right, var(--content-primary) var(--fill, 0%), var(--background-sunken) var(--fill, 0%))}
+.ln-slider::-webkit-slider-thumb{-webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:var(--base-white); border:2px solid var(--content-primary); box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.ln-slider::-moz-range-thumb{width:20px; height:20px; border-radius:50%; background:var(--base-white); border:2px solid var(--content-primary)}
+.ln-hint{min-height:20px; margin-top:10px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.ln-hint.bad{color:var(--content-danger); font-weight:600}
+.ln-months{grid-template-columns:repeat(3, 1fr) !important}
+.ln-live{margin-top:16px; padding:0 14px; border-radius:14px; background:var(--background-surface)}
+.ln-live .sr + .sr{border-top-color:var(--border-default)}
+.ln-short{margin-top:12px}
+.ln-hero{display:flex; flex-direction:column; align-items:center; gap:2px; padding:10px 0 0; text-align:center}
+.ln-hero b{font-size:var(--font-size-heading-large); font-weight:700; line-height:var(--line-height-heading-large)}
+.ln-hero span{font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-tertiary)}
+.ln-sec-h{margin:18px 0 4px; font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700; color:var(--content-primary)}
+.ln-note{margin:0 0 6px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.sr small.ln-sub, .ln-sub{font-size:var(--font-size-body-small); font-weight:400; color:var(--content-tertiary)}
+.ln-table{display:flex; flex-direction:column}
+.ln-tr{display:grid; grid-template-columns:64px 1fr auto; align-items:center; gap:8px; min-height:40px; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
+.ln-tr + .ln-tr{border-top:1px solid var(--border-subtle)}
+.ln-tr b{font-weight:700; color:var(--content-primary); text-align:left; white-space:nowrap}
+.ln-tr b small{font-weight:400; color:var(--content-tertiary); font-size:var(--font-size-body-small)}
+.ln-tr .ln-st{justify-self:start}
+.ln-tr.paid b{color:var(--content-tertiary)}
+.ln-rules{margin:16px 0 0; padding:12px 16px 12px 12px; border-radius:14px; background:var(--background-surface); list-style:none; display:flex; flex-direction:column; gap:8px}
+.ln-rules li{position:relative; padding-inline-start:14px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
+.ln-rules li::before{content:''; position:absolute; inset-inline-start:0; top:8px; width:5px; height:5px; border-radius:50%; background:var(--content-tertiary)}
+.ln-check{margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px}
+.ln-check li{display:flex; align-items:center; gap:10px; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-primary)}
+.ln-ci{flex:none; width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font-size:13px; font-weight:700}
+.ln-ci.ok{background:var(--components-tag-green-bg); color:var(--green-700)}
+.ln-ci.warn{background:var(--accent-50); color:var(--gold-700)}
+.ln-steps{margin:10px 0 0; padding:0; list-style:none; display:flex; flex-direction:column}
+.ln-steps li{position:relative; display:flex; gap:12px; padding-bottom:16px}
+.ln-steps li:last-child{padding-bottom:0}
+.ln-steps li:not(:last-child)::before{content:''; position:absolute; top:28px; bottom:0; inset-inline-start:13px; width:2px; background:var(--border-subtle)}
+.ln-steps li.done:not(:last-child)::before{background:var(--green-700)}
+.ln-sn{flex:none; position:relative; z-index:1; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--background-surface); color:var(--content-secondary); font-size:var(--font-size-label-medium); font-weight:700}
+.ln-steps li.now .ln-sn{background:var(--content-primary); color:var(--content-inverse)}
+.ln-steps li.done .ln-sn{background:var(--green-700); color:var(--base-white)}
+.ln-steps li.fail .ln-sn{background:var(--action-danger-bg); color:var(--base-white)}
+.ln-steps li > div{display:flex; flex-direction:column; padding-top:3px}
+.ln-steps b{font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700}
+.ln-steps small{font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.ln-steps li.wait b{color:var(--content-secondary)}
+.ln-foot{display:flex; flex-direction:column; gap:8px}
+.ln-foot .btn{margin:0}
+.ln-foot .btn-naked{margin-top:0; height:40px}
+.ln-foot .ln-acts{display:flex; gap:8px}
+.ln-foot .ln-acts .btn-naked{flex:1}
+.btn-naked.danger{color:var(--content-danger)}
+.ln-sim{display:block; margin:18px auto 0; padding:8px 14px; border:1px dashed var(--border-default); border-radius:12px; background:none; font:inherit; font-size:var(--font-size-label-small); line-height:var(--line-height-label-small); font-weight:600; color:var(--content-secondary); cursor:pointer}
+.ln-sim::before{content:'تست: '; color:var(--content-tertiary); font-weight:400}
+.dp-badge.wait{background:var(--accent-50); color:var(--gold-900)}
+.dp-badge.warn{background:var(--accent-100); color:var(--gold-900)}
+.dp-badge.bad{background:var(--action-danger-subtle-bg); color:var(--content-danger)}
+.ln-health{margin-top:16px; padding:14px; border:1px solid var(--border-subtle); border-radius:16px}
+.ln-health .ln-hh{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.ln-health .ln-hh b{font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700}
+.ln-hbar{position:relative; height:8px; margin:22px 0 6px; border-radius:4px; background:var(--background-sunken)}
+.ln-hbar > i{display:block; height:100%; border-radius:4px; background:var(--green-700)}
+.ln-hbar.warn > i{background:var(--gold-500)} .ln-hbar.bad > i{background:var(--action-danger-bg)}
+.ln-hbar em{position:absolute; top:-6px; bottom:-6px; width:2px; background:var(--content-tertiary); font-style:normal}
+.ln-hbar em.lo span{bottom:auto; top:calc(100% + 2px)}
+.ln-hbar{margin-bottom:22px !important}
+.ln-hbar em span{position:absolute; bottom:calc(100% + 2px); transform:translateX(50%); font-size:var(--font-size-caption-small); line-height:var(--line-height-caption-small); color:var(--content-tertiary); white-space:nowrap}
+.ln-health p{margin:8px 0 0; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
+.ln-health .pill-btn{margin-top:10px}
+.ln-ev{display:flex; justify-content:space-between; gap:8px; padding:10px 0; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
+.ln-ev + .ln-ev{border-top:1px solid var(--border-subtle)}
+.ln-ev b{color:var(--content-danger); font-weight:700; white-space:nowrap}
+.ln-mock{font-style:normal; font-size:var(--font-size-caption-small); line-height:var(--line-height-caption-small); font-weight:700; padding:2px 8px; border-radius:10px; background:var(--background-surface); color:var(--content-secondary)}
+.ln-vhero{margin-top:8px; padding:16px; border-radius:16px; background:var(--background-surface); text-align:center}
+.ln-vhero b{display:block; font-size:var(--font-size-title-large); line-height:var(--line-height-title-large); font-weight:700}
+.ln-vhero small{display:block; margin-top:4px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.ln-done-note{margin:14px 0 0; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
+/* home card (pending / review / unfinished) */
+.ln-home[hidden]{display:none}
+.home1 .ln-home{margin-top:12px}
+.home2 .ln-home{margin:12px 24px 0}
+.ln-hc{display:block; width:100%; padding:14px 16px; border:0; border-radius:18px; background:var(--accent-50); font:inherit; color:var(--content-primary); text-align:right; cursor:pointer}
+.ln-hc b{display:block; font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700}
+.ln-hc small{display:block; margin-top:2px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--gold-900)}
+.ln-hc-b{display:flex; gap:8px; margin-top:10px}
+.ln-hc-b .pill-btn{margin:0}
+.pill-btn.ghost{background:var(--background-page); color:var(--content-primary)}
+.qa-ic{display:grid; place-items:center; margin-bottom:auto; margin-top:12px; width:40px; height:40px}
 </style>
 </head>
 <body>
@@ -2849,6 +2951,8 @@ button{font-family:inherit}
             </div>
           </section>
 
+          <div class="ln-home" hidden></div>
+
           <!-- 2) gold & silver -->
           <div class="h1-metals">
             <button type="button" class="h1-metal gold" data-asset="gold"><i class="h1-glow" aria-hidden="true"></i><img src="data:image/webp;base64,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" alt=""><i class="h1-fade" aria-hidden="true"></i><span class="n">طلای ۱۸ عیار</span><span class="pct" data-chg="gold"></span><span class="v"><b data-price="gold"></b><small>تومان</small></span></button>
@@ -2918,6 +3022,8 @@ button{font-family:inherit}
             <button type="button" class="btn h2-cta home-cta"><span class="label">خرید و فروش</span></button>
           </section>
 
+          <div class="ln-home" hidden></div>
+
           <div class="band"></div>
 
           <!-- 2) live prices (tap = asset price page) -->
@@ -2942,7 +3048,7 @@ button{font-family:inherit}
               <button type="button" class="qa-tile soon"><em class="badge orange">جایزه</em><img src="data:image/webp;base64,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" alt="" height="34"><span>دعوت دوست</span></button>
               <button type="button" class="qa-tile soon"><img src="data:image/webp;base64,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" alt="" height="46"><span>قلک</span></button>
               <button type="button" class="qa-tile soon"><img src="data:image/webp;base64,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" alt="" height="38"><span>تبدیل</span></button>
-              <button type="button" class="qa-tile soon"><img src="data:image/webp;base64,UklGRggFAABXRUJQVlA4IPwEAACwHACdASpiAGQAPjEYikMiIaEUSdzIIAMEoA1pw4UKdOPyn4Y4NI7vY/+P+4jtgeKB0yPMP+0/6we7l6R/QA/nv9g6zX0EfLc/aD4WP3M9Jl5ao+m9MNuWFzT/I3qFdLkp4aSAtJzojF+lTVBm20i4Nzj8aSp4RJbhoBkPSUBRmG8Xh1Y4Hux/SowWClpCv4SYlLKH+lZWP7nIp8k8pFLA4A23tP9ePYazsFahRfTIONS3bLPvRjiC0bRfG94tiPteRblVUkNK3xWL07shPCQV6DpfoQu5caLa97OB1Kf+7AEL1uqcJeWt+cpFD3gAAP7+iRhe3Rn+wNYNQNIx7y28Ubh//cSjIQtH6N/uWmdBYijyek1bpdjo95itNCcPzKDkdJGHjKvv56EffnEhU12DN/Yt5UNPUakcENY71AUQtFSuv/YsxYhRA/zyh8+7HNhMx5BiYlPSaiHM/a+00auqP7JNyXTkCDMY0nGfPa0z/t/lbA+W/PWB144pvD03wxXiCKHd3rWXqYhu6ewkZZGVnF2zgzcAlWfeN3LIw9RF7jAy1ONxOJ4EYxT1jJpNKO8sQLk215emCvYhhB2aSnzrTOD0BAf/iQqkKPmdyeLmexpa4PdQ4dEA98wGTQy+Z2MKKGe1O0S4Zlqzb5xbEu0TVbk2vF5oMq95j++UjqIv+4yT7aH/kbCUuDAmSbw7IlCNMi33O3gqY7SUziVLVzCR+RngSYexg+blkN7C3siQXbKVb1jQ3IHbFaClt5Bd1w821legkdyZTA0OBUk+/0mMhTJgd1W1PALXyouQl/d9VdTX1cQIv7I65p8iCCn4V4SNb+l69Uym2UQ7WxL7/2rr/PsZhO3JHIAzlACnc1VPKlIo5CFxxNMe329ZlPdGpWqjx8pPfeaJMnmuSQyYzNU9USUYhMGBtVQSq8OgtEVjShdfQpwz6ysUSwdKoUxILDxyVMAoORr48qTW/D9bID4ieRm7zKUs02a9uT6lX97bF6Q8ldo1snM3rtYPFvhW4/tGBP7MTqxjWDPZLZ21M14vCNLTdlR1TLDK59k0B/C+qjMOoGCVORhVrd+QlcGXy8DClRGqIF77PjKm/ngpIJP21/vuTbfaR5BbBVBscQqksbPu09g42B8zT27XZRfB846zovdEbtiHypTUWhLO3yi9tWmK9TALT2+/KmTBqeS5+BX8YAR9UPaPlnnanN6RUAh63bhrUHpviIeLo8hybxHfenJhmA0Uy3AaGKV7jwaUZ6c+7ixQW4LtfLZBiFuIHMLwaVOcLKG0SRA4+ScQ4deMQ01USyLnhY/IaVsdPLRSjdsMioTRn6gg+Q39hgbCnb+30dqriTLgtwxTnEdOJPDIHIHkIctvOH5SErqfpMyrkytiLqE/LVlt3KAaHT3QSDpCZAjyWuhGjgJ5lwRQQHilxTGkp0KVZIDxTYScocalHlwmypL38vUuLSO+5jnNo9Ap603GWWu0ynMDnEVp12arkvWVwUqTkxbCkq9z+kJ6lel4DaHjyNeb7iOf9ByTDHABdavha2VPCADHH2UungBli/zyfGP08xfvLPU1hnnoC9pIFeWaCaIj9aaHTE7FGx07SI6ZrG+l0dABEsO9IfBrcfQBgpNpmCOLKuEnfX1pksatIZflUEiG5egY1a56wZAHOHGzWQP6vvIZxKanRP6uX+fstLpkRAAAAAAA" alt="" height="46"><span>هدیه</span></button>
+              <button type="button" class="qa-tile" data-loan><em class="badge orange">جدید</em><span class="qa-ic"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="11" width="26" height="17" rx="3" fill="#7fb38f"/><rect x="5.5" y="13.5" width="21" height="12" rx="2" fill="none" stroke="#e6f2ea" stroke-width="1.2"/><circle cx="16" cy="19.5" r="3.4" fill="#e6f2ea"/><ellipse cx="29" cy="31" rx="8" ry="2.6" fill="#c8862a"/><rect x="21" y="25.5" width="16" height="5.5" fill="#c8862a"/><ellipse cx="29" cy="25.5" rx="8" ry="2.6" fill="#f2c45a"/><ellipse cx="29" cy="25.5" rx="5" ry="1.4" fill="none" stroke="#c8862a" stroke-width="1"/></svg></span><span>وام</span></button>
             </div>
           </div>
 
@@ -3413,6 +3519,102 @@ button{font-family:inherit}
 
 
       <!-- buy flow result (the one purchase flow, used everywhere): processing → success | failed (money kept in the wallet) → retry -->
+            <!-- ===== وام با وثیقه‌ی طلا: L1 calculator ===== -->
+      <section class="screen page st stflow ln" id="screenLoan" data-pos="next" inert aria-label="وام با وثیقه‌ی طلا">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">وام با وثیقه‌ی طلا</span></div>
+          <div class="ah-actions"></div>
+        </header>
+        <div class="page-scroll st-form ln-form" id="lnScroll">
+          <p class="ln-cap" id="lnCap"></p>
+          <div class="ln-label">تأمین‌کننده</div>
+          <div class="ln-provs" id="lnProvs" role="radiogroup" aria-label="تأمین‌کننده"></div>
+          <div class="ln-label">مبلغ وام</div>
+          <div class="st2-field" id="lnCard">
+            <div class="st2-num" id="lnNum"><span class="st2-val" id="lnVal"></span><span class="amt-caret"></span><span class="st2-ph">مبلغ وام را وارد کنید</span>
+              <input id="lnInput" type="text" inputmode="none" autocomplete="off" aria-label="مبلغ وام به تومان"></div>
+            <span class="st2-sep" aria-hidden="true"></span><span class="st2-unit">تومان</span>
+          </div>
+          <input type="range" class="ln-slider" id="lnSlider" step="1000000" aria-label="مبلغ وام">
+          <div class="ln-hint" id="lnHint"></div>
+          <div class="ln-label">مدت بازپرداخت</div>
+          <div class="st2-chips ln-months" id="lnMonths"></div>
+          <div class="stc-rows ln-live"><div class="sr"><span>وثیقه‌ی لازم</span><b id="lnColl">—</b></div><div class="sr"><span>قسط ماهانه</span><b id="lnInst">—</b></div></div>
+          <div class="snack warn ln-short" id="lnShort" hidden><svg class="ico c-warn" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM11.25 8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V13C12.75 13.41 12.41 13.75 12 13.75C11.59 13.75 11.25 13.41 11.25 13V8ZM12.92 16.38C12.87 16.51 12.8 16.61 12.71 16.71C12.61 16.8 12.5 16.87 12.38 16.92C12.26 16.97 12.13 17 12 17C11.87 17 11.74 16.97 11.62 16.92C11.5 16.87 11.39 16.8 11.29 16.71C11.2 16.61 11.13 16.51 11.08 16.38C11.03 16.26 11 16.13 11 16C11 15.87 11.03 15.74 11.08 15.62C11.13 15.5 11.2 15.39 11.29 15.29C11.39 15.2 11.5 15.13 11.62 15.08C11.86 14.98 12.14 14.98 12.38 15.08C12.5 15.13 12.61 15.2 12.71 15.29C12.8 15.39 12.87 15.5 12.92 15.62C12.97 15.74 13 15.87 13 16C13 16.13 12.97 16.26 12.92 16.38Z" fill="currentColor"/></svg><span></span></div>
+        </div>
+        <div class="page-footer"><button type="button" class="btn" id="lnBtn"><span class="label">ادامه</span></button></div>
+      </section>
+
+      <!-- L2 loan details: costs + schedule + rules -->
+      <section class="screen page st stflow ln" id="screenLoanDet" data-pos="next" inert aria-label="جزئیات وام">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">جزئیات وام</span></div>
+          <div class="ah-actions"></div>
+        </header>
+        <div class="page-scroll st-form" id="ldBody"></div>
+        <div class="page-footer"><button type="button" class="btn" id="ldBtn"><span class="label">ادامه</span></button></div>
+      </section>
+
+      <!-- L3 prerequisites + route + consent -->
+      <section class="screen page st stflow ln" id="screenLoanPre" data-pos="next" inert aria-label="پیش‌نیازها">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">پیش‌نیازها و مسیر</span></div>
+          <div class="ah-actions"></div>
+        </header>
+        <div class="page-scroll st-form" id="lpBody"></div>
+        <div class="page-footer stc-foot">
+          <div class="agree st-agree" id="lpConsent" role="checkbox" aria-checked="false" tabindex="0">
+            <span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="m2.5 6.2 2.3 2.3 4.7-4.9" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>اطلاعات هویتی من برای بررسی وام به ونسی ارسال شود.</span>
+          </div>
+          <button type="button" class="btn" id="lpBtn"><span class="label">قفل وثیقه</span></button>
+        </div>
+      </section>
+
+      <!-- L4b collateral locked -->
+      <section class="screen page st stflow ln" id="screenLoanDone" data-pos="next" inert aria-label="وثیقه قفل شد">
+        <div class="page-scroll std">
+          <img class="std-img" id="lnDoneImg" alt="" width="80" height="80">
+          <h2 id="lnDoneTitle"></h2>
+          <div class="stc-rows std-rows" id="lnDoneRows"></div>
+          <p class="ln-done-note">برای احراز هویت، اعتبارسنجی و امضای دیجیتال قرارداد به ونسی می‌روید. وضعیت وام را از «وام‌های من» یا صفحه‌ی اصلی دنبال کنید.</p>
+        </div>
+        <div class="page-footer std-foot">
+          <button class="btn" type="button" id="lnDoneGo"><span class="label">ادامه در ونسی</span></button>
+          <button class="btn-naked" type="button" id="lnDoneLater">بعداً</button>
+        </div>
+      </section>
+
+      <!-- L5 Vancy (simulated: in the real product the user leaves for Vancy) -->
+      <section class="screen page st stflow ln" id="screenVancy" data-pos="next" inert aria-label="ونسی">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn" id="vnBack" aria-label="بازگشت به زرپین"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">ونسی</span><em class="ln-mock">صفحه‌ی شبیه‌سازی</em></div>
+          <div class="ah-actions"></div>
+        </header>
+        <div class="page-scroll st-form" id="vnBody"></div>
+        <div class="page-footer ln-foot" id="vnFoot"></div>
+      </section>
+
+      <!-- L6 my loans -->
+      <section class="screen page st stflow ln" id="screenLoans" data-pos="next" inert aria-label="وام‌های من">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">وام‌های من</span></div>
+          <div class="ah-actions"></div>
+        </header>
+        <div class="page-scroll st-list"><div class="dp-list" id="lnList"></div></div>
+        <div class="page-footer"><button type="button" class="btn" id="lnNew"><span class="label">درخواست وام جدید</span></button></div>
+      </section>
+
+      <!-- L7 one loan: every status on one page -->
+      <section class="screen page st stflow ln" id="screenLoanView" data-pos="next" inert aria-label="جزئیات وام">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">جزئیات وام</span></div>
+          <div class="ah-actions"></div>
+        </header>
+        <div class="page-scroll st-form" id="lvBody"></div>
+        <div class="page-footer ln-foot" id="lvFoot"></div>
+      </section>
+
       <section class="screen page br" id="screenBuy" data-pos="next" inert aria-label="نتیجه‌ی پرداخت">
         <div class="page-scroll br-body">
           <div class="br-state" id="brWork">
@@ -3885,6 +4087,43 @@ button{font-family:inherit}
       </div>
 
       <!-- feature introduction (one component: title + benefits + CTA), e.g. first visit to تحویل فیزیکی -->
+            <!-- ===== loan sheets ===== -->
+      <div class="modal" id="lnLockModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-sheet" role="dialog" aria-label="قفل وثیقه">
+          <div class="sheet-header with-close"><button type="button" class="sheet-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button><span>قفل وثیقه</span></div>
+          <div class="st-sheet-body">
+            <div class="snack warn" id="lkMoved" hidden><svg class="ico c-warn" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM11.25 8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V13C12.75 13.41 12.41 13.75 12 13.75C11.59 13.75 11.25 13.41 11.25 13V8ZM12.92 16.38C12.87 16.51 12.8 16.61 12.71 16.71C12.61 16.8 12.5 16.87 12.38 16.92C12.26 16.97 12.13 17 12 17C11.87 17 11.74 16.97 11.62 16.92C11.5 16.87 11.39 16.8 11.29 16.71C11.2 16.61 11.13 16.51 11.08 16.38C11.03 16.26 11 16.13 11 16C11 15.87 11.03 15.74 11.08 15.62C11.13 15.5 11.2 15.39 11.29 15.29C11.39 15.2 11.5 15.13 11.62 15.08C11.86 14.98 12.14 14.98 12.38 15.08C12.5 15.13 12.61 15.2 12.71 15.29C12.8 15.39 12.87 15.5 12.92 15.62C12.97 15.74 13 15.87 13 16C13 16.13 12.97 16.26 12.92 16.38Z" fill="currentColor"/></svg><span></span></div>
+            <div class="stc-rows" id="lkRows"></div>
+            <div class="snack warn" id="lkWarn"><svg class="ico c-warn" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM11.25 8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V13C12.75 13.41 12.41 13.75 12 13.75C11.59 13.75 11.25 13.41 11.25 13V8ZM12.92 16.38C12.87 16.51 12.8 16.61 12.71 16.71C12.61 16.8 12.5 16.87 12.38 16.92C12.26 16.97 12.13 17 12 17C11.87 17 11.74 16.97 11.62 16.92C11.5 16.87 11.39 16.8 11.29 16.71C11.2 16.61 11.13 16.51 11.08 16.38C11.03 16.26 11 16.13 11 16C11 15.87 11.03 15.74 11.08 15.62C11.13 15.5 11.2 15.39 11.29 15.29C11.39 15.2 11.5 15.13 11.62 15.08C11.86 14.98 12.14 14.98 12.38 15.08C12.5 15.13 12.61 15.2 12.71 15.29C12.8 15.39 12.87 15.5 12.92 15.62C12.97 15.74 13 15.87 13 16C13 16.13 12.97 16.26 12.92 16.38Z" fill="currentColor"/></svg><span></span></div>
+          </div>
+          <div class="sheet-footer st-sheet-btns">
+            <button type="button" class="btn" id="lkBtn"><span class="label">قفل وثیقه</span><span class="spinner" aria-hidden="true"></span></button>
+            <p class="ln-note" style="text-align:center; margin:0">پس از قفل، برای احراز هویت به ونسی می‌روید.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="lnCxModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-sheet" role="dialog" aria-label="لغو درخواست وام">
+          <div class="sheet-header with-close"><button type="button" class="sheet-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button><span>لغو درخواست وام</span></div>
+          <div class="st-sheet-body"><p class="oc-text" id="lcxText"></p></div>
+          <div class="sheet-footer st-sheet-btns">
+            <button type="button" class="btn" data-close><span class="label">ادامه‌ی درخواست</span></button>
+            <button type="button" class="btn btn-danger" id="lcxGo"><span class="label">لغو درخواست</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="lnStModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-sheet" role="dialog" aria-label="تسویه‌ی کامل">
+          <div class="sheet-header with-close"><button type="button" class="sheet-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button><span>تسویه‌ی کامل وام</span></div>
+          <div class="st-sheet-body"><div class="stc-rows" id="lstRows"></div><p class="ln-note" style="margin-top:10px">پرداخت در ونسی انجام می‌شود. پس از تأیید تسویه، وثیقه بدون نیاز به درخواست و فوراً آزاد می‌شود.</p></div>
+          <div class="sheet-footer st-sheet-btns">
+            <button type="button" class="btn" id="lstGo"><span class="label">پرداخت در ونسی</span><span class="spinner" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </div>
       <div class="modal" id="introModal" aria-hidden="true">
         <div class="modal-backdrop" data-close></div>
         <div class="modal-sheet intro-sheet fi-sheet" role="dialog" aria-labelledby="fiSheetTitle">
@@ -3925,7 +4164,7 @@ button{font-family:inherit}
           <div class="tp-row only-user"><span>سفارش تحویل باز</span><div class="tp-select tp-sel-sm"><select data-t="dlv" aria-label="dlv"><option value="none">ندارد</option><option value="prep">آماده‌سازی</option><option value="delay">تأخیر</option><option value="ready">آماده تحویل</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
           <div class="tp-row only-user"><span>سابقه‌ی تحویل</span><div class="tp-select tp-sel-sm"><select data-t="dlvHist" aria-label="dlvHist"><option value="0">ندارد (اولین بار)</option><option value="1">دارد</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
           <div class="tp-row only-user"><span>APIها</span><div class="tp-select tp-sel-sm"><select data-t="apis" aria-label="APIها"><option value="none">ندارد</option><option value="some">دارد</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
-          <div class="tp-row only-user"><span>سپرده‌ها</span><div class="tp-select tp-sel-sm"><select data-t="deps" aria-label="deps"><option value="none">ندارد</option><option value="one">یکی</option><option value="many">چندتا</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
+          <div class="tp-row only-user"><span>وام</span><div class="tp-select tp-sel-sm"><select data-t="loan" aria-label="وام"><option value="none">ندارد</option><option value="draft">نیمه‌کاره</option><option value="pending">در انتظار ونسی</option><option value="review">در حال بررسی</option><option value="active">فعال</option><option value="rejected">ردشده</option><option value="expired">منقضی</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row only-user"><span>پاسخ بانک به وام</span><div class="tp-select tp-sel-sm"><select data-t="bank" aria-label="پاسخ بانک به وام"><option value="ok">تأیید و واریز</option><option value="reject">رد</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row only-user"><span>قیمت لحظه‌ی قفل وثیقه</span><div class="tp-select tp-sel-sm"><select data-t="loanPx" aria-label="قیمت لحظه‌ی قفل وثیقه"><option value="same">بدون تغییر</option><option value="moved">تغییر کرد</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row only-user"><span>سلامت وثیقه‌ی وام</span><div class="tp-select tp-sel-sm"><select data-t="loanHealth" aria-label="سلامت وثیقه‌ی وام"><option value="ok">سالم</option><option value="warn">هشدار</option><option value="sell">فروش وثیقه</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row only-user"><span>سپرده‌ها</span><div class="tp-select tp-sel-sm"><select data-t="deps" aria-label="deps"><option value="none">ندارد</option><option value="one">یکی</option><option value="many">چندتا</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
           <div class="tp-row only-user tp-bal"><span>موجودی قابل استفاده (گرم)</span><input id="tpGold" type="text" inputmode="decimal" dir="ltr" aria-label="موجودی قابل استفاده به گرم"></div>
           <div class="tp-row only-user tp-bal"><span>موجودی تومان</span><input id="tpToman" type="text" inputmode="numeric" dir="ltr" aria-label="موجودی تومان"></div>
         </section>
@@ -3937,7 +4176,7 @@ button{font-family:inherit}
               <optgroup label="صفحه اصلی"><option value="home">صفحه اصلی</option><option value="price">قیمت طلا</option><option value="priceSilver">قیمت نقره</option><option value="account">حساب کاربری</option></optgroup>
               <optgroup label="ورود"><option value="phone">شماره موبایل</option><option value="otp">کد تأیید</option></optgroup>
               <optgroup label="ثبت‌نام و احراز هویت"><option value="referral">کد معرف</option><option value="kyc">احراز هویت</option><option value="date">برگه تاریخ تولد</option><option value="terms">برگه قوانین</option><option value="success">احراز موفق</option></optgroup>
-              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="apiEdit">ویرایش API</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه‌ی فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه‌ی گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
+              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="apiEdit">ویرایش API</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه‌ی فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه‌ی گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="وام با وثیقه‌ی طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanPrereq">پیش‌نیازها و مسیر</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanOtp">کد تأیید قفل وثیقه</option><option value="loanDone">وثیقه قفل شد</option><option value="loanVancy">ونسی (شبیه‌سازی)</option><option value="loanHome">کارت صفحه‌ی اصلی — در انتظار ونسی</option><option value="loanDraft">کارت صفحه‌ی اصلی — نیمه‌کاره</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanReview">وام — در حال بررسی</option><option value="loanActive">وام فعال</option><option value="loanWarn">وام فعال — هشدار وثیقه</option><option value="loanSell">وام فعال — فروش وثیقه</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanCancel">لغو درخواست وام</option><option value="loanSettle">تسویه‌ی کامل</option><option value="loanMy">وام‌های من</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
               <optgroup label="کیف پول و تاریخچه"><option value="wallet">کیف پول</option><option value="goldSheet">برگه طلای ۱۸ عیار</option><option value="history">تاریخچه — خرید و فروش</option><option value="historyDep">تاریخچه — واریز</option><option value="historyWd">تاریخچه — برداشت</option><option value="historyDel">تاریخچه — تحویل فیزیکی</option><option value="orderDetail">جزئیات سفارش</option><option value="histDate">انتخاب تاریخ</option></optgroup>
               <optgroup label="سود طلایی"><option value="stLanding">ورود به سود طلایی</option><option value="stFaq">پرسش‌های متداول</option><option value="stake">سپرده‌ی جدید</option><option value="stShort">کمبود موجودی</option><option value="stConfirm">تأیید سپرده</option><option value="stContract">برگه قرارداد</option><option value="stDone">سپرده ثبت شد</option><option value="deposits">سپرده‌های من</option><option value="depositEmpty">سپرده‌های من (خالی)</option><option value="yields">بازدهی‌های دریافت‌شده</option><option value="yieldsEmpty">بازدهی‌های دریافت‌شده (خالی)</option><option value="deposit">جزئیات سپرده</option><option value="stCancel">برگه لغو</option><option value="stOtp">کد تأیید لغو</option><option value="depositMatured">جزئیات سپرده‌ی سررسیدشده</option></optgroup>
             </select>
@@ -4030,6 +4269,10 @@ button{font-family:inherit}
       : s === 'deposits' ? 'سپرده‌های من'
       : s === 'deposit'  ? 'جزئیات سپرده — «شبیه‌سازی سررسید» برای تست'
       : s === 'trade'    ? 'خرید و فروش — مبلغ را وارد کن؛ قفل = قیمت مشخص، ⓘ = توضیح، ؟ = شرایط'
+      : s === 'loan'     ? 'وام — مبلغ و مدت را انتخاب کن؛ ۵۰ میلیون را امتحان کن تا کسری وثیقه را ببینی'
+      : s === 'loanPre'  ? 'پیش‌نیازها — رضایت را بزن و «قفل وثیقه»؛ کد تأیید ۱۲۳۴۵۶'
+      : s === 'loanView' ? 'جزئیات وام — دکمه‌های «تست:» وضعیت را جلو می‌برند (پاسخ بانک از پنل تست)'
+      : s === 'vancy'    ? 'ونسی — شبیه‌سازی؛ «تکمیل مراحل» درخواست را به بررسی بانک می‌برد'
       : state.loggedIn    ? 'صفحه اصلی — واردشده (خروج از دکمه پروفایل)'
       :                    'صفحه اصلی — مهمان؛ برای ورود «ورود / ثبت‌نام» یا هر دکمه شخصی را بزن';
   }
@@ -4847,6 +5090,7 @@ button{font-family:inherit}
 
   /* ---------- service tiles (old home): any count; rows of 3, or rows of 2 when that fits better ---------- */
   const TILE_ICONS = {
+    loan:    '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="6.75" width="18.5" height="11" rx="2.5"/><circle cx="12" cy="12.25" r="2.25"/><path d="M6 9.75v5M18 9.75v5"/><path d="M5.5 20.5h13"/></svg>',
     invite:  '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.00024 1.25C11.8643 1.25023 14.1897 3.57636 14.1897 6.44043V6.44336C14.1779 9.24364 11.9705 11.5255 9.18481 11.6191C9.15157 11.6202 9.11831 11.6195 9.08521 11.6162C9.03698 11.6114 8.9649 11.6111 8.89771 11.6172C8.86687 11.62 8.83588 11.6202 8.80493 11.6191C6.01987 11.5255 3.81004 9.24361 3.80981 6.44043C3.80981 3.57732 6.12493 1.25 9.00024 1.25ZM5.30981 6.44043C5.31004 8.43248 6.8735 10.0461 8.84204 10.1191C8.94145 10.1133 9.04451 10.1134 9.1438 10.1191C11.1125 10.0481 12.6795 8.43529 12.6897 6.44043L12.6848 6.25C12.5857 4.30243 10.9721 2.75023 9.00024 2.75C6.95556 2.75 5.30981 4.40354 5.30981 6.44043Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M19.1597 7.5C19.1597 5.98282 17.9341 4.75 16.4097 4.75C15.9955 4.74994 15.6597 4.41417 15.6597 4C15.6597 3.58583 15.9955 3.25006 16.4097 3.25C18.7653 3.25 20.6597 5.15718 20.6597 7.5C20.6597 9.79544 18.8387 11.664 16.5679 11.749C16.5275 11.7505 16.4869 11.7492 16.4468 11.7441C16.4318 11.7423 16.4013 11.7409 16.3628 11.7451C15.9512 11.7909 15.5805 11.4946 15.5347 11.083C15.489 10.6714 15.7852 10.3007 16.1968 10.2549C16.3046 10.2429 16.4172 10.242 16.5288 10.249C17.99 10.1853 19.1597 8.97878 19.1597 7.5Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M9.17188 12.4375C11.0993 12.4375 13.0647 12.9215 14.584 13.9355C15.9505 14.8447 16.7344 16.1194 16.7344 17.4912C16.7344 18.7769 16.047 19.9795 14.8359 20.8779L14.5869 21.0537C13.0628 22.0735 11.094 22.5595 9.16504 22.5596C7.23596 22.5596 5.2664 22.0736 3.74219 21.0537C2.37709 20.1447 1.59483 18.87 1.59473 17.499C1.59473 16.1277 2.37692 14.8505 3.74219 13.9365L3.74512 13.9346C5.27345 12.9212 7.24357 12.4376 9.17188 12.4375ZM9.17188 13.9375C7.47044 13.9376 5.8057 14.369 4.57422 15.1855C3.52171 15.8912 3.09473 16.7435 3.09473 17.499C3.09482 18.2074 3.46992 18.9993 4.38477 19.6729L4.5752 19.8057L4.57715 19.8066C5.80291 20.6267 7.46423 21.0596 9.16504 21.0596C10.8658 21.0595 12.5272 20.6268 13.7529 19.8066C14.8073 19.1007 15.2344 18.2473 15.2344 17.4912C15.2344 16.7355 14.8073 15.8854 13.7539 15.1846L13.7529 15.1836C12.5325 14.3686 10.8736 13.9375 9.17188 13.9375Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M17.6385 13.8349C17.7296 13.431 18.131 13.1775 18.535 13.2685C19.3229 13.4461 20.0961 13.7629 20.7488 14.2597C21.6915 14.9667 22.2195 15.9531 22.2195 16.9951C22.2195 18.037 21.6925 19.0234 20.7498 19.7304L20.7488 19.7295C20.0882 20.2348 19.3037 20.5654 18.493 20.7343C18.0876 20.8188 17.6899 20.5586 17.6053 20.1533C17.5208 19.7479 17.781 19.3502 18.1863 19.2656C18.8125 19.1351 19.3847 18.8866 19.8426 18.5351L19.8494 18.5302C20.4667 18.0673 20.7195 17.5031 20.7195 16.9951C20.7195 16.487 20.4667 15.9229 19.8494 15.4599L19.8445 15.456C19.3986 15.1155 18.8344 14.8733 18.2049 14.7314C17.8008 14.6403 17.5474 14.239 17.6385 13.8349Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
     profit:  '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6.75C11.59 6.75 11.25 6.41 11.25 6V5C11.25 4.59 11.59 4.25 12 4.25C12.41 4.25 12.75 4.59 12.75 5V6C12.75 6.41 12.41 6.75 12 6.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12 13.75C11.59 13.75 11.25 13.41 11.25 13V12C11.25 11.59 11.59 11.25 12 11.25C12.41 11.25 12.75 11.59 12.75 12V13C12.75 13.41 12.41 13.75 12 13.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12.5902 12.7498H11.5002C10.7302 12.7498 10.0302 12.3498 9.62023 11.6698C9.41023 11.3198 9.52023 10.8498 9.87023 10.6398C10.2202 10.4298 10.6902 10.5398 10.9002 10.8898C10.9602 10.9998 11.1502 11.2498 11.4902 11.2498H12.5802C12.9402 11.2498 13.2302 10.9598 13.2302 10.5998C13.2302 10.2998 13.0302 10.0398 12.7402 9.96977L10.8602 9.49977C9.90023 9.24977 9.24023 8.39977 9.24023 7.40977C9.24023 6.21977 10.2102 5.25977 11.3902 5.25977H12.4802C13.2402 5.25977 13.9402 5.65977 14.3502 6.32977C14.5702 6.67977 14.4602 7.13977 14.1102 7.35977C13.7602 7.57977 13.3002 7.46977 13.0802 7.11977C13.0102 7.00977 12.8202 6.76977 12.4802 6.76977H11.3902C11.0302 6.76977 10.7402 7.05977 10.7402 7.41977C10.7402 7.71977 10.9402 7.97977 11.2302 8.04977L13.1002 8.51977C14.0602 8.74977 14.7302 9.60977 14.7302 10.6098C14.7302 11.7998 13.7602 12.7598 12.5802 12.7598L12.5902 12.7498Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12 16.75C10.4 16.75 8.88 16.27 7.58 15.36C5.58 13.97 4.33 11.69 4.26 9.27C4.26 9.23 4.25 9.11 4.25 9C4.25 4.73 7.73 1.25 12 1.25C16.27 1.25 19.75 4.73 19.75 9C19.75 9.11 19.75 9.23 19.73 9.34C19.66 11.7 18.42 13.97 16.41 15.37C15.12 16.27 13.59 16.75 11.99 16.75H12ZM12 2.75C8.55 2.75 5.75 5.55 5.75 9C5.75 9.05 5.75 9.1 5.75 9.15C5.82 11.17 6.82 13.01 8.43 14.13C10.52 15.59 13.47 15.59 15.55 14.13C17.17 13.01 18.17 11.17 18.23 9.22C18.24 9.1 18.23 9.04 18.23 8.99C18.23 5.54 15.43 2.74 11.98 2.74L12 2.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M14.9999 22.7499C13.8299 22.7499 12.7099 22.4999 11.6699 21.9999C11.4099 21.8699 11.2399 21.6099 11.2499 21.3199C11.2599 21.0299 11.4199 20.7699 11.6799 20.6499C13.8799 19.6099 15.2499 17.4499 15.2499 15.0099C15.2499 14.9599 15.2499 14.8999 15.2499 14.8499C15.2199 14.5699 15.3399 14.2999 15.5699 14.1399C17.1899 13.0199 18.1899 11.1799 18.2499 9.2299C18.2499 8.9599 18.4199 8.7099 18.6599 8.5799C18.9099 8.4599 19.1999 8.4799 19.4199 8.6299C21.5099 10.0699 22.7499 12.4499 22.7499 14.9999C22.7499 19.2699 19.2699 22.7499 14.9999 22.7499ZM13.7499 21.1299C14.1599 21.2099 14.5699 21.2499 14.9999 21.2499C18.4499 21.2499 21.2499 18.4499 21.2499 14.9999C21.2499 13.3899 20.6299 11.8699 19.5499 10.7199C19.1599 12.4499 18.1699 14.0199 16.7399 15.1199C16.6999 17.5299 15.5899 19.6999 13.7399 21.1199L13.7499 21.1299Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M9 22.7505C4.73 22.7505 1.25 19.2704 1.25 15.0004C1.25 12.4604 2.5 10.0804 4.58 8.63045C4.81 8.47045 5.1 8.45045 5.34 8.58045C5.59 8.70045 5.74 8.95045 5.75 9.23045C5.81 11.1804 6.81 13.0204 8.43 14.1404C10.52 15.6004 13.47 15.6004 15.55 14.1404C15.77 13.9904 16.04 13.9604 16.29 14.0704C16.53 14.1804 16.7 14.4004 16.73 14.6604C16.74 14.7704 16.75 14.8904 16.75 15.0004C16.75 18.0304 15.05 20.7104 12.32 22.0005C11.29 22.5005 10.17 22.7505 9 22.7505ZM4.45 10.7204C3.37 11.8704 2.75 13.3904 2.75 15.0004C2.75 18.4504 5.55 21.2505 9 21.2505C9.94 21.2505 10.84 21.0504 11.67 20.6404C13.55 19.7505 14.82 18.0604 15.16 16.0804C12.75 17.1604 9.77 16.9 7.58 15.36C5.98 14.25 4.87 12.5804 4.45 10.7104V10.7204Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
     delivery:'<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.2503 12V2.75H6.00026C4.78298 2.75 3.71817 3.42324 3.1653 4.41504C2.96364 4.77685 2.5066 4.90674 2.14479 4.70508C1.78305 4.50339 1.65311 4.04635 1.85475 3.68457C2.66193 2.23652 4.21766 1.25 6.00026 1.25H15.0003C15.4144 1.25013 15.7503 1.58587 15.7503 2V12C15.7503 13.5141 14.5144 14.7499 13.0003 14.75H12.0003C11.586 14.75 11.2503 14.4142 11.2503 14C11.2503 13.5858 11.586 13.25 12.0003 13.25H13.0003C13.6859 13.2499 14.2503 12.6857 14.2503 12Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M1.25 17C1.25 16.5858 1.58579 16.25 2 16.25C2.41421 16.25 2.75 16.5858 2.75 17C2.75 18.2458 3.75421 19.25 5 19.25H5.35645C5.68459 18.0984 6.7458 17.25 8 17.25C9.2542 17.25 10.3154 18.0984 10.6436 19.25H13.3564C13.6846 18.0984 14.7458 17.25 16 17.25C17.2542 17.25 18.3154 18.0984 18.6436 19.25H19C20.2458 19.25 21.25 18.2458 21.25 17V14.75H19C18.0358 14.75 17.25 13.9642 17.25 13V10C17.25 9.03709 18.0337 8.25212 18.9961 8.25L17.9287 6.38281C17.699 5.99103 17.2842 5.75 16.8398 5.75H15.75L15.7503 12C15.7503 13.5141 14.5144 14.7499 13.0003 14.75H12.0003C11.586 14.75 11.2503 14.4142 11.2503 14C11.2503 13.5858 11.586 13.25 12.0003 13.25H13.0003C13.6859 13.2499 14.2503 12.6857 14.2503 12L14.25 5C14.25 4.58579 14.5858 4.25 15 4.25H16.8398C17.7716 4.25 18.6244 4.72282 19.1318 5.47852L19.2285 5.63379L19.2314 5.6377L20.9414 8.62793C21.0739 8.85993 21.0725 9.14482 20.9385 9.37598C20.8043 9.60726 20.5574 9.74998 20.29 9.75H19C18.8642 9.75 18.75 9.86421 18.75 10V13C18.75 13.1358 18.8642 13.25 19 13.25H22C22.4142 13.25 22.75 13.5858 22.75 14V17C22.75 19.0742 21.0742 20.75 19 20.75H18C17.5858 20.75 17.25 20.4142 17.25 20C17.25 19.3142 16.6858 18.75 16 18.75C15.3142 18.75 14.75 19.3142 14.75 20C14.75 20.4142 14.4142 20.75 14 20.75H10C9.58579 20.75 9.25 20.4142 9.25 20C9.25 19.3142 8.68579 18.75 8 18.75C7.31421 18.75 6.75 19.3142 6.75 20C6.75 20.4142 6.41421 20.75 6 20.75H5C2.92579 20.75 1.25 19.0742 1.25 17Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M9.25 20C9.25 19.3096 8.69036 18.75 8 18.75C7.30964 18.75 6.75 19.3096 6.75 20C6.75 20.6904 7.30964 21.25 8 21.25C8.69036 21.25 9.25 20.6904 9.25 20ZM10.75 20C10.75 21.5188 9.51878 22.75 8 22.75C6.48122 22.75 5.25 21.5188 5.25 20C5.25 18.4812 6.48122 17.25 8 17.25C9.51878 17.25 10.75 18.4812 10.75 20Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M17.25 20C17.25 19.3096 16.6904 18.75 16 18.75C15.3096 18.75 14.75 19.3096 14.75 20C14.75 20.6904 15.3096 21.25 16 21.25C16.6904 21.25 17.25 20.6904 17.25 20ZM18.75 20C18.75 21.5188 17.5188 22.75 16 22.75C14.4812 22.75 13.25 21.5188 13.25 20C13.25 18.4812 14.4812 17.25 16 17.25C17.5188 17.25 18.75 18.4812 18.75 20Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M20.29 8.25L20.3896 8.25684C20.6197 8.28765 20.8246 8.42306 20.9414 8.62793L22.6514 11.6289C22.7158 11.742 22.75 11.8698 22.75 12V14C22.75 14.4142 22.4142 14.75 22 14.75H19C18.0358 14.75 17.25 13.9642 17.25 13V10C17.25 9.03579 18.0358 8.25 19 8.25H20.29ZM18.75 13C18.75 13.1358 18.8642 13.25 19 13.25H21.25V12.1973L19.8545 9.75H19C18.8642 9.75 18.75 9.86421 18.75 10V13Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M8 7.25C8.41421 7.25 8.75 7.58579 8.75 8C8.75 8.41421 8.41421 8.75 8 8.75H2C1.58579 8.75 1.25 8.41421 1.25 8C1.25 7.58579 1.58579 7.25 2 7.25H8Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M6 10.25C6.41421 10.25 6.75 10.5858 6.75 11C6.75 11.4142 6.41421 11.75 6 11.75H2C1.58579 11.75 1.25 11.4142 1.25 11C1.25 10.5858 1.58579 10.25 2 10.25H6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M4 13.25C4.41421 13.25 4.75 13.5858 4.75 14C4.75 14.4142 4.41421 14.75 4 14.75H2C1.58579 14.75 1.25 14.4142 1.25 14C1.25 13.5858 1.58579 13.25 2 13.25H4Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
@@ -4854,7 +5098,7 @@ button{font-family:inherit}
     gift:    '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.2799 22.2496H6.71985C5.13985 22.2496 3.85986 20.9696 3.85986 19.3896V13.0596C3.85986 12.6496 4.19986 12.3096 4.60986 12.3096H19.3899C19.7999 12.3096 20.1399 12.6496 20.1399 13.0596V19.3896C20.1399 20.9696 18.8599 22.2496 17.2799 22.2496ZM5.35986 13.8096V19.3896C5.35986 20.1396 5.96985 20.7496 6.71985 20.7496H17.2799C18.0299 20.7496 18.6399 20.1396 18.6399 19.3896V13.8096H5.35986Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M19.39 13.8103H4.60999C3.02999 13.8103 1.75 12.6803 1.75 11.3003V9.54027C1.75 8.16027 3.02999 7.03027 4.60999 7.03027H19.39C20.97 7.03027 22.25 8.16027 22.25 9.54027V11.3003C22.25 12.6803 20.97 13.8103 19.39 13.8103ZM4.60999 8.53027C3.86999 8.53027 3.25 8.99027 3.25 9.54027V11.3003C3.25 11.8503 3.86986 12.3096 4.60986 12.3096H19.3899C20.1299 12.3096 20.75 11.8503 20.75 11.3003V9.54027C20.75 8.99027 20.13 8.53027 19.39 8.53027H4.60999Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M10.7301 8.52957C10.3201 8.52957 9.90006 8.46957 9.49006 8.38957C7.88006 8.07957 6.57009 6.97957 6.15009 5.58957C5.82009 4.48957 6.09009 3.40957 6.90009 2.60957C7.70009 1.81957 8.77005 1.56956 9.85005 1.89956C11.22 2.32956 12.3101 3.64957 12.6101 5.27957C12.7901 6.25957 12.8901 7.35958 12.2301 8.01958C11.8401 8.39958 11.3001 8.52957 10.7301 8.52957ZM8.93006 3.24957C8.62006 3.24957 8.28008 3.34957 7.95008 3.66957C7.43008 4.17957 7.47009 4.74956 7.58009 5.14956C7.84009 6.01957 8.70009 6.70957 9.77009 6.91957C10.9501 7.14957 11.15 6.96958 11.16 6.95958C11.17 6.94958 11.3501 6.74957 11.1301 5.55957C10.9301 4.47957 10.2401 3.59957 9.39008 3.33957C9.26008 3.27957 9.10006 3.24957 8.93006 3.24957Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M13.27 8.53004C12.7 8.53004 12.16 8.40005 11.77 8.02005C11.1 7.35005 11.2 6.26004 11.39 5.28004C11.69 3.66004 12.78 2.33004 14.15 1.90004C15.23 1.56004 16.2999 1.82004 17.0999 2.61004C17.9099 3.41004 18.1799 4.49004 17.8499 5.59004C17.4299 6.98004 16.12 8.08004 14.51 8.39004C14.1 8.46004 13.67 8.53004 13.27 8.53004ZM15.07 3.25004C14.9 3.25004 14.7399 3.28005 14.5999 3.33005C13.7499 3.60005 13.07 4.47005 12.86 5.55005C12.63 6.74005 12.82 6.95004 12.83 6.95004C12.84 6.95004 13.0399 7.14005 14.2199 6.91005C15.2899 6.70005 16.1499 6.01004 16.4099 5.14004C16.5299 4.75004 16.56 4.17005 16.04 3.66005C15.72 3.35005 15.38 3.25004 15.07 3.25004Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
     convert: '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.9694 14.4597C20.262 14.1669 20.7369 14.1663 21.03 14.4587C21.3232 14.7513 21.3236 15.227 21.031 15.5202L16.0212 20.5397C15.7286 20.8329 15.2529 20.8333 14.9597 20.5407C14.6668 20.2482 14.6664 19.7733 14.9587 19.4802L19.9694 14.4597Z" fill="currentColor"/> <path d="M20.4999 14.2399C20.9142 14.2399 21.2499 14.5757 21.2499 14.9899C21.2499 15.4041 20.9142 15.7399 20.4999 15.7399H3.49994C3.08573 15.7399 2.74994 15.4041 2.74994 14.9899C2.74994 14.5757 3.08573 14.2399 3.49994 14.2399H20.4999Z" fill="currentColor"/> <path d="M7.97944 3.45966C8.27205 3.16691 8.74693 3.1663 9.03998 3.45868C9.33317 3.75129 9.33356 4.22702 9.04096 4.52021L4.03119 9.53974C3.73859 9.83292 3.26286 9.83332 2.96967 9.54072C2.67683 9.24816 2.6764 8.77328 2.96869 8.48017L7.97944 3.45966Z" fill="currentColor"/> <path d="M20.4999 8.25993C20.9142 8.25993 21.2499 8.59572 21.2499 9.00993C21.2499 9.42415 20.9142 9.75993 20.4999 9.75993H3.49994C3.08573 9.75993 2.74994 9.42415 2.74994 9.00993C2.74994 8.59572 3.08573 8.25993 3.49994 8.25993H20.4999Z" fill="currentColor"/></svg>',
   };
-  const TILES = [['invite','دعوت دوست'],['profit','سود طلایی','جدید'],['delivery','تحویل فیزیکی'],['piggy','قلک'],['gift','هدیه'],['convert','تبدیل']];
+  const TILES = [['invite','دعوت دوست'],['profit','سود طلایی','جدید'],['delivery','تحویل فیزیکی'],['loan','وام','جدید'],['piggy','قلک'],['gift','هدیه'],['convert','تبدیل']];
   function tileRows(n){            // 4 → 2+2, 5 → 3+2, 7 → 3+2+2 … never a lone tile on a row
     if (n <= 3) return [n];
     const rows = []; let left = n;
@@ -4864,10 +5108,10 @@ button{font-family:inherit}
   function renderTiles(n){
     let i = 0;
     const html = tileRows(n).map(c => `<div class="tile-row" style="grid-template-columns:repeat(${c},1fr)">` +
-      TILES.slice(i, i += c).map(([k, label, badge]) => `<button type="button" class="tile${['profit', 'delivery'].includes(k) ? '' : ' soon'}" data-k="${k}">${badge ? `<em class="badge orange">${badge}</em>` : ''}<span class="tile-ic">${TILE_ICONS[k]}</span><span class="tile-l">${label}</span></button>`).join('') + '</div>').join('');
+      TILES.slice(i, i += c).map(([k, label, badge]) => `<button type="button" class="tile${['profit', 'delivery', 'loan'].includes(k) ? '' : ' soon'}" data-k="${k}">${badge ? `<em class="badge orange">${badge}</em>` : ''}<span class="tile-ic">${TILE_ICONS[k]}</span><span class="tile-l">${label}</span></button>`).join('') + '</div>').join('');
     $$('.tiles').forEach(t => { t.innerHTML = html; });
   }
-  $$('.tiles').forEach(t => t.addEventListener('click', e => { const tl = e.target.closest('.tile'); if (!tl) return; if (tl.dataset.k === 'profit') return openStake(); if (tl.dataset.k === 'delivery') return openDlv(); showToast('<span>این بخش در قدم‌های بعدی طراحی می‌شود</span>'); }));
+  $$('.tiles').forEach(t => t.addEventListener('click', e => { const tl = e.target.closest('.tile'); if (!tl) return; if (tl.dataset.k === 'profit') return openStake(); if (tl.dataset.k === 'delivery') return openDlv(); if (tl.dataset.k === 'loan') return openLoan(); showToast('<span>این بخش در قدم‌های بعدی طراحی می‌شود</span>'); }));
 
   /* ---------- asset price page ---------- */
   let pdKey = 'gold', pdRange = 'd', pdPts = [];
@@ -5411,7 +5655,7 @@ button{font-family:inherit}
   const gT = x => fmtG(x, 3) + ' گرم';                                   // titles: ۵ گرم · ۶ ماهه
   function activeDeps(){ return STK.deposits.filter(d => d.status === 'active'); }
   function stakedGold(){ return activeDeps().reduce((s, d) => s + d.amount, 0); }
-  function freeGold(){ return Math.max(0, Math.floor((STK.goldTotal - stakedGold() - orderGold()) * 1000 + 1e-6) / 1000); }
+  function freeGold(){ return Math.max(0, Math.floor((STK.goldTotal - stakedGold() - orderGold() - loanGold()) * 1000 + 1e-6) / 1000); }
   function orderGold(){ return typeof HIST !== 'undefined' && HIST ? HIST.filter(h => h.tab === 'trade' && h.side === 'sell' && h.status === 'open').reduce((a, h) => a + h.grams, 0) : 0; }   // gold held by open limit-sell orders
   // Jalali dates
   const J_TODAY = (() => { try {
@@ -5860,14 +6104,14 @@ button{font-family:inherit}
   let gsOpen = true;
   const MASK = '••••';
   function renderGoldSheet(){
-    const p = MARKET.gold.v, g = STK.goldTotal, free = freeGold(), st = stakedGold(), og = orderGold(), frz = f3(st + og);
+    const p = MARKET.gold.v, g = STK.goldTotal, free = freeGold(), st = stakedGold(), og = orderGold(), lg = loanGold(), frz = f3(st + og + lg);
     const G = v => hidden ? MASK : g3(v), TT = v => hidden ? MASK : T_(v);
     $('#gsG').textContent = G(g); $('#gsT').textContent = TT(g * p);
     plSet('gsToday', g * (p - MARKET.gold.open), 'امروز'); plSet('gsAll', g * (p - COST_PER_G), 'کلی');
     $('#gsFree').textContent = G(free); $('#gsFreeT').textContent = TT(free * p);
     $('#gsFrz').textContent = G(frz); $('#gsFrzT').textContent = TT(frz * p);
     $('#gsFrzBtn').hidden = !frz;
-    const rows = [['سپرده‌ی سود طلایی', st, 'stake'], ['سفارش فروش با قیمت مشخص', og, 'orders']].filter(r => r[1] > 0);
+    const rows = [['سپرده‌ی سود طلایی', st, 'stake'], ['سفارش فروش با قیمت مشخص', og, 'orders'], ['وثیقه‌ی وام', lg, 'loan']].filter(r => r[1] > 0);
     $('#gsSubIn').innerHTML = rows.map(([k, v, go2]) => `<button type="button" class="gs-row sub link" data-go="${go2}"><span>${k}</span><div class="gs-num"><div><b>${G(v)}</b><small>${TT(v * p)}</small></div><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.6882 6.31455C14.4893 6.11314 14.2194 6 13.938 6C13.6566 6 13.3868 6.11314 13.1878 6.31455L8.31069 11.2521C8.11176 11.4536 8 11.7268 8 12.0117C8 12.2966 8.11176 12.5698 8.31069 12.7712L13.1878 17.7088C13.3887 17.8998 13.6551 18.0042 13.9307 17.9999C14.2062 17.9955 14.4693 17.8828 14.6643 17.6856C14.8592 17.4884 14.9707 17.2221 14.9752 16.9431C14.9797 16.6641 14.8768 16.3943 14.6882 16.1908L10.5614 12.0117L14.6893 7.83364C14.8882 7.63218 15 7.35897 15 7.0741C15 6.78922 14.8872 6.51601 14.6882 6.31455Z" fill="currentColor"/></svg></div></button>`).join('');
     $('#gsSub').hidden = !frz; $('#gsSub').classList.toggle('open', gsOpen); $('#gsFrzBtn').classList.toggle('open', gsOpen); $('#gsFrzBtn').setAttribute('aria-expanded', gsOpen);
   }
@@ -5875,7 +6119,8 @@ button{font-family:inherit}
   $('#gsFrzBtn').addEventListener('click', () => { gsOpen = !gsOpen; renderGoldSheet(); });
   $('#gsSub').addEventListener('click', e => {
     const b = e.target.closest('[data-go]'); if (!b) return; closeModal($('#goldModal'));
-    if (b.dataset.go === 'stake') setTimeout(openStake, 200);                    // the deposit itself
+    if (b.dataset.go === 'stake') setTimeout(openStake, 200);
+    else if (b.dataset.go === 'loan') setTimeout(openLoan, 200);                    // the deposit itself
     else setTimeout(() => { HF.tab = 'trade'; HF.openOnly = true; renderHistory(); stGo('history'); }, 200);   // open orders
   });
   $('#walHist').addEventListener('click', () => { renderHistory(); stGo('history'); });
@@ -6455,6 +6700,390 @@ button{font-family:inherit}
   });
 
   /* =====================================================================
+     10) وام با وثیقه‌ی طلا — gold-backed loan through Vancy (product flow v1, 14 Aban 1405)
+     Zarpin: calculator → details → prerequisites → lock sheet (shortfall buy via THE purchase flow + OTP) → Vancy (simulated) → bank.
+     Collateral = loan amount ÷ 60 % LTV. Locked collateral is not free gold (like a deposit) and is released automatically on
+     reject / expiry / cancel / settle. Numbers the spec leaves open (Vancy fee, Zarpin fee, Gardeshgari's rate) are null → «—».
+     ===================================================================== */
+  Object.assign(screens, { loan:$('#screenLoan'), loanDet:$('#screenLoanDet'), loanPre:$('#screenLoanPre'), loanDone:$('#screenLoanDone'),
+    vancy:$('#screenVancy'), loans:$('#screenLoans'), loanView:$('#screenLoanView') });
+  const LTV = 0.6, LN_WARN = 0.75, LN_SELL = 0.85, LN_DEADLINE_BD = 7, DASH = '—';
+  const LN_FEES = { vancy:null, zarpin:null };                     // تعیین نشده
+  const PROVIDERS = [
+    { id:'blu',     name:'وام بلوبانک',       bank:'بلوبانک',       min:10e6, max:300e6, months:[3, 6, 12], rate:23,   type:'cash' },
+    { id:'gardesh', name:'وام بانک گردشگری', bank:'بانک گردشگری', min:10e6, max:100e6, months:[3, 6, 12], rate:null, type:'cash' },
+  ];
+  const provOf = id => PROVIDERS.find(p => p.id === id);
+  const ceil3 = x => Math.ceil(x * 1000 - 1e-6) / 1000;
+  const LOCKS = ['pending', 'review', 'active'];
+  const LST = { pending:['در انتظار تکمیل در ونسی', 'wait'], review:['در حال بررسی بانک', 'wait'], active:['فعال', 'act'], rejected:['ردشده', 'can'],
+                expired:['منقضی‌شده', 'can'], cancelled:['لغوشده', 'can'], settled:['تسویه‌شده', 'mat'] };
+  const ICON_BANK = '<svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5"/><path d="M4.5 10v8M9 10v8M15 10v8M19.5 10v8"/><path d="M3 20.5h18"/></svg>';
+  // weekdays: business days skip Thursday & Friday (spec: 14 Aban + 7 business days = 24 Aban)
+  const DOW0 = new Date().getDay();
+  const jDow = j => (((DOW0 + jIdx(j) - jIdx(J_TODAY)) % 7) + 7) % 7;
+  const addBizDays = (j, n) => { let d = j; while (n > 0){ d = jAddDays(d, 1); const w = jDow(d); if (w !== 4 && w !== 5) n--; } return d; };
+  const jAddM = ([y, m, d], n) => { const t = y * 12 + (m - 1) + n, yy = Math.floor(t / 12), mm = t - yy * 12 + 1; return [yy, mm, Math.min(d, daysIn(yy, mm))]; };
+  const pmt = (L, rate, n) => rate == null ? null : Math.floor(L * (rate / 1200) / (1 - Math.pow(1 + rate / 1200, -n)) / 100) * 100;
+  const balAfter = (l, k) => l.rate == null ? l.amount * (1 - k / l.months)
+    : Math.max(0, l.amount * Math.pow(1 + l.rate / 1200, k) - l.inst * (Math.pow(1 + l.rate / 1200, k) - 1) / (l.rate / 1200));
+  const TD = n => n == null ? DASH : T_(n);
+  const DASH_T = '<span class="ln-sub">' + DASH + '</span>';
+
+  var LN = null;                                                   // var: freeGold() may ask before this module has run
+  function loanGold(){ return LN ? LN.loans.filter(l => LOCKS.includes(l.status)).reduce((s, l) => s + l.grams, 0) : 0; }
+  const LQ = { prov:'blu', raw:'', months:12, consent:false, req:'' };
+
+  /* ---------- L1 calculator ---------- */
+  function lnCalc(){
+    const p = provOf(LQ.prov), L = +LQ.raw || 0, px = MARKET.gold.v, free = freeGold();
+    const maxBy = Math.min(p.max, Math.floor(free * px * LTV / 1e6) * 1e6);
+    let err = '';
+    if (LQ.raw && L < p.min) err = `حداقل مبلغ وام ${p.bank}: ${MIL(p.min)} تومان`;
+    else if (L > p.max) err = `سقف وام ${p.bank}: ${MIL(p.max)} تومان`;
+    const valid = !!LQ.raw && !err, grams = L ? ceil3(L / LTV / px) : 0;
+    const short = valid && grams > free + 1e-9 ? ceil3(grams - free) : 0;
+    const inst = valid ? pmt(L, p.rate, LQ.months) : null;
+    return { p, L, px, free, maxBy, err, valid, grams, short, inst, months:LQ.months, interest: inst != null ? inst * LQ.months - L : null };
+  }
+  const lnInput = $('#lnInput');
+  function renderLoan(){
+    const c = lnCalc();
+    $('#lnCap').innerHTML = c.free
+      ? `با موجودی فعلی (${g3(c.free)}) تا <b>${fmtNum(c.maxBy)} تومان</b> می‌توانید وام بگیرید.`
+      : 'طلای آزاد ندارید. وثیقه‌ی لازم را می‌توانید در مرحله‌ی قفل وثیقه بخرید.';
+    $('#lnProvs').innerHTML = PROVIDERS.map(p => `<button type="button" class="ln-prov${p.id === LQ.prov ? ' on' : ''}" data-p="${p.id}" role="radio" aria-checked="${p.id === LQ.prov}">
+      <span class="ln-logo">${ICON_BANK}</span><span class="ln-pt"><b>${p.name}<em class="ln-tag">نقدی</em></b><small>از طریق ونسی</small></span><span class="ln-range">${toFa(p.min / 1e6)} تا ${toFa(p.max / 1e6)} میلیون</span></button>`).join('');
+    $('#lnVal').textContent = fmtRaw(LQ.raw); if (lnInput.value !== LQ.raw) lnInput.value = LQ.raw;
+    const msg = c.err || LQ.req;
+    $('#lnHint').textContent = msg || `بین ${MIL(c.p.min)} تا ${MIL(c.p.max)} تومان`; $('#lnHint').classList.toggle('bad', !!msg);
+    $('#lnCard').classList.toggle('bad', !!msg);
+    const sl = $('#lnSlider'); sl.min = c.p.min; sl.max = c.p.max; sl.value = Math.min(c.p.max, Math.max(c.p.min, c.L || c.p.min));
+    sl.style.setProperty('--fill', (c.L ? (sl.value - c.p.min) / (c.p.max - c.p.min) * 100 : 0) + '%');
+    $('#lnMonths').innerHTML = c.p.months.map(m => `<button type="button" data-m="${m}" class="${m === LQ.months ? 'on' : ''}">${toFa(m)} ماه</button>`).join('');
+    $('#lnColl').textContent = c.valid ? g3(c.grams) : DASH;
+    $('#lnInst').textContent = c.valid ? TD(c.inst) : DASH;
+    const w = $('#lnShort'); w.hidden = !c.short;
+    if (c.short) w.querySelector('span').textContent = `${g3(c.short)} کم دارید؛ در مرحله‌ی قفل وثیقه می‌توانید بخرید.`;
+  }
+  function lnSet(r){ LQ.raw = r; LQ.req = ''; renderLoan(); }
+  registerInput(lnInput, 'num', k => lnSet(typeInto(LQ.raw, k, false, 9)));
+  lnInput.addEventListener('input', () => lnSet(cleanNum(lnInput.value, false, 9)));
+  lnInput.addEventListener('focus', () => { $('#lnCard').classList.add('focused'); $('#lnNum').classList.add('focused'); });
+  lnInput.addEventListener('blur',  () => { $('#lnCard').classList.remove('focused'); $('#lnNum').classList.remove('focused'); });
+  $('#lnCard').addEventListener('click', e => { if (!e.target.closest('input')){ lnInput.focus({ preventScroll:true }); openKb(lnInput); } });
+  $('#lnSlider').addEventListener('input', e => { closeKb(); lnSet(String(Math.round(+e.target.value / 1e6) * 1e6)); });
+  $('#lnProvs').addEventListener('click', e => { const b = e.target.closest('.ln-prov'); if (!b) return; closeKb(); LQ.prov = b.dataset.p; const p = provOf(LQ.prov); if (!p.months.includes(LQ.months)) LQ.months = p.months[p.months.length - 1]; renderLoan(); });
+  $('#lnMonths').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; closeKb(); LQ.months = +b.dataset.m; renderLoan(); });
+  $('#lnBtn').addEventListener('click', () => {
+    const c = lnCalc();
+    if (!LQ.raw || c.err){ if (!LQ.raw) LQ.req = 'مبلغ وام را وارد کنید.'; renderLoan(); shake($('#lnCard')); lnInput.focus({ preventScroll:true }); return openKb(lnInput); }
+    closeKb(); LN.draft = { prov:LQ.prov, raw:LQ.raw, months:LQ.months }; renderLoanHome();
+    renderLoanDet(); $('#ldBody').scrollTop = 0; stGo('loanDet');
+  });
+
+  /* ---------- L2 details ---------- */
+  const estStart = () => jAddDays(J_TODAY, 7);                     // estimated disbursement → installment dates are estimates
+  function schedRows(c, start, l){
+    let h = '';
+    for (let i = 1; i <= c.months; i++){
+      const amt = c.inst == null ? DASH : fmtNum(c.inst);
+      let st = '';
+      if (l){
+        const ded = (l.deducted || []).find(d => d.n === i);
+        st = i <= l.paid ? (ded ? '<em class="dp-badge bad ln-st">کسر از وثیقه</em>' : '<em class="dp-badge act ln-st">پرداخت شد</em>') : i === l.paid + 1 ? '<em class="dp-badge wait ln-st">قسط بعدی</em>' : '';
+      }
+      h += `<div class="ln-tr${l && i <= l.paid ? ' paid' : ''}"><span>قسط ${toFa(i)}</span><span>${st || jFmt(jAddM(start, i))}</span><b>${amt}${i === 1 && !l ? ' <small>+ هزینه‌ی عملیات</small>' : ''}</b></div>`;
+    }
+    return h;
+  }
+  function renderLoanDet(){
+    const c = lnCalc(), p = c.p;
+    let h = `<div class="ln-hero"><b>${fmtNum(c.L)} تومان</b><span>${p.name} · ${toFa(c.months)} ماهه · از طریق ونسی</span></div>`;
+    h += '<div class="stc-rows" style="margin-top:12px">' + srow('وثیقه', `${g3(c.grams)} <small class="ln-sub">≈ ${T_(c.grams * c.px)}</small>`) + srow('قسط ماهانه', TD(c.inst)) + '</div>';
+    h += '<div class="ln-sec-h">هزینه‌ها</div><div class="stc-rows">';
+    h += srow('مبلغ وام', T_(c.L));
+    h += srow(`سود بانک (${p.rate == null ? DASH : pctFa(p.rate) + ' سالانه'})`, TD(c.interest));
+    h += srow('هزینه‌ی عملیات ونسی <small class="ln-sub">(با قسط اول)</small>', TD(LN_FEES.vancy));
+    h += srow('کارمزد زرپین', TD(LN_FEES.zarpin));
+    h += srow('هزینه‌ی کل وام', c.interest == null ? DASH : `${fmtNum(c.interest)} + ${DASH} تومان`);
+    h += srow('مجموع بازپرداخت', c.inst == null ? DASH : `${fmtNum(c.inst * c.months)} + ${DASH} تومان`, 'total');
+    h += '</div>';
+    h += `<div class="ln-sec-h">اقساط</div><p class="ln-note">تاریخ‌ها تخمینی‌اند و پس از واریز وام قطعی می‌شوند.</p><div class="ln-table">${schedRows(c, estStart())}</div>`;
+    h += '<ul class="ln-rules"><li>اگر قسطی پرداخت نشود، معادل همان قسط از طلای وثیقه کسر می‌شود.</li><li>وام پس از دریافت لغو نمی‌شود؛ تسویه‌ی زودتر ممکن است.</li></ul>';
+    $('#ldBody').innerHTML = h;
+  }
+  $('#ldBtn').addEventListener('click', () => { LQ.consent = false; renderPre(); $('#lpBody').scrollTop = 0; stGo('loanPre'); });
+
+  /* ---------- L3 prerequisites, route, consent ---------- */
+  function routeSteps(p, at){                                      // at: 4 = nothing done yet
+    const S_ = [[4, 'قفل وثیقه', 'زرپین · همین حالا'], [5, 'احراز و امضای دیجیتال', 'ونسی'], [6, 'بررسی و واریز', `${p.bank} · تا ۱۰ روز کاری`]];
+    return '<ol class="ln-steps">' + S_.map(([n, t, s]) => `<li class="${n < at ? 'done' : n === at ? 'now' : 'wait'}"><span class="ln-sn">${toFa(n)}</span><div><b>${t}</b><small>${s}</small></div></li>`).join('') + '</ol>';
+  }
+  function renderPre(){
+    const p = lnCalc().p;
+    const items = [['ok', `حساب جاری فعال در ${p.bank}`], ['ok', 'حداقل ۱۸ سال سن'], ['ok', 'نداشتن چک برگشتی یا بدهی معوق بانکی'], ['warn', 'رتبه‌ی اعتباری مناسب (در ونسی بررسی می‌شود)']];
+    $('#lpBody').innerHTML = `<div class="ln-sec-h" style="margin-top:6px">پیش‌نیازهای ${p.name}</div><ul class="ln-check">${items.map(([k, t]) => `<li><span class="ln-ci ${k}">${k === 'ok' ? '✓' : '!'}</span>${t}</li>`).join('')}</ul>
+      <div class="sec-div"></div><div class="ln-sec-h" style="margin-top:0">مسیر دریافت</div>${routeSteps(p, 4)}`;
+    $('#lpConsent').classList.toggle('on', LQ.consent); $('#lpConsent').setAttribute('aria-checked', LQ.consent);
+    if (LQ.consent) $('#lpConsent').classList.remove('error');
+  }
+  $('#lpConsent').addEventListener('click', () => { LQ.consent = !LQ.consent; renderPre(); });
+  $('#lpBtn').addEventListener('click', () => {
+    if (!LQ.consent){ $('#lpConsent').classList.add('error'); shake($('#lpConsent')); return showToast('<span>برای ادامه، ارسال اطلاعات به ونسی را تأیید کنید</span>'); }
+    openLock();
+  });
+
+  /* ---------- L4 lock sheet: price window 1 (fixed price until confirm), shortfall buy, OTP ---------- */
+  let LK = null;
+  function lkRecalc(){ LK.grams = ceil3(LK.L / LTV / LK.px); const free = freeGold(); LK.fromW = Math.min(free, LK.grams); LK.short = ceil3(Math.max(0, LK.grams - free)); }
+  function openLock(){
+    const c = lnCalc(); LK = { ...c, px:MARKET.gold.v, bought:0, moved:false, movedFrom:null, deadline:addBizDays(J_TODAY, LN_DEADLINE_BD) };
+    lkRecalc(); renderLock(); openModal($('#lnLockModal'));
+  }
+  const lkPay = () => LK.short * LK.px * (1 + fee());
+  function renderLock(){
+    let h = srow('وثیقه‌ی لازم', g3(LK.grams)) + srow('از موجودی شما', g3(LK.fromW));
+    if (LK.bought) h += srow('خرید کسری', `${g3(LK.bought)} <small class="ln-sub">خریداری شد ✓</small>`);
+    if (LK.short) h += srow('خرید کسری', g3(LK.short));
+    h += srow('قیمت هر گرم', T_(LK.px));
+    if (LK.short) h += srow('کارمزد خرید', fee() ? T_(LK.short * LK.px * fee()) : 'رایگان');
+    h += srow('مبلغ پرداخت', LK.short ? T_(lkPay()) : '۰ تومان', 'total');
+    $('#lkRows').innerHTML = h;
+    $('#lkWarn span').innerHTML = `اگر درخواست در ونسی رد شود یا تا <b>${jFmt(LK.deadline)}</b> تکمیل نشود، وثیقه آزاد می‌شود و طلای خریده‌شده به‌صورت طلا در کیف پول شما می‌ماند.`;
+    $('#lkMoved').hidden = LK.movedFrom == null;
+    if (LK.movedFrom != null) $('#lkMoved span').textContent = `قیمت طلا تغییر کرد؛ وثیقه از ${g3(LK.movedFrom)} به ${g3(LK.grams)} تغییر کرد.`;
+    $('#lkBtn .label').textContent = LK.short ? 'پرداخت و قفل وثیقه' : 'قفل وثیقه';
+  }
+  $('#lkBtn').addEventListener('click', () => {
+    // the quote was valid for ~10 minutes; at confirmation the price is checked once (test panel: «قیمت لحظه‌ی تأیید»)
+    if (test.loanPx === 'moved' && !LK.moved){
+      const before = LK.grams; LK.moved = true; LK.px = Math.round(LK.px * 0.996 / 1000) * 1000; lkRecalc();
+      if (LK.grams !== before){ LK.movedFrom = before; renderLock(); return shake($('#lkMoved')); }
+    }
+    closeModal($('#lnLockModal'));
+    if (LK.short){
+      const g = LK.short;
+      const make = () => { const p = LK.px, f = fee(), toman = g * p * (1 + f), w = wallet();
+        return { grams:g, toman, feeT:g * p * f, p, f, buy:true, topup:toman > w.toman, custom:false, wallet:w.toman, onDone:afterShortBuy, stake:true }; };
+      return setTimeout(() => openConfirm(make), 280);           // THE shared purchase flow, exact shortfall, same price
+    }
+    setTimeout(askLockOtp, 220);
+  });
+  function afterShortBuy(){                                        // «ادامه» on the purchase result → back to the same sheet
+    LK.bought = f3(LK.bought + LK.short); lkRecalc(); renderLoan(); renderTotals();
+    go('loanPre', true); setTimeout(() => { renderLock(); openModal($('#lnLockModal')); }, 420);
+  }
+  function askLockOtp(){ openOtpSheet({ title:'تأیید قفل وثیقه', cta:'تأیید و قفل وثیقه', what:'قفل وثیقه‌ی وام', onVerify:lockLoan }); }
+  function lockLoan(){
+    const p = LK.p;
+    const l = { id:'ln' + (LN.seq++), prov:p.id, amount:LK.L, months:LK.months, rate:p.rate, inst:LK.inst, grams:LK.grams, px:LK.px, bought:LK.bought,
+      status:'pending', lockedAt:[...J_TODAY, nowHM()], deadline:LK.deadline, paid:0, deducted:[] };
+    LN.loans.unshift(l); LN.draft = null; LN.cur = l;
+    sendSms(SMS_TEXT.loanLock(l));
+    $('#lnDoneTitle').innerHTML = `${gT(l.grams)} طلا برای وام<br>قفل شد.`;
+    $('#lnDoneRows').innerHTML = srow('وضعیت', `<em class="dp-badge wait">${LST.pending[0]}</em>`) + srow('مبلغ وام', T_(l.amount)) + srow('تأمین‌کننده', `${p.name} (ونسی)`)
+      + srow('وثیقه‌ی قفل‌شده', g3(l.grams)) + srow('مهلت تکمیل در ونسی', jFmt(l.deadline));
+    $('#lnDoneImg').src = $('#screenStDone .std-img').src;
+    LQ.raw = ''; LQ.consent = false; renderLoan(); refreshLoanUI();
+    stStack = ['home']; go('loanDone');
+  }
+  $('#lnDoneGo').addEventListener('click', () => openVancy(LN.cur, true));
+  $('#lnDoneLater').addEventListener('click', () => { stStack = []; go('home', true); markTabs(); });
+
+  /* ---------- L5 Vancy (simulated) ---------- */
+  const VSTEPS = ['احراز هویت', 'اعتبارسنجی', 'تأیید حساب بانکی', 'امضای دیجیتال'];
+  let vnBusy = false;
+  function openVancy(l, fromDone){ LN.cur = l; renderVancy(); $('#vnBody').scrollTop = 0; if (fromDone) stStack = ['home']; stGo('vancy'); }
+  function renderVancy(done = LN.cur.status !== 'pending' ? 4 : 0){
+    const l = LN.cur, p = provOf(l.prov);
+    $('#vnBody').innerHTML = `<div class="ln-vhero"><b>${fmtNum(l.amount)} تومان</b><small>درخواست ${p.name} · ${toFa(l.months)} ماهه</small></div>
+      <div class="ln-sec-h">مراحل در ونسی</div><ol class="ln-steps">${VSTEPS.map((t, i) => `<li class="${i < done ? 'done' : i === done ? 'now' : 'wait'}"><span class="ln-sn">${i < done ? '✓' : toFa(i + 1)}</span><div><b>${t}</b><small>${i < done ? 'انجام شد' : i === done ? 'در انتظار شما' : ''}</small></div></li>`).join('')}</ol>
+      <p class="ln-note" style="margin-top:16px">این صفحه فقط برای تست است. در نسخه‌ی واقعی، کاربر برای این مراحل به ونسی می‌رود و زرپین وضعیت را از ونسی می‌گیرد.</p>`;
+    $('#vnFoot').innerHTML = done < 4
+      ? '<button type="button" class="btn" id="vnDo"><span class="label">تکمیل مراحل (شبیه‌سازی)</span><span class="spinner" aria-hidden="true"></span></button><button type="button" class="btn-naked" id="vnLater">بازگشت به زرپین</button>'
+      : '<button type="button" class="btn" id="vnLater"><span class="label">بازگشت به زرپین</span></button>';
+  }
+  $('#vnFoot').addEventListener('click', async e => {
+    if (e.target.closest('#vnLater') || e.target.closest('#vnBack')) return backFromVancy();
+    if (!e.target.closest('#vnDo') || vnBusy) return;
+    vnBusy = true; setLoading($('#vnDo'), true);
+    for (let i = 1; i <= 4; i++){ await wait(450); if (state.screen !== 'vancy'){ vnBusy = false; return; } renderVancy(i); if (i < 4) setLoading($('#vnDo'), true); }
+    vnBusy = false; LN.cur.status = 'review'; LN.cur.vancyAt = [...J_TODAY, nowHM()]; refreshLoanUI();
+    showToast(OK_ICON + '<span>مدارک در ونسی کامل شد؛ درخواست در حال بررسی است</span>');
+  });
+  $('#vnBack').addEventListener('click', backFromVancy);
+  function backFromVancy(){ renderLoanView(); stStack = ['home']; go('loanView', true); }
+
+  /* ---------- L6 my loans ---------- */
+  function loanMeta(l){
+    const p = provOf(l.prov);
+    if (l.status === 'pending') return `تکمیل در ونسی تا ${jFmt(l.deadline, false)} · ${g3(l.grams)} قفل`;
+    if (l.status === 'review') return `در حال بررسی ${p.bank} · ${g3(l.grams)} قفل`;
+    if (l.status === 'active') return l.paid >= l.months ? 'همه‌ی اقساط پرداخت شد' : `قسط بعدی ${jFmt(jAddM(l.disbursedAt, l.paid + 1), false)} · ${TD(l.inst)}`;
+    return `وثیقه آزاد شد${l.endedAt ? ' · ' + jFmt(l.endedAt, false) : ''}`;
+  }
+  function renderLoans(){
+    $('#lnList').innerHTML = LN.loans.map(l => { const [st, cls] = LST[l.status];
+      return `<button type="button" class="dp-card" data-id="${l.id}"><div class="dp-top"><b>${fmtNum(l.amount)} تومان · ${provOf(l.prov).bank}</b><span class="dp-badge ${cls}">${st}</span></div><div class="dp-meta"><span>${loanMeta(l)}</span><span>${toFa(l.months)} ماهه</span></div></button>`; }).join('');
+  }
+  $('#lnList').addEventListener('click', e => { const c = e.target.closest('.dp-card'); if (c) openLoanView(LN.loans.find(l => l.id === c.dataset.id)); });
+  $('#lnNew').addEventListener('click', () => openCalc(true));
+
+  /* ---------- L7 one loan, every status ---------- */
+  function openLoanView(l){ LN.cur = l; renderLoanView(); $('#lvBody').scrollTop = 0; stGo('loanView'); }
+  function healthOf(l){
+    const debt = balAfter(l, l.paid), val = l.grams * MARKET.gold.v;
+    const ratio = test.loanHealth === 'warn' ? 0.78 : test.loanHealth === 'sell' ? 0.87 : debt / val;
+    const pxNow = debt / (l.grams * ratio);                        // the price that gives this ratio (demo)
+    const sold = ratio >= LN_SELL ? ceil3((debt - LTV * l.grams * pxNow) / ((1 - LTV) * pxNow)) : 0;   // only what brings it back to 60 %
+    return { debt, ratio, pxNow, sold, st: ratio >= LN_SELL ? 'bad' : ratio >= LN_WARN ? 'warn' : 'ok' };
+  }
+  function renderLoanView(){
+    const l = LN.cur; if (!l) return;
+    const p = provOf(l.prov), [st, cls] = LST[l.status];
+    let h = `<div class="ln-hero"><b>${fmtNum(l.amount)} تومان</b><span>${p.name} · ${toFa(l.months)} ماهه · از طریق ونسی</span></div>`;
+    let f = '';
+    const base = srow('وضعیت', `<em class="dp-badge ${cls}">${st}</em>`);
+    if (l.status === 'pending' || l.status === 'review'){
+      const at = l.status === 'pending' ? 5 : 6;
+      h += `<div class="sec-div"></div><div class="ln-sec-h" style="margin-top:0">مسیر دریافت</div>${routeSteps(p, at)}`;
+      h += l.status === 'pending'
+        ? `<div class="snack warn">${WARN_SVG}<span>تا <b>${jFmt(l.deadline)}</b> برای تکمیل مراحل در ونسی فرصت دارید. پس از آن درخواست لغو و ${g3(l.grams)} طلای شما آزاد می‌شود.</span></div>`
+        : `<div class="snack ok">${OK_ICON}<span>مدارک شما در ونسی کامل شد و ${p.bank} درخواست را بررسی می‌کند. نتیجه را پیامک می‌کنیم.</span></div>`;
+      h += '<div class="stc-rows" style="margin-top:8px">' + base + srow('وثیقه‌ی قفل‌شده', g3(l.grams)) + srow('قسط ماهانه', TD(l.inst)) + srow('تاریخ قفل', jFmtT(l.lockedAt, l.lockedAt[3])) + '</div>';
+      if (l.status === 'pending'){
+        h += '<button type="button" class="ln-sim" data-sim="expire">پایان مهلت بدون تکمیل</button>';
+        f = '<button type="button" class="btn" data-lv="vancy"><span class="label">ادامه در ونسی</span></button><div class="ln-acts"><button type="button" class="btn-naked" data-lv="help">مشکلی دارم</button><button type="button" class="btn-naked danger" data-lv="cancel">لغو درخواست</button></div>';
+      } else {
+        h += '<p class="ln-note" style="margin-top:12px">پس از شروع بررسی، لغو درخواست فقط از طریق ونسی ممکن است.</p>';
+        h += `<button type="button" class="ln-sim" data-sim="bank">پاسخ بانک (${test.bank === 'ok' ? 'تأیید' : 'رد'})</button>`;
+        f = '<button type="button" class="btn btn-secondary" data-lv="help"><span class="label">پشتیبانی</span></button>';
+      }
+    } else if (l.status === 'active'){
+      const H = healthOf(l), done = l.paid >= l.months, next = jAddM(l.disbursedAt, l.paid + 1);
+      h += '<div class="stc-rows" style="margin-top:12px">' + base + srow('واریزشده به', `حساب ${p.bank} شما`) + srow('مانده‌ی بدهی', T_(H.debt))
+        + srow('اقساط پرداخت‌شده', `${toFa(l.paid)} از ${toFa(l.months)}`) + (done ? '' : srow('قسط بعدی', `${TD(l.inst)} <small class="ln-sub">${jFmt(next, false)}</small>`)) + srow('وثیقه', g3(l.grams)) + '</div>';
+      const pc = r => toFa(Math.round(r * 100)) + '٪';
+      h += `<div class="ln-health"><div class="ln-hh"><b>سلامت وثیقه</b><em class="dp-badge ${H.st === 'ok' ? 'act' : H.st === 'warn' ? 'warn' : 'bad'}">${H.st === 'ok' ? 'سالم' : H.st === 'warn' ? 'هشدار' : 'فروش وثیقه'}</em></div>
+        <div class="ln-hbar ${H.st}"><i style="width:${Math.min(100, H.ratio * 100).toFixed(1)}%"></i><em style="inset-inline-start:${LN_WARN * 100}%"><span>هشدار ${pc(LN_WARN)}</span></em><em class="lo" style="inset-inline-start:${LN_SELL * 100}%"><span>فروش ${pc(LN_SELL)}</span></em></div>
+        <p>${H.st === 'ok' ? `نسبت بدهی به ارزش وثیقه ${pc(H.ratio)} است. اگر با افت قیمت طلا به ${pc(LN_WARN)} برسد پیامک هشدار می‌گیرید و در ${pc(LN_SELL)} فقط به اندازه‌ی لازم از وثیقه فروخته می‌شود.`
+          : H.st === 'warn' ? `قیمت طلا پایین آمده و نسبت بدهی به ارزش وثیقه به ${pc(H.ratio)} رسیده است. برای جلوگیری از فروش وثیقه، وثیقه را افزایش دهید یا بخشی از وام را تسویه کنید.`
+          : `نسبت به ${pc(H.ratio)} رسید و ${g3(H.sold)} از وثیقه فروخته شد تا نسبت به ${pc(LTV)} برگردد. باقی‌مانده (${g3(f3(l.grams - H.sold))}) همچنان وثیقه است.`}</p>
+        ${H.st === 'warn' ? '<button type="button" class="pill-btn soon">افزایش وثیقه</button>' : ''}</div>`;
+      h += `<div class="ln-sec-h">اقساط</div><div class="ln-table">${schedRows({ months:l.months, inst:l.inst }, l.disbursedAt, l)}</div>`;
+      if ((l.deducted || []).length) h += `<div class="ln-sec-h">کسر از وثیقه</div>${l.deducted.map(d => `<div class="ln-ev"><span>قسط ${toFa(d.n)} · ${jFmt(d.date)}</span><b>−${g3(d.g)}</b></div>`).join('')}`;
+      if (!done) h += '<button type="button" class="ln-sim" data-sim="miss">پرداخت‌نشدن قسط بعدی</button>';
+      f = '<button type="button" class="btn" data-lv="pay"><span class="label">پرداخت قسط در ونسی</span></button><button type="button" class="btn btn-secondary" data-lv="settle"><span class="label">تسویه‌ی کامل</span></button>';
+    } else {
+      const why = { rejected:`درخواست در ونسی رد شد${l.reason ? ` (${l.reason})` : ''}.`, expired:'مراحل ونسی تا پایان مهلت کامل نشد و درخواست منقضی شد.',
+                    cancelled:'درخواست را لغو کردید.', settled:'وام به‌طور کامل تسویه شد.' }[l.status];
+      h += `<div class="snack ok" style="margin-top:16px">${OK_ICON}<span>${why} ${g3(l.grams)} طلای وثیقه آزاد شد و در کیف پول شما قابل استفاده است.${l.bought ? ` طلای خریده‌شده (${g3(l.bought)}) به‌صورت طلا در کیف پول ماند.` : ''}</span></div>`;
+      h += '<div class="stc-rows" style="margin-top:8px">' + base + srow('وثیقه‌ی آزادشده', g3(l.grams)) + srow('تاریخ قفل', jFmt(l.lockedAt)) + (l.endedAt ? srow('تاریخ آزادسازی', jFmt(l.endedAt)) : '') + '</div>';
+      f = '<button type="button" class="btn" data-lv="new"><span class="label">درخواست وام جدید</span></button>';
+    }
+    $('#lvBody').innerHTML = h; $('#lvFoot').innerHTML = f;
+  }
+  const WARN_SVG = $('#lnShort svg') ? $('#lnShort svg').outerHTML : '';
+  function release(l, status, extra = {}){ Object.assign(l, { status, endedAt:[...J_TODAY, nowHM()] }, extra); refreshLoanUI(); if (state.screen === 'loanView') renderLoanView(); }
+  $('#lvBody').addEventListener('click', e => {
+    const b = e.target.closest('[data-sim]'); if (!b) return; const l = LN.cur;
+    if (b.dataset.sim === 'expire'){ release(l, 'expired'); sendSms(SMS_TEXT.loanExpired(l)); }
+    if (b.dataset.sim === 'bank'){
+      if (test.bank === 'ok'){ Object.assign(l, { status:'active', disbursedAt:[...J_TODAY], paid:0, deducted:[] }); refreshLoanUI(); renderLoanView(); sendSms(SMS_TEXT.loanPaid(l)); showToast(OK_ICON + `<span>${fmtNum(l.amount)} تومان به حساب ${provOf(l.prov).bank} شما واریز شد</span>`); }
+      else { release(l, 'rejected', { reason:'رتبه‌ی اعتباری کافی نبود' }); sendSms(SMS_TEXT.loanRejected(l)); }
+    }
+    if (b.dataset.sim === 'miss'){
+      const n = l.paid + 1, g = ceil3((l.inst || l.amount / l.months) / MARKET.gold.v);
+      l.deducted.push({ n, g, date:jAddM(l.disbursedAt, n) }); l.paid = n; l.grams = f3(l.grams - g); STK.goldTotal = f3(STK.goldTotal - g);
+      refreshLoanUI(); renderLoanView(); sendSms(SMS_TEXT.loanDeduct(n, g));
+    }
+  });
+  $('#lvFoot').addEventListener('click', e => {
+    const b = e.target.closest('[data-lv]'); if (!b) return; const l = LN.cur, a = b.dataset.lv;
+    if (a === 'vancy') return openVancy(l);
+    if (a === 'help') return showToast('<span>درخواست شما ثبت شد؛ پشتیبانی به‌زودی با شما تماس می‌گیرد</span>');
+    if (a === 'pay') return showToast('<span>در نسخه‌ی واقعی، صفحه‌ی پرداخت قسط در ونسی باز می‌شود</span>');
+    if (a === 'new') return openCalc(true);
+    if (a === 'cancel'){ $('#lcxText').textContent = `درخواست وام ${fmtNum(l.amount)} تومانی لغو و ${g3(l.grams)} طلای وثیقه فوراً آزاد می‌شود.${l.bought ? ' طلای خریده‌شده به‌صورت طلا در کیف پول شما می‌ماند.' : ''}`; return openModal($('#lnCxModal')); }
+    if (a === 'settle'){ const H = healthOf(l); $('#lstRows').innerHTML = srow('مانده‌ی بدهی', T_(H.debt)) + srow('هزینه‌ی تسویه‌ی زودتر', DASH) + srow('وثیقه‌ی آزادشونده', g3(l.grams), 'total'); return openModal($('#lnStModal')); }
+  });
+  $('#lcxGo').addEventListener('click', () => {
+    closeModal($('#lnCxModal'));
+    setTimeout(() => openOtpSheet({ title:'تأیید لغو درخواست وام', cta:'تأیید و لغو درخواست', what:'لغو درخواست وام', onVerify:() => {
+      const l = LN.cur; release(l, 'cancelled'); sendSms(SMS_TEXT.loanCancelled(l)); showToast(OK_ICON + `<span>درخواست لغو شد و ${g3(l.grams)} آزاد شد</span>`);
+    } }), 220);
+  });
+  $('#lstGo').addEventListener('click', async () => {
+    setLoading($('#lstGo'), true); await wait(1100); setLoading($('#lstGo'), false); closeModal($('#lnStModal'));
+    const l = LN.cur; release(l, 'settled', { paid:l.months }); sendSms(SMS_TEXT.loanSettled(l)); showToast(OK_ICON + `<span>وام تسویه شد و ${g3(l.grams)} آزاد شد</span>`);
+  });
+
+  /* ---------- home card: pending in Vancy · in review · unfinished calculator ---------- */
+  function renderLoanHome(){
+    const l = LN && state.loggedIn ? LN.loans.find(x => x.status === 'pending') || LN.loans.find(x => x.status === 'review') : null;
+    const d = LN && state.loggedIn && !l && LN.draft;
+    let h = '';
+    if (l && l.status === 'pending') h = `<div class="ln-hc" data-lnh="view" role="button" tabindex="0"><b>یک قدم تا دریافت ${fmtNum(l.amount)} تومان وام</b><small>مراحل ونسی را تا ${jFmt(l.deadline, false)} کامل کنید؛ ${g3(l.grams)} طلا برای این وام قفل است.</small>
+      <div class="ln-hc-b"><button type="button" class="pill-btn" data-lnh="vancy">ادامه در ونسی</button><button type="button" class="pill-btn ghost" data-lnh="help">مشکلی دارم</button></div></div>`;
+    else if (l) h = `<button type="button" class="ln-hc" data-lnh="view"><b>وام ${MIL(l.amount)} تومانی شما در حال بررسی است</b><small>${provOf(l.prov).bank} درخواست را بررسی می‌کند؛ نتیجه را پیامک می‌کنیم.</small></button>`;
+    else if (d) h = `<button type="button" class="ln-hc" data-lnh="draft"><b>وام ${MIL(+d.raw)} تومانی شما نیمه‌کاره است</b><small>تا قفل وثیقه پولی پرداخت نمی‌کنید و طلایی قفل نمی‌شود.</small><span class="ln-hc-b"><span class="pill-btn">ادامه</span></span></button>`;
+    $$('.ln-home').forEach(c => { c.innerHTML = h; c.hidden = !h; });
+  }
+  $$('.ln-home').forEach(c => c.addEventListener('click', e => {
+    const b = e.target.closest('[data-lnh]'); if (!b) return;
+    const l = LN.loans.find(x => x.status === 'pending') || LN.loans.find(x => x.status === 'review');
+    if (b.dataset.lnh === 'vancy') return openVancy(l);
+    if (b.dataset.lnh === 'help') return showToast('<span>درخواست شما ثبت شد؛ پشتیبانی به‌زودی با شما تماس می‌گیرد</span>');
+    if (b.dataset.lnh === 'draft') return openCalc(false);
+    openLoanView(l);
+  }));
+
+  /* ---------- entry, reset, test data ---------- */
+  function openLoan(){ if (!state.loggedIn) return openLogin(); if (LN.loans.length){ renderLoans(); return stGo('loans'); } openCalc(false); }
+  function openCalc(fresh){
+    if (!state.loggedIn) return openLogin();
+    if (fresh || !LN.draft){ LQ.raw = ''; LQ.prov = 'blu'; LQ.months = 12; } else Object.assign(LQ, LN.draft);
+    LQ.req = ''; LQ.consent = false; renderLoan(); $('#lnScroll').scrollTop = 0; stGo('loan');
+  }
+  $$('[data-loan]').forEach(b => b.addEventListener('click', openLoan));
+  function refreshLoanUI(){ renderLoanHome(); renderTotals(); fillTpBal(); renderStake(); renderTrade(); if (state.screen === 'loans') renderLoans(); }
+  function mockLoans(kind){
+    if (!['pending', 'review', 'active', 'rejected', 'expired'].includes(kind)) return [];
+    const px = MARKET.gold.v, L = 50e6, inst = pmt(L, 23, 12), grams = ceil3(L / LTV / px);
+    const l = { id:'ln0', prov:'blu', amount:L, months:12, rate:23, inst, grams, px, bought:0.571, lockedAt:[...jAddDays(J_TODAY, -1), '۱۰:۰۶'], paid:0, deducted:[] };
+    l.deadline = addBizDays(l.lockedAt, LN_DEADLINE_BD); l.status = kind;
+    if (kind === 'active'){
+      l.lockedAt = [...jAddM(J_TODAY, -3), '۱۰:۰۶']; l.disbursedAt = jAddDays(jAddM(J_TODAY, -3), 6); l.paid = 2;
+      const g = ceil3(inst / px); l.deducted = [{ n:2, g, date:jAddM(l.disbursedAt, 2) }]; l.grams = f3(grams - g);
+    }
+    if (kind === 'rejected'){ l.endedAt = [...J_TODAY]; l.reason = 'رتبه‌ی اعتباری کافی نبود'; }
+    if (kind === 'expired'){ l.lockedAt = [...jAddDays(J_TODAY, -10), '۱۰:۰۶']; l.deadline = addBizDays(l.lockedAt, LN_DEADLINE_BD); l.endedAt = [...J_TODAY]; }
+    return [l];
+  }
+  function resetLoan(){
+    const free = freeGold();
+    LN = { loans:mockLoans(test.loan), draft:test.loan === 'draft' ? { prov:'blu', raw:'50000000', months:12 } : null, seq:1, cur:null };
+    if (test.balance === '1' || loanGold()) STK.goldTotal = f3(free + stakedGold() + orderGold() + loanGold());   // free gold stays the same; locked gold comes on top
+    LQ.raw = ''; LQ.prov = 'blu'; LQ.months = 12; LQ.consent = false; LQ.req = ''; LK = null;
+    renderLoan(); renderLoanHome();
+  }
+  Object.assign(SMS_TEXT, {
+    loanLock:      l => `${g3(l.grams)} طلای شما برای وام ${fmtNum(l.amount)} تومانی قفل شد.\nبرای دریافت وام، مراحل ونسی را تا ${jFmt(l.deadline)} کامل کنید.`,
+    loanRemind:    l => `وام ${fmtNum(l.amount)} تومانی شما آماده است و فقط تکمیل مراحل ونسی مانده.\nاگر مشکلی دارید، از بخش پشتیبانی اپ زرپین به ما پیام دهید.`,
+    loanLast:      l => `تا ${jFmt(l.deadline)} برای تکمیل وام فرصت دارید. پس از آن درخواست لغو و ${g3(l.grams)} طلای شما آزاد می‌شود.`,
+    loanDraft:     a => `وام ${MIL(a)} تومانی شما نیمه‌کاره مانده است. برای ادامه، اپ زرپین را باز کنید.`,
+    loanExpired:   l => `درخواست وام شما منقضی شد و ${g3(l.grams)} طلا به کیف پول شما برگشت.`,
+    loanPaid:      l => `${fmtNum(l.amount)} تومان به حساب ${provOf(l.prov).bank} شما واریز شد و وام شما فعال است.`,
+    loanRejected:  l => `درخواست وام شما در ونسی رد شد${l.reason ? ` (${l.reason})` : ''} و ${g3(l.grams)} طلای وثیقه به کیف پول شما برگشت.`,
+    loanCancelled: l => `درخواست وام لغو شد و ${g3(l.grams)} طلای وثیقه به کیف پول شما برگشت.`,
+    loanDeduct:    (n, g) => `قسط ${toFa(n)} وام شما پرداخت نشد و معادل آن (${g3(g)}) از طلای وثیقه کسر شد.`,
+    loanWarn:      () => 'ارزش وثیقه‌ی وام شما با افت قیمت طلا کم شده است. برای جلوگیری از فروش وثیقه، وثیقه را افزایش دهید یا بخشی از وام را تسویه کنید.',
+    loanSold:      (g, left) => `بخشی از وثیقه‌ی وام شما (${g3(g)}) فروخته شد و بدهی به همان اندازه کم شد. ${g3(left)} طلا همچنان وثیقه است.`,
+    loanSettled:   l => `وام شما تسویه شد و ${g3(l.grams)} طلای وثیقه به کیف پول شما برگشت.`,
+  });
+
+  /* =====================================================================
      TEST STATE — a few independent switches instead of a long scenario list.
        login   : start as guest or logged in
        balance : home shows a balance or zero
@@ -6462,7 +7091,7 @@ button{font-family:inherit}
        number  : what happens after OTP — new number (referral + KYC) or registered (straight home)
      Changing any switch resets the prototype to the home screen in that state.
      ===================================================================== */
-  const test = { login:'1', balance:'1', apis:'some', number:'new', homev:'old', tiles:'3', tradev:'old', deps:'many', buyres:'ok', dlv:'none', dlvHist:'0' };
+  const test = { loan:'none', bank:'ok', loanPx:'same', loanHealth:'ok', login:'1', balance:'1', apis:'some', number:'new', homev:'old', tiles:'4', tradev:'old', deps:'many', buyres:'ok', dlv:'none', dlvHist:'0' };
   const TRADES = { new:$('#screenTrade2'), old:$('#screenTrade') };
   const TOTAL = 201061381;
   const tpToggle = $('#tpToggle'), tpPanel = $('#tpPanel');
@@ -6478,7 +7107,7 @@ button{font-family:inherit}
     state.screen = 'home'; kycFromLogin = false; markTabs(); resetTrade();
     state.loggedIn = loggedIn; device.classList.toggle('logged-in', loggedIn);
     if (loggedIn){ state.phone = '09123456789'; $('#homePhone').textContent = fmtPhone(state.phone); }
-    resetStake(); hidden = false; renderTotals(); renderTiles(+test.tiles); fillTpBal();
+    resetStake(); resetLoan(); hidden = false; renderTotals(); renderTiles(+test.tiles); fillTpBal();
     $$('.home-scroll').forEach(s => s.scrollTo({ top:0 }));
     syncTp(); resetApi();
     tpPanel.dataset.login = test.login; tpPanel.dataset.homev = test.homev; $('#tpTiles').textContent = toFa(test.tiles);
@@ -6490,6 +7119,8 @@ button{font-family:inherit}
   $$('.tp-panel [data-t] button').forEach(b => b.addEventListener('click', () => setTest(b.parentElement.dataset.t, b.dataset.v)));
   function setTest(k, v){
     test[k] = v;
+    if (k === 'loan'){ resetLoan(); refreshLoanUI(); if (['loans', 'loanView', 'vancy'].includes(state.screen)) applyTest(); return syncTp(); }
+    if (['bank', 'loanPx', 'loanHealth'].includes(k)){ syncTp(); if (state.screen === 'loanView') renderLoanView(); return; }
     if (k === 'apis'){ resetApi(); renderApi(); return syncTp(); }
     if (k === 'dlv' || k === 'dlvHist'){
       resetDlv(); renderDlv(); syncTp();
@@ -6530,6 +7161,18 @@ button{font-family:inherit}
     ['apiDeleted',  'حذف API',                      () => SMS_TEXT.apiDeleted('ربات معاملاتی')],
     ['dlvDone',     'تحویل شد',                     () => SMS_TEXT.dlvDone(4, 'گالری زرپین')],
     ['dlvCxUser',   'لغو سفارش تحویل (کاربر)',      () => SMS_TEXT.dlvCxUser(3.79)],
+    ['loanLock',    'قفل وثیقه‌ی وام',              () => SMS_TEXT.loanLock({ grams:3.281, amount:50000000, deadline:jAddDays(J_TODAY, 10) })],
+    ['loanRemind',  'یادآوری وام (+۲۴ ساعت)',        () => SMS_TEXT.loanRemind({ amount:50000000 })],
+    ['loanLast',    'یادآوری آخر (۲ روز کاری مانده)', () => SMS_TEXT.loanLast({ grams:3.281, deadline:jAddDays(J_TODAY, 2) })],
+    ['loanDraft',   'وام نیمه‌کاره (+۲۴ ساعت)',      () => SMS_TEXT.loanDraft(50000000)],
+    ['loanExpired', 'انقضای درخواست وام',            () => SMS_TEXT.loanExpired({ grams:3.281 })],
+    ['loanPaid',    'واریز وام',                     () => SMS_TEXT.loanPaid({ amount:50000000, prov:'blu' })],
+    ['loanRejected','رد درخواست وام',                () => SMS_TEXT.loanRejected({ grams:3.281, reason:'رتبه‌ی اعتباری کافی نبود' })],
+    ['loanCancelled','لغو درخواست وام',              () => SMS_TEXT.loanCancelled({ grams:3.281 })],
+    ['loanDeduct',  'کسر قسط از وثیقه',              () => SMS_TEXT.loanDeduct(2, 0.18)],
+    ['loanWarn',    'هشدار سلامت وثیقه',             () => SMS_TEXT.loanWarn()],
+    ['loanSold',    'فروش بخشی از وثیقه',            () => SMS_TEXT.loanSold(0.42, 2.68)],
+    ['loanSettled', 'تسویه‌ی وام',                   () => SMS_TEXT.loanSettled({ grams:3.281 })],
     ['dlvCxBranch', 'لغو سفارش تحویل (شعبه)',       () => SMS_TEXT.dlvCxBranch('سکه پرواز', 0.565)],
   ];
   // a separate page with every SMS the app sends (title + full text); «نمایش» plays it on the phone
@@ -6557,7 +7200,29 @@ button{font-family:inherit}
   function forceStake(){ if (test.login !== '1' || test.balance !== '1'){ test.login = '1'; test.balance = '1'; applyTest(); } }
   function forceDeps(){ forceStake(); if (test.deps === 'none'){ test.deps = 'many'; syncTp(); setDeps(); } }
   function forceT2(){ if (test.login !== '1' || test.tradev !== 'new' || test.balance !== '1'){ test.login = '1'; test.tradev = 'new'; test.balance = '1'; applyTest(); } switchTab('trade'); }
+  function setLoanTest(v){ forceStake(); test.loan = v; syncTp(); resetLoan(); refreshLoanUI(); }
   const JUMPS = {
+    loanCalc:      () => { setLoanTest('none'); openCalc(true); },
+    loanCalcShort: () => { JUMPS.loanCalc(); lnSet('50000000'); },
+    loanDetails:   () => { JUMPS.loanCalcShort(); $('#lnBtn').click(); },
+    loanPrereq:    () => { JUMPS.loanDetails(); $('#ldBtn').click(); },
+    loanLock:      () => { JUMPS.loanPrereq(); LQ.consent = true; renderPre(); setTimeout(openLock, 450); },
+    loanLockOk:    () => { setLoanTest('none'); openCalc(true); lnSet('30000000'); $('#lnBtn').click(); $('#ldBtn').click(); LQ.consent = true; renderPre(); setTimeout(openLock, 450); },
+    loanOtp:       () => { JUMPS.loanLockOk(); setTimeout(() => $('#lkBtn').click(), 900); },
+    loanDone:      () => { JUMPS.loanLockOk(); setTimeout(() => { closeModal($('#lnLockModal')); lockLoan(); }, 900); },
+    loanVancy:     () => { setLoanTest('pending'); openVancy(LN.loans[0], true); },
+    loanHome:      () => { setLoanTest('pending'); },
+    loanDraft:     () => { setLoanTest('draft'); },
+    loanPending:   () => { setLoanTest('pending'); openLoanView(LN.loans[0]); },
+    loanReview:    () => { setLoanTest('review'); openLoanView(LN.loans[0]); },
+    loanActive:    () => { test.loanHealth = 'ok'; setLoanTest('active'); openLoanView(LN.loans[0]); },
+    loanWarn:      () => { test.loanHealth = 'warn'; setLoanTest('active'); openLoanView(LN.loans[0]); },
+    loanSell:      () => { test.loanHealth = 'sell'; setLoanTest('active'); openLoanView(LN.loans[0]); },
+    loanRejected:  () => { setLoanTest('rejected'); openLoanView(LN.loans[0]); },
+    loanExpired:   () => { setLoanTest('expired'); openLoanView(LN.loans[0]); },
+    loanCancel:    () => { JUMPS.loanPending(); setTimeout(() => $('#lvFoot [data-lv=cancel]').click(), 450); },
+    loanSettle:    () => { JUMPS.loanActive(); setTimeout(() => $('#lvFoot [data-lv=settle]').click(), 450); },
+    loanMy:        () => { setLoanTest('active'); openLoan(); },
     home:     () => {},
     price:       () => openPrice('gold'),
     priceSilver: () => openPrice('silver'),
