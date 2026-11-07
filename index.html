@@ -2636,16 +2636,21 @@ button{font-family:inherit}
 .ln-cap{margin:0; padding:14px 16px; border-radius:16px; background:var(--background-surface); font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
 .ln-cap b{color:var(--content-primary); font-weight:700}
 .ln-label{margin-top:18px; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
-.ln-provs{margin-top:8px; display:flex; flex-direction:column; gap:8px}
-.ln-prov{width:100%; display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--border-subtle); border-radius:14px; background:var(--background-page); font:inherit; color:var(--content-primary); text-align:right; cursor:pointer}
+.ln-provs{margin:8px calc(-1 * var(--gutter)) 0; padding:2px var(--gutter); display:flex; gap:8px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:0 var(--gutter); scrollbar-width:none}
+.ln-provs::-webkit-scrollbar{display:none}
+.ln-amt-row{margin-top:18px}
+.ln-amt-row #lnCap{font-size:var(--font-size-body-small); color:var(--content-tertiary)}
+.ln-amt-row #lnCap b{font-size:inherit; line-height:inherit; color:var(--content-secondary); font-weight:600}
+.st2-all:disabled{color:var(--content-disabled); cursor:default}
+.ln-prov{flex:none; width:calc((100% - 8px) / 2); min-width:150px; scroll-snap-align:start; display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding:12px; border:1px solid var(--border-subtle); border-radius:14px; background:var(--background-page); font:inherit; color:var(--content-primary); text-align:right; cursor:pointer}
 .ln-prov.on{background:var(--background-surface); border-color:var(--content-primary); box-shadow:inset 0 0 0 .5px var(--content-primary)}
-.ln-logo{flex:none; width:36px; height:36px; border-radius:50%; background:var(--background-surface); display:grid; place-items:center; color:var(--content-primary)}
-.ln-prov.on .ln-logo{background:var(--background-page)}
+.ln-logo{flex:none; width:36px; height:36px; border-radius:10px; display:grid; place-items:center; color:#fff; font-size:12px; font-weight:800; letter-spacing:-.2px}
+.ln-ptop{display:flex; align-items:center; justify-content:space-between; align-self:stretch}
 .ln-pt{flex:1; min-width:0; display:flex; flex-direction:column}
 .ln-pt b{display:flex; align-items:center; gap:6px; font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700}
 .ln-pt small{font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
 .ln-tag{font-style:normal; font-size:var(--font-size-caption-small); line-height:var(--line-height-caption-small); font-weight:700; padding:1px 8px; border-radius:10px; background:var(--components-tag-green-bg); color:var(--green-700)}
-.ln-range{flex:none; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
+.ln-range{font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
 .ln-slider{-webkit-appearance:none; appearance:none; width:100%; height:4px; margin:18px 0 0; border-radius:2px; outline:none; cursor:pointer; direction:ltr; transform:scaleX(-1);   /* RTL: minimum on the right */
   background:linear-gradient(to right, var(--content-primary) var(--fill, 0%), var(--background-sunken) var(--fill, 0%))}
 .ln-slider::-webkit-slider-thumb{-webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:var(--base-white); border:2px solid var(--content-primary); box-shadow:0 2px 6px rgba(0,0,0,.15)}
@@ -3532,21 +3537,19 @@ button{font-family:inherit}
           <div class="ah-actions"></div>
         </header>
         <div class="page-scroll st-form ln-form" id="lnScroll">
-          <p class="ln-cap" id="lnCap"></p>
-          <div class="ln-label">تأمین‌کننده</div>
+          <div class="ln-label" style="margin-top:0">تأمین‌کننده</div>
           <div class="ln-provs" id="lnProvs" role="radiogroup" aria-label="تأمین‌کننده"></div>
-          <div class="ln-label">مبلغ وام</div>
+          <div class="st2-row ln-amt-row"><b>مبلغ وام</b><span id="lnCap"></span></div>
           <div class="st2-field" id="lnCard">
-            <div class="st2-num" id="lnNum"><span class="st2-val" id="lnVal"></span><span class="amt-caret"></span><span class="st2-ph">مبلغ وام را وارد کنید</span>
+            <div class="st2-num" id="lnNum"><span class="st2-val" id="lnVal"></span><span class="amt-caret"></span><span class="st2-ph">مبلغ به تومان</span>
               <input id="lnInput" type="text" inputmode="none" autocomplete="off" aria-label="مبلغ وام به تومان"></div>
-            <span class="st2-sep" aria-hidden="true"></span><span class="st2-unit">تومان</span>
+            <span class="st2-sep" aria-hidden="true"></span><button type="button" class="st2-all" id="lnMax">حداکثر</button>
           </div>
           <input type="range" class="ln-slider" id="lnSlider" step="1000000" aria-label="مبلغ وام">
           <div class="ln-hint" id="lnHint"></div>
           <div class="ln-label">مدت بازپرداخت</div>
           <div class="st2-chips ln-months" id="lnMonths"></div>
           <div class="stc-rows ln-live"><div class="sr"><span>وثیقه‌ی لازم</span><b id="lnColl">—</b></div><div class="sr"><span>قسط ماهانه</span><b id="lnInst">—</b></div></div>
-          <div class="snack warn ln-short" id="lnShort" hidden><svg class="ico c-warn" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM11.25 8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V13C12.75 13.41 12.41 13.75 12 13.75C11.59 13.75 11.25 13.41 11.25 13V8ZM12.92 16.38C12.87 16.51 12.8 16.61 12.71 16.71C12.61 16.8 12.5 16.87 12.38 16.92C12.26 16.97 12.13 17 12 17C11.87 17 11.74 16.97 11.62 16.92C11.5 16.87 11.39 16.8 11.29 16.71C11.2 16.61 11.13 16.51 11.08 16.38C11.03 16.26 11 16.13 11 16C11 15.87 11.03 15.74 11.08 15.62C11.13 15.5 11.2 15.39 11.29 15.29C11.39 15.2 11.5 15.13 11.62 15.08C11.86 14.98 12.14 14.98 12.38 15.08C12.5 15.13 12.61 15.2 12.71 15.29C12.8 15.39 12.87 15.5 12.92 15.62C12.97 15.74 13 15.87 13 16C13 16.13 12.97 16.26 12.92 16.38Z" fill="currentColor"/></svg><span></span></div>
         </div>
         <div class="page-footer"><button type="button" class="btn" id="lnBtn"><span class="label">ادامه</span></button></div>
       </section>
@@ -3607,8 +3610,14 @@ button{font-family:inherit}
           <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">وام‌های من</span></div>
           <div class="ah-actions"></div>
         </header>
-        <div class="page-scroll st-list"><div class="dp-list" id="lnList"></div></div>
-        <div class="page-footer"><button type="button" class="btn" id="lnNew"><span class="label">درخواست وام جدید</span></button></div>
+        <div class="page-scroll st-list" id="lnListWrap">
+          <div class="dp-list" id="lnList"></div>
+          <div class="dp-emptyst" id="lnEmpty" hidden>
+            <div class="fi" id="lnIntro"></div>
+            <button type="button" class="btn dp-empty-btn" id="lnEmptyNew"><span class="label">درخواست وام</span></button>
+          </div>
+        </div>
+        <div class="page-footer" id="lnFoot"><button type="button" class="btn" id="lnNew"><span class="label">درخواست وام جدید</span></button></div>
       </section>
 
       <!-- L7 one loan: every status on one page -->
@@ -4182,7 +4191,7 @@ button{font-family:inherit}
               <optgroup label="صفحه اصلی"><option value="home">صفحه اصلی</option><option value="price">قیمت طلا</option><option value="priceSilver">قیمت نقره</option><option value="account">حساب کاربری</option></optgroup>
               <optgroup label="ورود"><option value="phone">شماره موبایل</option><option value="otp">کد تأیید</option></optgroup>
               <optgroup label="ثبت‌نام و احراز هویت"><option value="referral">کد معرف</option><option value="kyc">احراز هویت</option><option value="date">برگه تاریخ تولد</option><option value="terms">برگه قوانین</option><option value="success">احراز موفق</option></optgroup>
-              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="apiEdit">ویرایش API</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه‌ی فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه‌ی گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="وام با وثیقه‌ی طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanPrereq">پیش‌نیازها و مسیر</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanOtp">کد تأیید قفل وثیقه</option><option value="loanDone">وثیقه قفل شد</option><option value="loanVancy">ونسی (شبیه‌سازی)</option><option value="loanHome">کارت صفحه‌ی اصلی — در انتظار ونسی</option><option value="loanDraft">کارت صفحه‌ی اصلی — نیمه‌کاره</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanReview">وام — در حال بررسی</option><option value="loanActive">وام فعال</option><option value="loanWarn">وام فعال — هشدار وثیقه</option><option value="loanSell">وام فعال — فروش وثیقه</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanCancel">لغو درخواست وام</option><option value="loanSettle">تسویه‌ی کامل</option><option value="loanMy">وام‌های من</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
+              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="apiEdit">ویرایش API</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه‌ی فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه‌ی گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="وام با وثیقه‌ی طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanPrereq">پیش‌نیازها و مسیر</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanOtp">کد تأیید قفل وثیقه</option><option value="loanDone">وثیقه قفل شد</option><option value="loanVancy">ونسی (شبیه‌سازی)</option><option value="loanHome">کارت صفحه‌ی اصلی — در انتظار ونسی</option><option value="loanDraft">کارت صفحه‌ی اصلی — نیمه‌کاره</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanReview">وام — در حال بررسی</option><option value="loanActive">وام فعال</option><option value="loanWarn">وام فعال — هشدار وثیقه</option><option value="loanSell">وام فعال — فروش وثیقه</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanCancel">لغو درخواست وام</option><option value="loanSettle">تسویه‌ی کامل</option><option value="loanMy">وام‌های من</option><option value="loanMyEmpty">وام‌های من — خالی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
               <optgroup label="کیف پول و تاریخچه"><option value="wallet">کیف پول</option><option value="goldSheet">برگه طلای ۱۸ عیار</option><option value="history">تاریخچه — خرید و فروش</option><option value="historyDep">تاریخچه — واریز</option><option value="historyWd">تاریخچه — برداشت</option><option value="historyDel">تاریخچه — تحویل فیزیکی</option><option value="orderDetail">جزئیات سفارش</option><option value="histDate">انتخاب تاریخ</option></optgroup>
               <optgroup label="سود طلایی"><option value="stLanding">ورود به سود طلایی</option><option value="stFaq">پرسش‌های متداول</option><option value="stake">سپرده‌ی جدید</option><option value="stShort">کمبود موجودی</option><option value="stConfirm">تأیید سپرده</option><option value="stContract">برگه قرارداد</option><option value="stDone">سپرده ثبت شد</option><option value="deposits">سپرده‌های من</option><option value="depositEmpty">سپرده‌های من (خالی)</option><option value="yields">بازدهی‌های دریافت‌شده</option><option value="yieldsEmpty">بازدهی‌های دریافت‌شده (خالی)</option><option value="deposit">جزئیات سپرده</option><option value="stCancel">برگه لغو</option><option value="stOtp">کد تأیید لغو</option><option value="depositMatured">جزئیات سپرده‌ی سررسیدشده</option></optgroup>
             </select>
@@ -6716,8 +6725,9 @@ button{font-family:inherit}
   const LTV = 0.6, LN_WARN = 0.75, LN_SELL = 0.85, LN_DEADLINE_BD = 7, DASH = '—';
   const LN_FEES = { vancy:null, zarpin:null };                     // تعیین نشده
   const PROVIDERS = [
-    { id:'blu',     name:'وام بلوبانک',       bank:'بلوبانک',       min:10e6, max:300e6, months:[3, 6, 12], rate:23,   type:'cash' },
-    { id:'gardesh', name:'وام بانک گردشگری', bank:'بانک گردشگری', min:10e6, max:100e6, months:[3, 6, 12], rate:null, type:'cash' },
+    // logo: a placeholder mark (initials + colour) until the banks' logo files are added
+    { id:'blu',     name:'وام بلوبانک',       bank:'بلوبانک',       min:10e6, max:300e6, months:[3, 6, 12], rate:23,   type:'cash', mark:'بلو', color:'#1F6FEB' },
+    { id:'gardesh', name:'وام بانک گردشگری', bank:'بانک گردشگری', min:10e6, max:100e6, months:[3, 6, 12], rate:null, type:'cash', mark:'گ',   color:'#0E8A6A' },
   ];
   const provOf = id => PROVIDERS.find(p => p.id === id);
   const ceil3 = x => Math.ceil(x * 1000 - 1e-6) / 1000;
@@ -6755,11 +6765,16 @@ button{font-family:inherit}
   const lnInput = $('#lnInput');
   function renderLoan(){
     const c = lnCalc();
-    $('#lnCap').innerHTML = c.free
-      ? `با موجودی فعلی (${g3(c.free)}) تا <b>${fmtNum(c.maxBy)} تومان</b> می‌توانید وام بگیرید.`
-      : 'طلای آزاد ندارید. وثیقه‌ی لازم را می‌توانید در مرحله‌ی قفل وثیقه بخرید.';
-    $('#lnProvs').innerHTML = PROVIDERS.map(p => `<button type="button" class="ln-prov${p.id === LQ.prov ? ' on' : ''}" data-p="${p.id}" role="radio" aria-checked="${p.id === LQ.prov}">
-      <span class="ln-logo">${ICON_BANK}</span><span class="ln-pt"><b>${p.name}<em class="ln-tag">نقدی</em></b><small>از طریق ونسی</small></span><span class="ln-range">${toFa(p.min / 1e6)} تا ${toFa(p.max / 1e6)} میلیون</span></button>`).join('');
+    // «حداکثر» = the most the user's free gold covers (within this provider's range); tap = fill it in
+    const canMax = c.maxBy >= c.p.min;
+    $('#lnCap').innerHTML = canMax ? `با موجودی شما تا <b>${MIL(c.maxBy)} تومان</b>` : 'وثیقه را در مرحله‌ی قفل می‌خرید';
+    $('#lnMax').disabled = !canMax;
+    if (!$('#lnProvs').children.length || $('#lnProvs').dataset.on !== LQ.prov){
+      $('#lnProvs').dataset.on = LQ.prov;
+      $('#lnProvs').innerHTML = PROVIDERS.map(p => `<button type="button" class="ln-prov${p.id === LQ.prov ? ' on' : ''}" data-p="${p.id}" role="radio" aria-checked="${p.id === LQ.prov}">
+        <span class="ln-ptop"><span class="ln-logo" style="background:${p.color}">${p.mark}</span><em class="ln-tag">نقدی</em></span>
+        <span class="ln-pt"><b>${p.name}</b><small>از طریق ونسی</small></span><span class="ln-range">${toFa(p.min / 1e6)} تا ${toFa(p.max / 1e6)} میلیون تومان</span></button>`).join('');
+    }
     $('#lnVal').textContent = fmtRaw(LQ.raw); if (lnInput.value !== LQ.raw) lnInput.value = LQ.raw;
     const msg = c.err || LQ.req;
     $('#lnHint').textContent = msg || `بین ${MIL(c.p.min)} تا ${MIL(c.p.max)} تومان`; $('#lnHint').classList.toggle('bad', !!msg);
@@ -6769,8 +6784,6 @@ button{font-family:inherit}
     $('#lnMonths').innerHTML = c.p.months.map(m => `<button type="button" data-m="${m}" class="${m === LQ.months ? 'on' : ''}">${toFa(m)} ماه</button>`).join('');
     $('#lnColl').textContent = c.valid ? g3(c.grams) : DASH;
     $('#lnInst').textContent = c.valid ? TD(c.inst) : DASH;
-    const w = $('#lnShort'); w.hidden = !c.short;
-    if (c.short) w.querySelector('span').textContent = `${g3(c.short)} کم دارید؛ در مرحله‌ی قفل وثیقه می‌توانید بخرید.`;
   }
   function lnSet(r){ LQ.raw = r; LQ.req = ''; renderLoan(); }
   registerInput(lnInput, 'num', k => lnSet(typeInto(LQ.raw, k, false, 9)));
@@ -6778,6 +6791,7 @@ button{font-family:inherit}
   lnInput.addEventListener('focus', () => { $('#lnCard').classList.add('focused'); $('#lnNum').classList.add('focused'); });
   lnInput.addEventListener('blur',  () => { $('#lnCard').classList.remove('focused'); $('#lnNum').classList.remove('focused'); });
   $('#lnCard').addEventListener('click', e => { if (!e.target.closest('input')){ lnInput.focus({ preventScroll:true }); openKb(lnInput); } });
+  $('#lnMax').addEventListener('click', () => { closeKb(); const c = lnCalc(); if (c.maxBy >= c.p.min) lnSet(String(c.maxBy)); });
   $('#lnSlider').addEventListener('input', e => { closeKb(); lnSet(String(Math.round(+e.target.value / 1e6) * 1e6)); });
   $('#lnProvs').addEventListener('click', e => { const b = e.target.closest('.ln-prov'); if (!b) return; closeKb(); LQ.prov = b.dataset.p; const p = provOf(LQ.prov); if (!p.months.includes(LQ.months)) LQ.months = p.months[p.months.length - 1]; renderLoan(); });
   $('#lnMonths').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; closeKb(); LQ.months = +b.dataset.m; renderLoan(); });
@@ -6859,7 +6873,7 @@ button{font-family:inherit}
     $('#lkWarn span').innerHTML = `اگر درخواست در ونسی رد شود یا تا <b>${jFmt(LK.deadline)}</b> تکمیل نشود، وثیقه آزاد می‌شود و طلای خریده‌شده به‌صورت طلا در کیف پول شما می‌ماند.`;
     $('#lkMoved').hidden = LK.movedFrom == null;
     if (LK.movedFrom != null) $('#lkMoved span').textContent = `قیمت طلا تغییر کرد؛ وثیقه از ${g3(LK.movedFrom)} به ${g3(LK.grams)} تغییر کرد.`;
-    $('#lkBtn .label').textContent = LK.short ? 'پرداخت و قفل وثیقه' : 'قفل وثیقه';
+    $('#lkBtn .label').textContent = LK.short ? `خرید ${g3(LK.short)} طلا و قفل وثیقه` : 'قفل وثیقه';
   }
   $('#lkBtn').addEventListener('click', () => {
     // the quote was valid for ~10 minutes; at confirmation the price is checked once (test panel: «قیمت لحظه‌ی تأیید»)
@@ -6930,11 +6944,14 @@ button{font-family:inherit}
     return `وثیقه آزاد شد${l.endedAt ? ' · ' + jFmt(l.endedAt, false) : ''}`;
   }
   function renderLoans(){
+    const empty = !LN.loans.length;
+    $('#lnList').hidden = empty; $('#lnEmpty').hidden = !empty; $('#lnFoot').hidden = empty; $('#lnListWrap').classList.toggle('is-empty', empty);
     $('#lnList').innerHTML = LN.loans.map(l => { const [st, cls] = LST[l.status];
       return `<button type="button" class="dp-card" data-id="${l.id}"><div class="dp-top"><b>${fmtNum(l.amount)} تومان · ${provOf(l.prov).bank}</b><span class="dp-badge ${cls}">${st}</span></div><div class="dp-meta"><span>${loanMeta(l)}</span><span>${toFa(l.months)} ماهه</span></div></button>`; }).join('');
   }
   $('#lnList').addEventListener('click', e => { const c = e.target.closest('.dp-card'); if (c) openLoanView(LN.loans.find(l => l.id === c.dataset.id)); });
   $('#lnNew').addEventListener('click', () => openCalc(true));
+  $('#lnEmptyNew').addEventListener('click', () => openCalc(true));
 
   /* ---------- L7 one loan, every status ---------- */
   function openLoanView(l){ LN.cur = l; renderLoanView(); $('#lvBody').scrollTop = 0; stGo('loanView'); }
@@ -6990,7 +7007,7 @@ button{font-family:inherit}
     }
     $('#lvBody').innerHTML = h; $('#lvFoot').innerHTML = f;
   }
-  const WARN_SVG = $('#lnShort svg') ? $('#lnShort svg').outerHTML : '';
+  const WARN_SVG = $('#lkWarn svg') ? $('#lkWarn svg').outerHTML : '';
   function release(l, status, extra = {}){ Object.assign(l, { status, endedAt:[...J_TODAY, nowHM()] }, extra); refreshLoanUI(); if (state.screen === 'loanView') renderLoanView(); }
   $('#lvBody').addEventListener('click', e => {
     const b = e.target.closest('[data-sim]'); if (!b) return; const l = LN.cur;
@@ -7046,7 +7063,13 @@ button{font-family:inherit}
   }));
 
   /* ---------- entry, reset, test data ---------- */
-  function openLoan(){ if (!state.loggedIn) return openLogin(); if (LN.loans.length){ renderLoans(); return stGo('loans'); } openCalc(false); }
+  function openLoan(){ if (!state.loggedIn) return openLogin(); renderLoans(); $('#lnListWrap').scrollTop = 0; stGo('loans'); }   // the tile always lands on «وام‌های من» (empty state when none)
+  FEATURE_INTROS.loan = { title:'<span>وام</span> با وثیقه‌ی طلا', cta:'درخواست وام', items:[
+    ['<svg class="ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="6.75" width="18.5" height="11" rx="2.5"/><circle cx="12" cy="12.25" r="2.25"/><path d="M6 9.75v5M18 9.75v5"/></svg>', 'وام نقدی تا ۳۰۰ میلیون تومان', 'از بانک‌های همکار، از طریق ونسی؛ طلای شما فروخته نمی‌شود.'],
+    ['<svg class="ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.75" y="10.75" width="14.5" height="10.5" rx="2.5"/><path d="M8 10.75V7.5a4 4 0 0 1 8 0v3.25"/><circle cx="12" cy="16" r="1.25"/></svg>', 'طلا وثیقه می‌ماند', 'وثیقه تا پایان وام قفل است و با تسویه خودکار آزاد می‌شود.'],
+    ['<svg class="ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M12 7v5l3 2"/></svg>', 'همه‌چیز پیش از پرداخت روشن', 'وثیقه، اقساط و هزینه‌ها را قبل از هر پرداختی می‌بینید.'],
+  ] };
+  renderIntro($('#lnIntro'), 'loan');
   function openCalc(fresh){
     if (!state.loggedIn) return openLogin();
     if (fresh || !LN.draft){ LQ.raw = ''; LQ.prov = 'blu'; LQ.months = 12; } else Object.assign(LQ, LN.draft);
@@ -7229,6 +7252,7 @@ button{font-family:inherit}
     loanCancel:    () => { JUMPS.loanPending(); setTimeout(() => $('#lvFoot [data-lv=cancel]').click(), 450); },
     loanSettle:    () => { JUMPS.loanActive(); setTimeout(() => $('#lvFoot [data-lv=settle]').click(), 450); },
     loanMy:        () => { setLoanTest('active'); openLoan(); },
+    loanMyEmpty:   () => { setLoanTest('none'); openLoan(); },
     home:     () => {},
     price:       () => openPrice('gold'),
     priceSilver: () => openPrice('silver'),
