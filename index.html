@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<script>
+  /* always the light design: a host page (e.g. a dark-mode preview) must not switch the app's tokens to dark */
+  (function(){ var r = document.documentElement, pin = function(){ if (r.getAttribute('data-theme') !== 'light') r.setAttribute('data-theme', 'light'); };
+    pin(); new MutationObserver(pin).observe(r, { attributes:true, attributeFilter:['data-theme'] }); })();
+</script>
 <title>زرپین — پروتوتایپ</title>
 <style>
 /* ===== Zarpin design tokens — generated from tokens.json by tokens_gen.py. Do not edit by hand. ===== */
