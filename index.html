@@ -6723,11 +6723,15 @@ button{font-family:inherit}
   Object.assign(screens, { loan:$('#screenLoan'), loanDet:$('#screenLoanDet'), loanPre:$('#screenLoanPre'), loanDone:$('#screenLoanDone'),
     vancy:$('#screenVancy'), loans:$('#screenLoans'), loanView:$('#screenLoanView') });
   const LTV = 0.6, LN_WARN = 0.75, LN_SELL = 0.85, LN_DEADLINE_BD = 7, DASH = '—';
-  const LN_FEES = { vancy:null, zarpin:null };                     // تعیین نشده
+  // ⚠ ASSUMED numbers (placeholders until the real ones arrive): Vancy's operation fee, Zarpin's fee, early-settlement fee.
+  //   Vancy fee + Zarpin fee are collected with the first installment.
+  const LN_FEES = { vancy:500000, zarpinPct:0.005, earlyPct:0.01 };
+  const zpFee = L => Math.round(L * LN_FEES.zarpinPct / 1000) * 1000;
+  const firstFees = L => LN_FEES.vancy + zpFee(L);
   const PROVIDERS = [
     // logo: a placeholder mark (initials + colour) until the banks' logo files are added
     { id:'blu',     name:'وام بلوبانک',       bank:'بلوبانک',       min:10e6, max:300e6, months:[3, 6, 12], rate:23,   type:'cash', mark:'بلو', color:'#1F6FEB' },
-    { id:'gardesh', name:'وام بانک گردشگری', bank:'بانک گردشگری', min:10e6, max:100e6, months:[3, 6, 12], rate:null, type:'cash', mark:'گ',   color:'#0E8A6A' },
+    { id:'gardesh', name:'وام بانک گردشگری', bank:'بانک گردشگری', min:10e6, max:100e6, months:[3, 6, 12], rate:24, type:'cash', mark:'گ',   color:'#0E8A6A' },
   ];
   const provOf = id => PROVIDERS.find(p => p.id === id);
   const ceil3 = x => Math.ceil(x * 1000 - 1e-6) / 1000;
@@ -6807,13 +6811,13 @@ button{font-family:inherit}
   function schedRows(c, start, l){
     let h = '';
     for (let i = 1; i <= c.months; i++){
-      const amt = c.inst == null ? DASH : fmtNum(c.inst);
+      const amt = c.inst == null ? DASH : fmtNum(c.inst + (i === 1 ? firstFees(c.L) : 0));
       let st = '';
       if (l){
         const ded = (l.deducted || []).find(d => d.n === i);
         st = i <= l.paid ? (ded ? '<em class="dp-badge bad ln-st">کسر از وثیقه</em>' : '<em class="dp-badge act ln-st">پرداخت شد</em>') : i === l.paid + 1 ? '<em class="dp-badge wait ln-st">قسط بعدی</em>' : '';
       }
-      h += `<div class="ln-tr${l && i <= l.paid ? ' paid' : ''}"><span>قسط ${toFa(i)}</span><span>${st || jFmt(jAddM(start, i))}</span><b>${amt}${i === 1 && !l ? ' <small>+ هزینه‌ی عملیات</small>' : ''}</b></div>`;
+      h += `<div class="ln-tr${l && i <= l.paid ? ' paid' : ''}"><span>قسط ${toFa(i)}</span><span>${st || jFmt(jAddM(start, i))}</span><b>${amt}${i === 1 ? ' <small>(با هزینه‌ها)</small>' : ''}</b></div>`;
     }
     return h;
   }
@@ -6824,10 +6828,11 @@ button{font-family:inherit}
     h += '<div class="ln-sec-h">هزینه‌ها</div><div class="stc-rows">';
     h += srow('مبلغ وام', T_(c.L));
     h += srow(`سود بانک (${p.rate == null ? DASH : pctFa(p.rate) + ' سالانه'})`, TD(c.interest));
-    h += srow('هزینه‌ی عملیات ونسی <small class="ln-sub">(با قسط اول)</small>', TD(LN_FEES.vancy));
-    h += srow('کارمزد زرپین', TD(LN_FEES.zarpin));
-    h += srow('هزینه‌ی کل وام', c.interest == null ? DASH : `${fmtNum(c.interest)} + ${DASH} تومان`);
-    h += srow('مجموع بازپرداخت', c.inst == null ? DASH : `${fmtNum(c.inst * c.months)} + ${DASH} تومان`, 'total');
+    const ff = firstFees(c.L);
+    h += srow('هزینه‌ی عملیات ونسی <small class="ln-sub">(با قسط اول)</small>', T_(LN_FEES.vancy));
+    h += srow(`کارمزد زرپین <small class="ln-sub">(${pctFa(LN_FEES.zarpinPct * 100)}، با قسط اول)</small>`, T_(zpFee(c.L)));
+    h += srow('هزینه‌ی کل وام', c.interest == null ? DASH : T_(c.interest + ff));
+    h += srow('مجموع بازپرداخت', c.inst == null ? DASH : T_(c.inst * c.months + ff), 'total');
     h += '</div>';
     h += `<div class="ln-sec-h">اقساط</div><p class="ln-note">تاریخ‌ها تخمینی‌اند و پس از واریز وام قطعی می‌شوند.</p><div class="ln-table">${schedRows(c, estStart())}</div>`;
     h += '<ul class="ln-rules"><li>اگر قسطی پرداخت نشود، معادل همان قسط از طلای وثیقه کسر می‌شود.</li><li>وام پس از دریافت لغو نمی‌شود؛ تسویه‌ی زودتر ممکن است.</li></ul>';
@@ -6986,7 +6991,7 @@ button{font-family:inherit}
     } else if (l.status === 'active'){
       const H = healthOf(l), done = l.paid >= l.months, next = jAddM(l.disbursedAt, l.paid + 1);
       h += '<div class="stc-rows" style="margin-top:12px">' + base + srow('واریزشده به', `حساب ${p.bank} شما`) + srow('مانده‌ی بدهی', T_(H.debt))
-        + srow('اقساط پرداخت‌شده', `${toFa(l.paid)} از ${toFa(l.months)}`) + (done ? '' : srow('قسط بعدی', `${TD(l.inst)} <small class="ln-sub">${jFmt(next, false)}</small>`)) + srow('وثیقه', g3(l.grams)) + '</div>';
+        + srow('اقساط پرداخت‌شده', `${toFa(l.paid)} از ${toFa(l.months)}`) + (done ? '' : srow('قسط بعدی', `${TD(l.inst == null ? null : l.inst + (l.paid ? 0 : firstFees(l.amount)))} <small class="ln-sub">${jFmt(next, false)}</small>`)) + srow('وثیقه', g3(l.grams)) + '</div>';
       const pc = r => toFa(Math.round(r * 100)) + '٪';
       h += `<div class="ln-health"><div class="ln-hh"><b>سلامت وثیقه</b><em class="dp-badge ${H.st === 'ok' ? 'act' : H.st === 'warn' ? 'warn' : 'bad'}">${H.st === 'ok' ? 'سالم' : H.st === 'warn' ? 'هشدار' : 'فروش وثیقه'}</em></div>
         <div class="ln-hbar ${H.st}"><i style="width:${Math.min(100, H.ratio * 100).toFixed(1)}%"></i><em style="inset-inline-start:${LN_WARN * 100}%"><span>هشدار ${pc(LN_WARN)}</span></em><em class="lo" style="inset-inline-start:${LN_SELL * 100}%"><span>فروش ${pc(LN_SELL)}</span></em></div>
@@ -6994,7 +6999,7 @@ button{font-family:inherit}
           : H.st === 'warn' ? `قیمت طلا پایین آمده و نسبت بدهی به ارزش وثیقه به ${pc(H.ratio)} رسیده است. برای جلوگیری از فروش وثیقه، وثیقه را افزایش دهید یا بخشی از وام را تسویه کنید.`
           : `نسبت به ${pc(H.ratio)} رسید و ${g3(H.sold)} از وثیقه فروخته شد تا نسبت به ${pc(LTV)} برگردد. باقی‌مانده (${g3(f3(l.grams - H.sold))}) همچنان وثیقه است.`}</p>
         ${H.st === 'warn' ? '<button type="button" class="pill-btn soon">افزایش وثیقه</button>' : ''}</div>`;
-      h += `<div class="ln-sec-h">اقساط</div><div class="ln-table">${schedRows({ months:l.months, inst:l.inst }, l.disbursedAt, l)}</div>`;
+      h += `<div class="ln-sec-h">اقساط</div><div class="ln-table">${schedRows({ months:l.months, inst:l.inst, L:l.amount }, l.disbursedAt, l)}</div>`;
       if ((l.deducted || []).length) h += `<div class="ln-sec-h">کسر از وثیقه</div>${l.deducted.map(d => `<div class="ln-ev"><span>قسط ${toFa(d.n)} · ${jFmt(d.date)}</span><b>−${g3(d.g)}</b></div>`).join('')}`;
       if (!done) h += '<button type="button" class="ln-sim" data-sim="miss">پرداخت‌نشدن قسط بعدی</button>';
       f = '<button type="button" class="btn" data-lv="pay"><span class="label">پرداخت قسط در ونسی</span></button><button type="button" class="btn btn-secondary" data-lv="settle"><span class="label">تسویه‌ی کامل</span></button>';
@@ -7029,7 +7034,7 @@ button{font-family:inherit}
     if (a === 'pay') return showToast('<span>در نسخه‌ی واقعی، صفحه‌ی پرداخت قسط در ونسی باز می‌شود</span>');
     if (a === 'new') return openCalc(true);
     if (a === 'cancel'){ $('#lcxText').textContent = `درخواست وام ${fmtNum(l.amount)} تومانی لغو و ${g3(l.grams)} طلای وثیقه فوراً آزاد می‌شود.${l.bought ? ' طلای خریده‌شده به‌صورت طلا در کیف پول شما می‌ماند.' : ''}`; return openModal($('#lnCxModal')); }
-    if (a === 'settle'){ const H = healthOf(l); $('#lstRows').innerHTML = srow('مانده‌ی بدهی', T_(H.debt)) + srow('هزینه‌ی تسویه‌ی زودتر', DASH) + srow('وثیقه‌ی آزادشونده', g3(l.grams), 'total'); return openModal($('#lnStModal')); }
+    if (a === 'settle'){ const H = healthOf(l); $('#lstRows').innerHTML = srow('مانده‌ی بدهی', T_(H.debt)) + srow(`هزینه‌ی تسویه‌ی زودتر <small class="ln-sub">(${pctFa(LN_FEES.earlyPct * 100)} مانده)</small>`, T_(H.debt * LN_FEES.earlyPct)) + srow('مبلغ تسویه', T_(H.debt * (1 + LN_FEES.earlyPct))) + srow('وثیقه‌ی آزادشونده', g3(l.grams), 'total'); return openModal($('#lnStModal')); }
   });
   $('#lcxGo').addEventListener('click', () => {
     closeModal($('#lnCxModal'));
