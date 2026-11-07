@@ -4160,7 +4160,7 @@ button{font-family:inherit}
         حالت تست: <b id="tpCurrent"></b>
         <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="m6 15 6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div class="tp-panel" id="tpPanel" hidden>
+      <div class="tp-panel" id="tpPanel">
         <section class="tp-card">
           <h4>کاربر</h4>
           <div class="scenario full" data-t="login"><button type="button" data-v="0">مهمان</button><button type="button" data-v="1">واردشده</button></div>
@@ -7191,7 +7191,7 @@ button{font-family:inherit}
     if (e.target === e.currentTarget) return ($('#smsPage').hidden = true);
     const b = e.target.closest('[data-sms]'); if (!b) return; const d = SMS_DEMO.find(x => x[0] === b.dataset.sms); if (d) sendSms(d[2](), { delay:150 });
   });
-  function setPanel(open){ tpPanel.hidden = !open; tpToggle.setAttribute('aria-expanded', open); }
+  function setPanel(open){ tpToggle.setAttribute('aria-expanded', open); }   // the panel is always open (no `hidden`: some hosts force [hidden] to display:none)
   tpToggle.addEventListener('click', e => { e.stopPropagation(); setPanel(tpPanel.hidden); });
   document.addEventListener('pointerdown', e => { if (!tpPanel.hidden && !e.target.closest('.tp-wrap')) setPanel(false); });
   const wide = () => true;                 // panel is always open now
