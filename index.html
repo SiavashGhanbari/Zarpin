@@ -412,11 +412,21 @@
   --btn-r: 12px;
   --sheet-r: 20px;
 
+  /* MOTION RULES (design system) — nothing in the app changes without motion
+     1. Every appear / disappear / expand / collapse / swap animates. No instant jumps.
+     2. Durations: --dur-fast (press, colour, opacity, dots) · --dur-base (chips, tags, small reveals)
+        · --dur (height changes: expand/collapse, list growth) · --dur-page (screens, sheets).
+     3. Easing: --ease-out for things appearing or changing state · --ease-ios for anything that moves
+        or changes size (height, position, sheets, pages).
+     4. Size changes go through morphHeight(el, change) in JS: measure → change → animate old→new height.
+        Items entering use fadeIn(els) (fade + 4px rise, 30 ms stagger); leaving use fadeOut(els) first.
+     5. Never animate with display:none/[hidden] alone — fade/scale with a class, then hide.
+     6. prefers-reduced-motion: all of the above collapse to ~instant (handled globally + in the helpers). */
   --ease-ios: cubic-bezier(.32,.72,0,1);   /* sheets, pages, anything that travels */
   --ease-out: cubic-bezier(.22,1,.36,1);   /* small state changes: colour, opacity, press */
   --dur-fast: 160ms;                        /* press, colour, opacity */
   --dur-base: 240ms;                        /* toggles, chips, small reveals */
-  --dur: 340ms;
+  --dur: 340ms;                             /* height changes: expand / collapse */
   --dur-page: 420ms;
 }
 
@@ -1223,8 +1233,8 @@ button{font-family:inherit}
 .new-tag{display:inline-flex; align-items:center; vertical-align:middle; margin-inline-start:6px; height:18px; padding:0 7px; border-radius:9px; background:var(--green-700); color:var(--content-inverse); font-style:normal; font-size:var(--font-size-caption-small); line-height:var(--line-height-caption-small); font-weight:700}
 .metal-opt b em.new-tag{margin-inline-start:6px; height:18px; padding:0 7px; border-radius:9px; background:var(--green-700); color:var(--content-inverse); font-size:var(--font-size-caption-small); line-height:var(--line-height-caption-small); font-weight:700}
 .metal-chip{position:relative}
-.metal-chip .mc-dot{position:absolute; top:2px; left:4px; width:10px; height:10px; border-radius:50%; background:var(--green-700); box-shadow:0 0 0 2px var(--background-page)}
-.metal-chip .mc-dot[hidden]{display:none}
+.metal-chip .mc-dot{position:absolute; top:2px; left:4px; width:10px; height:10px; border-radius:50%; background:var(--gold-500); box-shadow:0 0 0 2px var(--background-page); transition:opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out)}
+.metal-chip .mc-dot.off{opacity:0; transform:scale(.3)}
 .t2 .metal-chip{height:36px; padding:0 10px 0 12px; font-size:var(--font-size-label-medium); line-height:var(--line-height-label-medium)}
 .t2 .metal-chip img{width:22px}
 #screenTrade.silver .trade-goal, #screenTrade2.silver .t2-goal{display:none}
@@ -1669,6 +1679,7 @@ button{font-family:inherit}
 .gs-hero{height:120px; display:grid; place-items:end center; background:radial-gradient(closest-side, rgba(255,214,170,.55), rgba(255,255,255,0) 100%); overflow:hidden}
 .gs-hero img{width:62px; height:auto; margin-bottom:-24px}
 .gs.silver .gs-hero{background:radial-gradient(closest-side, rgba(196,201,208,.55), rgba(255,255,255,0) 100%)}
+.gs-acts{display:flex; gap:8px} .gs-acts .wal-act{flex:1 1 0; min-width:0}
 .gs-acts .wal-act[hidden]{display:none}
 .gs-amt{display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px}
 .gs-amt b{font-size:var(--font-size-heading-medium); line-height:var(--line-height-heading-medium); font-weight:700}
@@ -1950,6 +1961,7 @@ button{font-family:inherit}
   repeating-radial-gradient(circle at 50% 100%, rgba(0,0,0,0) 0 38px, rgba(0,0,0,.035) 38px 39px);
   -webkit-mask:linear-gradient(#000 55%, transparent); mask:linear-gradient(#000 55%, transparent)}
 .pf-hero img{position:relative; width:63px; height:auto; filter:drop-shadow(0 10px 10px rgba(0,0,0,.12))}
+.pf-hero.silver::before{background:radial-gradient(ellipse 34% 62% at 50% 60%, rgba(196,201,208,.6), rgba(196,201,208,0) 70%), repeating-radial-gradient(circle at 50% 100%, rgba(0,0,0,0) 0 38px, rgba(0,0,0,.035) 38px 39px)}
 .pf-rows{padding:6px 0 0}
 .pf-row{display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:36px; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-tertiary)}
 .pf-row b{display:inline-flex; align-items:center; gap:8px; font-weight:400; color:var(--content-primary)}
@@ -2634,6 +2646,7 @@ button{font-family:inherit}
 .api-ips > span{font-size:var(--font-size-label-small); line-height:var(--line-height-label-small); color:var(--content-tertiary)}
 .api-ips small{font-size:inherit}
 .api-tags{display:flex; flex-wrap:wrap; gap:6px}
+.api-tags:not(.open) .api-tag.x{display:none}
 .api-tag{display:inline-flex; align-items:center; height:28px; padding:0 10px; border-radius:14px; background:var(--background-surface); font-family:ui-monospace, "SF Mono", Menlo, monospace; font-size:12px; line-height:16px; color:var(--content-primary)}
 .api-tag.more{border:0; font-family:inherit; font-size:var(--font-size-label-small); line-height:var(--line-height-label-small); font-weight:600; background:none; box-shadow:inset 0 0 0 1px var(--border-subtle); color:var(--content-primary); cursor:pointer}
 .api-tag.more:active{background:var(--background-surface)}
@@ -4239,6 +4252,27 @@ button{font-family:inherit}
   const $  = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();   // design-token value (SVG attrs can't take var())
+  /* ---------- MOTION helpers (see MOTION RULES in :root) ---------- */
+  const reduceMotion = () => matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const msOf = n => parseFloat(tok(n)) || 240;
+  // size change: measure, apply the change, animate the old height to the new one (siblings follow smoothly)
+  function morphHeight(el, change, dur = '--dur'){
+    const h0 = el.getBoundingClientRect().height; change(); const h1 = el.getBoundingClientRect().height;
+    if (reduceMotion() || Math.abs(h0 - h1) < 1) return Promise.resolve();
+    const ov = el.style.overflow; el.style.overflow = 'hidden';
+    const a = el.animate([{ height:h0 + 'px' }, { height:h1 + 'px' }], { duration:msOf(dur), easing:tok('--ease-ios') });
+    return a.finished.catch(() => {}).then(() => { el.style.overflow = ov; });
+  }
+  function fadeIn(els, stagger = 30){
+    if (reduceMotion()) return;
+    els.forEach((e, i) => e.animate([{ opacity:0, transform:'translateY(-4px) scale(.96)' }, { opacity:1, transform:'none' }],
+      { duration:msOf('--dur-base'), delay:i * stagger, easing:tok('--ease-out'), fill:'backwards' }));
+  }
+  function fadeOut(els){
+    if (reduceMotion() || !els.length) return Promise.resolve();
+    return Promise.all(els.map(e => e.animate([{ opacity:1, transform:'none' }, { opacity:0, transform:'scale(.96)' }],
+      { duration:msOf('--dur-fast'), easing:tok('--ease-out'), fill:'forwards' }).finished.catch(() => {}))).then(() => els.forEach(e => e.getAnimations().forEach(a => a.cancel())));
+  }
   const device = $('#device'), wrap = $('#deviceWrap');
 
   /* ---------- fit the phone frame into the viewport ---------- */
@@ -5318,7 +5352,7 @@ button{font-family:inherit}
   let silverSeen = false;
   const metalImg = a => $(`#metalModal [data-asset="${a}"] img`).src;
   function renderMetal(){
-    $$('#metalChip, #t2Metal').forEach(c => { c.querySelector('span').textContent = aw(); c.querySelector('img').src = metalImg(T.asset); c.querySelector('.mc-dot').hidden = silverSeen; });
+    $$('#metalChip, #t2Metal').forEach(c => { c.querySelector('span').textContent = aw(); c.querySelector('img').src = metalImg(T.asset); c.querySelector('.mc-dot').classList.toggle('off', silverSeen); });
     $$('#metalModal [data-asset]').forEach(o => o.classList.toggle('on', o.dataset.asset === T.asset));
   }
   function setAsset(a){
@@ -5482,6 +5516,9 @@ button{font-family:inherit}
       $('#cfPay').hidden = false; renderPay(); $('#cfChance').hidden = true;
       return;
     }
+    const hero = $('#confirmModal .pf-hero'), hi = hero.querySelector('img'), ag = q.asset === 'silver';   // the bar matches the metal
+    if (!hi.dataset.gold) hi.dataset.gold = hi.src;
+    hi.src = ag ? $('#walSilver img').src : hi.dataset.gold; hero.classList.toggle('silver', ag);
     const camp_ = !!camp().chances && q.buy && !q.custom && q.asset !== 'silver', ch = chancesOf(q.grams);
     $('#cfTitle').textContent = q.custom ? `ثبت سفارش ${q.buy ? 'خرید' : 'فروش'} با قیمت دلخواه` : `پیش‌فاکتور ${q.buy ? 'خرید' : 'فروش'}`;
     let h = row('مقدار ' + aw(q.asset), (camp_ ? `<em class="pf-chance">${TICKET}+${toFa(ch)} شانس</em>` : '') + fmtG(q.grams, 3) + ' گرم');
@@ -6663,13 +6700,11 @@ button{font-family:inherit}
   const maskKey = k => k.slice(0, 7) + '••••••' + k.slice(-4);
   const IP_SHOW = 4;                                       // tags visible before "+N more"
   const ipOpen = new Set();                                // cards whose IP list is expanded
+  const ipTogLabel = (open, n) => open ? 'نمایش کمتر' : `${toFa(n)} مورد دیگر`;
   function ipTags(k){
     const open = ipOpen.has(k.id), many = k.ips.length > IP_SHOW;
-    const list = open || !many ? k.ips : k.ips.slice(0, IP_SHOW);
-    const tog = !many ? '' : open
-      ? `<button type="button" class="api-tag more" data-ipt="${k.id}" aria-expanded="true">نمایش کمتر</button>`
-      : `<button type="button" class="api-tag more" data-ipt="${k.id}" aria-expanded="false">${toFa(k.ips.length - IP_SHOW)} مورد دیگر</button>`;
-    return `<div class="api-ips"><span>IPهای مجاز <small>(${toFa(k.ips.length)})</small></span><div class="api-tags">${list.map(v => `<bdi class="api-tag" dir="ltr">${v}</bdi>`).join('')}${tog}</div></div>`;
+    const tog = !many ? '' : `<button type="button" class="api-tag more" data-ipt="${k.id}" aria-expanded="${open}">${ipTogLabel(open, k.ips.length - IP_SHOW)}</button>`;
+    return `<div class="api-ips"><span>IPهای مجاز <small>(${toFa(k.ips.length)})</small></span><div class="api-tags${open ? ' open' : ''}">${k.ips.map((v, i) => `<bdi class="api-tag${i >= IP_SHOW ? ' x' : ''}" dir="ltr">${v}</bdi>`).join('')}${tog}</div></div>`;
   }
   function renderApi(){
     const n = API.keys.length;
@@ -6689,7 +6724,14 @@ button{font-family:inherit}
   $('#apiNew').addEventListener('click', () => { if (API.keys.length < API.max) openApiForm(null); });   // at the cap: inline warning + disabled button (no sheet)
   $('#apiList').addEventListener('click', e => {
     const t = e.target.closest('[data-ipt]');
-    if (t){ const id = t.dataset.ipt; ipOpen.has(id) ? ipOpen.delete(id) : ipOpen.add(id); return renderApi(); }
+    if (t){                                                // expand / collapse the IP tags, smoothly
+      const id = t.dataset.ipt, box = t.closest('.api-tags'), card = box.closest('.api-card'), extra = [...box.querySelectorAll('.x')], open = !ipOpen.has(id);
+      open ? ipOpen.add(id) : ipOpen.delete(id);
+      const flip = () => { box.classList.toggle('open', open); t.textContent = ipTogLabel(open, extra.length); t.setAttribute('aria-expanded', open); };
+      if (open){ morphHeight(card, flip); fadeIn(extra); }
+      else fadeOut(extra).then(() => morphHeight(card, flip));
+      return;
+    }
     const c = e.target.closest('[data-copy]'), more = e.target.closest('[data-more]');
     if (c){ const k = API.keys.find(x => x.id === c.dataset.copy); try { navigator.clipboard.writeText(k.key); } catch {} return showToast(OK_ICON + '<span>API Key کپی شد</span>'); }
     if (more){ API.delId = more.dataset.more; const k = API.keys.find(x => x.id === API.delId); $('#apiDelTitle').innerHTML = `حذف کلید «<bdi>${k.title}</bdi>»`; openModal($('#apiDelModal')); }
