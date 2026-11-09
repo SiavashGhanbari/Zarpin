@@ -2619,6 +2619,13 @@ button{font-family:inherit}
 .api-more{flex:none; width:36px; height:36px; margin:-6px -6px -6px 0; border:0; border-radius:50%; background:none; display:grid; place-items:center; color:var(--content-secondary); cursor:pointer}
 .api-more:active{background:var(--background-surface)}
 .api-card{gap:12px; padding-bottom:14px}
+.api-ips{display:flex; flex-direction:column; gap:8px}
+.api-ips > span{font-size:var(--font-size-label-small); line-height:var(--line-height-label-small); color:var(--content-tertiary)}
+.api-ips small{font-size:inherit}
+.api-tags{display:flex; flex-wrap:wrap; gap:6px}
+.api-tag{display:inline-flex; align-items:center; height:28px; padding:0 10px; border-radius:14px; background:var(--background-surface); font-family:ui-monospace, "SF Mono", Menlo, monospace; font-size:12px; line-height:16px; color:var(--content-primary)}
+.api-tag.more{border:0; font-family:inherit; font-size:var(--font-size-label-small); line-height:var(--line-height-label-small); font-weight:600; background:none; box-shadow:inset 0 0 0 1px var(--border-subtle); color:var(--content-primary); cursor:pointer}
+.api-tag.more:active{background:var(--background-surface)}
 #afIps{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
 #afIps:empty{display:none}
 .api-badge{display:inline-flex; align-items:center; gap:2px; height:30px; padding:0 4px 0 10px; border-radius:15px; background:var(--background-surface); direction:ltr; animation:ipIn var(--dur-base) var(--ease-out) both}
@@ -6586,7 +6593,7 @@ button{font-family:inherit}
   function mkKey(title, ips, trade, date){ return { id:'k' + Date.now() + Math.floor(Math.random() * 99), title, ips:[...ips], trade, key:'zp_' + hex(32), secret:b62(48), date:date || [...J_TODAY, nowHM()], used:null }; }
   function resetApi(){
     API.keys = test.apis === 'some' ? [
-      Object.assign(mkKey('ربات معاملاتی', ['185.143.232.10', '185.143.232.0/24'], true, [1405, 7, 21, '۱۰:۱۵']), { used:[1405, 8, 12, '۰۹:۴۲'] }),
+      Object.assign(mkKey('ربات معاملاتی', ['185.143.232.10', '185.143.232.0/24', '91.98.12.40', '5.160.218.7', '79.127.88.0/22', '185.8.172.10-185.8.172.20', '94.182.40.15'], true, [1405, 7, 21, '۱۰:۱۵']), { used:[1405, 8, 12, '۰۹:۴۲'] }),
       mkKey('داشبورد حسابداری', ['91.98.12.40'], false, [1405, 6, 30, '۱۸:۰۲']),
     ] : [];
   }
@@ -6601,12 +6608,23 @@ button{font-family:inherit}
   }
   const ipChip = v => `<bdi dir="ltr">${v}</bdi>`;
   const maskKey = k => k.slice(0, 7) + '••••••' + k.slice(-4);
+  const IP_SHOW = 4;                                       // tags visible before "+N more"
+  const ipOpen = new Set();                                // cards whose IP list is expanded
+  function ipTags(k){
+    const open = ipOpen.has(k.id), many = k.ips.length > IP_SHOW;
+    const list = open || !many ? k.ips : k.ips.slice(0, IP_SHOW);
+    const tog = !many ? '' : open
+      ? `<button type="button" class="api-tag more" data-ipt="${k.id}" aria-expanded="true">نمایش کمتر</button>`
+      : `<button type="button" class="api-tag more" data-ipt="${k.id}" aria-expanded="false">${toFa(k.ips.length - IP_SHOW)} مورد دیگر</button>`;
+    return `<div class="api-ips"><span>IPهای مجاز <small>(${toFa(k.ips.length)})</small></span><div class="api-tags">${list.map(v => `<bdi class="api-tag" dir="ltr">${v}</bdi>`).join('')}${tog}</div></div>`;
+  }
   function renderApi(){
     const n = API.keys.length;
     $('#apiEmpty').hidden = !!n; $('#apiFull').hidden = !n;
     $('#apiList').innerHTML = API.keys.map(k => `<article class="api-card" data-id="${k.id}">
       <div class="api-ct"><b>${k.title}</b><button type="button" class="api-more api-del" data-more="${k.id}" aria-label="حذف ${k.title}"><svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.9802 4.73047C14.3454 4.73048 17.7202 4.90202 21.0739 5.23438C21.486 5.27536 21.7867 5.64259 21.7458 6.05469C21.7048 6.46674 21.3376 6.7674 20.9255 6.72656C17.6197 6.39896 14.2946 6.23048 10.9802 6.23047C9.0255 6.23047 7.07005 6.32888 5.11496 6.52637L5.11301 6.52734L3.07297 6.72656C2.66077 6.76697 2.2941 6.4659 2.25364 6.05371C2.21322 5.64151 2.5143 5.27484 2.92649 5.23438L4.96457 5.03516C6.96942 4.83265 8.97497 4.73047 10.9802 4.73047Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M13.3093 1.25C14.2442 1.25 14.967 1.45535 15.4382 1.99805C15.8645 2.48931 15.953 3.13766 16.0193 3.54492L16.239 4.84473C16.3081 5.25313 16.0331 5.64085 15.6247 5.70996C15.2164 5.77894 14.8296 5.50306 14.7605 5.09473L14.5398 3.79492V3.79102C14.4561 3.278 14.4026 3.09341 14.3054 2.98145C14.2514 2.91929 14.0632 2.75 13.3093 2.75H10.6902C9.92407 2.75 9.74154 2.9148 9.6931 2.96973C9.60107 3.0742 9.54973 3.24971 9.4597 3.78418L9.239 5.09375C9.17041 5.50216 8.78412 5.77842 8.37572 5.70996C7.96722 5.64136 7.69188 5.2542 7.76048 4.8457L7.98021 3.53613C8.05008 3.12122 8.13791 2.46544 8.5681 1.97754C9.04216 1.43996 9.76627 1.25 10.6902 1.25H13.3093Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M18.8978 8.39219C19.311 8.41887 19.6244 8.77493 19.598 9.18809L18.9486 19.2584L18.9476 19.2623C18.9209 19.6436 18.8926 20.0652 18.8138 20.4566C18.7334 20.8558 18.592 21.2772 18.305 21.651C17.7039 22.4337 16.6799 22.7506 15.2093 22.7506H8.7894C7.31902 22.7505 6.2958 22.4336 5.69467 21.651C5.40761 21.2772 5.26627 20.8558 5.18588 20.4566C5.10705 20.0652 5.07783 19.6436 5.05112 19.2623V19.2584L4.4017 9.18809C4.37527 8.77492 4.68869 8.41887 5.1019 8.39219C5.51507 8.36576 5.87112 8.67918 5.8978 9.09239L6.54819 19.1578L6.59116 19.7057C6.60769 19.8711 6.62849 20.0212 6.65659 20.1607C6.71114 20.4314 6.7864 20.6095 6.88413 20.7369C7.05294 20.9567 7.47024 21.2505 8.7894 21.2506H15.2093C16.5287 21.2506 16.9457 20.9567 17.1146 20.7369C17.2125 20.6095 17.2885 20.4317 17.3431 20.1607C17.3993 19.8819 17.4232 19.5615 17.4515 19.1578L18.1009 9.09239C18.1276 8.67911 18.4845 8.36565 18.8978 8.39219Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M13.6599 15.75C14.0741 15.75 14.4099 16.0858 14.4099 16.5C14.4099 16.9142 14.0741 17.25 13.6599 17.25H10.3298C9.91562 17.25 9.57983 16.9142 9.57983 16.5C9.57983 16.0858 9.91562 15.75 10.3298 15.75H13.6599Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M14.4998 11.75C14.914 11.75 15.2498 12.0858 15.2498 12.5C15.2498 12.9142 14.914 13.25 14.4998 13.25H9.49976C9.08554 13.25 8.74976 12.9142 8.74976 12.5C8.74976 12.0858 9.08554 11.75 9.49976 11.75H14.4998Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></button></div>
       <div class="api-kr"><span>API Key</span><code dir="ltr">${maskKey(k.key)}</code><button type="button" class="api-copy" data-copy="${k.id}" aria-label="کپی API Key"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15.25 12.9004C15.25 11.2244 14.9101 10.246 14.332 9.66797C13.754 9.08994 12.7756 8.75 11.0996 8.75H6.90039C5.22436 8.75 4.246 9.08994 3.66797 9.66797C3.08994 10.246 2.75 11.2244 2.75 12.9004V17.0996C2.75 18.7756 3.08994 19.754 3.66797 20.332C4.246 20.9101 5.22436 21.25 6.90039 21.25H11.0996C12.7756 21.25 13.754 20.9101 14.332 20.332C14.9101 19.754 15.25 18.7756 15.25 17.0996V12.9004ZM16.75 17.0996C16.75 18.9236 16.3895 20.3956 15.3926 21.3926C14.3956 22.3895 12.9236 22.75 11.0996 22.75H6.90039C5.07642 22.75 3.60439 22.3895 2.60742 21.3926C1.61045 20.3956 1.25 18.9236 1.25 17.0996V12.9004C1.25 11.0764 1.61045 9.60439 2.60742 8.60742C3.60439 7.61045 5.07642 7.25 6.90039 7.25H11.0996C12.9236 7.25 14.3956 7.61045 15.3926 8.60742C16.3895 9.60439 16.75 11.0764 16.75 12.9004V17.0996Z" fill="currentColor"/> <path d="M21.25 11.0996V6.90039C21.25 5.22436 20.9101 4.246 20.332 3.66797C19.754 3.08994 18.7756 2.75 17.0996 2.75H12.9004C11.2244 2.75 10.246 3.08994 9.66797 3.66797C9.08994 4.246 8.75 5.22436 8.75 6.90039V7.25H11.0996C12.9236 7.25 14.3956 7.61045 15.3926 8.60742C16.3895 9.60439 16.75 11.0764 16.75 12.9004V15.25H17.0996C18.7756 15.25 19.754 14.9101 20.332 14.332C20.9101 13.754 21.25 12.7756 21.25 11.0996ZM22.75 11.0996C22.75 12.9236 22.3895 14.3956 21.3926 15.3926C20.3956 16.3895 18.9236 16.75 17.0996 16.75H16C15.5858 16.75 15.25 16.4142 15.25 16V12.9004C15.25 11.2244 14.9101 10.246 14.332 9.66797C13.754 9.08994 12.7756 8.75 11.0996 8.75H8C7.58579 8.75 7.25 8.41421 7.25 8V6.90039C7.25 5.07642 7.61045 3.60439 8.60742 2.60742C9.60439 1.61045 11.0764 1.25 12.9004 1.25H17.0996C18.9236 1.25 20.3956 1.61045 21.3926 2.60742C22.3895 3.60439 22.75 5.07642 22.75 6.90039V11.0996Z" fill="currentColor"/></svg>کپی</button></div>
+      ${ipTags(k)}
     </article>`).join('');
     const full = n >= API.max;
     $('#apiCap').textContent = n ? `${toFa(n)} از ${toFa(API.max)} API` : '';
@@ -6617,6 +6635,8 @@ button{font-family:inherit}
   function openApi(){ if (!state.loggedIn) return openLogin(); renderApi(); $('#screenApi .api-body').scrollTop = 0; stGo('api'); }
   $('#apiNew').addEventListener('click', () => { if (API.keys.length < API.max) openApiForm(null); });   // at the cap: inline warning + disabled button (no sheet)
   $('#apiList').addEventListener('click', e => {
+    const t = e.target.closest('[data-ipt]');
+    if (t){ const id = t.dataset.ipt; ipOpen.has(id) ? ipOpen.delete(id) : ipOpen.add(id); return renderApi(); }
     const c = e.target.closest('[data-copy]'), more = e.target.closest('[data-more]');
     if (c){ const k = API.keys.find(x => x.id === c.dataset.copy); try { navigator.clipboard.writeText(k.key); } catch {} return showToast(OK_ICON + '<span>API Key کپی شد</span>'); }
     if (more){ API.delId = more.dataset.more; const k = API.keys.find(x => x.id === API.delId); $('#apiDelTitle').innerHTML = `حذف کلید «<bdi>${k.title}</bdi>»`; openModal($('#apiDelModal')); }
