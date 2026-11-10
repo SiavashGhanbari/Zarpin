@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>زرپین</title>
+<script>
+  // GitHub Pages serves this for any unknown path (…/Zarpin/Staking). Send it to the app with the path in ?p=,
+  // the app opens that screen and puts the clean address back in the bar.
+  (function(){
+    var parts = location.pathname.split('/');            // ['', 'Zarpin', 'Staking', ...]
+    var base = '/' + parts[1] + '/';
+    var rest = parts.slice(2).join('/');
+    location.replace(base + '?p=' + encodeURIComponent(rest) + location.hash);
+  })();
+</script>
+</head>
+<body></body>
+</html>
