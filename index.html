@@ -3006,6 +3006,11 @@ button.wal-toman:active{background:var(--background-surface)}
 .lh-warnbox{margin-top:16px}
 .lh.bad{--lh-c:var(--action-danger-bg); --lh-glow:rgba(220,60,60,.12)}
 .lh.bad .lh-st{color:var(--content-danger)}
+/* «ارزش طلای وثیقه ⓘ»: label + icon are one tap target (opens the gauge guide); icon 16px, 8px from the text */
+.lh-lbl{pointer-events:auto; display:inline-flex; align-items:center; gap:8px; margin:-6px -10px; padding:6px 10px; border:0; border-radius:16px; background:none; font:inherit; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary); cursor:pointer; transition:background-color var(--dur-fast) var(--ease-out)}
+.lh-lbl:active{background:var(--background-surface)}
+.lh-info{flex:none; width:16px; height:16px; display:block; color:var(--content-tertiary)}
+.lh-info svg{display:block; width:16px; height:16px; transform:rotate(180deg)}   /* the app's circle-mark icon, flipped = «i» */
 .lh-tour{position:relative; margin-top:6px; padding:4px 10px; border:0; border-radius:14px; background:none; font:inherit; font-size:var(--font-size-label-small); line-height:var(--line-height-label-small); font-weight:700; color:var(--accent-700); cursor:pointer}
 /* gauge guide sheet: one sample per state; steps slide + fade (--dur-base, ease-out); the active dot stretches */
 .gt-body{padding:4px var(--gutter-sheet) 8px}
@@ -7536,7 +7541,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   /* ---------- L7 one loan, every status ---------- */
   let lvTab = 'det';
   function openLoanView(l){ LN.cur = l; lvTab = 'det'; renderLoanView(); $('#lvBody').scrollTop = 0; stGo('loanView');
-    if (l.status === 'active' && !gtSeen) setTimeout(() => { if (state.screen === 'loanView' && !document.querySelector('.modal.open')) openTour(); }, 900); }
+    if (l.status === 'active' && l.first && !gtSeen) setTimeout(() => { if (state.screen === 'loanView' && !document.querySelector('.modal.open')) openTour(); }, 900); }
   // debt ÷ collateral value. Test panel «سلامت وثیقه» forces a ratio; adding collateral lowers it in proportion (g0 = grams when forced)
   function healthOf(l){
     const debt = balAfter(l, l.paid);
@@ -7552,7 +7557,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   // A tail runs from the value at disbursement (70 %) to now, then the marker pops. Right after disbursement there is no tail — just the marker.
   function gaugeSvg(ratio){
     const cx = 160, cy = 120, R = 120, SW = 220, A0 = 160;
-    const tOf = r => Math.max(0, Math.min(1, 1 / r - 1));
+    const tOf = r => Math.max(0, Math.min(1, (1 / r - 1 / LN_SELL) / (2 - 1 / LN_SELL)));   // 0 = the sale point (a point, not a range)
     const ang = t => (A0 + SW * t) * Math.PI / 180;
     const P = (t, r = R) => [cx + r * Math.cos(ang(t)), cy - r * Math.sin(ang(t))];
     const f1 = v => v.toFixed(1);
@@ -7560,9 +7565,9 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     const tS = tOf(LN_SELL), tW = tOf(LN_WARN), tN = tOf(ratio), t0 = tOf(LTV);
     let ticks = '';
     for (let i = 0; i <= 64; i++){ const t = i / 64, mj = i % 8 === 0, [x1, y1] = P(t, R - 13), [x2, y2] = P(t, R - (mj ? 23 : 18)); ticks += `<line${mj ? ' class="mj"' : ''} x1="${f1(x1)}" y1="${f1(y1)}" x2="${f1(x2)}" y2="${f1(y2)}"/>`; }
-    const [sx, sy] = P(t0), [mx, my] = P(tN), [lx, ly] = P(t0, R + 22);
+    const [sx, sy] = P(t0), [mx, my] = P(tN), [lx, ly] = P(t0, R + 22), [qx, qy] = P(0), [ql, qm] = P(0, R + 26);
     return `<svg viewBox="0 0 320 272" aria-hidden="true">
-        <path class="lh-track" d="${arc(0, 1)}"/><path class="lh-zone bad" d="${arc(0, tS)}"/><path class="lh-zone warn" d="${arc(tS, tW)}"/>
+        <path class="lh-track" d="${arc(0, 1)}"/><path class="lh-zone warn" d="${arc(0, tW)}"/><path class="lh-zone bad" d="${arc(0, .035)}"/>
         <g class="lh-ticks">${ticks}</g>
         ${Math.abs(tN - t0) > .004 ? `<path class="lh-tail" pathLength="1" d="${arc(t0, tN)}"/>` : ''}
         <circle class="lh-start" cx="${f1(sx)}" cy="${f1(sy)}" r="5"/>
@@ -7573,8 +7578,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   const LH_WORD = { ok:'وضعیت سالم', warn:'در حد هشدار', bad:'فروش وثیقه' };
   function heroGauge(l, H){
     return `<div class="lh ${H.st}"><div class="lh-g">${gaugeSvg(H.ratio)}
-      <div class="lh-in"><small>ارزش طلای وثیقه</small><b>${fmtNum(rnd4(H.val))}</b><span class="u">تومان</span><span class="lh-st"><i></i>${LH_WORD[H.st]}</span><span class="lh-pill">${g3(l.grams)} طلای ۱۸ عیار</span></div></div>
-      <p class="lh-px">قیمت هر گرم طلا: ${T_(H.pxNow)}</p><button type="button" class="lh-tour" data-lv="tour">این نمودار را چطور بخوانم؟</button></div>`
+      <div class="lh-in"><button type="button" class="lh-lbl" data-lv="tour" aria-label="ارزش طلای وثیقه — راهنمای نمودار"><span>ارزش طلای وثیقه</span><i class="lh-info"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.25 12C21.25 6.91421 17.0858 2.75 12 2.75C6.91421 2.75 2.75 6.91421 2.75 12C2.75 17.0858 6.91421 21.25 12 21.25C17.0858 21.25 21.25 17.0858 21.25 12ZM22.75 12C22.75 17.9142 17.9142 22.75 12 22.75C6.08579 22.75 1.25 17.9142 1.25 12C1.25 6.08579 6.08579 1.25 12 1.25C17.9142 1.25 22.75 6.08579 22.75 12Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M11.25 13V8C11.25 7.58579 11.5858 7.25 12 7.25C12.4142 7.25 12.75 7.58579 12.75 8V13C12.75 13.4142 12.4142 13.75 12 13.75C11.5858 13.75 11.25 13.4142 11.25 13Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12.0034 15C12.5557 15 13.0034 15.4477 13.0034 16C13.0034 16.5523 12.5557 17 12.0034 17H11.9946C11.4423 17 10.9946 16.5523 10.9946 16C10.9946 15.4477 11.4423 15 11.9946 15H12.0034Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg></i></button><b>${fmtNum(rnd4(H.val))}</b><span class="u">تومان</span><span class="lh-st"><i></i>${LH_WORD[H.st]}</span><span class="lh-pill">${g3(l.grams)} طلای ۱۸ عیار</span></div></div>
+      <p class="lh-px">قیمت هر گرم طلا: ${T_(H.pxNow)}</p></div>`
       + (H.st === 'warn' ? `<div class="snack warn lh-warnbox">${WARN_SVG}<span>ارزش وثیقه به حد هشدار رسیده است. برای جلوگیری از فروش وثیقه، وثیقه را افزایش دهید.</span></div>` : '')
       + `<div class="lh-leg">
         <div class="lh-li warn"><i></i><div><b>حد هشدار</b><small>${H.st === 'warn' ? 'ارزش وثیقه کمتر از' : 'اگر ارزش وثیقه به'} <bdi>${T_(rnd4(H.warnV))}</bdi> ${H.st === 'warn' ? 'شده است' : 'برسد'}</small><button type="button" class="lh-help" data-lv="guide">اگر به حد هشدار برسم چه کنم؟ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg></button></div></div>
@@ -7583,9 +7588,9 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   /* first look at an active loan → a 3-step guide: one sample gauge per state («if it looks like this, it means …») */
   var gtSeen = false, gtStep = 0;
   const GT = [
-    ['ok',   0.62, 'وام شما سالم است', 'نقطه نشان می‌دهد ارزش وثیقه الان کجاست و خط، تغییر آن از «شروع وام» تا امروز. وقتی وام تازه فعال شده، فقط نقطه را می‌بینید. تا وقتی نقطه بیرون از محدوده رنگی است، کاری لازم نیست.'],
+    ['ok',   0.62, 'وام شما سالم است', 'نقطه نشان می‌دهد ارزش وثیقه الان کجاست و خط، تغییر آن از «شروع وام» تا امروز. وقتی وام تازه فعال شده، فقط نقطه را می‌بینید. تا وقتی نقطه بیرون از محدوده نارنجی است، کاری لازم نیست.'],
     ['warn', 0.84, 'وام در حد هشدار است', 'قیمت طلا پایین آمده و نقطه به محدوده نارنجی رسیده. پیامک هشدار می‌گیرید؛ با افزایش وثیقه، وام به وضعیت سالم برمی‌گردد.'],
-    ['bad',  0.93, 'وثیقه فروخته می‌شود', 'اگر نقطه به محدوده قرمز برسد، وثیقه فروخته می‌شود، بدهی تسویه و وام بسته می‌شود. باقی‌مانده طلا به کیف پول شما برمی‌گردد.'],
+    ['bad',  0.93, 'وثیقه فروخته می‌شود', 'اگر نقطه به بخش قرمز ابتدای نمودار (حد فروش) برسد، وثیقه فروخته می‌شود، بدهی تسویه و وام بسته می‌شود. باقی‌مانده طلا به کیف پول شما برمی‌گردد.'],
   ];
   function renderTour(){
     const [st, r, t, d] = GT[gtStep];
@@ -7635,7 +7640,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
       const pay = done ? '' : `<button type="button" class="btn${H.st === 'warn' ? ' btn-secondary' : ''}" data-lv="pay"><span class="label">پرداخت قسط ${ordFa(l.paid + 1)}</span></button>`;
       f = (H.st === 'warn' ? '<button type="button" class="btn" data-lv="add"><span class="label">افزایش وثیقه</span></button>' : '') + pay;
     } else if (l.status === 'liquidated'){
-      h += `<div class="snack warn">${WARN_SVG}<span>ارزش وثیقه به حد فروش رسید. ${g3(l.sold)} از وثیقه فروخته شد، بدهی وام (${T_(l.debtPaid)}) تسویه شد و وام بسته شد. ${g3(l.left)} باقی‌مانده به کیف پول شما برگشت.</span></div>`;
+      h = `<div class="lh bad"><div class="lh-g">${gaugeSvg(LN_SELL)}<div class="lh-in"><small>ارزش وثیقه در لحظه فروش</small><b>${fmtNum(rnd4(l.debtPaid / LN_SELL))}</b><span class="u">تومان</span><span class="lh-st"><i></i>لیکوئید شد</span><span class="lh-pill">${g3(l.sold)} از وثیقه فروخته شد</span></div></div></div>`;
+      h += `<div class="snack warn lh-warnbox">${WARN_SVG}<span>ارزش وثیقه به حد فروش رسید. ${g3(l.sold)} از وثیقه فروخته شد، بدهی وام (${T_(l.debtPaid)}) تسویه شد و وام بسته شد. ${g3(l.left)} باقی‌مانده به کیف پول شما برگشت.</span></div>`;
       h += '<div class="lx-rows">' + base + srow('وثیقه فروخته‌شده', g3(l.sold)) + srow('بدهی تسویه‌شده', T_(l.debtPaid)) + srow('برگشت به کیف پول', g3(l.left)) + (l.endedAt ? srow('تاریخ', jFmt(l.endedAt)) : '') + '</div>';
       f = '<button type="button" class="btn" data-lv="new"><span class="label">درخواست وام جدید</span></button>';
     } else {
@@ -7981,7 +7987,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     loanBack:      () => { setLoanTest('pending'); renderLoans(); stStack = ['home']; go('loans'); },
     loanCancelling:() => { setLoanTest('cancelling'); openLoanView(LN.loans[0]); },
     loanHome:      () => { setLoanTest('locked'); },
-    loanActiveNew: () => { test.loanHealth = 'ok'; setLoanTest('active'); const l = LN.loans[0]; Object.assign(l, { paid:0, deducted:[], grams:ceil3(l.amount / LTV / MARKET.gold.v), disbursedAt:jAddDays(J_TODAY, -1), g0:null }); refreshLoanUI(); gtSeen = false; openLoanView(l); },
+    loanActiveNew: () => { test.loanHealth = 'ok'; setLoanTest('active'); const l = LN.loans[0]; Object.assign(l, { paid:0, deducted:[], grams:ceil3(l.amount / LTV / MARKET.gold.v), disbursedAt:jAddDays(J_TODAY, -1), g0:null, first:true }); refreshLoanUI(); gtSeen = false; openLoanView(l); },
     loanGaugeTour: () => { JUMPS.loanActive(); setTimeout(openTour, 450); },
     loanPending:   () => { setLoanTest('pending'); openLoanView(LN.loans[0]); },
     loanReview:    () => { setLoanTest('review'); openLoanView(LN.loans[0]); },
