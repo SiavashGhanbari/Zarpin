@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فلوچارت زرپین</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* Zarpin app flowchart — keep in step with index.html: every flow change updates this page in the same commit. */
+  :root{ --bg:#F7F7F5; --card:#FFFFFF; --ink:#141414; --muted:#6B6B6B; --line:#E6E6E3; --gold:#B7782F; --gold-50:#FFF6EA; }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:Vazirmatn, system-ui, sans-serif; line-height:1.7}
+  header{position:sticky; top:0; z-index:5; background:rgba(247,247,245,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .hd{max-width:1180px; margin:0 auto; padding:14px 16px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px}
+  .hd h1{margin:0; font-size:20px; font-weight:800}
+  .hd h1 span{color:var(--gold)}
+  .hd small{color:var(--muted)}
+  nav{display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; width:100%}
+  nav a{flex:none; padding:6px 12px; border-radius:16px; background:var(--card); border:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:13px; font-weight:600}
+  nav a:hover{border-color:var(--gold)}
+  main{max-width:1180px; margin:0 auto; padding:16px}
+  section{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 16px; margin:0 0 16px; scroll-margin-top:110px}
+  section h2{margin:0 0 4px; font-size:18px}
+  section p{margin:0 0 12px; color:var(--muted); font-size:14px}
+  .mm{overflow-x:auto; padding:6px 0}
+  .mm svg{max-width:none !important; height:auto}
+  .legend{display:flex; flex-wrap:wrap; gap:8px 16px; font-size:13px; color:var(--muted); margin:6px 0 0}
+  .legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-left:6px; vertical-align:-1px}
+  footer{max-width:1180px; margin:0 auto; padding:8px 16px 32px; color:var(--muted); font-size:13px}
+  @media (max-width:600px){ .hd h1{font-size:17px} section{padding:14px 12px} }
+</style>
+</head>
+<body>
+<header><div class="hd">
+  <h1>فلوچارت <span>زرپین</span></h1><small>تا ۲۰ آبان ۱۴۰۵ · روی هر کادر بزنید تا همان صفحه در پروتوتایپ باز شود</small>
+  <nav>
+    <a href="#auth">ورود</a><a href="#home">خانه</a><a href="#trade">خرید و فروش</a><a href="#wallet">کیف پول و تاریخچه</a>
+    <a href="#stake">درآمد طلایی</a><a href="#loan">وام</a><a href="#dlv">تحویل فیزیکی</a><a href="#api">API</a><a href="#alert">هشدار قیمت</a>
+  </nav>
+</div></header>
+<main>
+  <div class="legend"><span><i style="background:#FFF6EA;border:1px solid #B7782F"></i>صفحه</span><span><i style="background:#EEF4FF;border:1px solid #3B6FD8"></i>باتم‌شیت</span><span><i style="background:#FFFFFF;border:1px solid #8A8A8A"></i>تصمیم / شرط</span><span><i style="background:#EAF7EF;border:1px solid #2E9B62"></i>پایان موفق</span><span><i style="background:#FDECEC;border:1px solid #D9534F"></i>خطا / توقف</span></div>
+
+<section id="auth"><h2>ورود و ثبت‌نام</h2><p>هر کاری که حساب لازم دارد (خرید و فروش، واریز، سپرده، وام، تحویل، هشدار قیمت، API): برای مهمان شیت ورود باز می‌شود؛ برای کاربر واردشده‌ی احراز نشده، باتم‌شیت احراز هویت (وام: در جزئیات وام، با زدن «قفل وثیقه»). مرور خانه، کیف پول، تاریخچه و منو آزاد است.</p>
+<pre class="mermaid">
+flowchart RL
+  G["مهمان در خانه"]:::page --> L["شیت ورود: شماره موبایل"]:::sheet --> O["کد تأیید"]:::sheet --> Q{"شماره ثبت‌شده؟"}:::dec
+  Q -- "جدید" --> R["کد معرف (قابل رد شدن)"]:::page --> K["احراز هویت: کد ملی + تاریخ تولد"]:::page --> S["خوش آمدید"]:::ok --> H["خانه (واردشده)"]:::page
+  Q -- "ثبت‌شده، بدون احراز" --> K
+  Q -- "ثبت‌شده و احرازشده" --> H
+  K -- "بعداً احراز می‌کنم" --> HN["خانه (واردشده، احراز نشده)"]:::page
+  HN --> AC["اکشن نیازمند حساب"]:::page --> KS["باتم‌شیت احراز هویت (بدون استپ‌ها)"]:::sheet --> AC2["ادامه همان اکشن"]:::ok
+  click HN "./Home" _self
+  click L "./Login" _self
+  click K "./Verification" _self
+  click S "./Welcome" _self
+  click H "./Home" _self
+</pre></section>
+
+<section id="home"><h2>خانه</h2><p>ورودی همه بخش‌ها. شیت‌هایی که با باز کردن اپ نمایش داده می‌شوند: وام در حد هشدار (اولویت اول) و معرفی کمپین فعال.</p>
+<pre class="mermaid">
+flowchart RL
+  A(["باز کردن اپ"]) --> W{"وام در حد هشدار؟"}:::dec
+  W -- "بله" --> WS["شیت «وام شما در حد هشدار است»"]:::sheet --> LV["جزئیات وام"]:::page
+  W -- "خیر" --> C{"کمپین روشن است؟"}:::dec
+  C -- "کمپین نقره" --> CS["شیت معرفی نقره (یک بار)"]:::sheet --> TB["خرید نقره"]:::page
+  C -- "خیر / دیده شده" --> H["خانه"]:::page
+  WS -. "بعداً" .-> H
+  H --> T["خرید و فروش"]:::page
+  H --> P["صفحه قیمت (طلا، نقره، اونس، مظنه)"]:::page
+  H --> WL["کیف پول"]:::page
+  H --> ST["درآمد طلایی"]:::page
+  H --> LN["وام"]:::page
+  H --> DL["تحویل فیزیکی"]:::page
+  H --> MN["منو ← API"]:::sheet
+  H --> HC["کارت «طلای شما قفل شده ولی به ونسی نرفته‌اید»"]:::sheet --> VZ["انتقال به ونسی"]:::page
+  H --> BN["بنر کمپین نقره"]:::page --> TB
+  click H "./Home" _self
+  click T "./Trade" _self
+  click P "./GoldPrice" _self
+  click WL "./Wallet" _self
+  click ST "./Staking" _self
+  click DL "./Delivery" _self
+  click LV "./Loans/View" _self
+</pre></section>
+
+<section id="trade"><h2>خرید و فروش</h2><p>همه خریدهای اپ (حتی خرید کسری در سپرده، وام و تحویل) از همین فلوی پیش‌فاکتور می‌گذرند. سقف پرداخت از درگاه در هر خرید ۴۰۰ میلیون تومان است.</p>
+<pre class="mermaid">
+flowchart RL
+  T["خرید و فروش: طلا یا نقره"]:::page --> M{"قیمت بازار یا قیمت مشخص؟"}:::dec
+  M -- "بازار" --> AM["مبلغ / مقدار"]:::page --> V{"معتبر؟ (حداقل ۱ سوت، سقف ۴۰۰ میلیون)"}:::dec
+  V -- "خیر" --> E["خطا زیر ورودی"]:::err
+  V -- "بله" --> PF["پیش‌فاکتور"]:::sheet --> B{"موجودی تومان کافی؟"}:::dec
+  B -- "خیر" --> GW["پرداخت کسری از درگاه"]:::page --> RS
+  B -- "بله" --> RS["نتیجه خرید / فروش"]:::page --> OK["تاریخچه · موفق"]:::ok
+  RS -. "خطا" .-> FL["ناموفق · برگشت پول"]:::err
+  M -- "قیمت مشخص" --> LP["تعیین قیمت"]:::sheet --> PF2["پیش‌فاکتور"]:::sheet --> OP["سفارش باز (مسدود در «سفارشات»)"]:::ok
+  T --> BELL["زنگوله ← هشدار قیمت"]:::page
+  click T "./Trade" _self
+  click RS "./Purchase" _self
+  click BELL "./Trade/PriceAlert" _self
+</pre></section>
+
+<section id="wallet"><h2>کیف پول و تاریخچه</h2><p>مسدودشده = وثیقه وام + سپرده درآمد طلایی + سفارشات (قابل تفکیک نیست؛ با تول‌تیپ توضیح داده می‌شود). وضعیت‌های تاریخچه فقط: موفق، ناموفق، باز، در حال انجام.</p>
+<pre class="mermaid">
+flowchart RL
+  W["کیف پول"]:::page --> TM["تومان (یک خط)"]:::page --> TS["شیت تومان: واریز · برداشت · خرید"]:::sheet
+  TS --> TU["افزایش موجودی (درگاه)"]:::page
+  TS --> TR["خرید طلا"]:::page
+  W --> GD["طلا / نقره"]:::page --> GS["شیت دارایی: در دسترس + مسدودشده"]:::sheet --> FZ{"مسدودشده ▾"}:::dec
+  FZ --> F1["وثیقه وام"]:::page
+  FZ --> F2["سپرده درآمد طلایی"]:::page
+  FZ --> F3["سفارشات ⓘ ← سفارش‌های باز"]:::page
+  W --> HI["تاریخچه"]:::page --> HT{"تب"}:::dec
+  HT --> H1["خرید و فروش"]:::page --> HD["جزئیات تراکنش"]:::page
+  HT --> H2["واریز: «واریز تومان/طلا» + شرح (درگاه، سود سپرده، جایزه دعوت…)"]:::page --> HD
+  HT --> H3["برداشت"]:::page --> HD
+  HT --> H4["تحویل فیزیکی"]:::page --> TRK["پیگیری سفارش"]:::page
+  click W "./Wallet" _self
+  click HI "./Wallet/History" _self
+  click HD "./Wallet/History/Details" _self
+  click TU "./TopUp" _self
+</pre></section>
+
+<section id="stake"><h2>درآمد طلایی (سپرده‌گذاری)</h2><p>سقف هر کاربر ۱۰۰ گرم سپرده فعال؛ هر طرح ظرفیت جدا دارد (مثلاً ۵۰۰ گرم برای همه). لغو سپرده کد تأیید ندارد.</p>
+<pre class="mermaid">
+flowchart RL
+  S0["درآمد طلایی"]:::page --> E{"سپرده دارد؟"}:::dec
+  E -- "خیر" --> EM["امپتی‌استیت: «درآمدت رو طلایی کن!»"]:::page --> NW
+  E -- "بله" --> LS["سپرده‌ها + خلاصه"]:::page --> NW["سپرده جدید: مقدار + طرح"]:::page
+  NW --> V{"خطا؟"}:::dec
+  V -- "کمتر از ۰٫۵ گرم / بیش از سقف کاربر / بیش از ظرفیت طرح" --> ER["خطا جای موجودی"]:::err
+  V -- "خیر" --> SH{"طلای آزاد کافی؟"}:::dec
+  SH -- "خیر" --> SS["شیت «موجودی طلا کافی نیست»"]:::sheet --> BUY["فلوی خرید"]:::page --> CF
+  SH -- "بله" --> CF["پیش‌فاکتور: قرارداد + تمدید خودکار"]:::page --> DN["سپرده ثبت شد"]:::ok
+  LS --> DD["جزئیات سپرده (فوتر استیکی: تمدید خودکار · لغو)"]:::page --> CX["شیت لغو: آیکن هشدار + «درآمد از دست می‌رود» + ردیف‌های اصل برگشتی…"]:::sheet --> CXD["لغو شد · اصل به کیف پول"]:::ok
+  LS --> YL["درآمدهای دریافت‌شده"]:::page
+  click S0 "./Staking" _self
+  click NW "./Staking/New" _self
+  click CF "./Staking/Confirm" _self
+  click DN "./Staking/Done" _self
+  click DD "./Staking/Deposit" _self
+  click YL "./Staking/Yields" _self
+</pre></section>
+
+<section id="loan"><h2>وام با وثیقه طلا</h2><p>هر کاربر فقط یک وام در جریان. مسیر دریافت: ثبت درخواست ← قفل وثیقه ← احراز و تأیید بانک (ونسی) ← دریافت وام. وثیقه همان لحظه‌ای قفل می‌شود که کاربر تأیید می‌کند و به ونسی می‌رود؛ لغو از زرپین نداریم. بعد از ونسی تا واریز وام وضعیتی نمی‌دانیم، پس فقط «در ونسی» نمایش داده می‌شود.</p>
+<pre class="mermaid">
+flowchart RL
+  T["کاشی وام"]:::page --> LIVE{"وام در جریان دارد؟"}:::dec
+  LIVE -- "بله" --> LV["صفحه وام (تایتل «وام»)"]:::page
+  LIVE -- "خیر" --> MY["وام‌های من / امپتی‌استیت"]:::page --> CA["ماشین‌حساب: کروسل تأمین‌کننده · اسکلتون بعد از رها کردن اسلایدر / ۱ ثانیه بعد از تایپ"]:::page
+  CA --> DT["جزئیات و هزینه‌ها + مسیر دریافت"]:::page --> KY{"«قفل وثیقه» — احراز هویت شده؟"}:::dec
+  KY -- "خیر" --> KS["باتم‌شیت احراز هویت"]:::sheet --> LK
+  KY -- "بله" --> LK["شیت قفل وثیقه"]:::sheet --> SH{"طلای کافی؟"}:::dec
+  SH -- "خیر" --> SS["شیت «موجودی طلا کافی نیست»"]:::sheet --> BY["فلوی خرید"]:::page --> LK
+  SH -- "بله" --> CF["«تأیید و قفل وثیقه» = قفل + ارسال به ونسی"]:::ok --> VZ["در حال انتقال به ونسی…"]:::page --> PD["در ونسی (بدون وضعیت جزئی، بدون لغو)"]:::page
+  PD -- "ونسی شروع اقساط را فرستاد" --> AC["وام فعال"]:::ok
+  PD -- "ونسی رد / لغو کرد" --> RJ["وثیقه آزاد"]:::err
+  AC --> TB["تب‌ها: جزئیات · اقساط · تاریخچه (قفل، افزایش، کسر، فروش وثیقه)"]:::page
+  AC --> GA["Gauge ارزش وثیقه (راهنمای نمودار فقط اولین وام)"]:::page
+  AC --> PAY["پرداخت قسط ← انتقال به ونسی"]:::page
+  AC --> ADD["افزایش وثیقه (بدون کد تأیید)"]:::page --> MN{"کمتر از حداقل؟"}:::dec
+  MN -- "بله" --> AS["شیت «مقدار کمتر از حداقل است»"]:::sheet --> AP
+  MN -- "خیر" --> AP["اعمال · وام سالم"]:::ok
+  AC --> WR{"ارزش وثیقه"}:::dec
+  WR -- "به حد هشدار" --> WN["پیامک + شیت هنگام ورود + افزایش وثیقه (اکشن اصلی)"]:::sheet
+  WR -- "به حد فروش" --> LQ["لیکوئید: فروش وثیقه، تسویه، بستن وام"]:::err
+  click LV "./Loans/View" _self
+  click MY "./Loans" _self
+  click CA "./Loans/Calculator" _self
+  click DT "./Loans/Details" _self
+  click ADD "./Loans/AddCollateral" _self
+  click WN "./Loans/WarningGuide" _self
+</pre></section>
+
+<section id="dlv"><h2>تحویل فیزیکی</h2><p>سقف ۴۰۰ میلیون فقط برای بخشی است که از درگاه پرداخت می‌شود؛ موجودی کیف پول روی آن اضافه می‌شود. اگر از سقف بیشتر شود، دکمه «ویرایش سفارش» می‌شود.</p>
+<pre class="mermaid">
+flowchart RL
+  T["کاشی تحویل فیزیکی"]:::page --> OR{"سفارش دارد؟"}:::dec
+  OR -- "خیر" --> EM["امپتی‌استیت + «سفارش شمش»"]:::page --> PK
+  OR -- "بله" --> LS["سفارش‌های تحویل"]:::page --> PK["انتخاب شمش"]:::page
+  LS --> TRK["پیگیری سفارش"]:::page
+  PK --> BR["انتخاب شعبه"]:::page --> INV["فاکتور"]:::page --> CP{"پرداخت از درگاه بیش از ۴۰۰ میلیون؟"}:::dec
+  CP -- "بله" --> ED["«ویرایش سفارش»"]:::err --> PK
+  CP -- "خیر" --> SH{"طلای کافی؟"}:::dec
+  SH -- "خیر" --> SS["شیت «موجودی طلا کافی نیست»"]:::sheet --> OTP
+  SH -- "بله" --> OTP["کد تأیید سفارش"]:::sheet --> BY["خرید کسری (در صورت نیاز)"]:::page --> OK["سفارش ثبت شد"]:::ok --> TRK
+  TRK --> CXL["لغو سفارش"]:::page
+  click LS "./Delivery" _self
+  click PK "./Delivery/New" _self
+  click BR "./Delivery/Branch" _self
+  click INV "./Delivery/Invoice" _self
+  click TRK "./Delivery/Tracking" _self
+  click CXL "./Delivery/Cancel" _self
+</pre></section>
+
+<section id="api"><h2>API</h2>
+<pre class="mermaid">
+flowchart RL
+  M["منو"]:::sheet --> A{"کلید دارد؟"}:::dec
+  A -- "خیر" --> E["امپتی‌استیت + مستندات"]:::page --> F
+  A -- "بله" --> L["کلیدهای من"]:::page --> F["ساخت کلید: نام + IP"]:::page --> K["نمایش API Key و Secret (یک بار)"]:::page --> L
+  click L "./Api" _self
+  click F "./Api/New" _self
+  click K "./Api/Keys" _self
+</pre></section>
+
+<section id="alert"><h2>هشدار قیمت</h2>
+<pre class="mermaid">
+flowchart RL
+  T["خرید و فروش ← زنگوله"]:::page --> P["هشدار قیمت: دارایی + قیمت هدف"]:::page --> V{"معتبر؟"}:::dec
+  V -- "خیر" --> E["خطا"]:::err
+  V -- "بله" --> S["هشدار ثبت شد (فهرست)"]:::ok --> SMS["رسیدن قیمت ← پیامک"]:::ok
+  click P "./Trade/PriceAlert" _self
+</pre></section>
+</main>
+<footer>این صفحه با هر تغییر در فلوهای پروتوتایپ به‌روز می‌شود · <a href="./">باز کردن پروتوتایپ</a></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  const DEFS = `
+  classDef page fill:#FFF6EA,stroke:#B7782F,color:#141414,stroke-width:1px;
+  classDef sheet fill:#EEF4FF,stroke:#3B6FD8,color:#141414,stroke-width:1px;
+  classDef dec fill:#FFFFFF,stroke:#8A8A8A,color:#141414,stroke-width:1px;
+  classDef ok fill:#EAF7EF,stroke:#2E9B62,color:#141414,stroke-width:1px;
+  classDef err fill:#FDECEC,stroke:#D9534F,color:#141414,stroke-width:1px;`;
+  document.querySelectorAll('pre.mermaid').forEach(p => { p.textContent = p.textContent.trimEnd() + '\n' + DEFS; });
+  mermaid.initialize({ startOnLoad:true, securityLevel:'loose', theme:'base',
+    themeVariables:{ fontFamily:'Vazirmatn, system-ui, sans-serif', fontSize:'14px', lineColor:'#9A9A9A', primaryTextColor:'#141414' },
+    flowchart:{ curve:'basis', nodeSpacing:28, rankSpacing:42, htmlLabels:true } });
+</script>
+</body>
+</html>
