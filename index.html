@@ -3063,6 +3063,8 @@ button.wal-toman:active{background:var(--background-surface)}
 .tip-ic svg{display:block; width:16px; height:16px; transform:rotate(180deg)}
 .tip{position:absolute; z-index:400; padding:10px 12px; border-radius:12px; background:var(--content-primary); color:var(--content-inverse); font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); text-align:right; box-shadow:0 8px 24px rgba(0,0,0,.18); opacity:0; transform:translateY(6px); pointer-events:none; transition:opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out)}
 .tip.below{transform:translateY(-6px)}
+.tip ul{margin:6px 0 0; padding:0 16px 0 0; display:grid; gap:4px}
+.tip li::marker{color:currentColor}
 .tip.on{opacity:1; transform:none; pointer-events:auto}
 .tip-ar{position:absolute; bottom:-5px; width:12px; height:12px; background:inherit; border-radius:2px; transform:rotate(45deg)}
 .tip.below .tip-ar{bottom:auto; top:-5px}
@@ -6880,7 +6882,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   const MASK = '••••';
   // one sheet for both metals: gold (staking · orders · loan can freeze it) or silver (only open sell orders)
   let gsAsset = 'gold', gsGoldImg = null;
-  const ORD_K = a => `<span class="tip-k" data-tip="مجموع ${a === 'تومان' ? 'تومان شما در سفارش‌های خرید' : a + 'ی شما در سفارش‌های فروش'} با قیمت مشخص و سایر سفارش‌های باز؛ تا انجام یا لغو سفارش، مسدود می‌ماند.">سفارشات${INFO_I}</span>`;
+  const ORD_K = a => `<span class="tip-k" data-tip="${a === 'تومان' ? 'این مقدار ممکن است به‌دلیل این موارد مسدود شده باشد:|سفارش باز خرید با قیمت مشخص' : a === 'نقره' ? 'این مقدار ممکن است به‌دلیل این موارد مسدود شده باشد:|سفارش باز فروش نقره با قیمت مشخص' : 'این مقدار ممکن است به‌دلیل این موارد مسدود شده باشد:|سفارش باز فروش طلا با قیمت مشخص|تحویل فیزیکی طلا (تا زمان دریافت شمش)'}">سایر${INFO_I}</span>`;
   function renderGoldSheet(){
     if (gsAsset === 'toman') return renderTomanSheet();
     setTransfer(false);
@@ -8071,7 +8073,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   function hideTip(){ if (!tipEl) return; const t = tipEl; tipEl = null; tipFor = null; t.classList.remove('on'); setTimeout(() => t.remove(), msOf('--dur-base')); }
   function showTip(anchor){
     hideTip(); const d = device.getBoundingClientRect(), k = d.width / device.offsetWidth, a = anchor.getBoundingClientRect();
-    const t = document.createElement('div'); t.className = 'tip'; t.setAttribute('role', 'tooltip'); t.innerHTML = `<span>${anchor.dataset.tip}</span><i class="tip-ar"></i>`;
+    const t = document.createElement('div'); t.className = 'tip'; t.setAttribute('role', 'tooltip'); const tp = anchor.dataset.tip.split('|'); t.innerHTML = `<span>${tp[0]}</span>${tp.length > 1 ? `<ul>${tp.slice(1).map(x => `<li>${x}</li>`).join('')}</ul>` : ''}<i class="tip-ar"></i>`;
     device.appendChild(t);
     const W = device.offsetWidth, w = Math.min(W - 32, 280); t.style.width = w + 'px';
     const cx = (a.left + a.width / 2 - d.left) / k, top = (a.top - d.top) / k;
