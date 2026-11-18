@@ -1,4 +1,4 @@
-import { button, input, tag } from '../components.js';
+import { button, input, normalizeDigits, tag } from '../components.js';
 
 export default {
   title: 'Patterns/Trade Form',
@@ -7,11 +7,6 @@ export default {
     docs: { description: { component: 'فرم نمونه برای کنار هم دیدن ورودی، تگ و دکمه با دادهٔ آزمایشی.' } },
   },
 };
-
-function digits(value) {
-  return value.trim().replace(/[۰-۹]/g, digit => '۰۱۲۳۴۵۶۷۸۹'.indexOf(digit))
-    .replace(/[٠-٩]/g, digit => '٠١٢٣٤٥٦٧٨٩'.indexOf(digit));
-}
 
 export const Preview = {
   render: () => {
@@ -26,14 +21,14 @@ export const Preview = {
     status.hidden = true;
 
     amount.addEventListener('input', () => {
-      const value = digits(amount.value);
+      const value = normalizeDigits(amount.value);
       next.disabled = !/^\d+$/.test(value) || !Number.isSafeInteger(Number(value)) || Number(value) <= 0;
       status.hidden = true;
     });
     form.addEventListener('submit', event => {
       event.preventDefault();
       if (next.disabled) return;
-      status.textContent = 'مبلغ نمونه: ' + Number(digits(amount.value)).toLocaleString('fa-IR') + ' تومان';
+      status.textContent = 'مبلغ نمونه: ' + Number(normalizeDigits(amount.value)).toLocaleString('fa-IR') + ' تومان';
       status.hidden = false;
     });
     form.append(tag({ label: 'طلای ۱۸ عیار' }), amountField, next, status);

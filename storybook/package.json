@@ -7,12 +7,16 @@
   },
   "scripts": {
     "prepare:foundations": "node scripts/prepare-foundations.mjs",
+    "check:prototype": "node scripts/prepare-foundations.mjs && node scripts/review-prototype.mjs",
+    "record:prototype-review": "node scripts/prepare-foundations.mjs && node scripts/review-prototype.mjs --record",
     "storybook": "node scripts/prepare-foundations.mjs && storybook dev -p 6006 --no-open",
     "build-storybook": "node scripts/prepare-foundations.mjs && storybook build"
   },
   "devDependencies": {
     "@storybook/addon-docs": "10.6.5",
     "@storybook/html-vite": "10.6.5",
+    "postcss": "8.5.33",
+    "postcss-safe-parser": "7.0.1",
     "storybook": "10.6.5",
     "vite": "^7.3.1"
   }

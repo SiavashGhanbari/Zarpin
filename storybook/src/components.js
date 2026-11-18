@@ -7,17 +7,22 @@ export const actionSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 export const iconNames = ['add', 'arrow-right', 'search'];
 export const tagTones = ['neutral', 'gold', 'green', 'red', 'blue'];
 
+export function normalizeDigits(value) {
+  return value.trim().replace(/[۰-۹]/g, digit => '۰۱۲۳۴۵۶۷۸۹'.indexOf(digit))
+    .replace(/[٠-٩]/g, digit => '٠١٢٣٤٥٦٧٨٩'.indexOf(digit));
+}
+
 const icons = { add: addIcon, 'arrow-right': arrowIcon, search: searchIcon };
 let nextInputId = 0;
 
-function element(tag, className, text) {
+export function element(tag, className, text) {
   const node = document.createElement(tag);
   node.className = className;
   if (text !== undefined) node.textContent = text;
   return node;
 }
 
-function icon(name) {
+export function icon(name) {
   const glyph = element('span', 'zp-icon');
   glyph.setAttribute('aria-hidden', 'true');
   glyph.style.setProperty('--icon-image', 'url("' + icons[name] + '")');

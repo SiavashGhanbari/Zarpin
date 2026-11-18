@@ -1,5 +1,7 @@
 import '../src/generated/foundations.css';
 import '../src/components.css';
+import '../src/generated/prototype-patterns.css';
+import '../src/prototype/preview.css';
 
 export default {
   tags: ['autodocs'],

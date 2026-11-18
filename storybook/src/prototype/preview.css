@@ -1,0 +1,213 @@
+.zp-prototype-stage {
+  --st: 0px;
+  --sb: 0px;
+  position: relative;
+  inline-size: min(100%, 400px);
+}
+
+.zp-prototype-navigation {
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+}
+
+.zp-prototype-navigation.is-bottom {
+  min-block-size: 190px;
+  background: var(--background-surface);
+}
+
+.zp-prototype-screen-title {
+  margin: 0;
+  padding: 16px 18px;
+  font-size: var(--font-size-heading-small);
+}
+
+.zp-prototype .tabbar2 {
+  --zp-glass-width: calc((100% - 10px) / var(--zp-tab-count));
+  grid-template-columns: repeat(var(--zp-tab-count), minmax(0, 1fr));
+}
+
+.zp-prototype .tabbar2 .glass {
+  left: auto;
+  right: calc(5px + var(--zp-tab-index) * var(--zp-glass-width));
+  inline-size: var(--zp-glass-width);
+  transition: right var(--dur-page) var(--ease-ios);
+}
+
+.zp-prototype .tab2 {
+  min-inline-size: 0;
+  padding-inline: 2px;
+}
+
+.zp-prototype .tab2 span {
+  white-space: normal;
+}
+
+.zp-canvas[data-theme="dark"] .zp-prototype .tabbar2 {
+  background: var(--background-raised);
+  border-color: var(--components-bottom-nav-border);
+}
+
+.zp-canvas[data-theme="dark"] .zp-prototype .tabbar2 .glass {
+  background: var(--action-secondary-bg-hover);
+  box-shadow: none;
+}
+
+.zp-prototype .agree,
+.zp-prototype .pay-opt {
+  position: relative;
+}
+
+.zp-prototype-choice-input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+}
+
+.zp-prototype :is(.agree, .pay-opt):has(.zp-prototype-choice-input:focus-visible) {
+  outline: 2px solid var(--content-primary);
+  outline-offset: 3px;
+}
+
+.zp-prototype-check {
+  visibility: hidden;
+  color: var(--action-primary-fg);
+}
+
+.zp-prototype .agree.on .zp-prototype-check {
+  visibility: visible;
+}
+
+.zp-prototype-payments {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
+  border: 0;
+}
+
+.zp-prototype .pay-opt:has(input:disabled) {
+  background: var(--background-surface);
+  color: var(--content-disabled);
+  cursor: default;
+}
+
+.zp-prototype-legend {
+  margin-block-end: 8px;
+  font-weight: var(--font-weight-bold);
+}
+
+.zp-prototype-divider {
+  padding-inline: var(--gutter);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.zp-prototype-toast {
+  min-block-size: 136px;
+  padding-block-start: 76px;
+}
+
+.zp-prototype .toast {
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.zp-canvas[data-theme="dark"] .zp-prototype .toast {
+  background: var(--content-primary);
+}
+
+.zp-prototype-tooltip {
+  min-block-size: 130px;
+}
+
+.zp-prototype .tip-k {
+  border: 0;
+  background: none;
+  color: var(--content-primary);
+  padding: 4px;
+  font: inherit;
+}
+
+.zp-prototype .zp-prototype-info {
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font: 600 11px/1 sans-serif;
+}
+
+.zp-prototype .tip {
+  inset-inline-start: 0;
+  inset-block-start: 37px;
+  inline-size: min(280px, 100%);
+}
+
+.zp-prototype .tip-ar {
+  inset-inline-start: 20px;
+}
+
+.zp-prototype dialog.modal {
+  position: fixed;
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: min(100%, 420px);
+  max-block-size: 100%;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.zp-prototype dialog::backdrop {
+  background: var(--background-overlay);
+}
+
+.zp-prototype .modal-sheet.tall {
+  inset-block-start: clamp(20px, 12vh, 120px);
+}
+
+.zp-prototype .sheet-header {
+  margin: 0;
+}
+
+.zp-prototype-sheet-body {
+  padding: 8px var(--gutter-sheet);
+}
+
+.zp-prototype .sheet-footer .zp-button,
+.zp-prototype .dp-empty-btn {
+  inline-size: 100%;
+}
+
+.zp-prototype .faq-item.on .faq-a {
+  height: auto;
+}
+
+.zp-prototype .zp-prototype-detail {
+  margin: 8px 0 0;
+  color: var(--content-secondary);
+  font-size: var(--font-size-body-medium);
+}
+
+.zp-prototype-detail:empty {
+  display: none;
+}
+
+.zp-prototype .otp {
+  margin-block-start: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zp-prototype :is(.glass, .toast, .tip, .modal-sheet, .sw, .sw i, .faq-chev, .otp-box) {
+    transition: none;
+  }
+
+  .zp-prototype :is(.in-img, .otp-box .caret) {
+    animation: none;
+  }
+}
