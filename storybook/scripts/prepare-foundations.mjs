@@ -35,8 +35,10 @@ for (const [index, [name, marker]] of markers.slice(0, -1).entries()) {
 }
 
 const patterns = prototypePatterns(html, html.slice(end, stylesEnd));
-await mkdir(outputDirectory, { recursive: true });
+const previewDirectory = new URL('prototype/', outputDirectory);
+await mkdir(previewDirectory, { recursive: true });
 await Promise.all([
+  writeFile(new URL('index.html', previewDirectory), html),
   writeFile(outputUrl, '/* Generated from the design token block in index.html. */\n' + css + '\n'),
   writeFile(tokensUrl, JSON.stringify(tokens, null, 2) + '\n'),
   writeFile(new URL('prototype-patterns.css', outputDirectory), patterns.css),

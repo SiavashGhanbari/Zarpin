@@ -30,6 +30,8 @@ pnpm build-storybook
 - **Patterns → Feedback / Overlays** Toast، Snackbar، Tooltip، برگهٔ پایین و FAQ
 - **Patterns → Onboarding** حالت خالی درآمد طلایی و کد تأیید با حالت خطا و موفقیت
 
+- **Patterns → Credit purchase** درخواست و جزئیات خرید قسطی از همان کد پروتوتایپ
+
 ## افزودن نمونه
 
 ۱. نمونهٔ جدید را در `src/stories/` با نام `*.stories.js` اضافه کنید. نمونه‌های مربوط به رنگ و تایپوگرافی در `src/foundations/` قرار دارند.
