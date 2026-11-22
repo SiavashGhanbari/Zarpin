@@ -4,7 +4,7 @@ import { glyph, stage } from './preview.js';
 
 export default {
   title: 'Patterns/Navigation',
-  parameters: { docs: { description: { component: 'هدر صفحه و نوار سه‌تب خود پروتوتایپ. نام تب‌ها و آیکون‌ها هنگام ساخت از سورس اپ خوانده می‌شوند.' } } },
+  parameters: { docs: { description: { component: 'هدر صفحه و نوار پایین خود پروتوتایپ. نام تب‌ها و آیکون‌ها هنگام ساخت از سورس اپ خوانده می‌شوند.' } } },
 };
 
 export const Header = {

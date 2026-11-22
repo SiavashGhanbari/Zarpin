@@ -30,7 +30,7 @@ pnpm build-storybook
 - **Patterns → Feedback / Overlays** Toast، Snackbar، Tooltip، برگهٔ پایین و FAQ
 - **Patterns → Onboarding** حالت خالی درآمد طلایی و کد تأیید با حالت خطا و موفقیت
 
-- **Patterns → Credit purchase** درخواست و جزئیات خرید قسطی از همان کد پروتوتایپ
+- **Patterns → Credit purchase** ورودی هوم، معرفی، درخواست، جزئیات زرپین و تأمین‌کننده، اعتبار فعال، اقساط، وثیقه و تاریخچه از همان کد پروتوتایپ
 
 ## افزودن نمونه
 
