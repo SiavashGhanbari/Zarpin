@@ -3242,27 +3242,22 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
 .hs-empty b{display:block; font-size:var(--font-size-label-large); line-height:var(--line-height-label-large); font-weight:700; color:var(--content-primary)}
 .hs-empty p{margin:6px auto 0; max-width:280px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
 #lvFoot[hidden]{display:none}
-.cr-stepper{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:8px;margin-top:8px}
-.cr-stepper .circle-btn{width:48px;height:48px;border-radius:14px;font-size:22px}
-.cr-amount{display:flex;align-items:center;justify-content:center;gap:8px;margin:0}
-.cr-amount input{position:static;width:70%;min-width:0;text-align:center;background:none;border:0;color:var(--content-primary);font:inherit;font-weight:700}
-.cr-amount span,.cr-limits,.cr-status,#crGold{color:var(--content-secondary);font-size:12px}
-#crRange{transform:none}
-.cr-limits{display:flex;justify-content:space-between;direction:ltr;margin-top:8px}
-.cr-months{margin:20px 0 16px}
-.cr-offers{display:grid;gap:8px;margin:10px 0 16px}
-.cr-offer{background:var(--background-page);color:var(--content-primary);border:1px solid var(--border-subtle);border-radius:16px;padding:12px;text-align:start;font:inherit}
-.cr-offer-top,.cr-offer-top>span:first-child,.cr-tags{display:flex;align-items:center;gap:6px}
-.cr-offer-top{justify-content:space-between}
-.cr-offer-top>span:last-child{display:grid;gap:2px;text-align:end}
-.cr-offer-top small{color:var(--content-secondary)}
-.cr-tags{margin-top:10px;flex-wrap:wrap}
+.cr-status{color:var(--content-secondary);font-size:12px}
 .cr-status{padding:18px 4px;text-align:center}
-.cr-schedule summary{cursor:pointer;font-weight:700;padding-block:8px}
-#crFooter{display:grid;gap:8px}
-.cr-grams{font:inherit;color:var(--content-primary);background:var(--background-surface);width:100%;padding:12px;border:1px solid var(--border-subtle);border-radius:12px}
-.cr-methods{display:grid;gap:12px;margin:16px 0;padding:12px;border:1px solid var(--border-subtle);border-radius:12px}
-.cr-consent{display:flex;align-items:center;gap:8px;padding:16px 0;font-size:14px}
+
+/* ---------- خرید قسطی: only what the loan components don't already cover ---------- */
+#ciMonths{grid-template-columns:repeat(4, 1fr) !important}
+.ci-offers{display:flex; flex-direction:column; gap:10px; margin-top:8px; padding-bottom:4px}
+.ci-offers .ln-prov{width:100%; min-width:0; scroll-snap-align:none}
+.ci-offers .ln-range b{color:var(--content-primary); font-weight:700}
+.ci-offers .ln-range .skel{display:inline-block; min-width:96px}
+.ln-tag.via{background:var(--background-surface); color:var(--content-secondary)}
+.ci-none{margin:4px 0 0; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.ci-note{margin:10px 0 0; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-tertiary)}
+.ci-rp{margin:8px 0 0; font-size:var(--font-size-body-medium); line-height:26px; color:var(--content-secondary)}
+#ciPayB .sw-card{margin-top:12px}
+#ciPayB .sw-card + .stc-rows{margin-top:8px}
+#screenCiView .lh-lbl{pointer-events:none}
 </style>
 </head>
 <body>
@@ -3577,7 +3572,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
             <div class="qa-row r4">
               <button type="button" class="qa-tile" data-qa="buy"><img src="data:image/webp;base64,UklGRhAEAABXRUJQVlA4IAQEAADwFQCdASpgAF4APjEYikOiIaERxMAgAwSgDR8LnNEOL5wfsuqea/QN6P/tm9UDpveYD9Zupb/ovUA/sXUeeg15aP7d/Cd+5npCtHscmhcTSvJm90Va5f1jUp27CmaziwfsXp9HnAIzbulIclKpCxVWGsG79L/Wv/ACqMYG14wymYu4D0BGxaDNzq/g7MXPZsPNQKx/DADehGGGrrYkVMAleoSB8ZdYn19fDjzyA5q3WCKQo5tzEUQAAP7+/HRK3M9Mr0t0/4/rpzrVWFEqzUqtZ1XS0v5gDPBGSBS73Yo1Q/UhJANfPgoAQ0uw4ySXbTQ1wyGJFy2KgsnPMIoIwdBQnPOpoCpyq3b1wOer73TR4ZzGhuFy2tpJqCN6B8I70XRZQ3uHvXGF1wwWbZJZOwQHYizlPyPHEGqDm/EO/BrnD9yHaLmn6hwK9mh+tFu1sTczg25umMA01C4wxogCHbMape2iI9HLPlpZPQvjP6eat7r/5s7fcpFK2c/4yjnrR2fWZn75on86ws6Y0zWEVKQYvzBh5jclwnGe62UcJm9dKm5WSJlUl8Kdd7RTs1CBinBlUL3SOlrlwjZIbzyonc7ZtR29pDC081W1sHMuNULxSJQy8ZuC9AQ13lw1EnnNh5/w1VjKBO2uVwBfOBxZLb9M6bxSvyv+tJdmXNIZHPHWnGoOW9TUQGoVuhrpd/4IW5xFnXc1BdDJzIFjno7Bxe9KHWBpPNkkpq3X3EP3P/n0k11GEqXoP3+aHa6GGvpr/LPJa55fY5+sfflrpxCxwV1NSGn4lERXNMB9mm+j+Z7hfrD0KtaDthWiwuroONIfVoULsLTdm826TUUL1wxnVRtpmtvUWBMVIN5tlSJV+6VVyTTycvBUiF1Cs7+7Jib7hN9I3L0D3MoFAwvC0vhq3aRSLsPcgIMjiauL1bpw+O4jaCGb8Twi/mYLm6pHe2JrBbDfuzf/t0clrP412zaiC1pVP0WfPBWbzeUo2S3y77F9eAB+YBrnZSEjnlqi6Z1YMoVITntA9Vhtrd6yJW5VsSd1c4nUqNkvlgXraG8X01OA+1LOneNm3EsQ+h3JV8/+Z+0qz6FBIehdLsj11kf40BHW9r/nQvtrLpfhXIUjnXxirknbr+M03D8C0/XDffjdZJlehaZGFo9yfxSReXavJbNHkS9Zki5Sf/eayk4b8fEfT1YhVm4lIaUFcs/53LGhbGVHTDY+aYZu6IG3twEWfARlnPY4cDD+qejgC+yaIAXm2cBcIHHjCMrpV2Qq6L4p1SBsFMiowjTbkykKYCqYhhsCuxXzZYnoK3UMJGoMoLFH/7QRdBCVPd9Y97ge1LSFHDYeAGtXR7K64ugZT8dZebKfAAAAAA==" alt="" height="46"><span>خرید طلا</span></button>
               <button type="button" class="qa-tile" data-stake><em class="badge green">جدید</em><img src="data:image/webp;base64,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" alt="" height="38"><span>درآمد طلایی</span></button>
-              <button type="button" class="qa-tile" id="homeCredit"><img src="data:image/webp;base64,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" alt="" height="46"><span>خرید اعتباری</span></button>
+              <button type="button" class="qa-tile" id="homeCredit"><em class="badge green">جدید</em><img src="data:image/webp;base64,UklGRuwGAABXRUJQVlA4IOAGAAAwHQCdASpkAF4APjEWiUMiISEU+nWoIAMEsgBp6GZh89G84atv2zh35p8w3xX9P/4X3Fdo/zBP1X6QH7AeoD9af2i93L0DegB/Rv7R1l/oAeWh+4Hwdf2T/YftF7U//1eamMDsrTJlTEzX/y+Vz6e9gz9cust6KR5BQE0DL5ui0RdT21VQrWlcJCKaNHTXQ4z4OtuD+43sswQZyBax952GHpp+3jNEwj29O0Pf0HM+oV0EiZA7JR8SSEmOQYnjRgajtSAqLNz+mXShv+JaonJT+H6JIUdlAW9sr0M/WCvOoWVBkUtbnK/7rwZqcX7HUI3zIAD+/raInbLraJrPdamO5D9ZrL6Y0Y/9HAIaNPvVhiBi+6ADcpc2llv6n2Iwmhoevh6B6bBv0Cf7OLfo4AhsVDBiWkH5P5Y1j0csfF9TnrJyr48x8uYtldkJtO8OPbEqLm+8JM2Orn7vL7EVKshuwVEy9v+zLzwt/KQ34s59e7JeNoHFcacpeBJU9PAy0UoBHVAXEdx1ardz+SV/TUfTlOnFSotvx7g9bT/H2Iuglb0jblPVbfZmdxa5asGVyPwyVYCvONMjPBn4nJ/RO1sARe3AoF0NPAYTKNIZp2nahyWu0bBcHb6FC4LU91e3boR7c2IKkx898O763/thZldQcEerfjuq8ufv2UpoaidRDq+/HddZNV15vAHChFguDtf68vjtmxUr6ZM2991UmcTG3OpzfIyKK05qX2T905qEQS5ZEkDvAMrLnpDYtmyvaIyFaPNZbs5jeDIA8hLFKhdveOCzv89xbe7yGkWMJEgR5GZq4p4wPnSGAe66bkexMeYmw7ycVP1s0+FE708l6GX70rH9SZASn2Ujta6WhoLsk769R3Mea3JV24h/sNRfb3AqRpHCMei0un03/Y9UU3ksvfwBaL75tP3dgi0MnDNIOeYLTae7ldUYXprw0AXCLMAN6YHmfL58/FBbgbTp8dfKj0jkNk5oCSKGUla57m8zukIdB+MdZiNqeJUaf8A8a2cLGc+waC8zpyTPR1SrGEU1QeFR0HVgSmZQy27h8yf4N7MEDwT1RJJK+L6OVlaTwB0axpsRpDLH4duW6BtIEwSljVjl4s90KuGfRx4t9alJY6ud2BeX+UYPhPwLHf+H3i1ylxrywTlxzfZ9EcaUHrwXVPghppUfxsioj6TXMSI5+rNAtLGyvG9klVjenMvKYGpHA15kE4/nn3s2RF1I29IFkCOzquaqJv921b/ufQeofN4QCVv9GlEMJ7UhoyL48hrAbMv8Tz7SHiBk5PG+4MfWgqmsHyHpPINOmGOLugGgPKxnUry3tLghwyrbzrxbriu/zALHkxTvpT+0N6sSZ3sw2Y1WELnn9v9/kMbvf78UoLYhqDSu1C6c2KCjJYXPd6KrQP+g6jllj7IoBYXAz6OKixEdo+ddQ4d9Th4YEjnC9MUkh9WYbGfEHgAwc9GjuiPzDWK7j8/jusN712fcAGRbAWO198a7ZWQaWBSguKfurp4l0blK6ydyNTuZ6AypG2L2uIhTymEQz05PC6r1wMlShM1JpFexUxdAPbmY0kD8C3vNhIMtzpmjvwzeHgzoSRdiZueIJtWyrpYlF8mEnlcRJaCtjWmUopZFSpwiTGynGdcPKMpRn3F0tuk0eqiRfjJOLdvqURs7l/6Y3ILLD0Mfz9n/FhAH+cuJ30uWZ+6s5GvGkA1Nqi+Ufo+Ym27l/dxZ+gMMaiHdGSSOJNsSNn0hCQyfuBGvc78ZI99t4sAmhh+74AYFg9I77ZnZTiJIj+0e5wjX0yBBp2Hb2xYEE043/9fqZG9Ornt+CwMd1Uo+bCLAuoH6ef899NArC2bWnrC+/3SnEpJyNpOv1AZh/UGR6vqceyUjat5KUSLTXs0RdTx42PD0l4LW1IVpNepGE67Lwl/WhIl6VXq/tx1wTxPCCZb2ftqlTIGtfWiCKtn21MiSo/mgpxYyoMvu46bUkP39aXSDmgu2fH4ozYSGKi7WaazzR0qWFt4UwQr1YjrfmWGPaw0L/hYoq+FlDFvgdUPuKlZgjy85QUIHKaaHriKSZ7ZXH2V+MRzwk2CKlxpUjn69A2J3AdbGAtZ2041OZcsa+lSi2WMtaiTPT9qV+JISCcFrRr6yAbrOFq4RJ+5AbS3fnmVCWbYq9N5afW8RuYW+0CFujKnbZPqy0LvIN7/AqPMkRKlvalfhQQz6+LN/5L6H+r/teJge9UWckR6pYeiimQmcbiDVYAAQddyIpzUTxgAQXhqDGk+Y34b+NcxScbg0dEt3Zefes4P/c1bvlBda9ZWBn0F9YFDmQYvxufU6xMTT6ZDwof54bO2AAAAAAA==" alt="" height="46"><span>خرید قسطی</span></button>
               <button type="button" class="qa-tile" data-dlv><img src="data:image/webp;base64,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" alt="" height="42"><span>تحویل فیزیکی</span></button>
             </div>
             <div class="qa-row r4">
@@ -4073,38 +4068,89 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
         <div class="page-footer"><button type="button" class="btn" id="lnBtn"><span class="label">ادامه</span></button></div>
       </section>
 
-      <!-- Credit purchase: quote, provider and application -->
-      <section class="screen page st stflow ln" id="screenCredit" data-pos="next" inert aria-label="درخواست اعتبار">
+
+      <!-- ================= خرید قسطی (credit gold purchase) — same components as «وام با وثیقه طلا» ================= -->
+      <section class="screen page st stflow ln" id="screenCiList" data-pos="next" inert aria-label="خرید قسطی">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">خرید قسطی</span></div>
+          <div class="ah-actions"><button type="button" class="circle-btn ci-faq" aria-label="پرسش‌های متداول"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 14.41C11.59 14.41 11.25 14.07 11.25 13.66V11.99C11.25 11.58 11.59 11.24 12 11.24C12.81 11.24 13.47 10.58 13.47 9.77C13.47 8.96 12.81 8.3 12 8.3C11.19 8.3 10.53 8.96 10.53 9.77C10.53 10.18 10.19 10.52 9.78 10.52C9.37 10.52 9.03 10.18 9.03 9.77C9.03 8.13 10.36 6.8 12 6.8C13.64 6.8 14.97 8.13 14.97 9.77C14.97 11.15 14.02 12.31 12.75 12.65V13.66C12.75 14.07 12.41 14.41 12 14.41Z" fill="currentColor"/> <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="currentColor"/> <path d="M12 17.25C11.59 17.25 11.19 16.86 11.19 16.44C11.19 16.02 11.58 15.63 12 15.63C12.42 15.63 12.81 16.02 12.81 16.44C12.81 16.86 12.42 17.25 12 17.25Z" fill="currentColor"/></svg></button></div>
+        </header>
+        <div class="page-scroll st-list" id="ciListWrap">
+          <div class="dp-list" id="ciList"></div>
+          <div class="dp-emptyst" id="ciEmpty" hidden>
+            <div class="fi" id="ciIntro"></div>
+            <button type="button" class="btn dp-empty-btn" id="ciEmptyNew"><span class="label">درخواست اعتبار</span></button>
+          </div>
+        </div>
+        <div class="page-footer" id="ciListFoot"><button type="button" class="btn" id="ciNew"><span class="label">درخواست اعتبار جدید</span></button></div>
+      </section>
+
+      <section class="screen page st stflow ln" id="screenCiView" data-pos="next" inert aria-label="خرید قسطی">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">خرید قسطی</span></div>
+          <div class="ah-actions"><button type="button" class="circle-btn ci-faq" aria-label="پرسش‌های متداول"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 14.41C11.59 14.41 11.25 14.07 11.25 13.66V11.99C11.25 11.58 11.59 11.24 12 11.24C12.81 11.24 13.47 10.58 13.47 9.77C13.47 8.96 12.81 8.3 12 8.3C11.19 8.3 10.53 8.96 10.53 9.77C10.53 10.18 10.19 10.52 9.78 10.52C9.37 10.52 9.03 10.18 9.03 9.77C9.03 8.13 10.36 6.8 12 6.8C13.64 6.8 14.97 8.13 14.97 9.77C14.97 11.15 14.02 12.31 12.75 12.65V13.66C12.75 14.07 12.41 14.41 12 14.41Z" fill="currentColor"/> <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="currentColor"/> <path d="M12 17.25C11.59 17.25 11.19 16.86 11.19 16.44C11.19 16.02 11.58 15.63 12 15.63C12.42 15.63 12.81 16.02 12.81 16.44C12.81 16.86 12.42 17.25 12 17.25Z" fill="currentColor"/></svg></button><button type="button" class="circle-btn" id="ciAllBtn" aria-label="همه اعتبارها"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="13.5" r="1" fill="currentColor"/><circle cx="12" cy="13.5" r="1" fill="currentColor"/><circle cx="15.5" cy="13.5" r="1" fill="currentColor"/><circle cx="8.5" cy="17" r="1" fill="currentColor"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></button></div>
+        </header>
+        <div class="page-scroll st-form lx" id="ciViewB"></div>
+        <div class="page-footer ln-foot" id="ciViewF"></div>
+      </section>
+
+      <section class="screen page st stflow ln" id="screenCiReq" data-pos="next" inert aria-label="درخواست اعتبار">
         <header class="app-header">
           <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">درخواست اعتبار</span></div>
-          <div class="ah-actions"></div>
+          <div class="ah-actions"><button type="button" class="circle-btn ci-faq" aria-label="پرسش‌های متداول"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 14.41C11.59 14.41 11.25 14.07 11.25 13.66V11.99C11.25 11.58 11.59 11.24 12 11.24C12.81 11.24 13.47 10.58 13.47 9.77C13.47 8.96 12.81 8.3 12 8.3C11.19 8.3 10.53 8.96 10.53 9.77C10.53 10.18 10.19 10.52 9.78 10.52C9.37 10.52 9.03 10.18 9.03 9.77C9.03 8.13 10.36 6.8 12 6.8C13.64 6.8 14.97 8.13 14.97 9.77C14.97 11.15 14.02 12.31 12.75 12.65V13.66C12.75 14.07 12.41 14.41 12 14.41Z" fill="currentColor"/> <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="currentColor"/> <path d="M12 17.25C11.59 17.25 11.19 16.86 11.19 16.44C11.19 16.02 11.58 15.63 12 15.63C12.42 15.63 12.81 16.02 12.81 16.44C12.81 16.86 12.42 17.25 12 17.25Z" fill="currentColor"/></svg></button></div>
         </header>
-        <div class="page-scroll st-form ln-form" id="crScroll">
-          <div class="st2-row ln-amt-row"><label for="crAmount">مقدار اعتبار درخواستی</label><small id="crGold"></small></div>
-          <div class="cr-stepper">
-            <button type="button" class="circle-btn" id="crPlus" aria-label="افزایش مبلغ">+</button>
-            <div class="st2-field cr-amount"><input id="crAmount" type="text" inputmode="numeric" autocomplete="off"><span>تومان</span></div>
-            <button type="button" class="circle-btn" id="crMinus" aria-label="کاهش مبلغ">−</button>
+        <div class="page-scroll st-form ln-form" id="ciReqS">
+          <div class="st2-row ln-amt-row" style="margin-top:4px"><b>مبلغ اعتبار</b><button type="button" class="ln-capbtn" id="ciCap"></button></div>
+          <div class="st2-field" id="ciCard">
+            <div class="st2-num" id="ciNum"><span class="st2-val" id="ciVal"></span><span class="amt-caret"></span><span class="st2-ph">مبلغ به تومان</span>
+              <input id="ciInput" type="text" inputmode="none" autocomplete="off" aria-label="مبلغ اعتبار به تومان"></div>
           </div>
-          <input type="range" class="ln-slider" id="crRange" min="10000000" max="200000000" step="1000000" aria-label="مبلغ اعتبار">
-          <div class="cr-limits"><span>۱۰ میلیون تومان</span><span>۲۰۰ میلیون تومان</span></div>
-          <div class="st2-chips ln-months cr-months" role="group" aria-label="مدت بازپرداخت">
-            <button type="button" data-credit-months="6">۶ ماهه</button><button type="button" data-credit-months="12">۱۲ ماهه</button>
-            <button type="button" data-credit-months="18">۱۸ ماهه</button><button type="button" data-credit-months="24">۲۴ ماهه</button>
+          <input type="range" class="ln-slider" id="ciSlider" min="10000000" max="200000000" step="1000000" aria-label="مبلغ اعتبار">
+          <div class="ln-hint" id="ciHint"></div>
+          <div class="ln-label">مدت بازپرداخت</div>
+          <div class="st2-chips ln-months ci-months" id="ciMonths"></div>
+          <div class="ln-label">تأمین‌کننده</div>
+          <div class="ci-offers" id="ciOffers" role="radiogroup" aria-label="تأمین‌کننده"></div>
+        </div>
+        <div class="page-footer"><button type="button" class="btn" id="ciReqBtn"><span class="label">ادامه</span></button></div>
+      </section>
+
+      <section class="screen page st stflow ln" id="screenCiDet" data-pos="next" inert aria-label="جزئیات اعتبار">
+        <header class="app-header">
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">جزئیات اعتبار</span></div>
+          <div class="ah-actions"><button type="button" class="circle-btn ci-faq" aria-label="پرسش‌های متداول"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 14.41C11.59 14.41 11.25 14.07 11.25 13.66V11.99C11.25 11.58 11.59 11.24 12 11.24C12.81 11.24 13.47 10.58 13.47 9.77C13.47 8.96 12.81 8.3 12 8.3C11.19 8.3 10.53 8.96 10.53 9.77C10.53 10.18 10.19 10.52 9.78 10.52C9.37 10.52 9.03 10.18 9.03 9.77C9.03 8.13 10.36 6.8 12 6.8C13.64 6.8 14.97 8.13 14.97 9.77C14.97 11.15 14.02 12.31 12.75 12.65V13.66C12.75 14.07 12.41 14.41 12 14.41Z" fill="currentColor"/> <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="currentColor"/> <path d="M12 17.25C11.59 17.25 11.19 16.86 11.19 16.44C11.19 16.02 11.58 15.63 12 15.63C12.42 15.63 12.81 16.02 12.81 16.44C12.81 16.86 12.42 17.25 12 17.25Z" fill="currentColor"/></svg></button></div>
+        </header>
+        <div class="page-scroll st-form lx" id="ciDetB"></div>
+        <div class="page-footer stc-foot">
+          <div class="agree st-agree" id="ciAgree" role="checkbox" aria-checked="false" tabindex="0">
+            <span class="box"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="m2.5 6.2 2.3 2.3 4.7-4.9" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><button type="button" class="terms-link" id="ciTerms">شرایط و تعهدات</button> اعتبار خرید طلا را خواندم و می‌پذیرم.</span>
           </div>
-          <div class="sec-div"></div>
-          <div class="ln-label">تأمین‌کننده‌های مناسب اعتبار درخواستی</div>
-          <p id="crStatus" role="status" class="cr-status" hidden></p>
-          <div id="crOffers" class="cr-offers"></div>
+          <button type="button" class="btn" id="ciDetBtn"><span class="label"></span><span class="spinner" aria-hidden="true"></span></button>
         </div>
       </section>
-      <section class="screen page st stflow ln" id="screenCreditDetails" data-pos="next" inert aria-label="جزئیات خرید قسطی">
+
+      <section class="screen page st stflow ln" id="screenCiAdd" data-pos="next" inert aria-label="افزایش وثیقه">
         <header class="app-header">
-          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">جزئیات خرید قسطی</span></div>
+          <div class="ah-start"><button type="button" class="circle-btn st-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">افزایش وثیقه</span></div>
           <div class="ah-actions"></div>
         </header>
-        <div class="page-scroll st-form lx" id="crDetails"></div>
-        <div class="page-footer" id="crFooter"></div>
+        <div class="page-scroll st-form lx" id="ciaScroll">
+          <div class="st2-row ln-amt-row" style="margin-top:4px"><b>مقدار افزایش</b><span id="ciaFree"></span></div>
+          <div class="st2-field" id="ciaCard">
+            <div class="st2-num" id="ciaNum"><span class="st2-val" id="ciaVal"></span><span class="amt-caret"></span><span class="st2-ph">مقدار به گرم</span>
+              <input id="ciaInput" type="text" inputmode="none" autocomplete="off" aria-label="مقدار افزایش وثیقه"></div>
+          </div>
+          <div class="ln-hint" id="ciaHint"></div>
+          <button type="button" class="la-min" id="ciaMin"></button>
+          <div class="sec-div"></div>
+          <div class="lx-rows la-now" id="ciaNow"></div>
+        </div>
+        <div class="page-footer"><button type="button" class="btn" id="ciaBtn"><span class="label">افزایش وثیقه</span></button></div>
+      </section>
+
+      <section class="screen page br" id="screenCiRes" data-pos="next" inert aria-label="نتیجه">
+        <div class="page-scroll br-body"><div class="br-state" id="ciResB"></div></div>
       </section>
 
       <!-- L2 loan details: costs + schedule + rules -->
@@ -4851,6 +4897,32 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
           <div class="sheet-footer"><button type="button" class="btn" id="svBuy" data-close><span class="label">خرید نقره</span></button></div>
         </div>
       </div>
+
+      <!-- خرید قسطی: sheets (same components as the loan) -->
+      <div class="modal" id="ciPayModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-sheet" role="dialog" aria-labelledby="ciPayT">
+          <div class="sheet-header with-close"><button type="button" class="sheet-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button><span id="ciPayT"></span></div>
+          <div class="st-sheet-body" id="ciPayB"></div>
+          <div class="sheet-footer st-sheet-btns"><button type="button" class="btn" id="ciPayBtn"><span class="label"></span><span class="spinner" aria-hidden="true"></span></button></div>
+        </div>
+      </div>
+      <div class="modal" id="ciInfoModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-sheet dlg" role="dialog" aria-labelledby="ciInfoT">
+          <button type="button" class="sheet-x plain dlg-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button>
+          <div class="dlg-body"><img class="dlg-ill" id="ciInfoImg" alt=""><h3 id="ciInfoT"></h3><p id="ciInfoP"></p></div>
+          <div class="dlg-btns" id="ciInfoBtns"></div>
+        </div>
+      </div>
+      <div class="modal" id="ciTermsModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-sheet tall" role="dialog" aria-label="شرایط و تعهدات اعتبار خرید طلا">
+          <div class="sheet-header with-close"><button type="button" class="sheet-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button><span>شرایط و تعهدات اعتبار خرید طلا</span></div>
+          <div class="rules-scroll ci-terms" id="ciTermsB"></div>
+          <div class="sheet-footer st-sheet-btns"><button type="button" class="btn" id="ciTermsOk"><span class="label">خواندم و می‌پذیرم</span></button></div>
+        </div>
+      </div>
       <div class="modal" id="introModal" aria-hidden="true">
         <div class="modal-backdrop" data-close></div>
         <div class="modal-sheet intro-sheet fi-sheet" role="dialog" aria-labelledby="fiSheetTitle">
@@ -4902,6 +4974,10 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
           <summary><b>API</b><small class="tp-sum"></small></summary>
           <div class="tp-body"><div class="tp-row tp-swrow only-user"><span>کلید API دارد</span><button type="button" class="tp-sw" data-t="apis" data-on="some" data-off="none" role="switch" aria-checked="false" aria-label="کلید API دارد"><i></i></button></div><div class="tp-select tp-jumpw"><select class="tp-jumpx" data-sec="api" aria-label="رفتن به صفحه"></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
         </details>
+        <details class="tp-sec" data-sec="credit">
+          <summary><b>خرید قسطی</b><small class="tp-sum"></small></summary>
+          <div class="tp-body"><div class="tp-row only-user"><span>وضعیت اعتبار</span><div class="tp-select tp-sel-sm"><select data-t="ciState" data-sum aria-label="وضعیت اعتبار"><option value="none">ندارد</option><option value="past">فقط اعتبارهای قبلی</option><option value="pending">در حال بررسی</option><option value="abandoned">تکمیل نشده</option><option value="active">فعال</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row only-user"><span>تأمین‌کننده</span><div class="tp-select tp-sel-sm"><select data-t="ciProv" data-sum aria-label="تأمین‌کننده"><option value="zarpin">زرپین</option><option value="blu">دیگر (بلوبانک)</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row only-user"><span>وضعیت دارایی</span><div class="tp-select tp-sel-sm"><select data-t="ciHealth" data-sum aria-label="وضعیت دارایی"><option value="safe">محدوده امن</option><option value="warn">حد هشدار</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row tp-swrow only-user"><span>تأمین‌کننده‌ای پیدا نشود</span><button type="button" class="tp-sw" data-t="ciFind" data-on="none" data-off="ok" role="switch" aria-checked="false" aria-label="تأمین‌کننده‌ای پیدا نشود"><i></i></button></div><div class="tp-row tp-swrow only-user"><span>افزایش وثیقه ناموفق باشد</span><button type="button" class="tp-sw" data-t="ciRes" data-on="fail" data-off="ok" role="switch" aria-checked="false" aria-label="افزایش وثیقه ناموفق باشد"><i></i></button></div><div class="tp-select tp-jumpw"><select class="tp-jumpx" data-sec="credit" aria-label="رفتن به صفحه"></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
+        </details>
         <details class="tp-sec" data-sec="loan">
           <summary><b>وام</b><small class="tp-sum"></small></summary>
           <div class="tp-body"><div class="tp-row only-user"><span>وضعیت وام</span><div class="tp-select tp-sel-sm"><select data-t="loan" data-sum aria-label="وضعیت وام"><option value="none">ندارد</option><option value="pending">در ونسی</option><option value="active">فعال</option><option value="rejected">ردشده</option><option value="expired">منقضی</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-row tp-swrow only-user"><span>بانک درخواست را رد کند</span><button type="button" class="tp-sw" data-t="bank" data-on="reject" data-off="ok" role="switch" aria-checked="false" aria-label="بانک درخواست را رد کند"><i></i></button></div><div class="tp-row tp-swrow only-user"><span>قیمت هنگام قفل وثیقه تغییر کند</span><button type="button" class="tp-sw" data-t="loanPx" data-on="moved" data-off="same" role="switch" aria-checked="false" aria-label="قیمت هنگام قفل وثیقه تغییر کند"><i></i></button></div><div class="tp-row only-user"><span>سلامت وثیقه</span><div class="tp-select tp-sel-sm"><select data-t="loanHealth" aria-label="سلامت وثیقه"><option value="ok">سالم</option><option value="warn">هشدار</option><option value="sell">فروش وثیقه (لیکوئید)</option></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div><div class="tp-select tp-jumpw"><select class="tp-jumpx" data-sec="loan" aria-label="رفتن به صفحه"></select><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></div></div>
@@ -4914,7 +4990,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
               <optgroup label="صفحه اصلی"><option value="home">صفحه اصلی</option><option value="price">قیمت طلا</option><option value="priceSilver">قیمت نقره</option><option value="silverSheet">برگه موجودی نقره</option><option value="account">حساب کاربری</option></optgroup>
               <optgroup label="ورود"><option value="phone">شماره موبایل</option><option value="otp">کد تأیید</option></optgroup>
               <optgroup label="ثبت‌نام و احراز هویت"><option value="referral">کد معرف</option><option value="kyc">احراز هویت</option><option value="date">برگه تاریخ تولد</option><option value="terms">برگه قوانین</option><option value="success">احراز موفق</option></optgroup>
-              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeSilver">خرید نقره</option><option value="tradeSilverSell">فروش نقره</option><option value="alert">هشدار قیمت</option><option value="alertList">هشدار قیمت — با هشدار فعال</option><option value="alertHit">پیامک رسیدن قیمت</option><option value="silverIntro">معرفی نقره (اولین ورود)</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="payCards">انتخاب کارت بانکی</option><option value="payCardsNone">انتخاب کارت — بدون کارت</option><option value="payCardAdd">افزودن کارت بانکی</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="هدف پس‌انداز"><option value="goalPick">انتخاب هدف — چند گزینه</option><option value="goalPickOne">انتخاب هدف — آخرین شمش</option><option value="goalPickMix">انتخاب هدف — ترکیب دلخواه</option><option value="goalMade">هدف ثبت شد — بار اول</option><option value="goalMadeAgain">هدف ثبت شد — دفعه‌های بعد</option><option value="goalDetails">جزئیات هدف — یک شمش</option><option value="goalDetailsMix">جزئیات هدف — ترکیبی</option><option value="goalEdit">تغییر هدف</option><option value="goalDelete">حذف هدف</option><option value="goalDone">رسیدن به هدف</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiMax">مدیریت API (سقف ۳ کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlvOrders">سفارش‌های تحویل</option><option value="dlvOrdersEmpty">سفارش‌های تحویل — خالی</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="وام با وثیقه طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanKyc">قفل وثیقه بدون احراز هویت</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanBack">بازگشت از ونسی</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanActive">وام فعال</option><option value="loanActiveNew">وام تازه فعال‌شده (اولین بار + راهنمای نمودار)</option><option value="loanGaugeTour">راهنمای نمودار وثیقه</option><option value="loanWarn">وام فعال — حد هشدار</option><option value="loanWarnSheet">باتم‌شیت وام در حد هشدار (ورود به اپ)</option><option value="loanGuide">آموزش حد هشدار</option><option value="loanAdd">افزایش وثیقه</option><option value="loanSell">وام — لیکوئیدشده</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanRedirect">پرداخت قسط — انتقال به ونسی</option><option value="loanMy">وام‌های من</option><option value="loanMyEmpty">وام‌های من — خالی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
+              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeSilver">خرید نقره</option><option value="tradeSilverSell">فروش نقره</option><option value="alert">هشدار قیمت</option><option value="alertList">هشدار قیمت — با هشدار فعال</option><option value="alertHit">پیامک رسیدن قیمت</option><option value="silverIntro">معرفی نقره (اولین ورود)</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="payCards">انتخاب کارت بانکی</option><option value="payCardsNone">انتخاب کارت — بدون کارت</option><option value="payCardAdd">افزودن کارت بانکی</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="هدف پس‌انداز"><option value="goalPick">انتخاب هدف — چند گزینه</option><option value="goalPickOne">انتخاب هدف — آخرین شمش</option><option value="goalPickMix">انتخاب هدف — ترکیب دلخواه</option><option value="goalMade">هدف ثبت شد — بار اول</option><option value="goalMadeAgain">هدف ثبت شد — دفعه‌های بعد</option><option value="goalDetails">جزئیات هدف — یک شمش</option><option value="goalDetailsMix">جزئیات هدف — ترکیبی</option><option value="goalEdit">تغییر هدف</option><option value="goalDelete">حذف هدف</option><option value="goalDone">رسیدن به هدف</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiMax">مدیریت API (سقف ۳ کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlvOrders">سفارش‌های تحویل</option><option value="dlvOrdersEmpty">سفارش‌های تحویل — خالی</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="خرید قسطی"><option value="ciEmpty">خرید قسطی — بدون اعتبار (معرفی)</option><option value="ciPast">خرید قسطی — اعتبارهای قبلی</option><option value="ciFaq">پرسش‌های متداول</option><option value="ciReq">درخواست اعتبار</option><option value="ciReqEmpty">درخواست — بدون مبلغ</option><option value="ciReqNone">درخواست — تأمین‌کننده‌ای پیدا نشد</option><option value="ciGoldInfo">برگه مقدار طلای دریافتی</option><option value="ciDetZ">جزئیات اعتبار — زرپین</option><option value="ciTerms">برگه شرایط و تعهدات</option><option value="ciPayZ">پرداخت هزینه و قسط اول</option><option value="ciOtpZ">کد تأیید</option><option value="ciDoneZ">اعتبار زرپین فعال شد</option><option value="ciDetO">جزئیات اعتبار — تأمین‌کننده دیگر</option><option value="ciDoneO">درخواست ثبت شد (تأمین‌کننده دیگر)</option><option value="ciRedir">انتقال به تأمین‌کننده</option><option value="ciPending">اعتبار — در حال بررسی</option><option value="ciAbandoned">اعتبار — تکمیل نشده</option><option value="ciActZ">اعتبار زرپین — سالم</option><option value="ciActZWarn">اعتبار زرپین — حد هشدار</option><option value="ciActO">اعتبار دیگر — سالم</option><option value="ciActOWarn">اعتبار دیگر — حد هشدار</option><option value="ciWarnSheet">دیالوگ حد هشدار</option><option value="ciInst">پرداخت قسط</option><option value="ciAdd">افزایش وثیقه</option><option value="ciAddWarn">افزایش وثیقه — حد هشدار</option><option value="ciAddOk">وثیقه افزایش یافت</option><option value="ciAddFail">افزایش وثیقه ناموفق</option><option value="ciList">همه اعتبارها</option><option value="ciLiqView">اعتبار لیکوئیدشده</option></optgroup><optgroup label="وام با وثیقه طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanKyc">قفل وثیقه بدون احراز هویت</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanBack">بازگشت از ونسی</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanActive">وام فعال</option><option value="loanActiveNew">وام تازه فعال‌شده (اولین بار + راهنمای نمودار)</option><option value="loanGaugeTour">راهنمای نمودار وثیقه</option><option value="loanWarn">وام فعال — حد هشدار</option><option value="loanWarnSheet">باتم‌شیت وام در حد هشدار (ورود به اپ)</option><option value="loanGuide">آموزش حد هشدار</option><option value="loanAdd">افزایش وثیقه</option><option value="loanSell">وام — لیکوئیدشده</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanRedirect">پرداخت قسط — انتقال به ونسی</option><option value="loanMy">وام‌های من</option><option value="loanMyEmpty">وام‌های من — خالی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
               <optgroup label="کیف پول و تاریخچه"><option value="wallet">کیف پول</option><option value="goldSheet">برگه طلای ۱۸ عیار</option><option value="history">تاریخچه — خرید و فروش</option><option value="historyDep">تاریخچه — واریز</option><option value="historyWd">تاریخچه — برداشت</option><option value="historyDel">تاریخچه — تحویل فیزیکی</option><option value="orderDetail">جزئیات سفارش</option><option value="histDate">انتخاب تاریخ</option></optgroup>
               <optgroup label="درآمد طلایی"><option value="stLanding">ورود به درآمد طلایی</option><option value="stFaq">پرسش‌های متداول</option><option value="stake">سپرده جدید</option><option value="stShort">کمبود موجودی</option><option value="stConfirm">تأیید سپرده</option><option value="stContract">برگه قرارداد</option><option value="stDone">سپرده ثبت شد</option><option value="deposits">سپرده‌های من</option><option value="depositEmpty">سپرده‌های من (خالی)</option><option value="yields">درآمدهای دریافت‌شده</option><option value="yieldsEmpty">درآمدهای دریافت‌شده (خالی)</option><option value="deposit">جزئیات سپرده</option><option value="stCancel">برگه لغو</option><option value="stOtp">کد تأیید لغو</option><option value="depositMatured">جزئیات سپرده سررسیدشده</option></optgroup>
             </select>
@@ -5864,6 +5940,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
 
   /* ---------- service tiles (old home): any count; rows of 3, or rows of 2 when that fits better ---------- */
   const TILE_ICONS = {
+    credit:  '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.25" y="5.25" width="17.5" height="15.5" rx="3"/><path d="M3.25 9.75h17.5M8 3.25v3.5M16 3.25v3.5"/><path d="M9 15.5 11 13.5h3l1.5 2H9Z"/></svg>',
     loan:    '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="6.75" width="18.5" height="11" rx="2.5"/><circle cx="12" cy="12.25" r="2.25"/><path d="M6 9.75v5M18 9.75v5"/><path d="M5.5 20.5h13"/></svg>',
     invite:  '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.00024 1.25C11.8643 1.25023 14.1897 3.57636 14.1897 6.44043V6.44336C14.1779 9.24364 11.9705 11.5255 9.18481 11.6191C9.15157 11.6202 9.11831 11.6195 9.08521 11.6162C9.03698 11.6114 8.9649 11.6111 8.89771 11.6172C8.86687 11.62 8.83588 11.6202 8.80493 11.6191C6.01987 11.5255 3.81004 9.24361 3.80981 6.44043C3.80981 3.57732 6.12493 1.25 9.00024 1.25ZM5.30981 6.44043C5.31004 8.43248 6.8735 10.0461 8.84204 10.1191C8.94145 10.1133 9.04451 10.1134 9.1438 10.1191C11.1125 10.0481 12.6795 8.43529 12.6897 6.44043L12.6848 6.25C12.5857 4.30243 10.9721 2.75023 9.00024 2.75C6.95556 2.75 5.30981 4.40354 5.30981 6.44043Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M19.1597 7.5C19.1597 5.98282 17.9341 4.75 16.4097 4.75C15.9955 4.74994 15.6597 4.41417 15.6597 4C15.6597 3.58583 15.9955 3.25006 16.4097 3.25C18.7653 3.25 20.6597 5.15718 20.6597 7.5C20.6597 9.79544 18.8387 11.664 16.5679 11.749C16.5275 11.7505 16.4869 11.7492 16.4468 11.7441C16.4318 11.7423 16.4013 11.7409 16.3628 11.7451C15.9512 11.7909 15.5805 11.4946 15.5347 11.083C15.489 10.6714 15.7852 10.3007 16.1968 10.2549C16.3046 10.2429 16.4172 10.242 16.5288 10.249C17.99 10.1853 19.1597 8.97878 19.1597 7.5Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M9.17188 12.4375C11.0993 12.4375 13.0647 12.9215 14.584 13.9355C15.9505 14.8447 16.7344 16.1194 16.7344 17.4912C16.7344 18.7769 16.047 19.9795 14.8359 20.8779L14.5869 21.0537C13.0628 22.0735 11.094 22.5595 9.16504 22.5596C7.23596 22.5596 5.2664 22.0736 3.74219 21.0537C2.37709 20.1447 1.59483 18.87 1.59473 17.499C1.59473 16.1277 2.37692 14.8505 3.74219 13.9365L3.74512 13.9346C5.27345 12.9212 7.24357 12.4376 9.17188 12.4375ZM9.17188 13.9375C7.47044 13.9376 5.8057 14.369 4.57422 15.1855C3.52171 15.8912 3.09473 16.7435 3.09473 17.499C3.09482 18.2074 3.46992 18.9993 4.38477 19.6729L4.5752 19.8057L4.57715 19.8066C5.80291 20.6267 7.46423 21.0596 9.16504 21.0596C10.8658 21.0595 12.5272 20.6268 13.7529 19.8066C14.8073 19.1007 15.2344 18.2473 15.2344 17.4912C15.2344 16.7355 14.8073 15.8854 13.7539 15.1846L13.7529 15.1836C12.5325 14.3686 10.8736 13.9375 9.17188 13.9375Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M17.6385 13.8349C17.7296 13.431 18.131 13.1775 18.535 13.2685C19.3229 13.4461 20.0961 13.7629 20.7488 14.2597C21.6915 14.9667 22.2195 15.9531 22.2195 16.9951C22.2195 18.037 21.6925 19.0234 20.7498 19.7304L20.7488 19.7295C20.0882 20.2348 19.3037 20.5654 18.493 20.7343C18.0876 20.8188 17.6899 20.5586 17.6053 20.1533C17.5208 19.7479 17.781 19.3502 18.1863 19.2656C18.8125 19.1351 19.3847 18.8866 19.8426 18.5351L19.8494 18.5302C20.4667 18.0673 20.7195 17.5031 20.7195 16.9951C20.7195 16.487 20.4667 15.9229 19.8494 15.4599L19.8445 15.456C19.3986 15.1155 18.8344 14.8733 18.2049 14.7314C17.8008 14.6403 17.5474 14.239 17.6385 13.8349Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
     profit:  '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6.75C11.59 6.75 11.25 6.41 11.25 6V5C11.25 4.59 11.59 4.25 12 4.25C12.41 4.25 12.75 4.59 12.75 5V6C12.75 6.41 12.41 6.75 12 6.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12 13.75C11.59 13.75 11.25 13.41 11.25 13V12C11.25 11.59 11.59 11.25 12 11.25C12.41 11.25 12.75 11.59 12.75 12V13C12.75 13.41 12.41 13.75 12 13.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12.5902 12.7498H11.5002C10.7302 12.7498 10.0302 12.3498 9.62023 11.6698C9.41023 11.3198 9.52023 10.8498 9.87023 10.6398C10.2202 10.4298 10.6902 10.5398 10.9002 10.8898C10.9602 10.9998 11.1502 11.2498 11.4902 11.2498H12.5802C12.9402 11.2498 13.2302 10.9598 13.2302 10.5998C13.2302 10.2998 13.0302 10.0398 12.7402 9.96977L10.8602 9.49977C9.90023 9.24977 9.24023 8.39977 9.24023 7.40977C9.24023 6.21977 10.2102 5.25977 11.3902 5.25977H12.4802C13.2402 5.25977 13.9402 5.65977 14.3502 6.32977C14.5702 6.67977 14.4602 7.13977 14.1102 7.35977C13.7602 7.57977 13.3002 7.46977 13.0802 7.11977C13.0102 7.00977 12.8202 6.76977 12.4802 6.76977H11.3902C11.0302 6.76977 10.7402 7.05977 10.7402 7.41977C10.7402 7.71977 10.9402 7.97977 11.2302 8.04977L13.1002 8.51977C14.0602 8.74977 14.7302 9.60977 14.7302 10.6098C14.7302 11.7998 13.7602 12.7598 12.5802 12.7598L12.5902 12.7498Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M12 16.75C10.4 16.75 8.88 16.27 7.58 15.36C5.58 13.97 4.33 11.69 4.26 9.27C4.26 9.23 4.25 9.11 4.25 9C4.25 4.73 7.73 1.25 12 1.25C16.27 1.25 19.75 4.73 19.75 9C19.75 9.11 19.75 9.23 19.73 9.34C19.66 11.7 18.42 13.97 16.41 15.37C15.12 16.27 13.59 16.75 11.99 16.75H12ZM12 2.75C8.55 2.75 5.75 5.55 5.75 9C5.75 9.05 5.75 9.1 5.75 9.15C5.82 11.17 6.82 13.01 8.43 14.13C10.52 15.59 13.47 15.59 15.55 14.13C17.17 13.01 18.17 11.17 18.23 9.22C18.24 9.1 18.23 9.04 18.23 8.99C18.23 5.54 15.43 2.74 11.98 2.74L12 2.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M14.9999 22.7499C13.8299 22.7499 12.7099 22.4999 11.6699 21.9999C11.4099 21.8699 11.2399 21.6099 11.2499 21.3199C11.2599 21.0299 11.4199 20.7699 11.6799 20.6499C13.8799 19.6099 15.2499 17.4499 15.2499 15.0099C15.2499 14.9599 15.2499 14.8999 15.2499 14.8499C15.2199 14.5699 15.3399 14.2999 15.5699 14.1399C17.1899 13.0199 18.1899 11.1799 18.2499 9.2299C18.2499 8.9599 18.4199 8.7099 18.6599 8.5799C18.9099 8.4599 19.1999 8.4799 19.4199 8.6299C21.5099 10.0699 22.7499 12.4499 22.7499 14.9999C22.7499 19.2699 19.2699 22.7499 14.9999 22.7499ZM13.7499 21.1299C14.1599 21.2099 14.5699 21.2499 14.9999 21.2499C18.4499 21.2499 21.2499 18.4499 21.2499 14.9999C21.2499 13.3899 20.6299 11.8699 19.5499 10.7199C19.1599 12.4499 18.1699 14.0199 16.7399 15.1199C16.6999 17.5299 15.5899 19.6999 13.7399 21.1199L13.7499 21.1299Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M9 22.7505C4.73 22.7505 1.25 19.2704 1.25 15.0004C1.25 12.4604 2.5 10.0804 4.58 8.63045C4.81 8.47045 5.1 8.45045 5.34 8.58045C5.59 8.70045 5.74 8.95045 5.75 9.23045C5.81 11.1804 6.81 13.0204 8.43 14.1404C10.52 15.6004 13.47 15.6004 15.55 14.1404C15.77 13.9904 16.04 13.9604 16.29 14.0704C16.53 14.1804 16.7 14.4004 16.73 14.6604C16.74 14.7704 16.75 14.8904 16.75 15.0004C16.75 18.0304 15.05 20.7104 12.32 22.0005C11.29 22.5005 10.17 22.7505 9 22.7505ZM4.45 10.7204C3.37 11.8704 2.75 13.3904 2.75 15.0004C2.75 18.4504 5.55 21.2505 9 21.2505C9.94 21.2505 10.84 21.0504 11.67 20.6404C13.55 19.7505 14.82 18.0604 15.16 16.0804C12.75 17.1604 9.77 16.9 7.58 15.36C5.98 14.25 4.87 12.5804 4.45 10.7104V10.7204Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
@@ -5872,7 +5949,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     gift:    '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.2799 22.2496H6.71985C5.13985 22.2496 3.85986 20.9696 3.85986 19.3896V13.0596C3.85986 12.6496 4.19986 12.3096 4.60986 12.3096H19.3899C19.7999 12.3096 20.1399 12.6496 20.1399 13.0596V19.3896C20.1399 20.9696 18.8599 22.2496 17.2799 22.2496ZM5.35986 13.8096V19.3896C5.35986 20.1396 5.96985 20.7496 6.71985 20.7496H17.2799C18.0299 20.7496 18.6399 20.1396 18.6399 19.3896V13.8096H5.35986Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M19.39 13.8103H4.60999C3.02999 13.8103 1.75 12.6803 1.75 11.3003V9.54027C1.75 8.16027 3.02999 7.03027 4.60999 7.03027H19.39C20.97 7.03027 22.25 8.16027 22.25 9.54027V11.3003C22.25 12.6803 20.97 13.8103 19.39 13.8103ZM4.60999 8.53027C3.86999 8.53027 3.25 8.99027 3.25 9.54027V11.3003C3.25 11.8503 3.86986 12.3096 4.60986 12.3096H19.3899C20.1299 12.3096 20.75 11.8503 20.75 11.3003V9.54027C20.75 8.99027 20.13 8.53027 19.39 8.53027H4.60999Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M10.7301 8.52957C10.3201 8.52957 9.90006 8.46957 9.49006 8.38957C7.88006 8.07957 6.57009 6.97957 6.15009 5.58957C5.82009 4.48957 6.09009 3.40957 6.90009 2.60957C7.70009 1.81957 8.77005 1.56956 9.85005 1.89956C11.22 2.32956 12.3101 3.64957 12.6101 5.27957C12.7901 6.25957 12.8901 7.35958 12.2301 8.01958C11.8401 8.39958 11.3001 8.52957 10.7301 8.52957ZM8.93006 3.24957C8.62006 3.24957 8.28008 3.34957 7.95008 3.66957C7.43008 4.17957 7.47009 4.74956 7.58009 5.14956C7.84009 6.01957 8.70009 6.70957 9.77009 6.91957C10.9501 7.14957 11.15 6.96958 11.16 6.95958C11.17 6.94958 11.3501 6.74957 11.1301 5.55957C10.9301 4.47957 10.2401 3.59957 9.39008 3.33957C9.26008 3.27957 9.10006 3.24957 8.93006 3.24957Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/> <path d="M13.27 8.53004C12.7 8.53004 12.16 8.40005 11.77 8.02005C11.1 7.35005 11.2 6.26004 11.39 5.28004C11.69 3.66004 12.78 2.33004 14.15 1.90004C15.23 1.56004 16.2999 1.82004 17.0999 2.61004C17.9099 3.41004 18.1799 4.49004 17.8499 5.59004C17.4299 6.98004 16.12 8.08004 14.51 8.39004C14.1 8.46004 13.67 8.53004 13.27 8.53004ZM15.07 3.25004C14.9 3.25004 14.7399 3.28005 14.5999 3.33005C13.7499 3.60005 13.07 4.47005 12.86 5.55005C12.63 6.74005 12.82 6.95004 12.83 6.95004C12.84 6.95004 13.0399 7.14005 14.2199 6.91005C15.2899 6.70005 16.1499 6.01004 16.4099 5.14004C16.5299 4.75004 16.56 4.17005 16.04 3.66005C15.72 3.35005 15.38 3.25004 15.07 3.25004Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/></svg>',
     convert: '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.9694 14.4597C20.262 14.1669 20.7369 14.1663 21.03 14.4587C21.3232 14.7513 21.3236 15.227 21.031 15.5202L16.0212 20.5397C15.7286 20.8329 15.2529 20.8333 14.9597 20.5407C14.6668 20.2482 14.6664 19.7733 14.9587 19.4802L19.9694 14.4597Z" fill="currentColor"/> <path d="M20.4999 14.2399C20.9142 14.2399 21.2499 14.5757 21.2499 14.9899C21.2499 15.4041 20.9142 15.7399 20.4999 15.7399H3.49994C3.08573 15.7399 2.74994 15.4041 2.74994 14.9899C2.74994 14.5757 3.08573 14.2399 3.49994 14.2399H20.4999Z" fill="currentColor"/> <path d="M7.97944 3.45966C8.27205 3.16691 8.74693 3.1663 9.03998 3.45868C9.33317 3.75129 9.33356 4.22702 9.04096 4.52021L4.03119 9.53974C3.73859 9.83292 3.26286 9.83332 2.96967 9.54072C2.67683 9.24816 2.6764 8.77328 2.96869 8.48017L7.97944 3.45966Z" fill="currentColor"/> <path d="M20.4999 8.25993C20.9142 8.25993 21.2499 8.59572 21.2499 9.00993C21.2499 9.42415 20.9142 9.75993 20.4999 9.75993H3.49994C3.08573 9.75993 2.74994 9.42415 2.74994 9.00993C2.74994 8.59572 3.08573 8.25993 3.49994 8.25993H20.4999Z" fill="currentColor"/></svg>',
   };
-  const TILES = [['invite','دعوت دوست'],['profit','درآمد طلایی','جدید'],['delivery','تحویل فیزیکی'],['loan','وام','جدید'],['piggy','قلک'],['gift','هدیه'],['convert','تبدیل']];
+  const TILES = [['invite','دعوت دوست'],['profit','درآمد طلایی','جدید'],['delivery','تحویل فیزیکی'],['loan','وام','جدید'],['credit','خرید قسطی','جدید'],['piggy','قلک'],['gift','هدیه'],['convert','تبدیل']];
   function tileRows(n){            // 4 → 2+2, 5 → 3+2, 7 → 3+2+2 … never a lone tile on a row
     if (n <= 3) return [n];
     const rows = []; let left = n;
@@ -5882,10 +5959,10 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   function renderTiles(n){
     let i = 0;
     const html = tileRows(n).map(c => `<div class="tile-row" style="grid-template-columns:repeat(${c},1fr)">` +
-      TILES.slice(i, i += c).map(([k, label, badge]) => `<button type="button" class="tile${['profit', 'delivery', 'loan'].includes(k) ? '' : ' soon'}" data-k="${k}">${badge ? `<em class="badge ${badge === 'جدید' ? 'green' : 'orange'}">${badge}</em>` : ''}<span class="tile-ic">${TILE_ICONS[k]}</span><span class="tile-l">${label}</span></button>`).join('') + '</div>').join('');
+      TILES.slice(i, i += c).map(([k, label, badge]) => `<button type="button" class="tile${['profit', 'delivery', 'loan', 'credit'].includes(k) ? '' : ' soon'}" data-k="${k}">${badge ? `<em class="badge ${badge === 'جدید' ? 'green' : 'orange'}">${badge}</em>` : ''}<span class="tile-ic">${TILE_ICONS[k]}</span><span class="tile-l">${label}</span></button>`).join('') + '</div>').join('');
     $$('.tiles').forEach(t => { t.innerHTML = html; });
   }
-  $$('.tiles').forEach(t => t.addEventListener('click', e => { const tl = e.target.closest('.tile'); if (!tl) return; if (tl.dataset.k === 'profit') return openStake(); if (tl.dataset.k === 'delivery') return openDlv(); if (tl.dataset.k === 'loan') return openLoan(); showToast('<span>این بخش در قدم‌های بعدی طراحی می‌شود</span>'); }));
+  $$('.tiles').forEach(t => t.addEventListener('click', e => { const tl = e.target.closest('.tile'); if (!tl) return; if (tl.dataset.k === 'profit') return openStake(); if (tl.dataset.k === 'delivery') return openDlv(); if (tl.dataset.k === 'loan') return openLoan(); if (tl.dataset.k === 'credit') return openCi(); showToast('<span>این بخش در قدم‌های بعدی طراحی می‌شود</span>'); }));
 
   /* ---------- GOAL (savings goal feature — not the «کمپین هدف» campaign) ----------
      states: none («با هدف پس‌انداز کن!») · set (no balance: dot) · set · near (≥ 95 %, gold frame) · reached (full gold bar)
@@ -8472,7 +8549,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
      Changing any switch resets the prototype to the home screen in that state.
      ===================================================================== */
   var CAMP_SILVER = false, svSeen = false;
-  const test = { goal:'mid', loan:'none', kyc:'1', bank:'ok', loanPx:'same', loanHealth:'ok', login:'1', balance:'1', apis:'some', number:'new', homev:'old', tiles:'4', tradev:'old', deps:'many', buyres:'ok', dlv:'none', dlvHist:'0' };
+  const test = { ciState:'none', ciProv:'zarpin', ciHealth:'safe', ciFind:'ok', ciRes:'ok', goal:'mid', loan:'none', kyc:'1', bank:'ok', loanPx:'same', loanHealth:'ok', login:'1', balance:'1', apis:'some', number:'new', homev:'old', tiles:'5', tradev:'old', deps:'many', buyres:'ok', dlv:'none', dlvHist:'0' };
   const TRADES = { new:$('#screenTrade2'), old:$('#screenTrade') };
   const TOTAL = 201061381;
   const tpToggle = $('#tpToggle'), tpPanel = $('#tpPanel');
@@ -8488,7 +8565,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     state.screen = 'home'; kycFromLogin = false; kycRestore(); markTabs(); resetTrade();
     state.loggedIn = loggedIn; device.classList.toggle('logged-in', loggedIn);
     if (loggedIn){ state.phone = '09123456789'; $('#homePhone').textContent = fmtPhone(state.phone); }
-    LN = null; resetStake(); resetLoan(); hidden = false;   // LN cleared first: the old loan's collateral must not count against the fresh balance
+    LN = null; resetStake(); resetLoan(); if (CI_READY) resetCi(); hidden = false;   // LN cleared first: the old loan's collateral must not count against the fresh balance
     renderTotals(); renderTiles(+test.tiles); fillTpBal();
     $$('.home-scroll').forEach(s => s.scrollTo({ top:0 }));
     syncTp(); resetApi();
@@ -8511,6 +8588,11 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
       if (k === 'dlv' && o && o.status === 'delay') sendSms(SMS_TEXT.dlvDelay(branchOf(o.branch).name, jFmt(o.newDate, false)), { delay:300 });
       if (k === 'dlv' && o && o.status === 'ready') sendSms(SMS_TEXT.dlvReady(o.units.length, branchOf(o.branch).name, o.units.map(u => u.dcode)), { delay:300 });
       return;
+    }
+    if (k.startsWith('ci')){                                   // خرید قسطی: rebuild the credit, stay in the feature
+      syncTp(); if (k === 'ciRes') return;
+      if (k === 'ciFind'){ if (state.screen === 'ciReq') renderCiReq(); return; }
+      resetCi(); if (state.screen.startsWith('ci')){ $$('.modal.open').forEach(closeModal); ciGoHome(); } return;
     }
     if (k === 'buyres') return syncTp();                       // no reset
     if (k === 'goal'){ GL.ov = null; GL.pend = false; GL.below = goalHave() < goalTarget(); renderGoals(); renderTrade(); return syncTp(); }
@@ -8583,226 +8665,470 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   function forceStake(){ if (test.login !== '1' || test.balance !== '1'){ test.login = '1'; test.balance = '1'; applyTest(); } }
   function forceDeps(){ forceStake(); if (test.deps === 'none'){ test.deps = 'many'; syncTp(); setDeps(); } }
   function forceT2(){ if (test.login !== '1' || test.tradev !== 'new' || test.balance !== '1'){ test.login = '1'; test.tradev = 'new'; test.balance = '1'; applyTest(); } switchTab('trade'); }
-  /* Credit purchase uses mock provider quotes and the same detail layout as loans. */
-  Object.assign(screens, { credit:$('#screenCredit'), creditDetails:$('#screenCreditDetails') });
-  const CREDIT_MIN = 10e6, CREDIT_MAX = 200e6, CREDIT_STEP = 1e6;
-  const CREDIT_PROVIDERS = [
-    { id:'zarpin', bank:'زرپین', mark:'ز', color:'#AC6E26', rate:23, min:10e6, max:100e6, months:[6, 12], channel:'' },
-    { ...provOf('blu'), min:20e6, max:150e6, months:[6, 12, 18], channel:'ونسی' },
-    { ...provOf('gardesh'), min:50e6, max:180e6, months:[12, 18, 24], channel:'ازکی‌وام' },
+
+  /* =====================================================================
+     10b) خرید قسطی — credit gold purchase. Flow from the Figma «Section 1»; every piece is the app's own component
+     (the loan's calculator, details, hero gauge, tabs and sheets · feature intro · FAQ sheet · OTP sheet · result page).
+       tile → «خرید قسطی»: the live credit, or the list (empty → feature intro)
+       request (amount · months · provider) → details + terms →
+         zarpin: pay services fee + 1st instalment → OTP → active (gold lands in the wallet as collateral)
+         others: OTP → registered → hand-off to the provider (ونسی / ازکی‌وام) → pending · «بعداً» = unfinished
+       active: hero gauge (healthy / warning) · tabs جزئیات / اقساط / تاریخچه · increase collateral · pay an instalment (zarpin)
+     Numbers marked ASSUMED are placeholders until product sends the real values.
+     ===================================================================== */
+  Object.assign(screens, { ciList:$('#screenCiList'), ciView:$('#screenCiView'), ciReq:$('#screenCiReq'), ciDet:$('#screenCiDet'), ciAdd:$('#screenCiAdd'), ciRes:$('#screenCiRes') });
+  const CI_MIN = 10e6, CI_MAX = 200e6;
+  const CI_FEE = 0.03;                       // ASSUMED: «هزینه زیرساخت و خدمات» = 3٪ of the credit
+  const CI_WARN = 0.977, CI_SELL = 0.905;    // warning / sale limits as a share of the credit (design: 70M → 68.36M / 63.36M)
+  const CI_PROVS = [
+    { id:'zarpin',  name:'زرپین',        bank:'زرپین',        mark:'ز',   color:'#AC6E26', rate:23, min:10e6, max:100e6, months:[6, 12],      via:'' },
+    { id:'blu',     name:'بلوبانک',      bank:'بلوبانک',      mark:'بلو', color:'#1F6FEB', rate:23, min:20e6, max:150e6, months:[6, 12, 18],  via:'ونسی' },
+    { id:'ayandeh', name:'بانک آینده',   bank:'بانک آینده',   mark:'آ',   color:'#7A4E1D', rate:25, min:10e6, max:120e6, months:[6, 12, 24],  via:'ازکی‌وام' },
+    { id:'gardesh', name:'بانک گردشگری', bank:'بانک گردشگری', mark:'گ',   color:'#0E8A6A', rate:24, min:50e6, max:200e6, months:[12, 18, 24], via:'ازکی‌وام' },
   ];
-  const credit = { amount:70e6, months:12, quote:null, stage:'quote', paid:0, tab:'details', additions:[] };
-  const creditInput = $('#crAmount'), creditRange = $('#crRange');
-  let creditTimer;
-  const creditAmount = n => Math.min(CREDIT_MAX, Math.max(CREDIT_MIN, n));
-  const creditQuote = p => ({ p, L:credit.amount, months:credit.months,
-    grams:ceil3(credit.amount / LTV / MARKET.gold.v), inst:pmt(credit.amount, p.rate, credit.months) });
+  const ciProv = id => CI_PROVS.find(p => p.id === id);
+  const CI_BAR = 'data:image/webp;base64,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';
+  const ciLogo = p => `<span class="ln-logo xs" style="background:${p.color}">${p.mark}</span>`;
+  const ciProvCell = p => `${ciLogo(p)}${p.name}${p.via ? ` <small class="ln-sub">از طریق ${p.via}</small>` : ''}`;
+  const ciTip = (t, tip) => `<span class="tip-k" data-tip="${tip}">${t}${INFO_I}</span>`;
+  const TIP = {
+    fee:'هزینه دریافت اعتبار؛ مجموع هزینه عملیات و کارمزد دریافت طلای اعتباری.',
+    grams:'مقدار طلا بر اساس قیمت همین لحظه است و در زمان تأیید تأمین‌کننده، با قیمت همان لحظه نهایی می‌شود.',
+    warn:'اگر ارزش طلای وثیقه به این مبلغ برسد، اعتبار در حد هشدار است: پیامک می‌گیرید و با افزایش وثیقه، به وضعیت سالم برمی‌گردد.',
+    sell:'اگر ارزش طلای وثیقه به این مبلغ برسد، طلای وثیقه فروخته (لیکوئید) و اعتبار بسته می‌شود؛ باقی‌مانده به کیف پول شما برمی‌گردد.',
+  };
 
-  function renderCredit(loading = false){
-    const valid = credit.amount >= CREDIT_MIN && credit.amount <= CREDIT_MAX;
-    const selected = creditAmount(credit.amount);
-    creditRange.value = selected;
-    creditRange.style.setProperty('--fill', ((selected - CREDIT_MIN) / (CREDIT_MAX - CREDIT_MIN) * 100) + '%');
-    creditInput.setAttribute('aria-invalid', String(!valid));
-    $('#crGold').textContent = valid ? 'حدود ' + g3(ceil3(credit.amount / MARKET.gold.v)) : '';
-    $('#crPlus').disabled = credit.amount >= CREDIT_MAX;
-    $('#crMinus').disabled = credit.amount <= CREDIT_MIN;
-    $$('#screenCredit [data-credit-months]').forEach(b => {
-      const on = +b.dataset.creditMonths === credit.months;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-pressed', String(on));
-    });
-    const matches = valid && !loading ? CREDIT_PROVIDERS.filter(p =>
-      credit.amount >= p.min && credit.amount <= p.max && p.months.includes(credit.months)) : [];
-    const status = $('#crStatus');
-    status.hidden = matches.length > 0;
-    status.textContent = !valid ? 'مبلغ را بین ۱۰ تا ۲۰۰ میلیون تومان وارد کنید.' : loading
-      ? 'در حال جست‌وجوی تأمین‌کننده…' : 'تأمین‌کننده‌ای پیدا نشد. مبلغ یا مدت بازپرداخت را تغییر دهید.';
-    $('#crOffers').innerHTML = matches.map(p => {
-      const q = creditQuote(p);
-      return `<button type="button" class="cr-offer" data-credit-provider="${p.id}">
-        <span class="cr-offer-top"><span><span class="ln-logo xs" style="background:${p.color}">${p.mark}</span><b>${p.bank}</b></span>
-        <span><small>پرداخت ماهانه</small><b>${T_(q.inst)}</b></span></span>
-        <span class="cr-tags"><span class="ln-tag">بدون چک و ضامن</span><span class="ln-tag">${pctFa(p.rate)}</span>
-        <span class="ln-tag">${p.channel || 'دریافت آنی'}</span></span></button>`;
-    }).join('');
+  /* ---------- the credits ---------- */
+  var CI = null, CIS = [], CI_READY = false, ciWarnSeen = false;
+  const ciQuote = (p, L, months) => { const inst = pmt(L, p.rate, months); return { p, L, months, rate:p.rate, inst, total:inst * months, fee:Math.round(L * CI_FEE / 1e4) * 1e4, grams:f3(L / MARKET.gold.v) }; };
+  function ciMake(pid, L, months, status, k = 1.0186, paid = 0){
+    const q = ciQuote(ciProv(pid), L, months);
+    return { ...q, id:'c' + Math.random().toString(36).slice(2, 7), status, paid, grams:f3(L * k / MARKET.gold.v), recv:f3(L * k / MARKET.gold.v),
+      start:jAddM(jAddDays(J_TODAY, 2), -(paid + 1)), reqAt:[...J_TODAY, '۱۴:۲۷'], code:loanCode().replace('ZL', 'ZC'), events:[], deducted:[] };
   }
-
-  function refreshCredit(){
-    clearTimeout(creditTimer);
-    renderCredit(true);
-    creditTimer = setTimeout(() => renderCredit(), 350);
+  const ciDue = (c, n) => jAddM(c.start, n - (c.upfront ? 1 : 0));          // zarpin: the 1st instalment is paid on the day of receipt
+  const ciLive = () => CIS.find(c => ['active', 'pending', 'abandoned'].includes(c.status)) || null;
+  function ciHealth(c, add = 0){
+    const v = (c.grams + add) * MARKET.gold.v, warnV = Math.round(c.L * CI_WARN), sellV = Math.round(c.L * CI_SELL);
+    const startV = c.L * 1.0186;                                                               // value when the credit started (design: 71.3M for 70M)
+    const inv = 1 / LN_WARN + (v - warnV) * (1 / LTV - 1 / LN_WARN) / (startV - warnV);        // the loan gauge's scale: «شروع» → 0.7, warning → 0.8
+    return { val:v, warnV, sellV, ratio:1 / Math.max(.5, inv), st: v <= sellV ? 'bad' : v < warnV ? 'warn' : 'ok' };
   }
-
-  function setCreditAmount(amount){
-    credit.amount = amount;
-    creditInput.value = amount ? fmtNum(amount) : '';
-    refreshCredit();
-  }
-
-  function openCredit(){
-    if (!state.loggedIn) return openLogin();
-    creditInput.value = fmtNum(credit.amount);
-    renderCredit();
-    stGo('credit');
-  }
-
-  $('#homeCredit').addEventListener('click', openCredit);
-  creditInput.addEventListener('input', () => {
-    credit.amount = Number(cleanNum(creditInput.value, false, 9));
-    refreshCredit();
-  });
-  creditInput.addEventListener('blur', () => { creditInput.value = credit.amount ? fmtNum(credit.amount) : ''; });
-  creditRange.addEventListener('input', () => setCreditAmount(+creditRange.value));
-  $('#crPlus').addEventListener('click', () => setCreditAmount(creditAmount(credit.amount + CREDIT_STEP)));
-  $('#crMinus').addEventListener('click', () => setCreditAmount(creditAmount(credit.amount - CREDIT_STEP)));
-  $('#screenCredit .cr-months').addEventListener('click', e => {
-    const b = e.target.closest('[data-credit-months]');
-    if (!b) return;
-    credit.months = +b.dataset.creditMonths;
-    refreshCredit();
-  });
-  $('#crOffers').addEventListener('click', e => {
-    const b = e.target.closest('[data-credit-provider]');
-    if (b) openCreditDetails(CREDIT_PROVIDERS.find(p => p.id === b.dataset.creditProvider));
-  });
-
-  function openCreditDetails(p){
-    credit.quote = creditQuote(p);
-    credit.stage = 'quote';
-    credit.paid = 0;
-    credit.tab = 'details';
-    credit.additions = [];
-    renderCreditDetails();
-    $('#crDetails').scrollTop = 0;
-    stGo('creditDetails');
-  }
-
-  function creditInstallments(q){
-    return '<div class="ln-table">' + Array.from({length:q.months}, (_, i) =>
-      `<div class="ln-tr"><span>قسط ${toFa(i + 1)}</span><span>${i < credit.paid ? 'پرداخت شد' : '—'}</span><b>${T_(q.inst)}</b></div>`).join('') + '</div>';
-  }
-
-  function renderActiveCredit(q){
-    const grams = q.grams + credit.additions.reduce((total, item) => total + item.grams, 0);
-    const value = grams * MARKET.gold.v;
-    const debt = balAfter({ amount:q.L, rate:q.p.rate, inst:q.inst, months:q.months }, credit.paid);
-    const tabs = [['details','جزئیات'], ['installments','اقساط'], ['history','تاریخچه']];
-    const panels = {
-      details: () => '<div class="lx-rows">' + srow('وضعیت', '<em class="dp-badge act">فعال</em>')
-        + srow('مبلغ اعتبار', T_(q.L)) + srow('تأمین‌کننده', q.p.bank)
-        + srow('مانده بدهی', T_(debt)) + srow('قسط ماهانه', T_(q.inst)) + srow('وثیقه', g3(grams)) + '</div>',
-      installments: () => `<p class="lv-isum">${toFa(credit.paid)} از ${toFa(q.months)} قسط پرداخت شده</p>` + creditInstallments(q),
-      history: () => '<div class="lx-rows">' + srow('قفل وثیقه', g3(q.grams))
-        + credit.additions.map(item => srow('افزایش وثیقه · ' + item.method, g3(item.grams))).join('') + '</div>',
-    };
-    $('#crDetails').innerHTML = `<div class="lh ok"><div class="lh-g">${gaugeSvg(debt / value, 'شروع اعتبار')}
-      <div class="lh-in"><small>ارزش طلای وثیقه</small><b>${fmtNum(Math.round(value))}</b><span class="u">تومان</span></div>
-      </div></div><div class="sec-div"></div><div class="hs-tablist lv-tabs" role="tablist" aria-label="اطلاعات اعتبار">
-      ${tabs.map(([id, title]) => `<button type="button" role="tab" id="cr-tab-${id}" aria-controls="crPanel" data-credit-tab="${id}" class="${credit.tab === id ? 'on' : ''}" aria-selected="${credit.tab === id}">${title}</button>`).join('')}
-      </div><div class="lv-panel" id="crPanel" role="tabpanel" aria-labelledby="cr-tab-${credit.tab}">${panels[credit.tab]()}</div>`;
-    $('#crFooter').innerHTML = `<button type="button" class="btn" data-credit-action="pay"><span class="label">ثبت آزمایشی پرداخت قسط ${ordFa(credit.paid + 1)}</span></button>
-      <button type="button" class="btn btn-secondary" data-credit-action="add"><span class="label">افزایش وثیقه</span></button>`;
-  }
-
-  function showCreditCollateral(){
-    $('#crDetails').innerHTML = `<div class="lx-card">
-      <label for="crAddGrams" class="lx-h">مقدار افزایش وثیقه (گرم)</label>
-      <input class="cr-grams" id="crAddGrams" type="text" inputmode="decimal" value="۰٫۴۲">
-      <fieldset class="cr-methods"><legend>روش افزایش وثیقه</legend>
-        <label><input type="radio" name="crAddMethod" value="کیف پول طلا"> کیف پول طلا</label>
-        <label><input type="radio" name="crAddMethod" value="خرید طلا"> خرید طلا</label>
-      </fieldset><p class="cr-status" id="crAddError" role="status" hidden></p>
-      </div>`;
-    $('#crFooter').innerHTML = '<button type="button" class="btn" data-credit-action="saveAdd"><span class="label">ثبت آزمایشی افزایش وثیقه</span></button>'
-      + '<button type="button" class="btn btn-secondary" data-credit-action="cancelAdd"><span class="label">بازگشت به جزئیات</span></button>';
-    $('#crAddGrams').focus();
-  }
-
-  function saveCreditCollateral(){
-    const grams = Number(toEn($('#crAddGrams').value).replace('٫', '.').trim());
-    const method = $('input[name="crAddMethod"]:checked')?.value;
-    if (!Number.isFinite(grams) || grams < 0.001 || !method){
-      const error = $('#crAddError');
-      error.textContent = 'مقدار طلا و روش افزایش وثیقه را وارد کنید.';
-      error.hidden = false;
-      return;
+  const ciMinAdd = c => { const H = ciHealth(c); return H.st === 'warn' ? f3(Math.max(.001, ceil3((H.warnV * 1.002 - H.val) / MARKET.gold.v))) : 0; };
+  function resetCi(){
+    const t = test.ciState, pid = test.ciProv === 'zarpin' ? 'zarpin' : 'blu';
+    CIS = [];
+    if (t === 'past' || t === 'active'){
+      const s = ciMake('ayandeh', 50e6, 6, 'settled'); s.paid = 6; s.start = jAddM(J_TODAY, -14); s.ended = jAddM(J_TODAY, -8);
+      const l = ciMake('blu', 150e6, 12, 'liquidated', .89); l.paid = 4; l.start = jAddM(J_TODAY, -7); l.ended = jAddM(J_TODAY, -2); l.sold = f3(l.grams * .78); l.left = f3(l.grams - l.sold);
+      CIS.push(s, l);
     }
-    credit.additions.push({ grams, method });
-    credit.tab = 'history';
-    creditStage('active');
-    showToast(OK_ICON + '<span>افزایش آزمایشی وثیقه ثبت شد.</span>');
+    if (['pending', 'abandoned', 'active'].includes(t)){
+      const c = ciMake(pid, 70e6, 12, t, test.ciHealth === 'warn' ? .9615 : 1.0186, t === 'active' && pid === 'zarpin' ? 2 : 0);
+      if (t === 'active'){
+        c.events = [{ d:c.start, k:'recv', g:c.recv }];
+        if (pid === 'zarpin'){ c.events.push({ d:jAddM(c.start, 1), k:'inst', t:c.inst }); c.events.push({ d:jAddM(c.start, 2), k:'inst', t:c.inst }); }
+        c.events.push({ d:jAddDays(J_TODAY, -6), k:'add', g:.23 });
+      } else c.start = J_TODAY;
+      CIS.unshift(c);
+    }
+    CI = ciLive(); ciWarnSeen = false; ciAddTried = false;
   }
 
-  function renderCreditDetails(){
-    const q = credit.quote, { p } = q;
-    if (credit.stage === 'active') return renderActiveCredit(q);
-    const labels = { quote:'پیشنهاد اعتبار', review:'تأیید درخواست', provider:'در حال بررسی تأمین‌کننده',
-      active:'فعال', rejected:'درخواست رد شد', settled:'تسویه شد' };
-    const locked = ['provider', 'active'].includes(credit.stage);
-    const actions = {
-      quote:['continue', 'ادامه و قفل وثیقه'],
-      review:['confirm', 'تأیید و دریافت کد'],
-      provider:['activate', 'شبیه‌سازی تأیید تأمین‌کننده'],
-      rejected:['retry', 'بازگشت به درخواست اعتبار'],
-      settled:['retry', 'بازگشت به درخواست اعتبار'],
-    };
-    const [action, label] = actions[credit.stage];
-    let h = loanHero(p, q.L, `${toFa(q.months)} ماهه · ${p.bank}`, 'مبلغ اعتبار');
-    h += '<div class="lx-rows">' + srow('وضعیت', labels[credit.stage])
-      + srow('تأمین‌کننده', p.channel ? `${p.bank} · از طریق ${p.channel}` : p.bank)
-      + srow('قسط ماهانه', T_(q.inst))
-      + srow(locked ? 'وثیقهٔ قفل‌شدهٔ آزمایشی' : 'وثیقهٔ لازم', g3(q.grams)) + '</div>';
+  /* ---------- entry: the live credit, or «خرید قسطی» (list · empty → feature intro) ---------- */
+  FEATURE_INTROS.credit = { img:CI_BAR, title:'<span>خرید قسطی</span> طلا', sub:'طلا را همین حالا به کیف پولتان بیاورید و هزینه‌اش را در اقساط ماهانه بپردازید.', cta:'درخواست اعتبار', items:[
+    ['<svg class="ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 5.6v5.6c0 4.3 2.9 8.1 7 9.8 4.1-1.7 7-5.5 7-9.8V5.6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>', 'بدون چک و ضامن', 'اعتبار ۱۰ تا ۲۰۰ میلیون تومان از زرپین و تأمین‌کننده‌های همکار.'],
+    ['<svg class="ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.25" y="5.25" width="17.5" height="15.5" rx="3"/><path d="M3.25 9.75h17.5M8 3.25v3.5M16 3.25v3.5M8 14h2M14 14h2M8 17h2"/></svg>', 'اقساط ۶ تا ۲۴ ماهه', 'قسط ماهانه و همه هزینه‌ها پیش از تأیید روشن است.'],
+    ['<svg class="ico" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18.5 7.5 9h9L20 18.5H4Z"/><path d="M9.5 9 11 5h2l1.5 4"/></svg>', 'طلا از همان روز اول مال شماست', 'طلای خریده‌شده تا پایان اقساط وثیقه اعتبار است و ارزشش را حفظ می‌کند.'],
+  ] };
+  renderIntro($('#ciIntro'), 'credit');
+  FAQS.credit = { title:'پرسش‌های متداول', items:[
+    { q:'خرید قسطی طلا چیست؟', a:'با خرید قسطی، طلا را همین حالا به کیف پول زرپین خود می‌آورید و هزینه آن را در اقساط ماهانه پرداخت می‌کنید. طلای خریده‌شده تا پایان اقساط، وثیقه اعتبار است.' },
+    { q:'چه مقدار اعتبار می‌توانم بگیرم؟', a:'از ۱۰ تا ۲۰۰ میلیون تومان، بسته به تأمین‌کننده و مدت بازپرداخت (۶ تا ۲۴ ماه).' },
+    { q:'چه هزینه‌هایی دارد؟', a:'سود سالانه هر تأمین‌کننده و هزینه زیرساخت و خدمات پیش از تأیید در «جزئیات اعتبار» نمایش داده می‌شود. در اعتبار زرپین، هزینه خدمات و قسط اول هنگام دریافت پرداخت می‌شود.' },
+    { q:'حد هشدار و حد فروش چیست؟', a:'اگر با افت قیمت طلا ارزش وثیقه به حد هشدار برسد، پیامک می‌گیرید و با افزایش وثیقه به وضعیت سالم برمی‌گردید. اگر به حد فروش برسد، طلای وثیقه فروخته و اعتبار بسته می‌شود.' },
+    { q:'اقساط را چطور پرداخت کنم؟', a:'اقساط اعتبار زرپین از همین صفحه (کیف پول یا درگاه) پرداخت می‌شود. اقساط سایر تأمین‌کننده‌ها در وب‌سایت همان تأمین‌کننده پرداخت می‌شود.' },
+    { q:'اگر قسطی را پرداخت نکنم چه می‌شود؟', a:'معادل همان قسط از طلای وثیقه کسر می‌شود و در تاریخچه اعتبار نمایش داده می‌شود.' },
+  ] };
+  $$('.ci-faq').forEach(b => b.addEventListener('click', () => openFaq('credit')));
+  function openCi(){ if (!state.loggedIn) return openLogin(); const c = ciLive(); if (c) return openCiView(c, true); renderCiList(); $('#ciListWrap').scrollTop = 0; stGo('ciList'); }
+  $('#homeCredit').addEventListener('click', openCi);
+  const CST = { active:['فعال', 'act'], pending:['در حال بررسی', 'wait'], abandoned:['تکمیل نشده', 'warn'], settled:['تسویه‌شده', 'mat'], liquidated:['لیکوئیدشده', 'bad'], cancelled:['لغوشده', 'can'] };
+  function ciMeta(c){
+    if (c.status === 'pending') return `در حال بررسی در ${c.p.via}`;
+    if (c.status === 'abandoned') return `ادامه در ${c.p.via} تکمیل نشده`;
+    if (c.status === 'liquidated') return `وثیقه فروخته شد · ${g3(c.left)} به کیف پول برگشت`;
+    if (c.status === 'active') return c.paid >= c.months ? 'همه اقساط پرداخت شد' : `قسط بعدی ${jFmt(ciDue(c, c.paid + 1), false)} · ${T_(c.inst)}`;
+    return `${c.status === 'cancelled' ? 'لغو شد' : 'تسویه شد'}${c.ended ? ' · ' + jFmt(c.ended, false) : ''}`;
+  }
+  function renderCiList(){
+    const empty = !CIS.length;
+    $('#ciList').hidden = empty; $('#ciEmpty').hidden = !empty; $('#ciListFoot').hidden = empty || !!ciLive(); $('#ciListWrap').classList.toggle('is-empty', empty);
+    $('#ciList').innerHTML = CIS.map(c => { const [st, cls] = CST[c.status], H = c.status === 'active' ? ciHealth(c) : null;
+      return `<button type="button" class="dp-card" data-id="${c.id}"><div class="dp-top"><b>${fmtNum(c.L)} تومان · ${c.p.name}</b><span class="dp-badge ${cls}">${st}</span></div><div class="dp-meta"><span>${ciMeta(c)}</span><span>${toFa(c.months)} ماهه</span></div>`
+        + (H ? `<div class="dp-health ${H.st}"><i></i><b>${H.st === 'warn' ? 'در حد هشدار' : 'وثیقه سالم'}</b><span>ارزش وثیقه ${T_(rnd4(H.val))}</span></div>` : '') + '</button>'; }).join('');
+  }
+  $('#ciList').addEventListener('click', e => { const b = e.target.closest('.dp-card'); if (b) openCiView(CIS.find(c => c.id === b.dataset.id)); });
+  $('#ciNew').addEventListener('click', () => openCiReq());
+  $('#ciEmptyNew').addEventListener('click', () => openCiReq());
+  $('#ciAllBtn').addEventListener('click', () => { renderCiList(); stGo('ciList'); });
+
+  /* ---------- request: amount · months · provider (the loan calculator's parts) ---------- */
+  const RQ = { raw:'70000000', months:12, prov:'zarpin', req:'' };
+  const ciInput = $('#ciInput');
+  function openCiReq(){
+    if (!state.loggedIn) return openLogin();
+    { const c = ciLive(); if (c) return openCiView(c, true); }                   // one credit at a time
+    RQ.req = ''; renderCiReq(); $('#ciReqS').scrollTop = 0; stGo('ciReq');
+  }
+  const ciMatches = L => test.ciFind === 'none' ? [] : CI_PROVS.filter(p => L >= p.min && L <= p.max && p.months.includes(RQ.months));
+  function renderCiReq(){
+    const L = +RQ.raw || 0, ok = L >= CI_MIN && L <= CI_MAX;
+    $('#ciVal').textContent = fmtRaw(RQ.raw); if (ciInput.value !== RQ.raw) ciInput.value = RQ.raw;
+    $('#ciCap').innerHTML = L ? `معادل <b>${g3(L / MARKET.gold.v)} طلا</b>` : ''; $('#ciCap').hidden = !L;
+    const msg = RQ.req || (RQ.raw && !ok ? 'مبلغ اعتبار باید بین ۱۰ تا ۲۰۰ میلیون تومان باشد.' : '');
+    $('#ciHint').textContent = msg || 'بین ۱۰ تا ۲۰۰ میلیون تومان'; $('#ciHint').classList.toggle('bad', !!msg); $('#ciCard').classList.toggle('bad', !!msg);
+    const sl = $('#ciSlider'); sl.value = Math.min(CI_MAX, Math.max(CI_MIN, L || CI_MIN)); sl.style.setProperty('--fill', (L ? (sl.value - CI_MIN) / (CI_MAX - CI_MIN) * 100 : 0) + '%');
+    $('#ciMonths').innerHTML = [6, 12, 18, 24].map(m => `<button type="button" data-m="${m}" class="${m === RQ.months ? 'on' : ''}">${toFa(m)} ماه</button>`).join('');
+    const list = ok ? ciMatches(L) : [];
+    if (!list.some(p => p.id === RQ.prov) && list.length) RQ.prov = list[0].id;
+    $('#ciOffers').innerHTML = !ok ? '<p class="ci-none">مبلغ اعتبار را وارد کنید تا تأمین‌کننده‌های مناسب را ببینید.</p>'
+      : !list.length ? `<div class="snack warn">${WARN_SVG}<span>برای این مبلغ و مدت، تأمین‌کننده‌ای پیدا نشد. مبلغ یا مدت بازپرداخت را تغییر دهید.</span></div>`
+      : list.map(p => `<button type="button" class="ln-prov${p.id === RQ.prov ? ' on' : ''}" data-p="${p.id}" role="radio" aria-checked="${p.id === RQ.prov}">
+          <span class="ln-ptop">${ciLogo(p).replace(' xs', '')}<em class="ln-tag${p.via ? ' via' : ''}">${p.via ? 'از طریق ' + p.via : 'دریافت آنی'}</em></span>
+          <span class="ln-pt"><b>${p.name}</b><small>بدون چک و ضامن · سود سالانه ${pctFa(p.rate)}</small></span><span class="ln-range">قسط ماهانه <b class="ci-inst">${T_(ciQuote(p, L, RQ.months).inst)}</b></span></button>`).join('');
+  }
+  let ciSkT = null, ciTypeT = 0;
+  function ciSkel(){ const els = $$('#ciOffers .ci-inst'); els.forEach(e => e.classList.add('skel')); clearTimeout(ciSkT); ciSkT = setTimeout(() => els.forEach(e => e.classList.remove('skel')), 700); }
+  function ciSet(r, how){ RQ.raw = r; RQ.req = ''; renderCiReq(); clearTimeout(ciTypeT); if (!RQ.raw) return; if (how === 'type') ciTypeT = setTimeout(ciSkel, 1000); else if (how !== 'drag') ciSkel(); }
+  registerInput(ciInput, 'num', k => ciSet(typeInto(RQ.raw, k, false, 9), 'type'));
+  ciInput.addEventListener('input', () => ciSet(cleanNum(ciInput.value, false, 9), 'type'));
+  ciInput.addEventListener('focus', () => { $('#ciCard').classList.add('focused'); $('#ciNum').classList.add('focused'); });
+  ciInput.addEventListener('blur',  () => { $('#ciCard').classList.remove('focused'); $('#ciNum').classList.remove('focused'); });
+  $('#ciCard').addEventListener('click', e => { if (!e.target.closest('input')){ ciInput.focus({ preventScroll:true }); openKb(ciInput); } });
+  $('#ciCap').addEventListener('click', () => openCiInfo(CI_BAR, 'مقدار طلای دریافتی', 'مقدار طلا بر اساس مبلغ اعتبار و قیمت لحظه‌ای طلا محاسبه شده است. چون تأیید تأمین‌کننده ممکن است زمان‌بر باشد، مقدار نهایی با قیمت لحظه تأیید و تخصیص اعتبار محاسبه می‌شود.'));
+  $('#ciSlider').addEventListener('input', e => { closeKb(); ciSet(String(Math.round(+e.target.value / 1e6) * 1e6), 'drag'); });
+  $('#ciSlider').addEventListener('change', () => { if (RQ.raw) ciSkel(); });
+  $('#ciMonths').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; closeKb(); RQ.months = +b.dataset.m; renderCiReq(); if (RQ.raw) ciSkel(); });
+  $('#ciOffers').addEventListener('click', e => { const b = e.target.closest('.ln-prov'); if (!b) return; closeKb(); RQ.prov = b.dataset.p; $$('#ciOffers .ln-prov').forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); }); });
+  $('#ciReqBtn').addEventListener('click', () => {
+    const L = +RQ.raw || 0, list = L >= CI_MIN && L <= CI_MAX ? ciMatches(L) : [];
+    if (!RQ.raw || L < CI_MIN || L > CI_MAX){ if (!RQ.raw) RQ.req = 'مبلغ اعتبار را وارد کنید.'; renderCiReq(); shake($('#ciCard')); ciInput.focus({ preventScroll:true }); return openKb(ciInput); }
+    if (!list.length) return shake($('#ciOffers'));
+    closeKb(); openCiDet(ciQuote(ciProv(RQ.prov), L, RQ.months));
+  });
+
+  /* ---------- details (the loan details' parts) + terms ---------- */
+  let Q = null, ciAgree = false;
+  const ciSteps = (p, at) => {
+    const S_ = p.via ? [['ثبت درخواست', 'زرپین'], ['تأیید با کد', 'زرپین'], ['احراز هویت و اعتبارسنجی', `${p.via} · ${p.bank}`], ['واریز طلا', 'به کیف پول زرپین شما']]
+                     : [['ثبت درخواست', 'زرپین'], ['پرداخت هزینه خدمات و قسط اول', 'کیف پول یا درگاه'], ['تأیید با کد', 'زرپین'], ['واریز طلا', 'آنی، به کیف پول زرپین شما']];
+    return '<ol class="ln-steps">' + S_.map(([t, s_], i) => `<li class="${i < at ? 'done' : i === at ? 'now' : 'wait'}" style="--i:${i}"><span class="ln-sn">${i < at ? CK : toFa(i + 1)}</span><div><b>${t}</b><small>${s_}</small></div></li>`).join('') + '</ol>';
+  };
+  const ciSched = (c, start) => { let h = ''; for (let i = 1; i <= c.months; i++){ const ded = (c.deducted || []).find(d => d.n === i);
+    const st = c.paid == null ? '' : i <= c.paid ? (ded ? '<em class="dp-badge bad ln-st">کسر از وثیقه</em>' : '<em class="dp-badge act ln-st">پرداخت شد</em>') : i === c.paid + 1 ? '<em class="dp-badge wait ln-st">قسط بعدی</em>' : '';
+    h += `<div class="ln-tr${c.paid != null && i <= c.paid ? ' paid' : ''}"><span>قسط ${toFa(i)}</span><span>${st || jFmt(c.upfront ? jAddM(start, i - 1) : jAddM(start, i))}</span><b>${fmtNum(c.inst)}</b></div>`; } return h; };
+  function openCiDet(q){ Q = q; ciAgree = false; renderCiDet(); $('#ciDetB').scrollTop = 0; stGo('ciDet'); }
+  function renderCiDet(){
+    const q = Q, p = q.p, z = !p.via;
+    let h = loanHero(p, q.L, `${toFa(q.months)} ماهه · ${p.name}`, 'مبلغ اعتبار');
+    h += '<div class="lx-rows">' + srow('تأمین‌کننده', ciProvCell(p)) + srow('قسط ماهانه', T_(q.inst))
+      + srow(z ? 'طلای دریافتی' : ciTip('طلای دریافتی', TIP.grams), `${z ? '' : 'حدود '}${g3(q.grams)} <small class="ln-sub">≈ ${T_(q.L)}</small>`) + srow('ضمانت', 'بدون چک و ضامن') + '</div>';
     h += '<div class="sec-div"></div><div class="lx-card"><div class="lx-h">هزینه‌ها</div>'
-      + srow('نرخ سالانه', pctFa(p.rate)) + srow('سود اقساط', T_(q.inst * q.months - q.L))
-      + srow('مجموع بازپرداخت', T_(q.inst * q.months), 'total') + '</div>';
-    h += `<div class="sec-div"></div><details class="lx-card cr-schedule"><summary>جدول اقساط</summary>
-      ${creditInstallments(q)}</details>`;
-    h += '<div class="sec-div"></div><div class="lx-card"><div class="lx-h">مسیر دریافت</div>'
-      + '<ol class="ln-steps">' + ['انتخاب اعتبار', 'احراز هویت و تأیید وثیقه', p.channel ? 'ادامه در ' + p.channel : 'فعال‌سازی اعتبار زرپین']
-        .map((title, i) => `<li class="${i === ['quote', 'review', 'provider'].indexOf(credit.stage) ? 'now' : 'wait'}"><span class="ln-sn">${toFa(i + 1)}</span><div><b>${title}</b></div></li>`).join('') + '</ol></div>';
-    if (credit.stage === 'review') h += '<label class="cr-consent"><input id="crConsent" type="checkbox"> مبلغ، جدول اقساط و شرایط وثیقهٔ آزمایشی را بررسی کردم.</label>';
-    if (credit.stage === 'provider') h += `<p class="cr-status">در نسخهٔ آزمایشی، نتیجهٔ ${p.channel || p.bank} همین‌جا شبیه‌سازی می‌شود.</p>`;
-    if (locked || credit.stage === 'settled') h += '<p class="cr-status">این درخواست و پرداخت‌ها آزمایشی‌اند و موجودی کیف پول تغییر نمی‌کند.</p>';
-    $('#crDetails').innerHTML = h;
-    $('#crFooter').innerHTML = `<button type="button" class="btn" data-credit-action="${action}" ${action === 'confirm' ? 'disabled' : ''}><span class="label">${label}</span></button>`
-      + (credit.stage === 'provider' ? '<button type="button" class="btn btn-secondary" data-credit-action="reject"><span class="label">شبیه‌سازی رد درخواست</span></button>' : '');
+      + srow(`سود اقساط <small class="ln-sub">${pctFa(q.rate)} سالانه</small>`, T_(q.total - q.L)) + srow(ciTip('هزینه زیرساخت و خدمات', TIP.fee), T_(q.fee))
+      + srow('مجموع بازپرداخت', T_(q.total + q.fee), 'total') + '</div>';
+    h += z ? `<div class="sec-div"></div><div class="lx-card"><div class="lx-h">پرداخت هنگام دریافت</div>${srow('هزینه زیرساخت و خدمات', T_(q.fee))}${srow('قسط اول', T_(q.inst))}${srow('مبلغ قابل پرداخت', T_(q.fee + q.inst), 'total')}</div>`
+      : `<div class="snack warn">${WARN_SVG}<span>هزینه زیرساخت و خدمات پس از تأیید ${p.via}، از طلای واریزشده به کیف پول زرپین شما کسر می‌شود.</span></div>`;
+    h += `<div class="sec-div"></div><div class="lx-schedw"><button type="button" class="lx-link" id="ciSched" aria-expanded="false"><span><b>جدول اقساط</b><small>${toFa(q.months)} قسط · تاریخ‌ها پس از دریافت قطعی می‌شوند</small></span><i aria-hidden="true">${FAQ_CHEV}</i></button>
+      <div class="lx-sched" id="ciTable" hidden><div class="ln-table">${ciSched({ ...q, paid:null, upfront:!p.via }, J_TODAY)}</div></div></div>`;
+    h += `<div class="sec-div"></div><div class="lx-card"><div class="lx-h">مسیر دریافت</div>${ciSteps(p, 0)}</div>`;
+    h += '<ul class="ln-rules"><li>طلای خریده‌شده تا پایان اقساط وثیقه اعتبار است و با پرداخت همه اقساط آزاد می‌شود.</li><li>اگر قسطی پرداخت نشود، معادل همان قسط از طلای وثیقه کسر می‌شود.</li><li>اگر ارزش وثیقه به حد فروش برسد، وثیقه فروخته و اعتبار بسته می‌شود.</li></ul>';
+    $('#ciDetB').innerHTML = h; ciAgreeSync();
+    $('#ciDetBtn .label').textContent = z ? `تأیید و پرداخت ${T_(q.fee + q.inst)}` : 'تأیید و ادامه';
+  }
+  function ciAgreeSync(){ $('#ciAgree').classList.toggle('on', ciAgree); $('#ciAgree').setAttribute('aria-checked', ciAgree); if (ciAgree) $('#ciAgree').classList.remove('error'); }
+  $('#ciDetB').addEventListener('click', e => {
+    const b = e.target.closest('#ciSched'); if (!b) return;
+    const t = $('#ciTable'), open = t.hidden;
+    morphHeight(b.parentElement, () => { t.hidden = !open; b.setAttribute('aria-expanded', open); b.classList.toggle('open', open); });
+    if (open){ fadeIn([...t.querySelectorAll('.ln-tr')].slice(0, 8), 20); setTimeout(() => b.scrollIntoView({ block:'start', behavior:'smooth' }), 60); }
+  });
+  $('#ciAgree').addEventListener('click', e => { if (e.target.closest('.terms-link')) return; ciAgree = !ciAgree; ciAgreeSync(); });
+  function openCiTerms(){
+    const via = Q && Q.p.via ? Q.p.via : 'زرپین';
+    $('#ciTermsB').innerHTML = [['شرایط خرید اعتباری طلا', `خرید اعتباری طلا از زرپین با تأمین مالی ${via} انجام می‌شود. مبلغ اعتبار پس از تأیید هویت و اعتبارسنجی خریدار تخصیص داده می‌شود. قیمت نهایی طلا بر اساس نرخ لحظه تأیید و تخصیص اعتبار محاسبه می‌شود و ممکن است با مبلغ تخمینی اولیه متفاوت باشد.`],
+      ['تعهدات خریدار', 'خریدار متعهد می‌شود اقساط را در سررسیدهای تعیین‌شده پرداخت کند. در صورت تأخیر، جریمه دیرکرد مطابق مصوبات بانک مرکزی به بدهی افزوده می‌شود و عدم پرداخت ممکن است به سامانه‌های اعتبارسنجی گزارش شود.'],
+      ['الزامات بازپرداخت', `بازپرداخت طبق جدول اقساط انجام می‌شود و پرداخت زودتر از موعد بدون جریمه ممکن است. در صورت نکول، ${via} حق مطالبه کل مبلغ باقی‌مانده را به‌صورت یکجا دارد و زرپین می‌تواند ارائه خدمات به خریدار را متوقف کند.`]]
+      .map(([t, d]) => `<div class="rule-card"><div class="rc-head"><b>${t}</b></div><p class="ci-rp">${d}</p></div>`).join('');
+    openModal($('#ciTermsModal'));
+  }
+  $('#ciTerms').addEventListener('click', openCiTerms);
+  $('#ciTermsOk').addEventListener('click', () => { ciAgree = true; ciAgreeSync(); closeModal($('#ciTermsModal')); });
+  $('#ciDetBtn').addEventListener('click', () => {
+    if (!ciAgree){ $('#ciAgree').classList.add('error'); shake($('#ciAgree')); return showToast('<span>برای ادامه، شرایط و تعهدات را بپذیرید</span>'); }
+    if (test.kyc !== '1') return openKycSheet(ciProceed);
+    ciProceed();
+  });
+  function ciProceed(){
+    if (Q.p.via) return ciOtp(() => { const c = ciMake(Q.p.id, Q.L, Q.months, 'abandoned'); c.start = J_TODAY; CIS.unshift(c); CI = c;
+      ciResult({ img:$('#brOk .br-img').src, t:'درخواست شما ثبت شد', p:`برای ادامه دریافت اعتبار (احراز هویت و اعتبارسنجی) به وب‌سایت ${Q.p.via} منتقل می‌شوید.`,
+        rows:srow('مبلغ اعتبار', T_(Q.L)) + srow('تأمین‌کننده', ciProvCell(Q.p)) + srow('کد پیگیری', codeCell(c.code)), main:['ادامه در ' + Q.p.via, () => ciToProvider(c)], sub:['بعداً', () => openCiView(c, true, true)] }); });
+    openCiPay({ title:'پرداخت هزینه و قسط اول', amount:Q.fee + Q.inst, rows:srow('هزینه زیرساخت و خدمات', T_(Q.fee)) + srow('قسط اول', T_(Q.inst)), onPaid:() => ciOtp(() => {
+      const c = ciMake('zarpin', Q.L, Q.months, 'active', 1, 1); c.start = J_TODAY; c.upfront = true; c.grams = c.recv = Q.grams; c.events = [{ d:J_TODAY, k:'recv', g:Q.grams }, { d:J_TODAY, k:'inst', t:Q.inst }];
+      CIS.unshift(c); CI = c; STK.goldTotal = f3(STK.goldTotal + Q.grams); renderTotals(); renderWallet();
+      sendSms(`اعتبار خرید طلای زرپین فعال شد.\n${g3(Q.grams)} طلا به کیف پول شما واریز شد.\nقسط بعدی: ${T_(Q.inst)}`);
+      ciResult({ img:$('#brOk .br-img').src, t:'اعتبار شما فعال شد', p:`${g3(Q.grams)} طلا به کیف پول شما واریز شد و تا پایان اقساط وثیقه اعتبار است.`,
+        rows:srow('مبلغ اعتبار', T_(Q.L)) + srow('طلای دریافتی', g3(Q.grams)) + srow('قسط ماهانه', T_(Q.inst)) + srow('پرداخت‌شده امروز', T_(Q.fee + Q.inst), 'total'),
+        main:['مشاهده اعتبار', () => openCiView(c, true, true)], sub:['کیف پول', () => { stStack = []; switchTab('wallet'); }] });
+    }) });
+  }
+  const ciOtp = after => openOtpSheet({ title:'تأیید درخواست اعتبار', cta:'تأیید و ادامه', what:'دریافت اعتبار خرید طلا', onVerify:after });
+  // hand-off to the provider: the app's «در حال انتقال» page; back in the app the request is in review
+  function ciRedir(via, after){
+    $('#rdSpin img').src = $('#brSpin img').src; $('#screenRedir h2').textContent = 'در حال انتقال به ' + via; stGo('redir');
+    setTimeout(() => { $('#screenRedir h2').textContent = 'در حال انتقال به ونسی'; if (state.screen !== 'redir') return; showToast(`<span>در نسخه واقعی، اینجا ${via} باز می‌شود</span>`); after(); }, 2400);
+  }
+  function ciToProvider(c){
+    ciRedir(c.p.via, () => {
+      c.status = 'pending'; c.start = J_TODAY;
+      sendSms(`درخواست اعتبار خرید طلای شما در ${c.p.via} ثبت شد و در حال بررسی است. نتیجه با پیامک اطلاع داده می‌شود.`, { delay:1600 });
+      openCiView(c, true, true);
+    });
   }
 
-  function creditStage(stage){
-    credit.stage = stage;
-    renderCreditDetails();
-    $('#crDetails').scrollTop = 0;
+  /* ---------- payment sheet (the loan's lock-sheet layout): wallet first, the rest through the gateway ---------- */
+  let PAY = null;
+  function openCiPay(cfg){ PAY = { ...cfg, useW:STK.toman > 0 }; $('#ciPayT').textContent = cfg.title; renderCiPay(); openModal($('#ciPayModal')); }
+  function renderCiPay(){
+    const w = PAY.useW ? Math.min(STK.toman, PAY.amount) : 0, gw = PAY.amount - w;
+    if (!PAY.amount){ $('#ciPayB').innerHTML = `<div class="stc-rows">${PAY.rows || ''}</div><p class="ci-note">مقدار طلا از موجودی کیف پول شما به وثیقه منتقل می‌شود.</p>`; $('#ciPayBtn .label').textContent = 'تأیید و افزایش وثیقه'; return; }
+    $('#ciPayB').innerHTML = `<div class="stc-rows">${PAY.rows || ''}${srow('مبلغ کل', T_(PAY.amount), 'total')}</div>
+      <button type="button" class="sw-card${PAY.useW ? ' on' : ''}" id="ciUseW" role="switch" aria-checked="${PAY.useW}" ${STK.toman ? '' : 'disabled'}><span class="sw-t"><b>استفاده از موجودی کیف پول</b><small>موجودی: ${T_(STK.toman)}</small></span><span class="sw" aria-hidden="true"><i><b></b><b></b><b></b></i></span></button>
+      <div class="stc-rows">${srow('از کیف پول', T_(w))}${srow('پرداخت از درگاه', T_(gw), 'total')}</div>`;
+    $('#ciPayBtn .label').textContent = gw ? `پرداخت ${T_(gw)}` : 'پرداخت از کیف پول';
+  }
+  $('#ciPayB').addEventListener('click', e => { if (e.target.closest('#ciUseW') && STK.toman && PAY){ PAY.useW = !PAY.useW; renderCiPay(); } });
+  $('#ciPayBtn').addEventListener('click', async () => {
+    if (!PAY) return; const b = $('#ciPayBtn'), w = PAY.useW ? Math.min(STK.toman, PAY.amount) : 0;
+    setLoading(b, true); await wait(PAY.amount - w ? 1600 : 900); setLoading(b, false);         // gateway: demo — paid straight away
+    STK.toman -= w; renderTotals(); renderWallet();
+    closeModal($('#ciPayModal')); const f = PAY.onPaid, info = { fromW:w, gw:PAY.amount - w }; PAY = null; setTimeout(() => f(info), 260);
+  });
+  // one result page for the whole feature (the purchase flow's result layout)
+  let RS = null;
+  function ciResult(r){
+    RS = r;
+    $('#ciResB').innerHTML = `<img class="br-img" src="${r.img}" alt="" width="80" height="80"><h2>${r.t}</h2>${r.p ? `<p>${r.p}</p>` : ''}${r.rows ? `<div class="stc-rows br-rows">${r.rows}</div>` : ''}
+      <div class="br-acts"><button type="button" class="btn" data-r="main"><span class="label">${r.main[0]}</span><span class="spinner" aria-hidden="true"></span></button>${r.sub ? `<button type="button" class="btn-naked" data-r="sub">${r.sub[0]}</button>` : ''}</div>`;
+    if (state.screen === 'ciRes') fadeIn([...$('#ciResB').children]); else stGo('ciRes');
+  }
+  $('#ciResB').addEventListener('click', e => {
+    const cp = e.target.closest('[data-copycode]'); if (cp){ try { navigator.clipboard.writeText(cp.dataset.copycode); } catch {} return showToast(OK_ICON + '<span>کد پیگیری کپی شد</span>'); }
+    const b = e.target.closest('[data-r]'); if (b && RS) RS[b.dataset.r][1](b);
+  });
+
+  /* ---------- one credit, every status (the loan page's parts: hero gauge · tabs · footer) ---------- */
+  let ciTab = 'det';
+  function openCiView(c, asSection = false, reset = false){
+    CI = c; ciTab = 'det'; $('#screenCiView .title').textContent = asSection ? 'خرید قسطی' : 'جزئیات اعتبار';
+    $('#ciAllBtn').hidden = !asSection; renderCiView(); $('#ciViewB').scrollTop = 0;
+    if (reset){ $$('.modal.open').forEach(closeModal); stStack = ['home']; go('ciView', true); } else stGo('ciView');
+    if (c.status === 'active' && ciHealth(c).st === 'warn' && !ciWarnSeen) setTimeout(() => { if (state.screen === 'ciView' && !document.querySelector('.modal.open')) ciWarnSheet(); }, 700);
+  }
+  function ciGauge(c, H){
+    return `<div class="lh ${H.st}"><div class="lh-g">${gaugeSvg(H.ratio, 'شروع اعتبار')}
+      <div class="lh-in"><span class="lh-lbl"><span>ارزش طلای وثیقه</span></span><b>${fmtNum(rnd4(H.val))}</b><span class="u">تومان</span><span class="lh-st"><i></i>${LH_WORD[H.st]}</span><span class="lh-pill">${g3(c.grams)} طلای ۱۸ عیار</span></div></div>
+      <p class="lh-px">قیمت هر گرم طلا: ${T_(MARKET.gold.v)}</p></div>`
+      + (H.st === 'warn' ? `<div class="snack warn lh-warnbox">${WARN_SVG}<span>ارزش وثیقه به حد هشدار رسیده است. برای جلوگیری از فروش وثیقه، وثیقه را افزایش دهید.</span></div>` : '')
+      + `<div class="sec-div"></div><div class="lx-rows lh-rows">${srow(ciTip('حد هشدار', TIP.warn), T_(rnd4(H.warnV)))}${srow(ciTip('حد فروش', TIP.sell), T_(rnd4(H.sellV)))}</div>`
+      + `<button type="button" class="lh-help" data-cv="faq">اگر به حد هشدار برسم چه کنم؟ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg></button>`;
+  }
+  function ciPanel(c){
+    if (ciTab === 'inst') return `<p class="lv-isum">${toFa(c.paid)} از ${toFa(c.months)} قسط پرداخت شده${c.paid < c.months ? ` · قسط بعدی ${jFmt(ciDue(c, c.paid + 1), false)}` : ''}${c.p.via ? ` · پرداخت در ${c.p.via}` : ''}</p><div class="ln-table">${ciSched(c, c.start)}</div>`;
+    if (ciTab === 'hist'){
+      const EV = { recv:['دریافت اعتبار', 'طلای خریده‌شده · وثیقه اعتبار', 'in', e => '+' + g3(e.g)], inst:['پرداخت قسط', 'از کیف پول یا درگاه', '', e => T_(e.t)],
+                   add:['افزایش وثیقه', 'از کیف پول طلا', 'in', e => '+' + g3(e.g)], ded:['کسر از وثیقه', 'قسط پرداخت نشد', 'out', e => '−' + g3(e.g)] };
+      const ev = [...c.events].sort((a, b) => jIdx(b.d) - jIdx(a.d));
+      return `<p class="lv-isum">وثیقه فعلی: ${g3(c.grams)}</p><div class="lv-hist">` + ev.map(e => { const [t, s_, cl, v] = EV[e.k]; return `<div class="lv-ev"><span><b>${t}</b><small>${s_} · ${jFmt(e.d, false)}</small></span><em class="${cl}">${v(e)}</em></div>`; }).join('') + '</div>';
+    }
+    const [st, cls] = CST[c.status];
+    return '<div class="lx-rows">' + srow('وضعیت', `<em class="dp-badge ${cls}">${st}</em>`) + srow('کد پیگیری', codeCell(c.code)) + srow('مبلغ اعتبار', T_(c.L)) + srow('تأمین‌کننده', ciProvCell(c.p))
+      + srow('مانده بدهی', T_(Math.max(0, c.inst * (c.months - c.paid)))) + srow('قسط ماهانه', T_(c.inst)) + srow('مدت', `${toFa(c.months)} ماه`) + srow('سود سالانه', pctFa(c.rate))
+      + srow(ciTip('هزینه زیرساخت و خدمات', TIP.fee), T_(c.fee)) + srow('وثیقه', g3(c.grams)) + srow('تاریخ دریافت', jFmt(c.start)) + '</div>';
+  }
+  function renderCiView(){
+    const c = CI; if (!c) return;
+    const p = c.p, [st, cls] = CST[c.status], newBtn = ciLive() ? '' : '<button type="button" class="btn" data-cv="new"><span class="label">درخواست اعتبار جدید</span></button>';
+    let h = '', f = '';
+    if (c.status === 'pending' || c.status === 'abandoned'){
+      const ab = c.status === 'abandoned';
+      h = loanHero(p, c.L, `${toFa(c.months)} ماهه · ${p.name}`, 'مبلغ اعتبار')
+        + '<div class="lx-rows">' + srow('وضعیت', `<em class="dp-badge ${cls}">${st}</em>`) + srow('کد پیگیری', codeCell(c.code)) + srow('تأمین‌کننده', ciProvCell(p)) + srow('قسط ماهانه', T_(c.inst))
+        + srow(ciTip('طلای دریافتی', TIP.grams), 'حدود ' + g3(c.recv)) + srow('تاریخ درخواست', jFmtT(c.reqAt, c.reqAt[3])) + '</div>'
+        + `<div class="snack warn">${WARN_SVG}<span>${ab ? `درخواست شما در ${p.via} تکمیل نشده است. اگر تکمیل نشود، به‌صورت خودکار لغو می‌شود.` : `درخواست شما در ${p.via} در حال بررسی است. بررسی ممکن است تا ۳ روز کاری طول بکشد؛ نتیجه را با پیامک اطلاع می‌دهیم.`}</span></div>`
+        + `<div class="sec-div"></div><div class="lx-card"><div class="lx-h">مسیر دریافت</div>${ciSteps(p, 2)}</div>`;
+      f = ab ? `<button type="button" class="btn" data-cv="resume"><span class="label">ادامه در ${p.via}</span></button><button type="button" class="btn-naked danger" data-cv="cancel">لغو درخواست</button>` : '';
+    } else if (c.status === 'active'){
+      const H = ciHealth(c), z = !p.via, done = c.paid >= c.months;
+      h = ciGauge(c, H) + `<div class="sec-div"></div><div class="hs-tablist lv-tabs" id="ciTabs" role="tablist">${[['det', 'جزئیات'], ['inst', 'اقساط'], ['hist', 'تاریخچه']].map(([k, t]) => `<button type="button" role="tab" data-tab="${k}" class="${ciTab === k ? 'on' : ''}" aria-selected="${ciTab === k}">${t}</button>`).join('')}</div>`
+        + `<div class="lv-panel" id="ciPanel">${ciPanel(c)}</div>`;
+      const pay = done ? '' : `<button type="button" class="btn${H.st === 'warn' ? ' btn-secondary' : ''}" data-cv="pay"><span class="label">${z ? 'پرداخت قسط ' + ordFa(c.paid + 1) : 'پرداخت قسط در ' + p.via}</span></button>`;
+      const add = `<button type="button" class="btn${H.st === 'warn' ? '' : ' btn-secondary'}" data-cv="add"><span class="label">افزایش وثیقه</span></button>`;
+      f = H.st === 'warn' ? add + pay : pay + add;
+    } else if (c.status === 'liquidated'){
+      h = `<div class="lh bad"><div class="lh-g">${gaugeSvg(LN_SELL, 'شروع اعتبار')}<div class="lh-in"><small>ارزش وثیقه در لحظه فروش</small><b>${fmtNum(rnd4(c.L * CI_SELL))}</b><span class="u">تومان</span><span class="lh-st"><i></i>لیکوئید شد</span><span class="lh-pill">${g3(c.sold)} از وثیقه فروخته شد</span></div></div></div>`
+        + `<div class="snack warn lh-warnbox">${WARN_SVG}<span>ارزش وثیقه به حد فروش رسید. ${g3(c.sold)} از وثیقه فروخته شد، بدهی تسویه و اعتبار بسته شد. ${g3(c.left)} باقی‌مانده به کیف پول شما برگشت.</span></div>`
+        + '<div class="sec-div"></div><div class="lx-rows">' + srow('وضعیت', `<em class="dp-badge ${cls}">${st}</em>`) + srow('کد پیگیری', codeCell(c.code)) + srow('مبلغ اعتبار', T_(c.L)) + srow('تأمین‌کننده', ciProvCell(p))
+        + srow('وثیقه فروخته‌شده', g3(c.sold)) + srow('برگشت به کیف پول', g3(c.left)) + srow('تاریخ', jFmt(c.ended)) + '</div>';
+      f = newBtn;
+    } else {
+      h = loanHero(p, c.L, `${toFa(c.months)} ماهه · ${p.name}`, 'مبلغ اعتبار')
+        + `<div class="snack ok">${OK_ICON}<span>${c.status === 'settled' ? `همه اقساط پرداخت شد و ${g3(c.grams)} طلای وثیقه آزاد شد.` : 'درخواست اعتبار لغو شد.'}</span></div>`
+        + '<div class="lx-rows">' + srow('وضعیت', `<em class="dp-badge ${cls}">${st}</em>`) + srow('کد پیگیری', codeCell(c.code)) + srow('تأمین‌کننده', ciProvCell(p)) + srow('قسط ماهانه', T_(c.inst)) + (c.ended ? srow('تاریخ', jFmt(c.ended)) : '') + '</div>';
+      f = newBtn;
+    }
+    $('#ciViewB').innerHTML = h; $('#ciViewF').innerHTML = f; $('#ciViewF').hidden = !f;
+  }
+  $('#ciViewB').addEventListener('click', e => {
+    const cp = e.target.closest('[data-copycode]');
+    if (cp){ try { navigator.clipboard.writeText(cp.dataset.copycode); } catch {} return showToast(OK_ICON + '<span>کد پیگیری کپی شد</span>'); }
+    if (e.target.closest('[data-cv="faq"]')) return openFaq('credit');
+    const tb = e.target.closest('#ciTabs [data-tab]'); if (!tb || tb.dataset.tab === ciTab) return;
+    ciTab = tb.dataset.tab;
+    $$('#ciTabs button').forEach(x => { const on = x === tb; x.classList.toggle('on', on); x.setAttribute('aria-selected', on); });
+    const pn = $('#ciPanel'); morphHeight(pn, () => { pn.innerHTML = ciPanel(CI); });
+    fadeIn([...pn.querySelectorAll('.sr, .ln-tr, .lv-isum, .lv-ev')].slice(0, 10), 20);
+  });
+  $('#ciViewF').addEventListener('click', e => {
+    const a = e.target.closest('[data-cv]')?.dataset.cv; if (!a) return; const c = CI;
+    if (a === 'add') return openCiAdd();
+    if (a === 'pay') return c.p.via ? ciRedir(c.p.via, () => stBack()) : openCiInst(c);
+    if (a === 'resume') return ciToProvider(c);
+    if (a === 'new') return openCiReq();
+    if (a === 'cancel') return openCiInfo($('#brPayWarn').src, 'درخواست اعتبار لغو شود؟', `درخواست اعتبار ${fmtNum(c.L)} تومانی از ${c.p.name} لغو می‌شود.`, ['انصراف', 'لغو درخواست', () =>
+      openOtpSheet({ title:'تأیید لغو درخواست اعتبار', cta:'تأیید و لغو درخواست', what:'لغو درخواست اعتبار', onVerify:() => { c.status = 'cancelled'; c.ended = J_TODAY; renderCiView(); showToast(OK_ICON + '<span>درخواست اعتبار لغو شد</span>'); } })]);
+  });
+  // a small dialog (the app's dlg): info, or a confirm when `act` is given
+  function openCiInfo(img, t, p, act){
+    $('#ciInfoImg').src = img; $('#ciInfoT').textContent = t; $('#ciInfoP').textContent = p;
+    $('#ciInfoBtns').innerHTML = act ? `<button type="button" class="btn btn-secondary" data-x><span class="label">${act[0]}</span></button><button type="button" class="btn" id="ciInfoGo"><span class="label">${act[1]}</span></button>`
+      : '<button type="button" class="btn btn-secondary" data-x><span class="label">متوجه شدم</span></button>';
+    $('#ciInfoBtns [data-x]').addEventListener('click', () => closeModal($('#ciInfoModal')));
+    if (act) $('#ciInfoGo').addEventListener('click', () => { closeModal($('#ciInfoModal')); setTimeout(act[2], 220); });
+    openModal($('#ciInfoModal'));
+  }
+  function ciWarnSheet(){
+    ciWarnSeen = true; const c = CI, m = ciMinAdd(c);
+    openCiInfo($('#brPayWarn').src, 'اعتبار شما در حد هشدار است', `ارزش وثیقه اعتبار ${MIL(c.L)} تومانی شما به حد هشدار رسیده و به حد فروش نزدیک است. با افزایش دست‌کم ${g3(m)} وثیقه، اعتبار به وضعیت سالم برمی‌گردد.`, ['بعداً', 'افزایش وثیقه', openCiAdd]);
   }
 
-  $('#crDetails').addEventListener('click', e => {
-    const tab = e.target.closest('[data-credit-tab]')?.dataset.creditTab;
-    if (!tab) return;
-    credit.tab = tab;
-    renderCreditDetails();
-    $('#cr-tab-' + tab).focus({ preventScroll:true });
+  /* ---------- increase collateral (the loan's «افزایش وثیقه» page) ---------- */
+  const CA = { raw:'', req:'' };
+  var ciAddTried = false;
+  const ciaInput = $('#ciaInput');
+  function ciaCalc(){ const c = CI, H = ciHealth(c), x = +CA.raw || 0, free = freeGold(), min = ciMinAdd(c), H2 = ciHealth(c, x); return { c, H, x, free, min, H2, short: x > free + 1e-9 ? ceil3(x - free) : 0 }; }
+  const ciStBadge = H => `<em class="dp-badge ${H.st === 'ok' ? 'act' : 'warn'}">${H.st === 'ok' ? 'سالم' : 'حد هشدار'}</em>`;
+  function renderCia(){
+    const k = ciaCalc(), warn = k.H.st === 'warn';
+    $('#ciaFree').textContent = `موجودی آزاد: ${g3(k.free)}`;
+    $('#ciaVal').textContent = fmtRaw(CA.raw); if (ciaInput.value !== CA.raw) ciaInput.value = CA.raw;
+    const low = warn && k.x && k.x < k.min ? 'با این مقدار، اعتبار همچنان در حد هشدار می‌ماند.' : '';
+    $('#ciaHint').textContent = CA.req || low; $('#ciaHint').classList.toggle('bad', !!(CA.req || low)); $('#ciaCard').classList.toggle('bad', !!CA.req);
+    $('#ciaMin').hidden = !warn;
+    $('#ciaMin').innerHTML = `<span><b>حداقل ${g3(k.min)}</b><small>کمتر از این مقدار، اعتبار را از حد هشدار خارج نمی‌کند</small></span><em>انتخاب</em>`;
+    $('#ciaMin').classList.toggle('on', warn && +CA.raw === k.min);
+    $('#ciaNow').innerHTML = srow('وثیقه فعلی', g3(k.c.grams)) + srow('ارزش وثیقه', T_(rnd4(k.H.val)))
+      + (k.x ? srow('وثیقه پس از افزایش', g3(f3(k.c.grams + k.x))) + srow('ارزش پس از افزایش', T_(rnd4(k.H2.val))) + srow('وضعیت پس از افزایش', ciStBadge(k.H2)) : '');
+    $('#ciaBtn .label').textContent = k.x && k.short ? `خرید ${g3(k.short)} طلا و افزایش وثیقه` : 'افزایش وثیقه';
+  }
+  function ciaSet(r){ const had = !!+CA.raw; CA.raw = r; CA.req = ''; if (had !== !!+CA.raw) morphHeight($('#ciaNow'), renderCia); else renderCia(); }
+  function openCiAdd(){ if (!CI) return; CA.raw = ''; CA.req = ''; renderCia(); $('#ciaScroll').scrollTop = 0; stGo('ciAdd'); }
+  registerInput(ciaInput, 'num', k => ciaSet(typeInto(CA.raw, k, true, 3)));
+  inputs.get(ciaInput).decimal = () => true;
+  ciaInput.addEventListener('input', () => ciaSet(cleanNum(ciaInput.value, true, 3)));
+  ciaInput.addEventListener('focus', () => { $('#ciaCard').classList.add('focused'); $('#ciaNum').classList.add('focused'); });
+  ciaInput.addEventListener('blur',  () => { $('#ciaCard').classList.remove('focused'); $('#ciaNum').classList.remove('focused'); });
+  $('#ciaCard').addEventListener('click', e => { if (!e.target.closest('input')){ ciaInput.focus({ preventScroll:true }); openKb(ciaInput); } });
+  $('#ciaMin').addEventListener('click', () => { closeKb(); ciaSet(String(ciaCalc().min)); $('#ciaVal').animate([{ opacity:.3, transform:'translateY(4px)' }, { opacity:1, transform:'none' }], { duration:msOf('--dur-base'), easing:tok('--ease-out') }); });
+  $('#ciaBtn').addEventListener('click', () => {
+    const k = ciaCalc();
+    if (!+CA.raw){ CA.req = 'مقدار افزایش وثیقه را وارد کنید.'; renderCia(); shake($('#ciaCard')); ciaInput.focus({ preventScroll:true }); return openKb(ciaInput); }
+    closeKb();
+    const rows = srow('مقدار افزایش', g3(k.x)) + srow('از موجودی طلا', g3(f3(k.x - k.short))) + (k.short ? srow('خرید طلا', g3(k.short)) : '') + srow('وضعیت پس از افزایش', ciStBadge(k.H2));
+    if (k.short) return openCiPay({ title:'افزایش وثیقه', amount:Math.round(k.short * MARKET.gold.v * 1.01), rows, onPaid:() => ciDoAdd(k) });   // shortfall bought at the usual 1 % fee
+    openCiPay({ title:'افزایش وثیقه', amount:0, rows, onPaid:() => ciDoAdd(k) });
   });
-  $('#crDetails').addEventListener('change', e => {
-    if (e.target.id === 'crConsent') $('#crFooter [data-credit-action="confirm"]').disabled = !e.target.checked;
-  });
-  $('#crFooter').addEventListener('click', e => {
-    const action = e.target.closest('[data-credit-action]')?.dataset.creditAction;
-    if (action === 'continue'){
-      if (test.kyc !== '1') return openKycSheet(() => creditStage('review'));
-      creditStage('review');
-    } else if (action === 'confirm' && $('#crConsent')?.checked){
-      openOtpSheet({ title:'تأیید درخواست اعتبار', cta:'تأیید کد', what:'درخواست اعتبار', verifyCode:true,
-        onVerify:() => creditStage(credit.quote.p.channel ? 'provider' : 'active') });
-    } else if (action === 'activate') creditStage('active');
-    else if (action === 'reject') creditStage('rejected');
-    else if (action === 'add') showCreditCollateral();
-    else if (action === 'saveAdd') saveCreditCollateral();
-    else if (action === 'cancelAdd') creditStage('active');
-    else if (action === 'pay'){
-      credit.paid++;
-      creditStage(credit.paid === credit.quote.months ? 'settled' : 'active');
-    } else if (action === 'retry') stBack();
-  });
+  function ciDoAdd(k){
+    if (test.ciRes === 'fail' && !ciAddTried){
+      ciAddTried = true;
+      return ciResult({ img:$('#brPayWarn').src, t:'افزایش وثیقه انجام نشد', p:'ارتباط با سرویس برقرار نشد. مقداری از موجودی شما کم نشد.', main:['تلاش دوباره', async b => { setLoading(b, true); await wait(900); setLoading(b, false); ciDoAdd(k); }], sub:['بازگشت به اعتبار', () => openCiView(CI, true, true)] });
+    }
+    const c = CI; c.grams = f3(c.grams + k.x); c.events.push({ d:J_TODAY, k:'add', g:k.x });
+    STK.goldTotal = f3(STK.goldTotal + k.short - k.x); renderTotals(); renderWallet();
+    sendSms(`${g3(k.x)} طلا به وثیقه اعتبار خرید طلای شما افزوده شد.`);
+    const H = ciHealth(c);
+    ciResult({ img:$('#brOk .br-img').src, t:'وثیقه افزایش یافت', p:`${g3(k.x)} طلا به وثیقه اعتبار شما اضافه شد.`,
+      rows:srow('وثیقه فعلی', g3(c.grams)) + srow('ارزش وثیقه', T_(rnd4(H.val))) + srow('وضعیت', ciStBadge(H)), main:['بازگشت به اعتبار', () => openCiView(c, true, true)] });
+  }
+
+  /* ---------- pay an instalment (zarpin) ---------- */
+  function openCiInst(c){
+    const n = c.paid + 1;
+    openCiPay({ title:'پرداخت قسط ' + ordFa(n), amount:c.inst, rows:srow('قسط ' + ordFa(n), T_(c.inst)) + srow('سررسید', jFmt(ciDue(c, n))), onPaid:({ fromW, gw }) => {
+      c.paid = n; c.events.push({ d:J_TODAY, k:'inst', t:c.inst });
+      const done = c.paid >= c.months; if (done){ c.status = 'settled'; c.ended = J_TODAY; }
+      sendSms(`قسط ${ordFa(n)} اعتبار خرید طلا به مبلغ ${T_(c.inst)} پرداخت شد.`);
+      ciResult({ img:$('#brOk .br-img').src, t:`قسط ${ordFa(n)} پرداخت شد`, p:done ? `همه اقساط پرداخت شد و ${g3(c.grams)} طلای وثیقه آزاد شد.` : `قسط بعدی: ${jFmt(ciDue(c, n + 1))}`,
+        rows:srow('از کیف پول', T_(fromW)) + srow('از درگاه', T_(gw)) + srow('مبلغ کل', T_(c.inst), 'total'),
+        main:['بازگشت به اعتبار', () => openCiView(c, true, true)], sub:['صفحه اصلی', () => { stStack = []; go('home', true); markTabs(); }] });
+    } });
+  }
+
+  /* ---------- test jumps ---------- */
+  function ciForce(st, prov, health){
+    forceStake();
+    if (st) test.ciState = st;
+    if (prov) test.ciProv = prov;
+    if (health) test.ciHealth = health;
+    syncTp(); syncSw(); resetCi(); $$('.modal.open').forEach(closeModal); closeKb();
+  }
+  function ciGoHome(){ stStack = []; ciWarnSeen = true; openCi(); }
+  function ciGoReq(raw = '70000000'){ ciForce('none'); RQ.raw = raw; RQ.months = 12; RQ.prov = 'zarpin'; stStack = []; openCiReq(); }
+  function ciGoDet(pid){ ciGoReq(); RQ.prov = pid; setTimeout(() => openCiDet(ciQuote(ciProv(pid), 70e6, 12)), 450); }
+  const ciAct = (prov, health, warnSheet = false) => { ciForce('active', prov, health); stStack = []; ciWarnSeen = !warnSheet; openCi(); };
+  const ciOtpFill = () => { $('#soInput').value = '123456'; $('#soInput').dispatchEvent(new Event('input')); $('#soBtn').click(); };
+  const CI_JUMPS = {
+    ciEmpty:     () => { ciForce('none'); ciGoHome(); },
+    ciPast:      () => { ciForce('past'); ciGoHome(); },
+    ciFaq:       () => { ciForce('none'); ciGoHome(); setTimeout(() => openFaq('credit'), 450); },
+    ciReq:       () => ciGoReq(),
+    ciReqEmpty:  () => ciGoReq(''),
+    ciReqNone:   () => { ciForce('none'); test.ciFind = 'none'; syncSw(); RQ.raw = '70000000'; RQ.months = 12; stStack = []; openCiReq(); },
+    ciGoldInfo:  () => { ciGoReq(); setTimeout(() => $('#ciCap').click(), 450); },
+    ciDetZ:      () => ciGoDet('zarpin'),
+    ciTerms:     () => { ciGoDet('zarpin'); setTimeout(openCiTerms, 900); },
+    ciPayZ:      () => { ciGoDet('zarpin'); setTimeout(() => { ciAgree = true; ciAgreeSync(); $('#ciDetBtn').click(); }, 900); },
+    ciOtpZ:      () => { CI_JUMPS.ciPayZ(); setTimeout(() => $('#ciPayBtn').click(), 1500); },
+    ciDoneZ:     () => { CI_JUMPS.ciOtpZ(); setTimeout(ciOtpFill, 4200); },
+    ciDetO:      () => ciGoDet('blu'),
+    ciDoneO:     () => { ciGoDet('blu'); setTimeout(() => { ciAgree = true; ciAgreeSync(); $('#ciDetBtn').click(); }, 900); setTimeout(ciOtpFill, 1700); },
+    ciRedir:     () => { ciForce('abandoned', 'blu'); stStack = ['home']; ciToProvider(CI); },
+    ciPending:   () => { ciForce('pending', 'blu'); ciGoHome(); },
+    ciAbandoned: () => { ciForce('abandoned', 'blu'); ciGoHome(); },
+    ciActZ:      () => ciAct('zarpin', 'safe'),
+    ciActZWarn:  () => ciAct('zarpin', 'warn'),
+    ciActO:      () => ciAct('blu', 'safe'),
+    ciActOWarn:  () => ciAct('blu', 'warn'),
+    ciWarnSheet: () => ciAct('blu', 'warn', true),
+    ciInst:      () => { ciAct('zarpin', 'safe'); setTimeout(() => openCiInst(CI), 450); },
+    ciAdd:       () => { ciAct('blu', 'safe'); setTimeout(openCiAdd, 450); },
+    ciAddWarn:   () => { ciAct('blu', 'warn'); setTimeout(openCiAdd, 450); },
+    ciAddOk:     () => { ciAct('blu', 'warn'); setTimeout(() => { CA.raw = String(ciMinAdd(CI)); ciAddTried = true; ciDoAdd(ciaCalc()); }, 450); },
+    ciAddFail:   () => { ciAct('blu', 'warn'); setTimeout(() => { CA.raw = String(ciMinAdd(CI)); const r = test.ciRes; test.ciRes = 'fail'; ciAddTried = false; ciDoAdd(ciaCalc()); test.ciRes = r; }, 450); },
+    ciList:      () => { ciAct('zarpin', 'safe'); setTimeout(() => $('#ciAllBtn').click(), 450); },
+    ciLiqView:   () => { ciForce('past'); ciGoHome(); setTimeout(() => openCiView(CIS.find(c => c.status === 'liquidated')), 450); },
+  };
+  CI_READY = true; resetCi();
 
   function setLoanTest(v){ forceStake(); test.loan = v; syncTp(); resetLoan(); refreshLoanUI(); }
   const JUMPS = {
@@ -8929,14 +9255,14 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   tpJump.addEventListener('change', () => {
     const k = tpJump.value; tpJump.selectedIndex = 0; tpJump.blur();
     if (k !== 'account') applyTest();          // clean slate in the current test state
-    JUMPS[k](); if (!wide()) setPanel(false);
+    (JUMPS[k] || CI_JUMPS[k])(); if (!wide()) setPanel(false);
     syncUrl(); setTimeout(syncUrl, 1000);
   });
 
 
   /* ---------- test panel: switches, per-feature jump lists, section summaries ---------- */
   (() => {
-    const SEC_OF = v => v.startsWith('loan') ? 'loan' : v.startsWith('api') ? 'api' : v.startsWith('dlv') ? 'dlv'
+    const SEC_OF = v => v.startsWith('ci') ? 'credit' : v.startsWith('loan') ? 'loan' : v.startsWith('api') ? 'api' : v.startsWith('dlv') ? 'dlv'
       : /^(st[A-Z]|stake$|deposit|yields)/.test(v) ? 'stake'
       : ['trade','tradeSell','tradeSilver','tradeSilverSell','alert','alertList','alertHit','silverIntro','tradeTyping','tradeMin','tradeLimit','rules','limitInfo','metal','tradeConfirm','tradeTopup','buyWork','buyOk','buyFail','payFail'].includes(v) ? 'trade' : 'general';
     const master = $('#tpJump');
@@ -9102,8 +9428,11 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     ['loans',     'Loans',                () => JUMPS.loanMy()],
     ['loan',      'Loans/Calculator',     () => JUMPS.loanCalc()],
     ['loanDet',   'Loans/Details',        () => JUMPS.loanDetails()],
-    ['credit',    'Credit',               () => openCredit()],
-    ['creditDetails', 'Credit/Details',    () => { openCredit(); if (state.screen === 'credit') openCreditDetails(CREDIT_PROVIDERS[0]); }],
+    ['ciList',    'Credit',               () => CI_JUMPS.ciEmpty()],
+    ['ciView',    'Credit/View',          () => CI_JUMPS.ciActZ()],
+    ['ciReq',     'Credit/Request',       () => CI_JUMPS.ciReq()],
+    ['ciAdd',     'Credit/AddCollateral', () => CI_JUMPS.ciAdd()],
+    ['ciDet',     'Credit/Details',       () => CI_JUMPS.ciDetZ()],
     ['loanView',  'Loans/View',           () => JUMPS.loanActive()],
     ['lnAdd',     'Loans/AddCollateral',  () => JUMPS.loanAdd()],
     ['lnGuide',   'Loans/WarningGuide',   () => JUMPS.loanGuide()],
