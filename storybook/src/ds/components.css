@@ -301,6 +301,16 @@
 .zp-wheel-col > span.is-selected { color: var(--content-primary); font-weight: var(--font-weight-bold); }
 .zp-wheel-col > b { block-size: 24px; color: var(--content-tertiary); font-size: var(--font-size-caption-large); font-weight: var(--font-weight-regular); }
 
+/* ---------- Focus ring (keyboard only) ----------
+   Text inputs show focus on their box (.zp-field-box, .zp-otp), so the input itself never gets an outline. */
+:is(.zp-button, .zp-list-item, .zp-bottom-nav-item, .zp-tag button, .zp-accordion summary, .zp-option a):focus-visible,
+:is(.zp-checkbox, .zp-radio, .zp-switch):has(input:focus-visible),
+.zp-option:has(.zp-option-link:focus-visible) {
+  outline: 2px solid var(--content-primary);
+  outline-offset: 2px;
+}
+.zp-field-input:focus, .zp-otp input:focus, :is(.zp-checkbox, .zp-radio, .zp-switch) input:focus { outline: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .zp-button, .zp-switch::after, .zp-accordion summary .zp-icon { transition: none; }
   .zp-spinner, .zp-otp-cell.is-active:empty::after { animation: none; }
