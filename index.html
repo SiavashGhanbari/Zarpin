@@ -2729,6 +2729,57 @@ button.wal-toman:active{background:var(--background-surface)}
 .ad-codep{margin:8px 0 0; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small); color:var(--content-secondary)}
 .ad-courier .dl-pill{flex:none; white-space:nowrap}
 .ad-courier{margin-top:10px; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid var(--border-subtle); border-radius:12px; font-size:var(--font-size-body-small); line-height:var(--line-height-body-small)}
+/* ==== address map · recipient · card list · unified success ==== */
+.am-wrap{position:relative; flex:1; min-height:0; overflow:hidden; touch-action:none; cursor:grab; background:#ECEFE8}
+.am-wrap.drag{cursor:grabbing}
+.am-map, .adf-map i{position:absolute; left:50%; top:50%; width:1800px; height:1800px; transform:translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px)));
+  background:
+    radial-gradient(circle at 28% 36%, #CFE6C8 0 110px, transparent 111px),
+    radial-gradient(circle at 66% 70%, #CFE6C8 0 80px, transparent 81px),
+    radial-gradient(ellipse at 80% 22%, #C7DDF2 0 120px, transparent 121px),
+    linear-gradient(33deg, transparent 49.2%, #F7E2A8 49.2% 50.8%, transparent 50.8%),
+    linear-gradient(-58deg, transparent 49.4%, #F7E2A8 49.4% 50.6%, transparent 50.6%),
+    repeating-linear-gradient(0deg, transparent 0 116px, #fff 116px 128px),
+    repeating-linear-gradient(90deg, transparent 0 156px, #fff 156px 168px), #ECEFE8}
+.am-pin{position:absolute; left:50%; top:50%; transform:translate(-50%, -100%); transition:transform var(--dur) var(--ease-ios); pointer-events:none; filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.am-wrap.drag .am-pin{transform:translate(-50%, calc(-100% - 10px))}
+.am-dot{position:absolute; left:50%; top:50%; width:8px; height:4px; border-radius:50%; background:rgba(0,0,0,.3); transform:translate(-50%, -50%); pointer-events:none}
+.am-me{position:absolute; left:16px; bottom:16px; box-shadow:var(--shadow-2, 0 2px 10px rgba(0,0,0,.15)); background:var(--background-page)}
+.am-hint{position:absolute; top:12px; left:50%; transform:translateX(-50%); margin:0; padding:6px 12px; border-radius:999px; background:rgba(11,11,12,.75); color:#fff; font-size:var(--font-size-body-small); white-space:nowrap; pointer-events:none}
+.am-foot{display:flex; flex-direction:column; gap:12px}
+.am-foot .btn{margin:0}
+.am-card{display:flex; flex-direction:column; gap:4px}
+.am-card small{font-size:var(--font-size-body-small); color:var(--content-tertiary)}
+.am-card b{font-size:var(--font-size-label-medium); line-height:var(--line-height-label-medium); font-weight:700; min-height:24px}
+.am-card b.wait{color:var(--content-tertiary); font-weight:500}
+.adf-map{position:relative; height:120px; margin:12px 0 4px; border-radius:16px; overflow:hidden; background:#ECEFE8}
+.adf-map .am-pin{transform:translate(-50%, -100%) scale(.8); transform-origin:50% 100%}
+.adf-map button{position:absolute; left:10px; bottom:10px; height:32px; padding:0 12px; border:0; border-radius:16px; background:var(--background-page); box-shadow:0 1px 6px rgba(0,0,0,.15); font:inherit; font-size:var(--font-size-label-small); font-weight:700; color:var(--content-primary); cursor:pointer}
+.adf-chips button:disabled{opacity:.4; cursor:default}
+.dl-rcp{margin-top:12px; padding:14px 16px; border-radius:16px; border:1px solid var(--border-subtle)}
+.dl-rcp .l1{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.dl-rcp .l1 b{font-size:var(--font-size-label-medium); font-weight:700}
+.dl-rcp > p{margin:6px 0 0; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium)}
+.dl-rcp > p small{color:var(--content-tertiary)}
+.dl-rcp .dl-info{margin-top:10px}
+.rc-self{align-self:flex-start; margin-top:14px; height:32px; padding:0 12px; border:1px solid var(--border-default); border-radius:16px; background:none; font:inherit; font-size:var(--font-size-label-small); font-weight:700; color:var(--content-primary); cursor:pointer}
+#dlEditModal .dl-ebars, #dlEditModal .modal-sheet{scrollbar-width:none} #dlEditModal .dl-ebars::-webkit-scrollbar, #dlEditModal .modal-sheet::-webkit-scrollbar{display:none}
+.bc-list{display:flex; flex-direction:column; gap:10px}
+.bcl{display:flex; align-items:center; gap:12px; width:100%; padding:14px 16px; border:0; border-radius:16px; background:var(--background-page); box-shadow:inset 0 0 0 1px var(--border-subtle); font:inherit; text-align:right; color:var(--content-primary); cursor:pointer}
+.bcl.on{box-shadow:inset 0 0 0 1.5px var(--content-primary)}
+.bcl.on .pay-radio{box-shadow:inset 0 0 0 6.5px var(--content-primary)}
+.bcl-mark{flex:none; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; color:#fff; font-size:11px; font-weight:800}
+.bcl-mark.add{background:var(--background-surface); color:var(--content-primary); font-size:22px; font-weight:400}
+.bcl-t{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px}
+.bcl-t b{display:flex; align-items:center; gap:8px; font-size:var(--font-size-label-medium); line-height:var(--line-height-label-medium); font-weight:700}
+.bcl-t small{direction:ltr; text-align:right; font-size:var(--font-size-body-small); color:var(--content-tertiary); letter-spacing:.5px}
+.bcl-tag{font-style:normal; padding:2px 8px; border-radius:999px; background:var(--components-tag-blue-bg); color:var(--components-tag-blue-label, var(--blue-600)); font-size:11px; line-height:18px; font-weight:700}
+.bcl.add{box-shadow:inset 0 0 0 1px var(--border-default); border:0; background:none}
+.bcl.add .ico{flex:none; color:var(--content-tertiary)}
+.tu-pay{margin-top:18px}
+#brOk .br-acts{width:100%; display:flex; flex-direction:column; gap:8px}
+#brOk .br-acts .btn{margin:0; width:100%}
+.br-code{margin:14px 0 0; text-align:center}
 .tu .st2-chips button{font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium)}
 
 /* round 16 — campaign picker in the test panel */
@@ -4375,7 +4426,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
       <section class="screen page tu" id="screenTopup" data-pos="next" inert aria-label="واریز تومان">
         <header class="app-header">
           <div class="ah-start"><button type="button" class="circle-btn hs-back" id="tuBack" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">واریز تومان</span></div>
-          <div class="ah-actions"></div>
+          <div class="ah-actions"><button type="button" class="circle-btn tu-faq" aria-label="پرسش‌های متداول"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 14.41C11.59 14.41 11.25 14.07 11.25 13.66V11.99C11.25 11.58 11.59 11.24 12 11.24C12.81 11.24 13.47 10.58 13.47 9.77C13.47 8.96 12.81 8.3 12 8.3C11.19 8.3 10.53 8.96 10.53 9.77C10.53 10.18 10.19 10.52 9.78 10.52C9.37 10.52 9.03 10.18 9.03 9.77C9.03 8.13 10.36 6.8 12 6.8C13.64 6.8 14.97 8.13 14.97 9.77C14.97 11.15 14.02 12.31 12.75 12.65V13.66C12.75 14.07 12.41 14.41 12 14.41Z" fill="currentColor"/> <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="currentColor"/> <path d="M12 17.25C11.59 17.25 11.19 16.86 11.19 16.44C11.19 16.02 11.58 15.63 12 15.63C12.42 15.63 12.81 16.02 12.81 16.44C12.81 16.86 12.42 17.25 12 17.25Z" fill="currentColor"/></svg></button></div>
         </header>
         <div class="page-scroll st-form st2 tu-form">
           <!-- static: field, chips and the button sit above the keyboard on iPhone SE — nothing moves -->
@@ -4387,7 +4438,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
           </div>
           <div class="st2-conv" id="tuConv"></div>
           <div class="st2-chips tu-keep" id="tuChips"><button type="button" data-v="500000">۵۰۰ هزار</button><button type="button" data-v="1000000">۱ میلیون</button><button type="button" data-v="5000000">۵ میلیون</button><button type="button" data-v="10000000">۱۰ میلیون</button></div>
-          <button type="button" class="btn tu-btn" id="tuBtn"><span class="label">ادامه</span></button>
+          <div class="pay tu-pay tu-keep" id="tuPay"><button type="button" class="pay-head" id="tuPayHead" aria-expanded="false"><span>روش پرداخت</span><svg class="ico pay-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></button><div class="pay-list" id="tuPayList" role="radiogroup" aria-label="روش پرداخت"></div></div>
+          <button type="button" class="btn tu-btn" id="tuBtn"><span class="label">پرداخت</span></button>
         </div>
       </section>
 
@@ -4395,7 +4447,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
       <section class="screen page tu wd" id="screenWd" data-pos="next" inert aria-label="برداشت تومان">
         <header class="app-header">
           <div class="ah-start"><button type="button" class="circle-btn" id="wdBack" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">برداشت تومان</span></div>
-          <div class="ah-actions"></div>
+          <div class="ah-actions"><button type="button" class="circle-btn tu-faq" aria-label="پرسش‌های متداول"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 14.41C11.59 14.41 11.25 14.07 11.25 13.66V11.99C11.25 11.58 11.59 11.24 12 11.24C12.81 11.24 13.47 10.58 13.47 9.77C13.47 8.96 12.81 8.3 12 8.3C11.19 8.3 10.53 8.96 10.53 9.77C10.53 10.18 10.19 10.52 9.78 10.52C9.37 10.52 9.03 10.18 9.03 9.77C9.03 8.13 10.36 6.8 12 6.8C13.64 6.8 14.97 8.13 14.97 9.77C14.97 11.15 14.02 12.31 12.75 12.65V13.66C12.75 14.07 12.41 14.41 12 14.41Z" fill="currentColor"/> <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="currentColor"/> <path d="M12 17.25C11.59 17.25 11.19 16.86 11.19 16.44C11.19 16.02 11.58 15.63 12 15.63C12.42 15.63 12.81 16.02 12.81 16.44C12.81 16.86 12.42 17.25 12 17.25Z" fill="currentColor"/></svg></button></div>
         </header>
         <div class="page-scroll st-form st2 wd-form" id="wdScroll">
           <div class="st2-row"><b>مبلغ برداشت</b><span id="wdBal"></span></div>
@@ -4409,21 +4461,6 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
           <button type="button" class="wd-iban wd-keep" id="wdIban" aria-haspopup="dialog"></button>
         </div>
         <div class="page-footer st2-foot"><button type="button" class="btn" id="wdBtn"><span class="label">درخواست برداشت</span><span class="spinner" aria-hidden="true"></span></button></div>
-      </section>
-      <section class="screen page br wdd" id="screenWdDone" data-pos="next" inert aria-label="درخواست برداشت ثبت شد">
-        <div class="page-scroll br-body wdd-body">
-          <div class="br-state">
-            <img class="br-img" id="wddImg" alt="" width="80" height="80">
-            <h2>درخواست برداشت ثبت شد</h2>
-            <p id="wddEta">مبلغ حداکثر تا ۲۴ ساعت آینده به حساب شما واریز می‌شود.</p>
-            <div class="wd-box" id="wddRows"></div>
-          </div>
-        </div>
-        <div class="page-footer wdd-foot">
-          <button type="button" class="btn" id="wddHome"><span class="label">صفحه اصلی</span></button>
-          <button type="button" class="btn btn-secondary" id="wddHist"><span class="label">مشاهده در تاریخچه برداشت</span></button>
-          <p class="od-code" id="wddCode"></p>
-        </div>
       </section>
 
       <!-- ===================== تحویل فیزیکی (physical delivery) ===================== -->
@@ -4466,32 +4503,46 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
         <div class="page-scroll" id="dlTime"></div>
         <div class="page-footer"><button type="button" class="btn" id="dlTimeGo"><span class="label">ادامه</span></button></div>
       </section>
+      <section class="screen page dl stflow" id="screenAddrMap" data-pos="next" inert aria-label="موقعیت روی نقشه">
+        <header class="app-header"><div class="ah-start"><button type="button" class="circle-btn dl-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">موقعیت روی نقشه</span></div><div class="ah-actions"></div></header>
+        <div class="am-wrap" id="amWrap"><div class="am-map" id="amMap"></div><span class="am-dot"></span><span class="am-pin"><svg width="40" height="48" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 47C20 47 37 31 37 18A17 17 0 0 0 3 18C3 31 20 47 20 47Z" fill="#0B0B0C"/><circle cx="20" cy="18" r="7" fill="#fff"/></svg></span>
+          <p class="am-hint">نقشه را جابه‌جا کنید تا پین روی محل دقیق باشد</p>
+          <button type="button" class="circle-btn am-me" id="amMe" aria-label="موقعیت فعلی من"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button></div>
+        <div class="page-footer am-foot"><div class="am-card"><small>آدرس این نقطه</small><b id="amAddr"></b></div><button type="button" class="btn" id="amGo"><span class="label">تأیید موقعیت</span></button></div>
+      </section>
       <section class="screen page dl stflow" id="screenAddrForm" data-pos="next" inert aria-label="آدرس">
-        <header class="app-header"><div class="ah-start"><button type="button" class="circle-btn dl-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title" id="adfTitle">افزودن آدرس</span></div><div class="ah-actions"></div></header>
+        <header class="app-header"><div class="ah-start"><button type="button" class="circle-btn dl-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title" id="adfTitle">جزئیات آدرس</span></div><div class="ah-actions"></div></header>
         <div class="page-scroll api-body adf-form" id="adfScroll">
-          <span class="api-lbl">عنوان آدرس</span>
-          <div class="adf-chips adf-keep" id="adfTitles"><button type="button" data-t="خانه">خانه</button><button type="button" data-t="محل کار">محل کار</button><button type="button" data-t="سایر">سایر</button></div>
+          <div class="adf-map" id="adfMap"><i id="adfMapBg"></i><span class="am-pin"><svg width="40" height="48" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 47C20 47 37 31 37 18A17 17 0 0 0 3 18C3 31 20 47 20 47Z" fill="#0B0B0C"/><circle cx="20" cy="18" r="7" fill="#fff"/></svg></span><button type="button" id="adfMove">تغییر موقعیت</button></div>
           <span class="api-lbl">شهر</span>
           <button type="button" class="api-field pick adf" id="adfCity"><span class="api-val" id="adfCityVal"></span><span class="api-ph">شهر را انتخاب کنید</span><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></button>
-          <label class="api-lbl" for="adfAddrIn">نشانی دقیق</label>
+          <label class="api-lbl" for="adfAddrIn">نشانی</label>
           <div class="api-field multi adf" id="adfAddr"><span class="api-val" id="adfAddrVal"></span><span class="amt-caret"></span><span class="api-ph">خیابان، کوچه، نام ساختمان…</span><input id="adfAddrIn" type="text" inputmode="none" autocomplete="off"></div>
           <div class="adf-2">
             <div><label class="api-lbl" for="adfPlqIn">پلاک</label><div class="api-field adf" id="adfPlq"><span class="api-val" id="adfPlqVal"></span><span class="amt-caret"></span><span class="api-ph">مثلاً ۱۲</span><input id="adfPlqIn" type="text" inputmode="none" autocomplete="off"></div></div>
-            <div><label class="api-lbl" for="adfUnitIn">واحد (اختیاری)</label><div class="api-field adf" id="adfUnit"><span class="api-val" id="adfUnitVal"></span><span class="amt-caret"></span><span class="api-ph">مثلاً ۴</span><input id="adfUnitIn" type="text" inputmode="none" autocomplete="off"></div></div>
+            <div><label class="api-lbl" for="adfUnitIn">واحد</label><div class="api-field adf" id="adfUnit"><span class="api-val" id="adfUnitVal"></span><span class="amt-caret"></span><span class="api-ph">مثلاً ۴</span><input id="adfUnitIn" type="text" inputmode="none" autocomplete="off"></div></div>
           </div>
           <label class="api-lbl" for="adfPostIn">کد پستی</label>
           <div class="api-field adf" id="adfPost"><span class="api-val" id="adfPostVal"></span><span class="amt-caret"></span><span class="api-ph">۱۰ رقم، بدون خط تیره</span><input id="adfPostIn" type="text" inputmode="none" autocomplete="off"></div>
-          <button type="button" class="sw-card dl-wsw adf-self adf-keep on" id="adfSelf" role="switch" aria-checked="true"><span class="sw-t"><b>گیرنده خودم هستم</b><small>سفارش فقط به صاحب حساب تحویل داده می‌شود</small></span><span class="sw" aria-hidden="true"><i><b></b><b></b><b></b></i></span></button>
-          <div class="adf-who" id="adfWho" hidden>
-            <label class="api-lbl" for="adfNameIn">نام و نام خانوادگی گیرنده</label>
-            <div class="api-field adf" id="adfName"><span class="api-val" id="adfNameVal"></span><span class="amt-caret"></span><span class="api-ph">مطابق کارت ملی</span><input id="adfNameIn" type="text" inputmode="none" autocomplete="off"></div>
-            <label class="api-lbl" for="adfMobIn">شماره موبایل گیرنده</label>
-            <div class="api-field ltr adf" id="adfMob"><span class="api-val" id="adfMobVal"></span><span class="amt-caret"></span><span class="api-ph">09123456789</span><input id="adfMobIn" type="text" inputmode="none" autocomplete="off" dir="ltr"></div>
-          </div>
-          <p class="adf-note">پیک سفارش را فقط به گیرنده و با دریافت کد تحویل و کارت ملی او تحویل می‌دهد. در غیر این صورت سفارش به شعبه برمی‌گردد.</p>
+          <label class="api-lbl" for="adfNameIn">عنوان آدرس</label>
+          <div class="api-field adf" id="adfName"><span class="api-val" id="adfNameVal"></span><span class="amt-caret"></span><span class="api-ph">مثلاً خانه</span><input id="adfNameIn" type="text" inputmode="none" autocomplete="off"></div>
+          <div class="adf-chips adf-keep" id="adfTitles" style="margin-top:10px"><button type="button" data-t="خانه">خانه</button><button type="button" data-t="محل کار">محل کار</button><button type="button" data-t="خانه پدری">خانه پدری</button></div>
           <p class="adf-err" id="adfErr" role="alert"></p>
         </div>
         <div class="page-footer adf-foot"><button type="button" class="btn adf-keep" id="adfSave"><span class="label">ذخیره آدرس</span><span class="spinner" aria-hidden="true"></span></button><button type="button" class="btn-naked" id="adfDel">حذف آدرس</button></div>
+      </section>
+      <section class="screen page dl stflow" id="screenDlRcp" data-pos="next" inert aria-label="تحویل‌گیرنده">
+        <header class="app-header"><div class="ah-start"><button type="button" class="circle-btn dl-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">تحویل‌گیرنده</span></div><div class="ah-actions"></div></header>
+        <div class="page-scroll api-body adf-form">
+          <p class="adf-note" style="margin-top:12px">پیک سفارش را فقط به همین شخص و با دریافت کد تحویل و کارت ملی او تحویل می‌دهد و به هیچ شخص دیگری تحویل نمی‌دهد. در غیر این صورت سفارش به شعبه برمی‌گردد.</p>
+          <label class="api-lbl" for="rcNameIn">نام و نام خانوادگی (مطابق کارت ملی)</label>
+          <div class="api-field adf" id="rcName"><span class="api-val" id="rcNameVal"></span><span class="amt-caret"></span><span class="api-ph">نام و نام خانوادگی</span><input id="rcNameIn" type="text" inputmode="none" autocomplete="off"></div>
+          <label class="api-lbl" for="rcMobIn">شماره موبایل</label>
+          <div class="api-field ltr adf" id="rcMob"><span class="api-val" id="rcMobVal"></span><span class="amt-caret"></span><span class="api-ph">09123456789</span><input id="rcMobIn" type="text" inputmode="none" autocomplete="off" dir="ltr"></div>
+          <p class="adf-err" id="rcErr" role="alert"></p>
+          <button type="button" class="rc-self adf-keep" id="rcSelf">تحویل به خودم</button>
+        </div>
+        <div class="page-footer"><button type="button" class="btn adf-keep" id="rcSave"><span class="label">ذخیره</span></button></div>
       </section>
       <section class="screen page dl stflow" id="screenAddrs" data-pos="next" inert aria-label="آدرس‌های من">
         <header class="app-header"><div class="ah-start"><button type="button" class="circle-btn dl-back" aria-label="بازگشت"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.8997 5.39985C14.1926 5.10695 14.6674 5.10695 14.9603 5.39985L21.0306 11.4702C21.171 11.6108 21.2503 11.8017 21.2503 12.0004C21.2502 12.1992 21.1712 12.3901 21.0306 12.5307L14.9603 18.6C14.6674 18.8929 14.1926 18.8929 13.8997 18.6C13.607 18.3071 13.6069 17.8323 13.8997 17.5395L19.4388 11.9995L13.8997 6.46039C13.6068 6.1675 13.6068 5.69274 13.8997 5.39985Z" fill="currentColor"/> <path d="M20.3301 11.2501C20.7443 11.2502 21.0801 11.5859 21.0801 12.0001C21.0801 12.4143 20.7443 12.7501 20.3301 12.7501H3.5C3.08579 12.7501 2.75 12.4143 2.75 12.0001C2.75 11.5859 3.08579 11.2501 3.5 11.2501H20.3301Z" fill="currentColor"/></svg></button><span class="title">آدرس‌های من</span></div><div class="ah-actions"></div></header>
@@ -4878,9 +4929,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
         </header>
         <div class="page-scroll bc-body">
           <p class="bc-lead" id="bcLead"></p>
-          <div class="bc-track" id="bcTrack" role="radiogroup" aria-label="کارت‌های بانکی"></div>
-          <div class="ln-dots" id="bcDots" aria-hidden="true"></div>
-          <div class="lx-rows bc-rows" id="bcRows"></div>
+          <div class="bc-list" id="bcTrack" role="radiogroup" aria-label="کارت‌های بانکی"></div>
           <p class="bc-note">پرداخت فقط با کارت‌های به نام خودتان ممکن است.</p>
         </div>
         <div class="page-footer"><button type="button" class="btn" id="bcPay"><span class="label">پرداخت</span><span class="spinner" aria-hidden="true"></span></button></div>
@@ -4915,7 +4964,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
             <h2 id="brOkTitle">خرید با موفقیت انجام شد</h2>
             <p id="brOkTxt"></p>
             <div class="stc-rows br-rows" id="brOkRows"></div>
-            <div class="br-acts"><button type="button" class="btn" id="brOkBtn"><span class="label">ادامه</span></button><button type="button" class="btn-naked br-wallet" id="brOkWallet">کیف پول</button></div>
+            <div class="br-acts"><button type="button" class="btn" id="brOkBtn"><span class="label">صفحه اصلی</span></button><button type="button" class="btn btn-secondary" id="brOk2"><span class="label">تاریخچه</span></button></div>
+            <p class="od-code br-code" id="brOkCode"></p>
           </div>
           <div class="br-state" id="brFail">
             <img class="br-img" src="data:image/webp;base64,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" alt="" width="80" height="80">
@@ -5594,8 +5644,10 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
               <optgroup label="صفحه اصلی"><option value="home">صفحه اصلی</option><option value="price">قیمت طلا</option><option value="priceSilver">قیمت نقره</option><option value="silverSheet">برگه موجودی نقره</option><option value="account">حساب کاربری</option></optgroup>
               <optgroup label="ورود"><option value="phone">شماره موبایل</option><option value="otp">کد تأیید</option></optgroup>
               <optgroup label="ثبت‌نام و احراز هویت"><option value="referral">کد معرف</option><option value="kyc">احراز هویت</option><option value="date">برگه تاریخ تولد</option><option value="terms">برگه قوانین</option><option value="success">احراز موفق</option></optgroup>
-              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeSilver">خرید نقره</option><option value="tradeSilverSell">فروش نقره</option><option value="alert">هشدار قیمت</option><option value="alertList">هشدار قیمت — با هشدار فعال</option><option value="alertHit">پیامک رسیدن قیمت</option><option value="silverIntro">معرفی نقره (اولین ورود)</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="payCards">انتخاب کارت بانکی</option><option value="payCardsNone">انتخاب کارت — بدون کارت</option><option value="payCardAdd">افزودن کارت بانکی</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="هدف پس‌انداز"><option value="goalPick">انتخاب هدف — چند گزینه</option><option value="goalPickOne">انتخاب هدف — آخرین شمش</option><option value="goalPickMix">انتخاب هدف — ترکیب دلخواه</option><option value="goalMade">هدف ثبت شد — بار اول</option><option value="goalMadeAgain">هدف ثبت شد — دفعه‌های بعد</option><option value="goalDetails">جزئیات هدف — یک شمش</option><option value="goalDetailsMix">جزئیات هدف — ترکیبی</option><option value="goalEdit">تغییر هدف</option><option value="goalDelete">حذف هدف</option><option value="goalDone">رسیدن به هدف</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiMax">مدیریت API (سقف ۳ کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlvOrders">سفارش‌های تحویل</option><option value="dlvOrdersEmpty">سفارش‌های تحویل — خالی</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvMethod">برگه روش تحویل</option><option value="dlvNoCity">محل تحویل — شهرتان را پیدا نکردید؟</option><option value="dlvShipAddr">ارسال — انتخاب آدرس</option><option value="dlvShipAddrEmpty">ارسال — بدون آدرس</option><option value="dlvAddrNew">ارسال — فرم آدرس جدید</option><option value="dlvAddrCity">فرم آدرس — انتخاب شهر</option><option value="dlvAddrErr">فرم آدرس — خطا</option><option value="dlvShipTime">ارسال — زمان تحویل</option><option value="dlvShipInv">ارسال — پیش‌فاکتور</option><option value="dlvShipInvPay">ارسال — پیش‌فاکتور (پرداخت هزینه ارسال)</option><option value="dlvShipPrep">پیگیری ارسال — آماده‌سازی</option><option value="dlvShipCourier">پیگیری ارسال — تحویل به پیک</option><option value="dlvShipOnway">پیگیری ارسال — در مسیر</option><option value="dlvShipDone">پیگیری ارسال — تحویل شد</option><option value="dlvShipFail">پیگیری ارسال — تحویل ناموفق</option><option value="addrs">آدرس‌های من</option><option value="addrsEmpty">آدرس‌های من — خالی</option><option value="addrEdit">ویرایش آدرس</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="خرید قسطی"><option value="ciEmpty">خرید قسطی — بدون اعتبار (معرفی)</option><option value="ciPast">خرید قسطی — اعتبارهای قبلی</option><option value="ciFaq">پرسش‌های متداول</option><option value="ciReq">درخواست اعتبار</option><option value="ciReqEmpty">درخواست — بدون مبلغ</option><option value="ciReqNone">درخواست — تأمین‌کننده‌ای پیدا نشد</option><option value="ciGoldInfo">برگه مقدار طلای دریافتی</option><option value="ciReqSilver">درخواست — نقره</option><option value="ciMetalPick">انتخاب دارایی (طلا/نقره)</option><option value="ciDetZ">جزئیات اعتبار — زرپین</option><option value="ciDetS">جزئیات اعتبار — نقره</option><option value="ciTerms">برگه شرایط و تعهدات</option><option value="ciPayZ">پرداخت هزینه و قسط اول</option><option value="ciOtpZ">کد تأیید</option><option value="ciDoneZ">اعتبار زرپین فعال شد</option><option value="ciDetO">جزئیات اعتبار — تأمین‌کننده دیگر</option><option value="ciDoneO">درخواست ثبت شد (تأمین‌کننده دیگر)</option><option value="ciRedir">انتقال به تأمین‌کننده</option><option value="ciPending">اعتبار — در حال بررسی</option><option value="ciAbandoned">اعتبار — تکمیل نشده</option><option value="ciActZ">اعتبار زرپین — سالم</option><option value="ciActZWarn">اعتبار زرپین — حد هشدار</option><option value="ciActS">اعتبار نقره — سالم</option><option value="ciActSWarn">اعتبار نقره — حد هشدار</option><option value="ciAddS">افزایش وثیقه نقره</option><option value="ciActO">اعتبار دیگر — سالم</option><option value="ciActOWarn">اعتبار دیگر — حد هشدار</option><option value="ciWarnSheet">دیالوگ حد هشدار</option><option value="ciInst">پرداخت قسط</option><option value="ciAdd">افزایش وثیقه</option><option value="ciAddWarn">افزایش وثیقه — حد هشدار</option><option value="ciAddOk">وثیقه افزایش یافت</option><option value="ciAddFail">افزایش وثیقه ناموفق</option><option value="ciList">همه اعتبارها</option><option value="ciLiqView">اعتبار لیکوئیدشده</option></optgroup><optgroup label="وام با وثیقه طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanKyc">قفل وثیقه بدون احراز هویت</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanBack">بازگشت از ونسی</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanActive">وام فعال</option><option value="loanActiveNew">وام تازه فعال‌شده (اولین بار + راهنمای نمودار)</option><option value="loanGaugeTour">راهنمای نمودار وثیقه</option><option value="loanWarn">وام فعال — حد هشدار</option><option value="loanWarnSheet">باتم‌شیت وام در حد هشدار (ورود به اپ)</option><option value="loanGuide">آموزش حد هشدار</option><option value="loanAdd">افزایش وثیقه</option><option value="loanSell">وام — لیکوئیدشده</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanRedirect">پرداخت قسط — انتقال به ونسی</option><option value="loanMy">وام‌های من</option><option value="loanMyEmpty">وام‌های من — خالی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
+              <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeSilver">خرید نقره</option><option value="tradeSilverSell">فروش نقره</option><option value="alert">هشدار قیمت</option><option value="alertList">هشدار قیمت — با هشدار فعال</option><option value="alertHit">پیامک رسیدن قیمت</option><option value="silverIntro">معرفی نقره (اولین ورود)</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="payCards">انتخاب کارت بانکی</option><option value="payCardsNone">انتخاب کارت — بدون کارت</option><option value="payCardAdd">افزودن کارت بانکی</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="هدف پس‌انداز"><option value="goalPick">انتخاب هدف — چند گزینه</option><option value="goalPickOne">انتخاب هدف — آخرین شمش</option><option value="goalPickMix">انتخاب هدف — ترکیب دلخواه</option><option value="goalMade">هدف ثبت شد — بار اول</option><option value="goalMadeAgain">هدف ثبت شد — دفعه‌های بعد</option><option value="goalDetails">جزئیات هدف — یک شمش</option><option value="goalDetailsMix">جزئیات هدف — ترکیبی</option><option value="goalEdit">تغییر هدف</option><option value="goalDelete">حذف هدف</option><option value="goalDone">رسیدن به هدف</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiMax">مدیریت API (سقف ۳ کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlvOrders">سفارش‌های تحویل</option><option value="dlvOrdersEmpty">سفارش‌های تحویل — خالی</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvMethod">برگه روش تحویل</option><option value="dlvNoCity">محل تحویل — شهرتان را پیدا نکردید؟</option><option value="dlvShipAddr">ارسال — انتخاب آدرس</option><option value="dlvShipAddrEmpty">ارسال — بدون آدرس</option><option value="dlvAddrMap">آدرس جدید — نقشه</option><option value="dlvAddrForm">آدرس جدید — جزئیات</option><option value="dlvAddrDup">آدرس — عنوان تکراری</option><option value="dlvRcp">ویرایش تحویل‌گیرنده</option><option value="dlvAddrCity">فرم آدرس — انتخاب شهر</option><option value="dlvAddrErr">فرم آدرس — خطا</option><option value="dlvShipTime">ارسال — زمان تحویل</option><option value="dlvShipInv">ارسال — پیش‌فاکتور</option><option value="dlvShipInvPay">ارسال — پیش‌فاکتور (پرداخت هزینه ارسال)</option><option value="dlvShipPrep">پیگیری ارسال — آماده‌سازی</option><option value="dlvShipCourier">پیگیری ارسال — تحویل به پیک</option><option value="dlvShipOnway">پیگیری ارسال — در مسیر</option><option value="dlvShipDone">پیگیری ارسال — تحویل شد</option><option value="dlvShipFail">پیگیری ارسال — تحویل ناموفق</option><option value="addrs">آدرس‌های من</option><option value="addrsEmpty">آدرس‌های من — خالی</option><option value="addrEdit">ویرایش آدرس</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="خرید قسطی"><option value="ciEmpty">خرید قسطی — بدون اعتبار (معرفی)</option><option value="ciPast">خرید قسطی — اعتبارهای قبلی</option><option value="ciFaq">پرسش‌های متداول</option><option value="ciReq">درخواست اعتبار</option><option value="ciReqEmpty">درخواست — بدون مبلغ</option><option value="ciReqNone">درخواست — تأمین‌کننده‌ای پیدا نشد</option><option value="ciGoldInfo">برگه مقدار طلای دریافتی</option><option value="ciReqSilver">درخواست — نقره</option><option value="ciMetalPick">انتخاب دارایی (طلا/نقره)</option><option value="ciDetZ">جزئیات اعتبار — زرپین</option><option value="ciDetS">جزئیات اعتبار — نقره</option><option value="ciTerms">برگه شرایط و تعهدات</option><option value="ciPayZ">پرداخت هزینه و قسط اول</option><option value="ciOtpZ">کد تأیید</option><option value="ciDoneZ">اعتبار زرپین فعال شد</option><option value="ciDetO">جزئیات اعتبار — تأمین‌کننده دیگر</option><option value="ciDoneO">درخواست ثبت شد (تأمین‌کننده دیگر)</option><option value="ciRedir">انتقال به تأمین‌کننده</option><option value="ciPending">اعتبار — در حال بررسی</option><option value="ciAbandoned">اعتبار — تکمیل نشده</option><option value="ciActZ">اعتبار زرپین — سالم</option><option value="ciActZWarn">اعتبار زرپین — حد هشدار</option><option value="ciActS">اعتبار نقره — سالم</option><option value="ciActSWarn">اعتبار نقره — حد هشدار</option><option value="ciAddS">افزایش وثیقه نقره</option><option value="ciActO">اعتبار دیگر — سالم</option><option value="ciActOWarn">اعتبار دیگر — حد هشدار</option><option value="ciWarnSheet">دیالوگ حد هشدار</option><option value="ciInst">پرداخت قسط</option><option value="ciAdd">افزایش وثیقه</option><option value="ciAddWarn">افزایش وثیقه — حد هشدار</option><option value="ciAddOk">وثیقه افزایش یافت</option><option value="ciAddFail">افزایش وثیقه ناموفق</option><option value="ciList">همه اعتبارها</option><option value="ciLiqView">اعتبار لیکوئیدشده</option></optgroup><optgroup label="وام با وثیقه طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanKyc">قفل وثیقه بدون احراز هویت</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanBack">بازگشت از ونسی</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanActive">وام فعال</option><option value="loanActiveNew">وام تازه فعال‌شده (اولین بار + راهنمای نمودار)</option><option value="loanGaugeTour">راهنمای نمودار وثیقه</option><option value="loanWarn">وام فعال — حد هشدار</option><option value="loanWarnSheet">باتم‌شیت وام در حد هشدار (ورود به اپ)</option><option value="loanGuide">آموزش حد هشدار</option><option value="loanAdd">افزایش وثیقه</option><option value="loanSell">وام — لیکوئیدشده</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanRedirect">پرداخت قسط — انتقال به ونسی</option><option value="loanMy">وام‌های من</option><option value="loanMyEmpty">وام‌های من — خالی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
               <optgroup label="کیف پول و تاریخچه"><option value="wallet">کیف پول</option><option value="goldSheet">برگه طلای ۱۸ عیار</option><option value="history">تاریخچه — خرید و فروش</option><option value="historyDep">تاریخچه — واریز</option><option value="historyWd">تاریخچه — برداشت</option><option value="historyDel">تاریخچه — تحویل فیزیکی</option><option value="orderDetail">جزئیات سفارش</option><option value="histDate">انتخاب تاریخ</option></optgroup>
+              <optgroup label="واریز تومان"><option value="topupPay">واریز — مبلغ و روش پرداخت</option><option value="topupFaq">واریز — پرسش‌های متداول</option><option value="cardsList">انتخاب کارت بانکی</option></optgroup>
+              <optgroup label="صفحه‌های موفقیت"><option value="okDeposit">موفقیت — واریز</option><option value="okWithdraw">موفقیت — برداشت</option><option value="okBuy">موفقیت — خرید</option><option value="okSell">موفقیت — فروش</option></optgroup>
               <optgroup label="برداشت تومان (شفاف‌سازی)"><option value="withdraw">فرم برداشت</option><option value="withdrawFilled">فرم برداشت — پر شده</option><option value="withdrawErr">خطای بیشتر از موجودی</option><option value="withdrawIban">برگه انتخاب شبا</option><option value="withdrawOtp">کد تأیید برداشت</option><option value="withdrawDone">درخواست ثبت شد</option><option value="wdReceipt">رسید بانکی — انتقال به جیبیت</option><option value="wdHistRcpt">تاریخچه — دکمه رسید زیر کارت</option><option value="wdReceiptErr">رسید — خطای دریافت</option></optgroup>
               <optgroup label="درآمد طلایی"><option value="stLanding">ورود به درآمد طلایی</option><option value="stFaq">پرسش‌های متداول</option><option value="stake">سپرده جدید</option><option value="stShort">کمبود موجودی</option><option value="stConfirm">تأیید سپرده</option><option value="stContract">برگه قرارداد</option><option value="stDone">سپرده ثبت شد</option><option value="deposits">سپرده‌های من</option><option value="depositEmpty">سپرده‌های من (خالی)</option><option value="yields">درآمدهای دریافت‌شده</option><option value="yieldsEmpty">درآمدهای دریافت‌شده (خالی)</option><option value="deposit">جزئیات سپرده</option><option value="stCancel">برگه لغو</option><option value="stOtp">کد تأیید لغو</option><option value="depositMatured">جزئیات سپرده سررسیدشده</option></optgroup>
             </select>
@@ -7107,18 +7159,23 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
       icon:'<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.75 11.5098C20.7499 9.8542 19.3958 8.50016 17.7402 8.50003H6.25977C4.60417 8.50016 3.25013 9.8542 3.25 11.5098V18.2403C3.25013 19.8959 4.60417 21.2499 6.25977 21.25H17.7402C19.3958 21.2499 20.7499 19.8959 20.75 18.2403V17.7998H19.5996C18.1888 17.7996 16.8195 16.7671 16.6924 15.2422C16.6182 14.4329 16.9042 13.6727 17.4111 13.1211L17.5156 13.0137C18.0267 12.4958 18.7259 12.2002 19.4805 12.2002H20.75V11.5098ZM22.25 12.9502C22.2499 13.3644 21.9142 13.7002 21.5 13.7002H19.4805C19.1214 13.7002 18.805 13.8393 18.5771 14.0733C18.5728 14.0778 18.568 14.0826 18.5635 14.0869C18.2977 14.3465 18.1493 14.7161 18.1865 15.1084L18.1875 15.1182C18.2407 15.7529 18.8509 16.2996 19.5996 16.2998H21.5C21.9142 16.2998 22.2499 16.6357 22.25 17.0498V18.2403C22.2499 20.7243 20.2243 22.7499 17.7402 22.75H6.25977C3.77574 22.7499 1.75013 20.7243 1.75 18.2403V11.5098C1.75013 9.02578 3.77574 7.00016 6.25977 7.00003H17.7402C20.2243 7.00016 22.2499 9.02578 22.25 11.5098V12.9502Z" fill="currentColor"/> <path d="M14.0996 7.74973V3.94992C14.0995 3.14248 13.293 2.58863 12.5459 2.8718L4.60547 5.8718C3.78854 6.18093 3.25 6.96089 3.25 7.84055V12.4099C3.25 12.8241 2.91421 13.1599 2.5 13.1599C2.08579 13.1599 1.75 12.8241 1.75 12.4099V7.84055C1.75 6.34033 2.67134 4.99943 4.07422 4.46848L12.0146 1.46848L12.1768 1.41281C13.8609 0.892722 15.5995 2.15535 15.5996 3.94992V7.74973C15.5996 8.16394 15.2638 8.49973 14.8496 8.49973C14.4356 8.49952 14.0996 8.16381 14.0996 7.74973Z" fill="currentColor"/> <path d="M21.8086 13.9698C21.8084 13.8511 21.7246 13.7375 21.5918 13.7071L21.5322 13.7002H19.4785C19.1196 13.7003 18.8049 13.8394 18.5771 14.0733C18.5728 14.0778 18.568 14.0826 18.5635 14.0869C18.3308 14.3142 18.1868 14.6256 18.1797 14.9629L18.1855 15.1094L18.1875 15.1182C18.2407 15.7529 18.8509 16.2996 19.5996 16.2998H21.54C21.7025 16.2901 21.8086 16.1638 21.8086 16.0303V13.9698ZM23.3086 16.0303C23.3086 16.9944 22.5387 17.7656 21.5859 17.7998H19.5996C18.1888 17.7996 16.8195 16.7671 16.6924 15.2422C16.6182 14.4329 16.9042 13.6727 17.4111 13.1211L17.5156 13.0137C18.0266 12.496 18.7242 12.2003 19.4785 12.2002H21.5859C22.5386 12.2344 23.3084 13.0058 23.3086 13.9698V16.0303Z" fill="currentColor"/> <path d="M14 11.25C14.4142 11.25 14.75 11.5858 14.75 12C14.75 12.4142 14.4142 12.75 14 12.75H7C6.58579 12.75 6.25 12.4142 6.25 12C6.25 11.5858 6.58579 11.25 7 11.25H14Z" fill="currentColor"/></svg>' },
   ];
   let payMethod = 'gateway', payOpen = false;
-  function renderPay(){
-    const drop = PAY_METHODS.length > 2, box = $('#cfPayList');
+  // payment-method list — one renderer for the pre-invoice sheet and the deposit page
+  function renderPayIn(root, open){
+    const drop = PAY_METHODS.length > 2, box = $(root + 'List');
     if (!box.children.length) box.innerHTML = PAY_METHODS.map(m => `<div class="pay-w" data-w="${m.id}"><div class="pay-wi"><button type="button" class="pay-opt" role="radio" data-pay="${m.id}"${m.available ? '' : ' disabled'}>
       <span class="pay-ic">${m.icon}</span><span class="pay-t"><b>${m.title}${m.available ? '' : ' <em class="soon-pill">به‌زودی</em>'}</b><small>${m.sub}</small></span><span class="pay-radio" aria-hidden="true"></span></button></div></div>`).join('');
-    $('#cfPay').classList.toggle('drop', drop); $('#cfPay').classList.toggle('open', drop && payOpen);
-    $('#cfPayHead').disabled = !drop; $('#cfPayHead').setAttribute('aria-expanded', drop && payOpen);
+    $(root).classList.toggle('drop', drop); $(root).classList.toggle('open', drop && open);
+    $(root + 'Head').disabled = !drop; $(root + 'Head').setAttribute('aria-expanded', drop && open);
     PAY_METHODS.forEach((m, i) => {
-      const w = box.querySelector(`[data-w="${m.id}"]`), on = m.id === payMethod, shut = drop && !payOpen && !on;
-      w.classList.toggle('col', shut); w.inert = shut; w.style.order = drop && !payOpen && on ? -1 : i;
+      const w = box.querySelector(`[data-w="${m.id}"]`), on = m.id === payMethod, shut = drop && !open && !on;
+      w.classList.toggle('col', shut); w.inert = shut; w.style.order = drop && !open && on ? -1 : i;
       const bt = w.querySelector('.pay-opt'); bt.classList.toggle('on', on); bt.setAttribute('aria-checked', on);
     });
   }
+  const renderPay = () => renderPayIn('#cfPay', payOpen);
+  let tuPayOpen = false; const renderTuPay = () => renderPayIn('#tuPay', tuPayOpen);
+  $('#tuPayList').addEventListener('click', e => { const b = e.target.closest('.pay-opt'); if (!b || b.disabled) return; if (PAY_METHODS.length > 2 && !tuPayOpen){ tuPayOpen = true; return renderTuPay(); } payMethod = b.dataset.pay; tuPayOpen = false; renderTuPay(); });
+  $('#tuPayHead').addEventListener('click', () => { tuPayOpen = !tuPayOpen; renderTuPay(); });
   $('#cfPayList').addEventListener('click', e => { const b = e.target.closest('.pay-opt'); if (!b || b.disabled) return; if (PAY_METHODS.length > 2 && !payOpen){ payOpen = true; return renderPay(); } payMethod = b.dataset.pay; payOpen = false; renderPay(); });
   $('#cfPayHead').addEventListener('click', () => { payOpen = !payOpen; renderPay(); });
   function openConfirm(make = quote){
@@ -7134,6 +7191,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   cfBtn.addEventListener('click', async () => {
     if (cf.kind === 'deposit' || (cf.buy && !cf.custom)){ closeModal(confirmModal); return startBuy(cf); }      // ← the payment / purchase flow
     setLoading(cfBtn, true); await wait(900); setLoading(cfBtn, false); closeModal(confirmModal);
+    if (!cf.custom){ cfFrom = state.screen; return sellSucceeded(cf); }
     const g = fmtG(cf.grams, 3) + ' گرم ' + aw(cf.asset);
     recordTrade(cf);
     showToast(OK_ICON + '<span>' + (cf.custom ? 'سفارش با قیمت دلخواه ثبت شد' : `${g} فروختی`) + '</span>');
@@ -7170,22 +7228,50 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   }
   function payToWallet(v){                            // gateway money lands in the wallet first (a «واریز تومان» in history)
     v = Math.round(v); if (v <= 0) return;
-    STK.toman += v;
-    HIST.unshift({ id:'g' + Date.now(), tab:'deposit', title:'واریز تومان', asset:'toman', v, src:'درگاه پرداخت', status:'done', date:[...J_TODAY, nowHM()], code:code12() });
+    STK.toman += v; if (BQ && BQ.silent){ renderTotals(); renderWallet(); return; }
+    BQ.depId = 'g' + Date.now(); HIST.unshift({ id:BQ.depId, tab:'deposit', title:'واریز تومان', asset:'toman', v, src:'درگاه پرداخت', status:'done', date:[...J_TODAY, nowHM()], code:code12() });
     renderTotals(); renderWallet();
   }
+  /* ---------- ONE success page for every money action ----------
+     واریز: «خرید طلا» · «صفحه اصلی»  —  برداشت / خرید / فروش: «صفحه اصلی» · «تاریخچه»  —  inside another flow: «ادامه» · «کیف پول» */
+  const OKH = { a:null, b:null };
+  const okHome = () => { stStack = []; go('home', true); markTabs(); T.custom = false; T.praw = ''; setRaw(''); };
+  const goHist = tab => () => { HF.tab = tab; HF.openOnly = false; renderHistory(); $('#hsList').scrollTop = 0; stStack = ['home']; go('history'); T.custom = false; T.praw = ''; setRaw(''); };
+  const goWallet = () => { stStack = []; renderWallet(); go('wallet', true); markTabs(); };
+  const goBuyGold = () => { stStack = []; T.custom = false; T.praw = ''; setRaw(''); setSide('buy'); go('trade', true); markTabs(); renderTrade(); };
+  const okCode = h => h ? `زمان تراکنش: ${jFmt(h.date)} - ${h.date[3]} · شماره پیگیری <bdi>${h.code}</bdi>` : '';
+  function showOk({ title, txt, rows, a, b, h }){
+    $('#brOkTitle').textContent = title; $('#brOkTxt').textContent = txt; $('#brOkRows').innerHTML = rows;
+    $('#brOkBtn .label').textContent = a[0]; $('#brOk2 .label').textContent = b[0]; OKH.a = a[1]; OKH.b = b[1];
+    $('#brOkCode').innerHTML = okCode(h); brShow('ok');
+  }
+  const inflowBtns = () => [['ادامه', () => BQ.onDone()], ['کیف پول', goWallet]];
   function buySucceeded(){
-    recordTrade(BQ);
-    $('#brOkTitle').textContent = 'خرید با موفقیت انجام شد';
-    $('#brOkTxt').textContent = `${g3(BQ.grams)} ${asOf(BQ.asset).full} به کیف پول شما اضافه شد.`;
-    $('#brOkRows').innerHTML = srow('مقدار ' + aw(BQ.asset), g3(BQ.grams)) + srow('قیمت هر گرم', T_fmt(BQ.p)) + srow('مبلغ کل', T_fmt(BQ.toman), 'total');
-    brShow('ok');
+    const h = recordTrade(BQ), inflow = BQ.ctx === 'inflow';
+    const [a, b] = inflow ? inflowBtns() : [['صفحه اصلی', okHome], ['تاریخچه', goHist('trade')]];
+    showOk({ title:'خرید با موفقیت انجام شد', txt:`${g3(BQ.grams)} ${asOf(BQ.asset).full} به کیف پول شما اضافه شد.`,
+      rows:srow('مقدار ' + aw(BQ.asset), g3(BQ.grams)) + srow('قیمت هر گرم', T_fmt(BQ.p)) + srow('مبلغ کل', T_fmt(BQ.toman), 'total'), a, b, h:inflow ? null : h });
   }
   function depositSucceeded(){
-    $('#brOkTitle').textContent = BQ.ship ? 'هزینه ارسال پرداخت شد' : 'واریز با موفقیت انجام شد';
-    $('#brOkTxt').textContent = `${T_fmt(BQ.payAmt)} به کیف پول شما واریز شد.`;
-    $('#brOkRows').innerHTML = srow('مبلغ واریز', T_fmt(BQ.payAmt)) + srow('روش پرداخت', 'درگاه پرداخت') + srow('موجودی کیف پول', T_fmt(STK.toman), 'total');
-    brShow('ok'); sendSms(SMS_TEXT.topup(BQ.payAmt, STK.toman));
+    const inflow = BQ.ctx === 'inflow', h = HIST.find(x => x.id === BQ.depId);
+    const [a, b] = inflow ? inflowBtns() : [['خرید طلا', goBuyGold], ['صفحه اصلی', okHome]];
+    showOk({ title:BQ.ship ? 'هزینه ارسال پرداخت شد' : 'واریز با موفقیت انجام شد', txt:`${T_fmt(BQ.payAmt)} به کیف پول شما واریز شد.`,
+      rows:srow('مبلغ واریز', T_fmt(BQ.payAmt)) + srow('روش پرداخت', 'درگاه پرداخت') + srow('موجودی کیف پول', T_fmt(STK.toman), 'total'), a, b, h:inflow ? null : h });
+    if (!BQ.silent) sendSms(SMS_TEXT.topup(BQ.payAmt, STK.toman));
+  }
+  function sellSucceeded(q){
+    BQ = { ...q, ctx:'trade' }; const h = recordTrade(q);
+    showOk({ title:'فروش با موفقیت انجام شد', txt:`${T_fmt(q.toman)} به کیف پول شما اضافه شد.`,
+      rows:srow('مقدار ' + aw(q.asset || 'gold'), g3(q.grams)) + srow('قیمت هر گرم', T_fmt(q.p)) + srow('مبلغ دریافتی', T_fmt(q.toman), 'total'),
+      a:['صفحه اصلی', okHome], b:['تاریخچه', goHist('trade')], h });
+    $('#screenBuy .br-body').scrollTop = 0; go('buy');
+  }
+  function withdrawSucceeded(h, b){
+    BQ = { ctx:'withdraw' };
+    showOk({ title:'درخواست برداشت ثبت شد', txt:'مبلغ حداکثر تا ۲۴ ساعت آینده به حساب شما واریز می‌شود.',
+      rows:srow('مبلغ برداشت', T_fmt(h.v)) + srow('کارمزد برداشت', T_fmt(h.fee)) + srow('حساب مقصد', `${b.bank} · ${ibanShort(b)}`) + srow('مبلغ واریزی به حساب', T_fmt(h.v - h.fee), 'total'),
+      a:['صفحه اصلی', okHome], b:['تاریخچه', goHist('withdraw')], h });
+    $('#screenBuy .br-body').scrollTop = 0; go('buy');
   }
   async function runFlow(){
     if (viaGateway()){
@@ -7218,38 +7304,30 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   let CARDS = CARDS_DEMO(), cardSel = 'c1', bcNext = null;
   const maskCard = n => `${n.slice(0, 4)} ${n.slice(4, 6)}•• •••• ${n.slice(12)}`;
   const PLUS = '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
-  function renderCards(scroll){
-    const tr = $('#bcTrack');
-    tr.innerHTML = CARDS.map(c => { const b = bankOf(c.num); return `<button type="button" class="bc${c.id === cardSel ? ' on' : ''}" data-c="${c.id}" role="radio" aria-checked="${c.id === cardSel}" style="background:${b[3]}">
-        <div class="bc-top"><b>${b[1]}</b><span class="bc-mark">${b[2]}</span></div><span class="bc-chip"></span><div class="bc-num">•••• ${c.num.slice(12)}</div></button>`; }).join('')
-      + `<button type="button" class="bc add${cardSel === 'add' ? ' on' : ''}" data-c="add" role="radio" aria-checked="${cardSel === 'add'}"><i>${PLUS}</i><b>افزودن کارت جدید</b></button>`;
-    $('#bcDots').innerHTML = '<i></i>'.repeat(CARDS.length + 1);
-    bcSync(); if (scroll) requestAnimationFrame(() => { const el = tr.querySelector('.bc.on'); if (el) tr.scrollLeft += el.getBoundingClientRect().left - tr.getBoundingClientRect().left - (tr.clientWidth - el.clientWidth) / 2; });
+  let lastCard = 'c1';                                                       // the card used last time → pre-selected + «آخرین استفاده»
+  function renderCards(){
+    if (!CARDS.find(c => c.id === cardSel)) cardSel = CARDS.find(c => c.id === lastCard) ? lastCard : CARDS[0] ? CARDS[0].id : null;
+    $('#bcTrack').innerHTML = CARDS.map(c => { const b = bankOf(c.num), on = c.id === cardSel;
+      return `<button type="button" class="bcl${on ? ' on' : ''}" data-c="${c.id}" role="radio" aria-checked="${on}"><span class="bcl-mark" style="background:${b[3]}">${b[2]}</span>
+        <span class="bcl-t"><b>${b[1]}${c.id === lastCard ? '<em class="bcl-tag">آخرین استفاده</em>' : ''}</b><small>${maskCard(c.num)}</small></span><span class="pay-radio" aria-hidden="true"></span></button>`; }).join('')
+      + `<button type="button" class="bcl add" data-c="add"><span class="bcl-mark add">+</span><span class="bcl-t"><b>افزودن کارت جدید</b></span>${WD_CHEV}</button>`;
+    bcSync();
   }
   function bcSync(){
-    const c = CARDS.find(x => x.id === cardSel), b = c && bankOf(c.num);
-    $$('#bcTrack .bc').forEach((x, i) => { const on = x.dataset.c === cardSel; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); $$('#bcDots i')[i] && $$('#bcDots i')[i].classList.toggle('on', on); });
-    morphHeight($('#bcRows'), () => { $('#bcRows').innerHTML = c ? srow('بانک', b[1]) + srow('شماره کارت', `<span class="bc-ltr">${maskCard(c.num)}</span>`) : ''; });
-    $('#bcPay .label').textContent = c ? `پرداخت ${T_fmt(BQ ? BQ.payAmt : 0)}` : 'افزودن کارت';
+    $$('#bcTrack .bcl[role="radio"]').forEach(x => { const on = x.dataset.c === cardSel; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); });
+    $('#bcPay .label').textContent = cardSel ? `پرداخت ${T_fmt(BQ ? BQ.payAmt : 0)}` : 'افزودن کارت';
   }
-  // swipe = select: the card closest to the centre is the chosen one
-  let bcT = 0;
-  $('#bcTrack').addEventListener('scroll', () => { clearTimeout(bcT); bcT = setTimeout(() => {
-    const tr = $('#bcTrack'), mid = tr.getBoundingClientRect().left + tr.clientWidth / 2;
-    let best = null, d = 1e9; $$('#bcTrack .bc').forEach(x => { const r = x.getBoundingClientRect(), dd = Math.abs(r.left + r.width / 2 - mid); if (dd < d){ d = dd; best = x; } });
-    if (best && best.dataset.c !== cardSel){ cardSel = best.dataset.c; bcSync(); }
-  }, 90); }, { passive:true });
-  $('#bcTrack').addEventListener('click', e => { const b = e.target.closest('.bc'); if (!b) return;
-    if (b.dataset.c === 'add' && cardSel === 'add') return openCardAdd();
-    cardSel = b.dataset.c; bcSync(); b.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' }); });
+  $('#bcTrack').addEventListener('click', e => { const b = e.target.closest('.bcl'); if (!b) return;
+    if (b.dataset.c === 'add') return openCardAdd();
+    cardSel = b.dataset.c; bcSync(); });
   function openCards(next){
-    bcNext = next; if (!CARDS.find(c => c.id === cardSel)) cardSel = CARDS.length ? CARDS[0].id : 'add';
+    bcNext = next; cardSel = CARDS.find(c => c.id === lastCard) ? lastCard : CARDS[0] ? CARDS[0].id : null;
     $('#bcLead').innerHTML = `مبلغ <b>${T_fmt(BQ.payAmt)}</b> از کدام کارت پرداخت شود؟`;
-    renderCards(true); $('#screenCards .bc-body').scrollTop = 0; stGo('cards');
+    renderCards(); $('#screenCards .bc-body').scrollTop = 0; stGo('cards');
   }
   $('#bcPay').addEventListener('click', async () => {
-    if (cardSel === 'add') return openCardAdd();
-    setLoading($('#bcPay'), true); await wait(700); setLoading($('#bcPay'), false);
+    if (!cardSel) return openCardAdd();
+    lastCard = cardSel; setLoading($('#bcPay'), true); await wait(700); setLoading($('#bcPay'), false);
     stStack.pop(); const f = bcNext; bcNext = null; f();                  // → the gateway (the processing page)
   });
   // add a card: 16 digits, the bank shows as soon as the first 6 are typed
@@ -7273,14 +7351,13 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     if (CARDS.some(c => c.num === caRaw)){ $('#caErr').textContent = 'این کارت قبلاً اضافه شده است.'; $('#caField').classList.add('bad'); return shake($('#caField')); }
     closeKb(); setLoading(btn, true); await wait(1200); setLoading(btn, false);   // card-owner check (name must match the national ID)
     const c = { id:'c' + Date.now(), num:caRaw }; CARDS.push(c); cardSel = c.id;
-    renderCards(true); stBack(); showToast(OK_ICON + `<span>کارت ${b[1]} اضافه شد</span>`);
+    renderCards(); stBack(); showToast(OK_ICON + `<span>کارت ${b[1]} اضافه شد</span>`);
   }));
 
   function startBuy(q, picked){
     if (!picked && (q.kind === 'deposit' || q.topup)){ BQ = { ...q }; BQ.payAmt = q.kind === 'deposit' ? q.toman : q.toman + (q.ship || 0) - q.wallet; return openCards(() => startBuy(q, true)); }   // gateway → pick the card first
     BQ = { ...q }; delete BQ.make;
     BQ.ctx = q.onDone ? 'inflow' : q.kind === 'deposit' ? 'deposit' : 'trade';
-    $('#brOkBtn .label').textContent = OK_CTA[BQ.ctx];
     BQ.payAmt = isDep() ? q.toman : (q.topup ? q.toman + (q.ship || 0) - q.wallet : 0);
     cfFrom = state.screen;
     setWork(viaGateway() ? 'pay' : 'buy'); brShow('work');
@@ -7296,14 +7373,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     setLoading($('#brRetry'), true); await wait(1600); setLoading($('#brRetry'), false);
     BQ.wallet = STK.toman; buySucceeded();
   });
-  // «ادامه»: generic — back to wherever the purchase started; the caller decides what comes next (onDone)
-  $('#brOkBtn').addEventListener('click', () => {
-    if (BQ.ctx === 'inflow') return BQ.onDone();
-    T.custom = false; T.praw = ''; setRaw('');
-    stStack = [];
-    if (BQ.ctx === 'deposit'){ setSide('buy'); go('trade', true); markTabs(); renderTrade(); return; }
-    go('home', true); markTabs();
-  });
+  $('#brOkBtn').addEventListener('click', () => OKH.a && OKH.a());
+  $('#brOk2').addEventListener('click', () => OKH.b && OKH.b());
   $$('.br-wallet').forEach(b => b.addEventListener('click', () => {
     stStack = []; renderWallet(); go('wallet', true); markTabs();
     T.custom = false; T.praw = ''; setRaw('');
@@ -7337,12 +7408,12 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     const c = renderTopup();
     if (!TU.raw || c.err){ if (!TU.raw){ TU.req = 'مبلغ واریز را وارد کنید.'; renderTopup(); } shake($('#tuCard')); tuInput.focus({ preventScroll:true }); return openKb(tuInput); }
     closeKb();
-    openConfirm(() => ({ kind:'deposit', toman:c.v, buy:false, custom:false }));
+    startBuy({ kind:'deposit', toman:c.v, buy:false, custom:false });             // no pre-invoice: amount + method are on this page → card → gateway
   });
   function openTopup(){
     if (gate()) return;
     if (state.screen !== 'topup') tuFrom = state.screen;
-    TU.raw = ''; TU.req = ''; renderTopup(); go('topup');
+    TU.raw = ''; TU.req = ''; tuPayOpen = false; renderTopup(); renderTuPay(); go('topup');
   }
   $('#tuBack').addEventListener('click', () => { go(tuFrom, true); if (['home','trade','wallet'].includes(tuFrom)) markTabs(); });
   $$('[data-topup]').forEach(b => b.addEventListener('click', openTopup));
@@ -7352,7 +7423,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
      statuses: queued (هنوز به جیبیت نرفته) → waiting (ارسال شد، منتظر سیکل پایا) → done | failed · cancelled_user
      Paya cycles are a prototype assumption: 03:45 · 10:45 · 13:45 · 18:45, none on Fridays; cut-off 30 min before a cycle.
      ===================================================================== */
-  Object.assign(screens, { withdraw:$('#screenWd'), wdDone:$('#screenWdDone') });
+  Object.assign(screens, { withdraw:$('#screenWd') });
   const WD_CHEV = '<svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.6882 6.31455C14.4893 6.11314 14.2194 6 13.938 6C13.6566 6 13.3868 6.11314 13.1878 6.31455L8.31069 11.2521C8.11176 11.4536 8 11.7268 8 12.0117C8 12.2966 8.11176 12.5698 8.31069 12.7712L13.1878 17.7088C13.3887 17.8998 13.6551 18.0042 13.9307 17.9999C14.2062 17.9955 14.4693 17.8828 14.6643 17.6856C14.8592 17.4884 14.9707 17.2221 14.9752 16.9431C14.9797 16.6641 14.8768 16.3943 14.6882 16.1908L10.5614 12.0117L14.6893 7.83364C14.8882 7.63218 15 7.35897 15 7.0741C15 6.78922 14.8872 6.51601 14.6882 6.31455Z" fill="currentColor"/></svg>', WD_CLOCK = '<svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M12 7.5V12l3 2"/></svg>';
   const WD_FEE = 2000, WD_MIN = 100000, WD_LIVE = ['queued', 'waiting'];
   const WD_IBANS = [
@@ -7439,12 +7510,12 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     setTimeout(() => { if (h.status !== 'queued') return; h.status = 'waiting'; h.sent = nowHM(); renderHistory();
     }, 20000);
     renderWallet(); renderTotals(); renderHistory();
-    renderWdDone(h); go('wdDone');
+    withdrawSucceeded(h, b);
     sendSms(`درخواست برداشت ${T_fmt(v)} ثبت شد.\nمبلغ حداکثر تا ۲۴ ساعت آینده به حساب شما واریز می‌شود.`);
   }
   function openWithdraw(){
     if (gate()) return;
-    if (!['withdraw', 'wdDone'].includes(state.screen)) wdFrom = state.screen;
+    if (state.screen !== 'withdraw') wdFrom = state.screen;
     WD.raw = ''; WD.req = ''; WD.iban = WD_IBANS[0].id; $('#wdIban').classList.remove('bad');
     renderWd(); $('#wdScroll').scrollTop = 0; go('withdraw');
   }
@@ -7480,15 +7551,6 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     const back = ['failed', 'cancelled_user'].includes(h.status);       // nothing reached the bank account → show what came back
     return irow('مبلغ برداشت', T_fmt(h.v)) + (back ? irow('مبلغ برگشتی به کیف پول', T_fmt(h.v), 'strong')
       : irow('کارمزد برداشت', T_fmt(fee)) + irow('مبلغ واریزی به حساب', T_fmt(h.v - fee), 'strong')) + irow('حساب مقصد', `${b.bank} · ${ibanShort(b)}`); };
-
-  /* ---------- W2 request placed ---------- */
-  function renderWdDone(h){
-    if (!$('#wddImg').src) $('#wddImg').src = $('#brOk .br-img').src;
-    $('#wddRows').innerHTML = wdRows(h);
-    $('#wddCode').innerHTML = `زمان ثبت: ${jFmt(h.date)} - ${h.date[3]} · شماره پیگیری <bdi>${h.code}</bdi>`;
-  }
-  $('#wddHome').addEventListener('click', () => { stStack = []; go('home', true); markTabs(); });
-  $('#wddHist').addEventListener('click', () => { HF.tab = 'withdraw'; HF.openOnly = false; renderHistory(); $('#hsList').scrollTop = 0; stStack = ['home']; go('history'); });
 
   // PRD «مشاهده رسید»: not sent to Jibit yet → message · waiting/succeed → fresh link (lives 3 min) and open Jibit · otherwise disabled
   const wdRcptOk = h => ['queued', 'waiting', 'done'].includes(h.status);
@@ -7659,6 +7721,14 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     $('#faqList').scrollTop = 0; openModal($('#faqModal'));
   }
   $$('.st-faq').forEach(b => b.addEventListener('click', () => openFaq('stake')));
+  FAQS.toman = { title:'پرسش‌های متداول واریز و برداشت', items:[
+    { q:'واریز با درگاه چقدر طول می‌کشد؟', a:'واریز با درگاه پرداخت آنی است و بلافاصله بعد از پرداخت، مبلغ به کیف پول تومانی شما اضافه می‌شود.' },
+    { q:'با چه کارتی می‌توانم واریز کنم؟', a:'فقط با کارت‌های بانکی به نام خودتان (مطابق کد ملی ثبت‌شده در زرپین). کارت را یک بار اضافه می‌کنید و دفعه‌های بعد آماده‌ی انتخاب است.' },
+    { q:'حداقل و حداکثر مبلغ واریز چقدر است؟', a:'حداقل ۱۰۰٬۰۰۰ تومان و حداکثر ۴۰۰٬۰۰۰٬۰۰۰ تومان در هر تراکنش با درگاه.' },
+    { q:'برداشت چه زمانی به حسابم واریز می‌شود؟', a:'برداشت‌ها از طریق پایا تسویه می‌شوند و مبلغ حداکثر تا ۲۴ ساعت آینده به حساب شما واریز می‌شود. روزهای تعطیل ممکن است بیشتر طول بکشد.' },
+    { q:'رسید بانکی برداشت را از کجا ببینم؟', a:'در تاریخچه، تب «برداشت»، زیر هر درخواست دکمه‌ی «مشاهده رسید بانکی» هست. تا وقتی درخواست به بانک ارسال نشده، رسید صادر نمی‌شود.' },
+    { q:'کارمزد برداشت چقدر است؟', a:'۲٬۰۰۰ تومان برای هر برداشت که از مبلغ برداشت کم می‌شود؛ مبلغ واریزی به حساب، قبل از ثبت درخواست نمایش داده می‌شود.' }] };
+  $$('.tu-faq').forEach(b => b.addEventListener('click', () => { closeKb(); openFaq('toman'); }));
 
   /* ---------- FEATURE INTRODUCTION (component) ----------
      One layout for every «what is this feature» moment: a title with a gold word, 3 benefits (icon + title + line), a CTA.
@@ -7991,14 +8061,14 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   function recordTrade(q){
     const h = { id:'n' + Date.now(), tab:'trade', side:q.buy ? 'buy' : 'sell', asset:q.asset || 'gold', limit:!!q.custom, status:q.custom ? 'open' : 'done',
       grams:f3(q.grams), price:q.p, fee:q.f, date:[...J_TODAY, nowHM()], code:code12() };
-    HIST.unshift(h);
-    sendSms(q.custom ? SMS_TEXT.limit(q) : q.buy ? SMS_TEXT.buy(q) : SMS_TEXT.sell(q));
+    if (!q.silent){ HIST.unshift(h); sendSms(q.custom ? SMS_TEXT.limit(q) : q.buy ? SMS_TEXT.buy(q) : SMS_TEXT.sell(q)); }
     if (!q.custom){
       const k = h.asset === 'silver' ? 'silver' : 'goldTotal';
       if (q.buy){ STK[k] = f3(STK[k] + h.grams); STK.toman = Math.max(0, STK.toman - q.toman); }
       else { STK[k] = f3(STK[k] - h.grams); STK.toman += Math.round(q.toman); }
     } else if (q.buy) STK.toman = Math.max(0, STK.toman - Math.round(q.toman));      // a limit buy holds its toman
     renderTotals(); renderWallet(); renderTrade();
+    return h;
   }
 
   // ---------- wallet ----------
@@ -8237,7 +8307,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
      choose bars → delivery branch → pre-invoice (buy the shortfall through the one purchase flow) → tracking
      Every bar is its own log in the wallet history («تحویل فیزیکی» tab), with its own tracking code.
      ===================================================================== */
-  Object.assign(screens, { dlvAddr:$('#screenDlvAddr'), dlvTime:$('#screenDlvTime'), addrForm:$('#screenAddrForm'), addrs:$('#screenAddrs'), dlv:$('#screenDlv'), dlvLoc:$('#screenDlvLoc'), dlvInv:$('#screenDlvInv'), dlvTrack:$('#screenDlvTrack'), dlvCancel:$('#screenDlvCancel') });
+  Object.assign(screens, { addrMap:$('#screenAddrMap'), dlRcp:$('#screenDlRcp'), dlvAddr:$('#screenDlvAddr'), dlvTime:$('#screenDlvTime'), addrForm:$('#screenAddrForm'), addrs:$('#screenAddrs'), dlv:$('#screenDlv'), dlvLoc:$('#screenDlvLoc'), dlvInv:$('#screenDlvInv'), dlvTrack:$('#screenDlvTrack'), dlvCancel:$('#screenDlvCancel') });
   const BARS = [                                              // weight & minting fee in grams (۱ سوت = ۰٫۰۰۱ گرم)
     { id:'b05', w:0.5, fee:0.065, name:'شمش ۵۰۰ سوتی', img:'data:image/png;base64,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' },
     { id:'b1',  w:1,   fee:0.075, name:'شمش ۱ گرمی',   img:'data:image/png;base64,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cvS+OGfhPAWtsrhz+5yvv34Z//XrT3q04Otfv9d+8sdeykcfE5/57F0/viqqzG5pfOvNj1vs93z7Tx/oo+/c54f+0ifGp57b1aPHG1CR07atMSQMLqInEce1UOiU7rC/99O38plnb3lU+FO3P60//saDaFTdubHp9f/9SF/6wh2f37rgmYtW33zro3jl5Vv10c3QF/783fzO/avIMsuyMBOoIZDXbbNDMdP0i12PcRq5RWBm8fBqk7Oc2yhAX3r1bn344FovPn+eL33qXMetqPUJD66LV166VQKeffmCjz9+gitLrce2DdrS3Hoo56QtFzpuxrm1Pp482j7zys6HQ55GulCEYM1Bk+OwTR9GypV+clWS8bI0ZW3kDGWTXa4z4ullwWmb3kVv0pyTvix8cO8xP/JXn/e79x8/6b/x2+/925/72S/+/LtvPpavrjXWI9pWtLq2raK2VZViZqomVJUGIg1N9kzRGjGvTukDm+iNHiefthZcrau+9NN/m2998xv+9nvxNQHtrf/09+enL+4Nv/qj0W7/mMIHnG/g46XJBealFDvm4RHqOzOPop3uBGFgdqBwhETbE2e3od2E/SeBHbb82r/4p/XmH729/OwvvxkC2iuv0P/Z3/uJ39PlO39xW7Mdp7m1b0jCHoTENuUWp4Fdah7bJjBLg+NWXpaQEbj86Mmq45gc1gP7vnD3uefm2J75X7/xH+59+b+/++7G/4/n/wJ1Hx1WYWmN2wAAAABJRU5ErkJggg==' },
@@ -8305,7 +8375,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   function openDlv(){
     if (gate()) return;
     if ($('#goldModal').classList.contains('open')) closeModal($('#goldModal'));
-    DL.from = ['history', 'dlv', 'dlvLoc', 'dlvInv', 'dlvTrack', 'dlvCancel', 'dlvAddr', 'dlvTime', 'addrForm'].includes(state.screen) ? 'home' : state.screen;
+    DL.from = ['history', 'dlv', 'dlvLoc', 'dlvInv', 'dlvTrack', 'dlvCancel', 'dlvAddr', 'dlvTime', 'addrForm', 'addrMap', 'dlRcp'].includes(state.screen) ? 'home' : state.screen;
     renderDlv(); $('#screenDlv .dl-scroll').scrollTop = 0; stGo('dlv');
   }
   Object.assign(screens, { dlOrders:$('#screenDlOrders') });
@@ -8383,7 +8453,9 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   }
   function renderInv(){
     const c = dlCalc(), ship = DL.method === 'ship', b = branchOf(DL.branch), a = adOf(DL.addr); if (ship ? !(a && DL.slot) : !b) return;
-    let h = (ship ? shipBlock(a, DL.slot) + '<p class="dl-info">پیک فقط با دریافت کد تحویل و کارت ملی گیرنده سفارش را تحویل می‌دهد.</p>'
+    const rc = DL.rcp || (DL.rcp = owner());
+    let h = (ship ? shipBlock(a, DL.slot) + `<div class="dl-rcp"><div class="l1"><b>تحویل‌گیرنده</b><button type="button" class="dl-pill" id="dlRcpEdit">ویرایش</button></div><p>${rcpLine(rc)}</p>
+        <p class="dl-info">سفارش فقط به همین شخص و با ارائه‌ی کد تحویل و کارت ملی او تحویل داده می‌شود و به شخص دیگری تحویل داده نمی‌شود.</p></div>`
       : branchBlock(b, b.city, `آماده تحویل تا ${jFmt(readyBy(b.city), false)}`) + '<p class="dl-info">همراه داشتن کارت ملی هنگام تحویل الزامی است.</p>') + '<div class="sec-div"></div>';
     h += `<div class="dl-row dl-req${DL.open ? ' open' : ''}"><button type="button" class="dl-exp" id="dlExp" aria-expanded="${DL.open}">مقدار شمش طلای درخواستی <svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg></button><b>${g3(c.gW)}</b></div>`;
     h += `<div class="dl-itw${DL.open ? ' open' : ''}" id="dlItw"${DL.open ? '' : ' inert'}><div class="dl-itc"><div class="dl-items">${c.items.map(x => `<div class="dl-it"><img src="${x.b.img}" alt="" width="18" height="30"><span><b>${x.b.name} × ${toFa(x.n)}</b><small>کارمزد ضرب ${sout(x.b.fee)}</small></span><em>${T_((x.b.w + x.b.fee) * x.n * c.p)}</em></div>`).join('')}<button type="button" class="dl-pill" id="dlEdit">ویرایش</button></div></div></div>`;
@@ -8419,9 +8491,9 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
       const d0 = dlCalc();
       if (!d0.short && !d0.pay) return placeOrder();
       // shipping only → pay the fee through the gateway; with a shortfall → THE purchase flow carries the fee too (one payment)
-      if (!d0.short) return openConfirm(() => { const d = dlCalc(); return { kind:'deposit', toman:d.pay, title:'پرداخت هزینه ارسال', ship:d.ship, wallet:d.walletUse, onDone:placeOrder }; });
+      if (!d0.short) return openConfirm(() => { const d = dlCalc(); return { kind:'deposit', toman:d.pay, title:'پرداخت هزینه ارسال', ship:d.ship, wallet:d.walletUse, silent:true, onDone:placeOrder }; });
       openConfirm(() => { const d = dlCalc();
-        return { grams:d.short, toman:d.buyT, feeT:d.short * d.p * d.f, p:d.p, f:d.f, buy:true, topup:d.pay > 0, custom:false, wallet:d.walletUse, ship:d.ship, onDone:placeOrder }; });
+        return { grams:d.short, toman:d.buyT, feeT:d.short * d.p * d.f, p:d.p, f:d.f, buy:true, topup:d.pay > 0, custom:false, wallet:d.walletUse, ship:d.ship, silent:true, onDone:placeOrder }; });
     } });
   });
   // edit quantities (sheet)
@@ -8445,7 +8517,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     if (ship) STK.toman = Math.max(0, STK.toman - c.ship);
     const units = c.items.flatMap(x => Array.from({ length:x.n }, () => ({ b:x.b.id, code:code12(), dcode:dcode6() })));
     const o = { id:'o' + Date.now(), branch:b.id, units, date:[...J_TODAY, nowHM()], status:'prep', ready:ship ? DL.slot.d : readyBy(b.city), p:c.p, grams:c.gW, feeG:c.gF,
-      method:ship ? 'ship' : 'branch', addr:ship ? { ...a } : null, slot:ship ? { ...DL.slot } : null, shipFee:c.ship, dcode:dcode6() };
+      method:ship ? 'ship' : 'branch', addr:ship ? { ...a } : null, rcp:ship ? { ...(DL.rcp || owner()) } : null, slot:ship ? { ...DL.slot } : null, shipFee:c.ship, dcode:dcode6() };
     DL.orders.unshift(o); DL.qty = {};
     renderTotals(); renderWallet(); renderDlv(); renderDlOrders();
     stStack = DL.from === 'dlOrders' ? ['home', 'dlOrders'] : [DL.from]; DL.cur = o.id; renderTrack(); go('dlvTrack');
@@ -8536,7 +8608,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   }
   // mock orders (test panel: «سفارش تحویل باز»)
   function resetDlv(){
-    DL.qty = {}; DL.branch = null; DL.method = 'branch'; DL.slot = null; DL.useWallet = true;
+    DL.qty = {}; DL.branch = null; DL.method = 'branch'; DL.slot = null; DL.rcp = null; DL.useWallet = true;
     ADDRS = test.balance === '1' ? ADDRS_DEMO() : []; DL.addr = ADDRS[0] ? ADDRS[0].id : null; DL.cities = new Set(); DL.q = ''; DL.seenIntro = false;
     const u = (...ids) => ids.map(b => ({ b, code:code12(), dcode:dcode6() }));
     const mk = (id, branch, units, date, status, extra = {}) => { const g = units.reduce((a, x) => a + barOf(x.b).w, 0), f = units.reduce((a, x) => a + barOf(x.b).fee, 0);
@@ -8563,12 +8635,14 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     ['اهواز', 340000], ['کرمان', 340000], ['کرمانشاه', 340000], ['یزد', 300000], ['ارومیه', 340000], ['بندرعباس', 380000], ['زاهدان', 390000], ['قشم', 420000]];
   const shipFee = a => (SHIP_CITIES.find(c => c[0] === a.city) || [0, 350000])[1];
   const ADDRS_DEMO = () => [
-    { id:'a1', title:'خانه', city:'تهران', addr:'سعادت‌آباد، خیابان سرو غربی، کوچه نیلوفر، ساختمان آرین', plq:'12', unit:'4', post:'1998765432', self:true, name:'', mob:'' },
-    { id:'a2', title:'محل کار', city:'اصفهان', addr:'خیابان چهارباغ بالا، مجتمع پارک، طبقه سوم', plq:'85', unit:'', post:'8173645912', self:false, name:'مریم کریمی', mob:'09131234567' }];
+    { id:'a1', title:'خانه', city:'تهران', addr:'سعادت‌آباد، خیابان سرو غربی، کوچه نیلوفر، ساختمان آرین', plq:'12', unit:'4', post:'1998765432', mx:0, my:0 },
+    { id:'a2', title:'محل کار', city:'اصفهان', addr:'خیابان چهارباغ بالا، مجتمع پارک، طبقه سوم', plq:'85', unit:'3', post:'8173645912', mx:-180, my:120 }];
   var ADDRS = [];
   const adOf = id => ADDRS.find(a => a.id === id);
   const adLine = a => `${a.city}، ${a.addr}، پلاک ${toFa(a.plq)}${a.unit ? '، واحد ' + toFa(a.unit) : ''}`;
-  const adWho = a => a.self ? 'گیرنده: خودم' : `گیرنده: ${a.name} · <bdi dir="ltr">${toFa(a.mob)}</bdi>`;
+  const adPost = a => `کد پستی <bdi dir="ltr">${toFa(a.post)}</bdi>`;
+  const owner = () => ({ name:($('#mnName').textContent || '').trim(), mob:/^09\d{9}$/.test(state.phone || '') ? state.phone : '09366629947', self:true });
+  const rcpLine = r => `${r.name} · <bdi dir="ltr">${toFa(r.mob)}</bdi>${r.self ? ' <small>(خودم)</small>' : ''}`;
   const dlWhere = o => o.method === 'ship' ? 'ارسال به ' + o.addr.city : branchOf(o.branch).name;
   const DL_WIN = ['۹ تا ۱۲', '۱۲ تا ۱۵', '۱۵ تا ۱۸', '۱۸ تا ۲۱'];
   const slotLbl = s => `${WEEK[jDow(s.d)]} ${jFmt(s.d, false)}، ساعت ${DL_WIN[s.w]}`;
@@ -8576,15 +8650,15 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   const ICON_DEL = '<svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg>';
   const ICON_PLUS = '<svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
   function shipBlock(a, sl){
-    return `<div class="dl-br"><div class="l1"><b>${a.title}</b><small>${adWho(a)}</small></div><p>${adLine(a)}</p>${sl ? `<div class="dl-when">${WD_CLOCK}${slotLbl(sl)}</div>` : ''}</div>`;
+    return `<div class="dl-br"><div class="l1"><b>${a.title}</b><small>${adPost(a)}</small></div><p>${adLine(a)}</p>${sl ? `<div class="dl-when">${WD_CLOCK}${slotLbl(sl)}</div>` : ''}</div>`;
   }
   // method sheet
   $('#dmOpts').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; closeModal($('#dlMethodModal')); setTimeout(() => b.dataset.m === 'ship' ? goShip() : openLocs(), 180); });
   // W2 address
-  function goShip(){ DL.method = 'ship'; if (!adOf(DL.addr)) DL.addr = ADDRS[0] ? ADDRS[0].id : null; renderDlAddr(); $('#dlAddrs').scrollTop = 0; stGo('dlvAddr'); }
+  function goShip(){ DL.method = 'ship'; DL.rcp = DL.rcp || owner(); if (!adOf(DL.addr)) DL.addr = ADDRS[0] ? ADDRS[0].id : null; renderDlAddr(); $('#dlAddrs').scrollTop = 0; stGo('dlvAddr'); }
   const adCard = (a, pick) => pick
-    ? `<div class="ad-card pick ${a.id === DL.addr ? 'on' : ''}" data-a="${a.id}" role="radio" tabindex="0" aria-checked="${a.id === DL.addr}"><i aria-hidden="true"></i><span class="t"><b>${a.title}</b><p>${adLine(a)}</p><small>${adWho(a)}</small></span><span class="ad-acts"><button type="button" data-edit="${a.id}" aria-label="ویرایش آدرس">${ICON_EDIT}</button></span></div>`
-    : `<div class="ad-card"><span class="t"><b>${a.title}</b><p>${adLine(a)}</p><small>کد پستی <bdi dir="ltr">${toFa(a.post)}</bdi> · ${adWho(a)}</small></span><span class="ad-acts"><button type="button" data-edit="${a.id}" aria-label="ویرایش آدرس">${ICON_EDIT}</button><button type="button" class="danger" data-del="${a.id}" aria-label="حذف آدرس">${ICON_DEL}</button></span></div>`;
+    ? `<div class="ad-card pick ${a.id === DL.addr ? 'on' : ''}" data-a="${a.id}" role="radio" tabindex="0" aria-checked="${a.id === DL.addr}"><i aria-hidden="true"></i><span class="t"><b>${a.title}</b><p>${adLine(a)}</p><small>${adPost(a)}</small></span><span class="ad-acts"><button type="button" data-edit="${a.id}" aria-label="ویرایش آدرس">${ICON_EDIT}</button></span></div>`
+    : `<div class="ad-card"><span class="t"><b>${a.title}</b><p>${adLine(a)}</p><small>${adPost(a)}</small></span><span class="ad-acts"><button type="button" data-edit="${a.id}" aria-label="ویرایش آدرس">${ICON_EDIT}</button><button type="button" class="danger" data-del="${a.id}" aria-label="حذف آدرس">${ICON_DEL}</button></span></div>`;
   const adEmpty = (t, p) => `<div class="ad-empty">${DL_PIN}<b>${t}</b><p>${p}</p></div>`;
   function renderDlAddr(){
     $('#dlAddrs').innerHTML = (ADDRS.length ? ADDRS.map(a => adCard(a, true)).join('') : adEmpty('هنوز آدرسی ثبت نکرده‌اید', 'آدرسی که شمش باید به آن ارسال شود را اضافه کنید.'))
@@ -8616,41 +8690,62 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
   });
   $('#dlTimeGo').addEventListener('click', () => { if (!DL.slot) return; DL.open = false; renderInv(); $('#dlInv').scrollTop = 0; stGo('dlvInv'); });
 
-  // address form (used by the delivery flow and «آدرس‌های من»)
-  const AF = { id:null, title:'خانه', city:'', addr:'', plq:'', unit:'', post:'', self:true, name:'', mob:'', bad:'', err:'', after:null };
-  const ADF = [['adfAddr', 'addr', 'alpha', 150], ['adfPlq', 'plq', 'num', 5], ['adfUnit', 'unit', 'num', 4], ['adfPost', 'post', 'num', 10], ['adfName', 'name', 'alpha', 40], ['adfMob', 'mob', 'num', 11]];
+  // address: pin on the map first → city + address auto-filled (editable) → plaque, unit, postal code → title last (unique)
+  const MAP_PLACES = [['تهران', 'سعادت‌آباد، خیابان سرو غربی، کوچه نیلوفر'], ['تهران', 'ونک، خیابان ملاصدرا، کوچه شیراز جنوبی'], ['تهران', 'یوسف‌آباد، خیابان ابن‌سینا، کوچه هفدهم'],
+    ['تهران', 'پاسداران، خیابان گلستان یکم، کوچه مریم'], ['تهران', 'شهرک غرب، بلوار فرحزادی، خیابان زرافشان'], ['تهران', 'تجریش، خیابان دربند، کوچه مقصودی'], ['تهران', 'نیاوران، خیابان باهنر، کوچه طاهری']];
+  const placeAt = (x, y) => MAP_PLACES[Math.abs(Math.round(x / 70) * 3 + Math.round(y / 70) * 5) % MAP_PLACES.length];
+  const AF = { id:null, title:'', city:'', addr:'', plq:'', unit:'', post:'', mx:0, my:0, bad:'', err:'', after:null };
+  const AM = { x:0, y:0, fromForm:false, busy:false };
+  const amSet = () => { $('#amMap').style.setProperty('--x', AM.x + 'px'); $('#amMap').style.setProperty('--y', AM.y + 'px'); };
+  async function amLookup(){ AM.busy = true; const b = $('#amAddr'); b.textContent = 'در حال یافتن آدرس…'; b.classList.add('wait'); $('#amGo').disabled = true;
+    await wait(500); const [c, ad] = placeAt(AM.x, AM.y); b.textContent = `${c}، ${ad}`; b.classList.remove('wait'); $('#amGo').disabled = false; AM.busy = false; }
+  function openMap(fromForm){ AM.fromForm = fromForm; AM.x = fromForm ? AF.mx : 0; AM.y = fromForm ? AF.my : 0; amSet(); amLookup(); stGo('addrMap'); }
+  (() => { const w = $('#amWrap'); let sx = 0, sy = 0, ox = 0, oy = 0, on = false;
+    w.addEventListener('pointerdown', e => { if (e.target.closest('#amMe')) return; on = true; sx = e.clientX; sy = e.clientY; ox = AM.x; oy = AM.y; w.classList.add('drag'); w.setPointerCapture(e.pointerId); });
+    w.addEventListener('pointermove', e => { if (!on) return; AM.x = Math.max(-700, Math.min(700, ox + e.clientX - sx)); AM.y = Math.max(-700, Math.min(700, oy + e.clientY - sy)); amSet(); });
+    const end = () => { if (!on) return; on = false; w.classList.remove('drag'); amLookup(); };
+    w.addEventListener('pointerup', end); w.addEventListener('pointercancel', end); })();
+  $('#amMe').addEventListener('click', () => { AM.x = 0; AM.y = 0; amSet(); amLookup(); });
+  $('#amGo').addEventListener('click', () => {
+    if (AM.busy) return; const [c, ad] = placeAt(AM.x, AM.y);
+    Object.assign(AF, { city:c, addr:ad, mx:AM.x, my:AM.y }); if (AF.bad === 'city' || AF.bad === 'addr'){ AF.bad = ''; AF.err = ''; }
+    renderAdf();
+    if (AM.fromForm) return stBack();
+    $('#adfScroll').scrollTop = 0; stGo('addrForm');
+  });
+  $('#adfMove').addEventListener('click', () => { closeKb(); openMap(true); });
+  const ADF = [['adfAddr', 'addr', 'alpha', 150], ['adfPlq', 'plq', 'num', 5], ['adfUnit', 'unit', 'num', 4], ['adfPost', 'post', 'num', 10], ['adfName', 'title', 'alpha', 24]];
+  const titleTaken = t => ADDRS.some(x => x.id !== AF.id && x.title.trim() === t.trim());
   function renderAdf(){
-    $('#adfTitle').textContent = AF.id ? 'ویرایش آدرس' : 'افزودن آدرس';
-    $$('#adfTitles button').forEach(b => b.classList.toggle('on', b.dataset.t === AF.title));
+    $('#adfTitle').textContent = AF.id ? 'ویرایش آدرس' : 'جزئیات آدرس';
+    $('#adfMapBg').style.setProperty('--x', AF.mx * 0.5 + 'px'); $('#adfMapBg').style.setProperty('--y', AF.my * 0.5 + 'px');
+    $$('#adfTitles button').forEach(b => { b.classList.toggle('on', b.dataset.t === AF.title.trim()); b.disabled = titleTaken(b.dataset.t); });
     $('#adfCityVal').textContent = AF.city; $('#adfCity').classList.toggle('has', !!AF.city); $('#adfCity').classList.toggle('bad', AF.bad === 'city');
     ADF.forEach(([w, k, t]) => { const v = AF[k], inp = $('#' + w + 'In');
-      $('#' + w + 'Val').textContent = t === 'num' ? (k === 'mob' ? v : toFa(v)) : v; $('#' + w).classList.toggle('has', !!v); $('#' + w).classList.toggle('bad', AF.bad === k);
+      $('#' + w + 'Val').textContent = t === 'num' ? toFa(v) : v; $('#' + w).classList.toggle('has', !!v); $('#' + w).classList.toggle('bad', AF.bad === k);
       if (inp.value !== v) inp.value = v; });
-    $('#adfSelf').classList.toggle('on', AF.self); $('#adfSelf').setAttribute('aria-checked', AF.self); $('#adfWho').hidden = AF.self;
     $('#adfErr').textContent = AF.err; $('#adfDel').hidden = !AF.id;
-    // the message sits right under the field that needs fixing
-    const host = { city:'#adfCity', addr:'#adfAddr', plq:'.adf-2', post:'#adfPost', name:'#adfName', mob:'#adfMob' }[AF.bad];
+    const host = { city:'#adfCity', addr:'#adfAddr', plq:'.adf-2', unit:'.adf-2', post:'#adfPost', title:'#adfTitles' }[AF.bad];
     if (host) $(host).after($('#adfErr')); else $('#adfScroll').appendChild($('#adfErr'));
   }
   function openAdf(a, after){
-    Object.assign(AF, a ? { ...a } : { id:null, title:'خانه', city:'', addr:'', plq:'', unit:'', post:'', self:true, name:'', mob:'' }, { bad:'', err:'', after });
-    renderAdf(); $('#adfScroll').scrollTop = 0; stGo('addrForm');
+    Object.assign(AF, a ? { ...a } : { id:null, title:'', city:'', addr:'', plq:'', unit:'', post:'', mx:0, my:0 }, { bad:'', err:'', after });
+    renderAdf();
+    if (!a) return openMap(false);                                   // new address → the map comes first
+    $('#adfScroll').scrollTop = 0; stGo('addrForm');
   }
-  ADF.forEach(([w, k, t, max]) => {
+  // one text-field binder for the custom keyboard (address form + recipient)
+  function bindField(w, t, max, get, set, render){
     const inp = $('#' + w + 'In');
-    registerInput(inp, t, key => {
-      if (key === 'done') return closeKb();
-      const cur = AF[k], d = toEn(key);
-      AF[k] = key === 'del' ? cur.slice(0, -1) : t === 'num' ? (/^\d$/.test(d) && cur.length < max ? cur + d : cur) : (cur + key).slice(0, max);
-      if (AF.bad === k){ AF.bad = ''; AF.err = ''; } renderAdf();
-    });
+    registerInput(inp, t, key => { if (key === 'done') return closeKb(); const cur = get(), d = toEn(key);
+      set(key === 'del' ? cur.slice(0, -1) : t === 'num' ? (/^\d$/.test(d) && cur.length < max ? cur + d : cur) : (cur + key).slice(0, max)); render(); });
     if (t === 'alpha') inputs.get(inp).lang = 'fa';
-    inp.addEventListener('input', () => { AF[k] = t === 'num' ? toEn(inp.value).replace(/\D/g, '').slice(0, max) : inp.value.slice(0, max); renderAdf(); });
+    inp.addEventListener('input', () => { set(t === 'num' ? toEn(inp.value).replace(/\D/g, '').slice(0, max) : inp.value.slice(0, max)); render(); });
     inp.addEventListener('focus', () => $('#' + w).classList.add('focused')); inp.addEventListener('blur', () => $('#' + w).classList.remove('focused'));
     $('#' + w).addEventListener('click', () => { inp.focus({ preventScroll:true }); openKb(inp); });
-  });
-  $('#adfTitles').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (b){ AF.title = b.dataset.t; renderAdf(); } });
-  $('#adfSelf').addEventListener('click', () => { AF.self = !AF.self; if (['name', 'mob'].includes(AF.bad)){ AF.bad = ''; AF.err = ''; } renderAdf(); });
+  }
+  ADF.forEach(([w, k, t, max]) => bindField(w, t, max, () => AF[k], v => { AF[k] = v; if (AF.bad === k){ AF.bad = ''; AF.err = ''; } }, renderAdf));
+  $('#adfTitles').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (b && !b.disabled){ AF.title = b.dataset.t; if (AF.bad === 'title'){ AF.bad = ''; AF.err = ''; } renderAdf(); } });
   $('#adfCity').addEventListener('click', () => {
     closeKb();
     $('#adCities').innerHTML = SHIP_CITIES.map(([c]) => `<button type="button" class="wd-ibl ${c === AF.city ? 'on' : ''}" data-c="${c}"><span><b>${c}</b></span><i aria-hidden="true"></i></button>`).join('');
@@ -8661,20 +8756,40 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     if (!AF.city) return ['city', 'شهر را انتخاب کنید.'];
     if (AF.addr.trim().length < 10) return ['addr', 'نشانی را کامل وارد کنید (خیابان، کوچه، ساختمان).'];
     if (!AF.plq) return ['plq', 'پلاک را وارد کنید.'];
+    if (!AF.unit) return ['unit', 'واحد را وارد کنید (برای خانه‌ی ویلایی ۱ بنویسید).'];
     if (AF.post.length !== 10) return ['post', 'کد پستی باید ۱۰ رقم باشد.'];
-    if (!AF.self && AF.name.trim().length < 3) return ['name', 'نام و نام خانوادگی گیرنده را وارد کنید.'];
-    if (!AF.self && !/^09\d{9}$/.test(AF.mob)) return ['mob', 'شماره موبایل گیرنده درست نیست.'];
+    if (!AF.title.trim()) return ['title', 'برای این آدرس یک عنوان بنویسید.'];
+    if (titleTaken(AF.title)) return ['title', `آدرسی با عنوان «${AF.title.trim()}» دارید؛ عنوان دیگری بنویسید.`];
     return null;
   }
   $('#adfSave').addEventListener('click', async () => {
     closeKb(); const bad = adfCheck();
-    if (bad){ [AF.bad, AF.err] = bad; renderAdf(); const el = $(bad[0] === 'city' ? '#adfCity' : '#adf' + bad[0][0].toUpperCase() + bad[0].slice(1)); if (el){ el.scrollIntoView({ block:'center', behavior:'smooth' }); shake(el); } return; }
+    if (bad){ [AF.bad, AF.err] = bad; renderAdf(); const el = $({ city:'#adfCity', addr:'#adfAddr', plq:'#adfPlq', unit:'#adfUnit', post:'#adfPost', title:'#adfName' }[bad[0]]); if (el){ const sc = $('#adfScroll'); sc.scrollTo({ top:sc.scrollTop + el.getBoundingClientRect().top - sc.getBoundingClientRect().top - sc.clientHeight / 3, behavior:'smooth' }); shake(el); } return; }
     setLoading($('#adfSave'), true); await wait(600); setLoading($('#adfSave'), false);
-    const a = { id:AF.id || 'a' + Date.now(), title:AF.title, city:AF.city, addr:AF.addr.trim(), plq:AF.plq, unit:AF.unit, post:AF.post, self:AF.self, name:AF.self ? '' : AF.name.trim(), mob:AF.self ? '' : AF.mob };
+    const a = { id:AF.id || 'a' + Date.now(), title:AF.title.trim(), city:AF.city, addr:AF.addr.trim(), plq:AF.plq, unit:AF.unit, post:AF.post, mx:AF.mx, my:AF.my };
     const k = ADDRS.findIndex(x => x.id === a.id); if (k >= 0) ADDRS[k] = a; else ADDRS.push(a);
     showToast(OK_ICON + `<span>${k >= 0 ? 'آدرس ویرایش شد' : 'آدرس ذخیره شد'}</span>`);
+    const m = stStack.lastIndexOf('addrMap'); if (m >= 0) stStack.splice(m, 1);       // map → form → save: back past the map
     renderAddrs(); (AF.after || stBack)(a);
   });
+  // تحویل‌گیرنده (on the pre-invoice; account owner by default, editable)
+  const RC = { name:'', mob:'', err:'', bad:'' };
+  function renderRc(){
+    [['rcName', 'name'], ['rcMob', 'mob']].forEach(([w, k]) => { $('#' + w + 'Val').textContent = RC[k]; $('#' + w).classList.toggle('has', !!RC[k]); $('#' + w).classList.toggle('bad', RC.bad === k); if ($('#' + w + 'In').value !== RC[k]) $('#' + w + 'In').value = RC[k]; });
+    $('#rcErr').textContent = RC.err;
+  }
+  bindField('rcName', 'alpha', 40, () => RC.name, v => { RC.name = v; RC.err = ''; RC.bad = ''; }, renderRc);
+  bindField('rcMob', 'num', 11, () => RC.mob, v => { RC.mob = v; RC.err = ''; RC.bad = ''; }, renderRc);
+  function openRcp(){ const r = DL.rcp || owner(); Object.assign(RC, { name:r.name, mob:r.mob, err:'', bad:'' }); renderRc(); stGo('dlRcp'); }
+  $('#rcSelf').addEventListener('click', () => { const o = owner(); Object.assign(RC, { name:o.name, mob:o.mob, err:'', bad:'' }); renderRc(); });
+  $('#rcSave').addEventListener('click', () => {
+    closeKb();
+    if (RC.name.trim().length < 3){ RC.bad = 'name'; RC.err = 'نام و نام خانوادگی تحویل‌گیرنده را وارد کنید.'; renderRc(); return shake($('#rcName')); }
+    if (!/^09\d{9}$/.test(RC.mob)){ RC.bad = 'mob'; RC.err = 'شماره موبایل درست نیست.'; renderRc(); return shake($('#rcMob')); }
+    const o = owner(); DL.rcp = { name:RC.name.trim(), mob:RC.mob, self:RC.name.trim() === o.name && RC.mob === o.mob };
+    stBack(); renderInv(); showToast(OK_ICON + '<span>تحویل‌گیرنده به‌روز شد</span>');
+  });
+  $('#dlInv').addEventListener('click', e => { if (e.target.closest('#dlRcpEdit')) openRcp(); });
   let adDelId = null;
   function askDel(id){ adDelId = id; $('#adDelTxt').textContent = `آدرس «${adOf(id).title}» از آدرس‌های شما حذف می‌شود. سفارش‌های ثبت‌شده تغییری نمی‌کنند.`; openModal($('#adDelModal')); }
   $('#adfDel').addEventListener('click', () => askDel(AF.id));
@@ -8711,12 +8826,12 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     let h = `<div class="dl-ts"><img src="${img}" alt="" width="29" height="49"><div class="r"><b>${one ? barOf(o.units[0].b).name + ' طلای ۱۸ عیار' : fmtG(o.grams, 3) + ' گرم شمش طلای ۱۸ عیار'}</b><em class="dl-st ${stc}">${stl}</em></div>
       <div class="l"><button type="button" class="dl-pill" id="dlTDet">جزئیات</button><b>${T_((o.grams + o.feeG) * o.p)}</b></div></div>`;
     if (live) h += `<div class="ad-code"><span><small>کد تحویل سفارش</small><b>${toFa(o.dcode)}</b></span><button type="button" class="dl-pill" id="adCopy" data-code="${o.dcode}">کپی کد</button></div>
-      <p class="ad-codep">هنگام تحویل، این کد را همراه کارت ملی ${o.addr.self ? 'خود' : 'گیرنده (' + o.addr.name + ')'} به پیک ارائه دهید. این کد را به کس دیگری ندهید.</p>`;
+      <p class="ad-codep">هنگام تحویل، این کد را همراه کارت ملی ${o.rcp && !o.rcp.self ? 'تحویل‌گیرنده (' + o.rcp.name + ')' : 'خود'} به پیک ارائه دهید. این کد را به کس دیگری ندهید.</p>`;
     h += `<div class="sec-div"></div><ol class="dl-tl${cx ? ' cx' : ''}">`;
     h += li(cx ? 'off' : 'done', 'ثبت سفارش', jFmt(o.date));
     h += li(sc(0), 'آماده‌سازی سفارش', st === 'prep' ? 'در حال انجام' : '');
     h += li(sc(1), 'تحویل به پیک', '', st === 'courier' ? '<p class="d">پیک بیمه‌شده سفارش را تحویل گرفت و در زمان انتخابی شما ارسال می‌کند.</p>' : '');
-    h += li(sc(2), 'در مسیر', slotLbl(o.slot), `<div class="dl-br" style="margin-top:10px"><div class="l1"><b>${o.addr.title}</b><small>${adWho(o.addr)}</small></div><p>${adLine(o.addr)}</p></div>`
+    h += li(sc(2), 'در مسیر', slotLbl(o.slot), `<div class="dl-br" style="margin-top:10px"><div class="l1"><b>${o.addr.title}</b><small>تحویل‌گیرنده: ${(o.rcp || owner()).name}</small></div><p>${adLine(o.addr)}</p></div>`
       + (st === 'onway' ? `<div class="ad-courier"><span>پیک: رضا احمدی · <bdi dir="ltr">${toFa('0912 345 6789')}</bdi></span><button type="button" class="dl-pill soon">تماس با پیک</button></div>` : ''));
     if (st === 'fail') h += li('bad', 'تحویل ناموفق', o.failAt ? jFmt(o.failAt) : '', '<p class="d">گیرنده در زمان تحویل حاضر نبود یا کد تحویل و کارت ملی ارائه نشد. سفارش به <b>گالری زرپین</b> برگشت؛ برای ارسال دوباره یا تحویل حضوری با پشتیبانی هماهنگ کنید.</p><button type="button" class="dl-pill soon">تماس با پشتیبانی</button>');
     else h += li(st === 'done' ? 'done' : 'off', 'تحویل شد', st === 'done' && o.doneAt ? jFmt(o.doneAt) : '');
@@ -8731,7 +8846,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     if (!ADDRS.length) ADDRS = ADDRS_DEMO();
     const back = ['done', 'fail'].includes(status), d = jAddDays(J_TODAY, back ? -4 : -1), sd = back ? jAddDays(J_TODAY, -2) : jAddDays(J_TODAY, status === 'prep' ? 2 : 0);
     const units = [{ b:'b1', code:code12(), dcode:dcode6() }, { b:'b1', code:code12(), dcode:dcode6() }];
-    return { id:'os1', method:'ship', branch:'z1', units, date:[...d, '۱۰:۱۵'], status, ready:sd, p:24237000, grams:2, feeG:0.15, addr:{ ...ADDRS[0] }, slot:{ d:sd, w:1 }, shipFee:180000, dcode:'482910',
+    return { id:'os1', method:'ship', branch:'z1', units, date:[...d, '۱۰:۱۵'], status, ready:sd, p:24237000, grams:2, feeG:0.15, addr:{ ...ADDRS[0] }, rcp:owner(), slot:{ d:sd, w:1 }, shipFee:180000, dcode:'482910',
       doneAt:status === 'done' ? [...sd, '۱۳:۴۰'] : null, failAt:status === 'fail' ? [...sd, '۱۴:۰۵'] : null };
   }
   function openShipMock(status){ forceStake(); resetDlv(); DL.orders = DL.orders.filter(o => o.id !== 'os1'); DL.orders.unshift(shipMock(status)); renderDlv(); openTrack('os1'); }
@@ -10223,8 +10338,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     dlvShipAddr: () => { JUMPS.dlv(); DL.qty = { b1:2 }; renderDlv(); goShip(); },
     dlvShipAddrEmpty: () => { JUMPS.dlv(); ADDRS = []; DL.addr = null; DL.qty = { b1:2 }; renderDlv(); goShip(); },
     dlvAddrNew:  () => { JUMPS.dlvShipAddr(); setTimeout(() => $('#dlAddrNew').click(), 450); },
-    dlvAddrErr:  () => { JUMPS.dlvAddrNew(); setTimeout(() => { AF.city = 'تهران'; AF.addr = 'ونک'; renderAdf(); $('#adfSave').click(); }, 900); },
-    dlvAddrCity: () => { JUMPS.dlvAddrNew(); setTimeout(() => $('#adfCity').click(), 900); },
+    dlvAddrErr:  () => { JUMPS.dlvAddrForm(); setTimeout(() => $('#adfSave').click(), 1900); },
+    dlvAddrCity: () => { JUMPS.dlvAddrForm(); setTimeout(() => $('#adfCity').click(), 1900); },
     dlvShipTime: () => { JUMPS.dlvShipAddr(); DL.slot = null; setTimeout(() => $('#dlAddrGo').click(), 450); },
     dlvShipInv:  () => { JUMPS.dlvShipTime(); setTimeout(() => { DL.slot = { d:dlDays()[0], w:1 }; renderDlTime(); $('#dlTimeGo').click(); }, 900); },
     dlvShipInvPay: () => { forceStake(); STK.toman = 0; renderWallet(); JUMPS.dlvShipInv(); },
@@ -10236,6 +10351,17 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     addrs:       () => { forceStake(); resetDlv(); openAddrs(); },
     addrsEmpty:  () => { forceStake(); resetDlv(); ADDRS = []; openAddrs(); },
     addrEdit:    () => { JUMPS.addrs(); setTimeout(() => openAdf(ADDRS[1], () => stBack()), 450); },
+    okDeposit:   () => { forceStake(); BQ = { kind:'deposit', toman:5000000, payAmt:5000000, ctx:'deposit' }; payToWallet(5000000); depositSucceeded(); $('#screenBuy .br-body').scrollTop = 0; go('buy'); },
+    okWithdraw:  () => { JUMPS.withdrawDone(); },
+    okBuy:       () => { forceStake(); BQ = { asset:'gold', grams:1.25, p:MARKET.gold.v, f:fee(), toman:1.25 * MARKET.gold.v, buy:true, custom:false, ctx:'trade' }; buySucceeded(); $('#screenBuy .br-body').scrollTop = 0; go('buy'); },
+    okSell:      () => { forceStake(); sellSucceeded({ asset:'gold', grams:0.5, p:MARKET.gold.v, f:fee(), toman:0.5 * MARKET.gold.v, buy:false, custom:false }); },
+    topupPay:    () => { forceStake(); openTopup(); tuSet('5000000'); },
+    topupFaq:    () => { JUMPS.topupPay(); setTimeout(() => $('.tu-faq').click(), 450); },
+    cardsList:   () => { JUMPS.topupPay(); setTimeout(() => $('#tuBtn').click(), 450); },
+    dlvAddrMap:  () => { JUMPS.dlvShipAddr(); setTimeout(() => $('#dlAddrNew').click(), 450); },
+    dlvAddrForm: () => { JUMPS.dlvAddrMap(); setTimeout(() => $('#amGo').click(), 1300); },
+    dlvAddrDup:  () => { JUMPS.dlvAddrForm(); setTimeout(() => { Object.assign(AF, { plq:'7', unit:'2', post:'1234567890', title:'خانه' }); renderAdf(); $('#adfSave').click(); }, 1900); },
+    dlvRcp:      () => { JUMPS.dlvShipInv(); setTimeout(() => openRcp(), 1500); },
     dlvIntro:    () => { forceStake(); test.dlvHist = '0'; resetDlv(); syncTp(); openDlv(); },
     dlvPrep:     () => { forceStake(); test.dlv = 'prep'; resetDlv(); openTrack('od4'); },
     dlvDelay:    () => { forceStake(); test.dlv = 'delay'; resetDlv(); openTrack('od4'); },
