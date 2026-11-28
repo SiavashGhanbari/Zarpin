@@ -2585,6 +2585,7 @@ button.wal-toman:active{background:var(--background-surface)}
 .tu-btn{margin-top:16px !important}
 /* ==== برداشت تومان — withdraw + transparency (PRD: رسید برداشت جیبیت) ==== */
 .wd-form .st2-field{padding-left:14px}
+#wdBtn.is-off, #wdtRcpt.is-off, .hs-more[data-rcpt]:disabled{opacity:.4; cursor:default}
 #wdBtn.is-off, #wdtRcpt.is-off, #wdtRcpt:disabled:not(.loading){opacity:.4}
 .wd-sum{margin-top:12px; border-radius:16px; background:var(--background-surface); padding:4px 14px}
 .wd-sum .sr{display:flex; align-items:center; justify-content:space-between; min-height:40px; font-size:var(--font-size-body-medium); line-height:var(--line-height-body-medium); color:var(--content-secondary)}
@@ -4344,8 +4345,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
           </div>
         </div>
         <div class="page-footer wdd-foot">
-          <button type="button" class="btn" id="wddHome"><span class="label">بازگشت به خانه</span></button>
-          <button type="button" class="btn btn-secondary" id="wddTrack"><span class="label">پیگیری برداشت</span></button>
+          <button type="button" class="btn" id="wddHome"><span class="label">صفحه اصلی</span></button>
+          <button type="button" class="btn btn-secondary" id="wddRcpt"><span class="label">مشاهده رسید بانکی</span><span class="spinner" aria-hidden="true"></span></button>
           <p class="od-code" id="wddCode"></p>
         </div>
       </section>
@@ -5199,14 +5200,6 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
           <div class="sheet-footer"><button type="button" class="btn" data-close><span class="label">متوجه شدم</span></button></div>
         </div>
       </div>
-      <div class="modal" id="wdRcptModal" aria-hidden="true">
-        <div class="modal-backdrop" data-close></div>
-        <div class="modal-sheet" role="dialog" aria-label="رسید بانکی برداشت">
-          <div class="sheet-header with-close"><button type="button" class="sheet-x" data-close aria-label="بستن"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8232 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17684 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button>رسید بانکی برداشت</div>
-          <div class="wd-rc" id="wdRc"></div>
-          <div class="sheet-footer"><button type="button" class="btn" data-close><span class="label">بستن</span></button></div>
-        </div>
-      </div>
       <div class="modal" id="dlMenuModal" aria-hidden="true">
         <div class="modal-backdrop" data-close></div>
         <div class="modal-sheet" role="dialog" aria-label="گزینه‌های سفارش">
@@ -5488,7 +5481,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
               <optgroup label="ثبت‌نام و احراز هویت"><option value="referral">کد معرف</option><option value="kyc">احراز هویت</option><option value="date">برگه تاریخ تولد</option><option value="terms">برگه قوانین</option><option value="success">احراز موفق</option></optgroup>
               <optgroup label="خرید و فروش"><option value="trade">خرید</option><option value="tradeSell">فروش</option><option value="tradeSilver">خرید نقره</option><option value="tradeSilverSell">فروش نقره</option><option value="alert">هشدار قیمت</option><option value="alertList">هشدار قیمت — با هشدار فعال</option><option value="alertHit">پیامک رسیدن قیمت</option><option value="silverIntro">معرفی نقره (اولین ورود)</option><option value="tradeTyping">در حال وارد کردن مبلغ</option><option value="tradeMin">خطای حداقل خرید</option><option value="tradeLimit">قیمت مشخص</option><option value="rules">برگه شرایط</option><option value="limitInfo">برگه توضیح قیمت مشخص</option><option value="metal">برگه انتخاب دارایی</option><option value="tradeConfirm">تأیید سفارش (پیشنهادی)</option><option value="tradeTopup">واریز و خرید (پیشنهادی)</option><option value="payCards">انتخاب کارت بانکی</option><option value="payCardsNone">انتخاب کارت — بدون کارت</option><option value="payCardAdd">افزودن کارت بانکی</option><option value="buyWork">خرید — در حال انجام</option><option value="buyOk">خرید موفق</option><option value="buyFail">خرید ناموفق</option><option value="payFail">پرداخت ناموفق</option></optgroup><optgroup label="هدف پس‌انداز"><option value="goalPick">انتخاب هدف — چند گزینه</option><option value="goalPickOne">انتخاب هدف — آخرین شمش</option><option value="goalPickMix">انتخاب هدف — ترکیب دلخواه</option><option value="goalMade">هدف ثبت شد — بار اول</option><option value="goalMadeAgain">هدف ثبت شد — دفعه‌های بعد</option><option value="goalDetails">جزئیات هدف — یک شمش</option><option value="goalDetailsMix">جزئیات هدف — ترکیبی</option><option value="goalEdit">تغییر هدف</option><option value="goalDelete">حذف هدف</option><option value="goalDone">رسیدن به هدف</option></optgroup><optgroup label="تحویل فیزیکی"><option value="menu">منوی حساب</option><option value="api">مدیریت API</option><option value="apiEmpty">مدیریت API (بدون کلید)</option><option value="apiMax">مدیریت API (سقف ۳ کلید)</option><option value="apiNew">ساخت API</option><option value="apiKeys">کلیدهای ساخته‌شده</option><option value="dlvIntro">معرفی تحویل فیزیکی (اولین ورود)</option><option value="dlvOrders">سفارش‌های تحویل</option><option value="dlvOrdersEmpty">سفارش‌های تحویل — خالی</option><option value="dlv">انتخاب شمش</option><option value="dlvLoc">محل تحویل</option><option value="dlvLocEmpty">محل تحویل — بدون نتیجه</option><option value="dlvFilter">برگه فیلتر شهرها</option><option value="dlvInv">پیش‌فاکتور (با کسری)</option><option value="dlvInvOk">پیش‌فاکتور (بدون کسری)</option><option value="dlvEdit">ویرایش مقدار سفارش</option><option value="dlvPrep">پیگیری — در حال آماده‌سازی</option><option value="dlvDelay">پیگیری — تأخیر</option><option value="dlvReady">پیگیری — آماده تحویل</option><option value="dlvDone">پیگیری — تحویل شد</option><option value="dlvCxUser">پیگیری — لغو توسط شما</option><option value="dlvCxBranch">پیگیری — لغو توسط شعبه</option><option value="dlvMenu">برگه گزینه‌ها</option><option value="dlvDetails">جزئیات سفارش</option><option value="dlvCancel">لغو سفارش</option><option value="dlvHist">تاریخچه — تحویل فیزیکی</option></optgroup><optgroup label="خرید قسطی"><option value="ciEmpty">خرید قسطی — بدون اعتبار (معرفی)</option><option value="ciPast">خرید قسطی — اعتبارهای قبلی</option><option value="ciFaq">پرسش‌های متداول</option><option value="ciReq">درخواست اعتبار</option><option value="ciReqEmpty">درخواست — بدون مبلغ</option><option value="ciReqNone">درخواست — تأمین‌کننده‌ای پیدا نشد</option><option value="ciGoldInfo">برگه مقدار طلای دریافتی</option><option value="ciReqSilver">درخواست — نقره</option><option value="ciMetalPick">انتخاب دارایی (طلا/نقره)</option><option value="ciDetZ">جزئیات اعتبار — زرپین</option><option value="ciDetS">جزئیات اعتبار — نقره</option><option value="ciTerms">برگه شرایط و تعهدات</option><option value="ciPayZ">پرداخت هزینه و قسط اول</option><option value="ciOtpZ">کد تأیید</option><option value="ciDoneZ">اعتبار زرپین فعال شد</option><option value="ciDetO">جزئیات اعتبار — تأمین‌کننده دیگر</option><option value="ciDoneO">درخواست ثبت شد (تأمین‌کننده دیگر)</option><option value="ciRedir">انتقال به تأمین‌کننده</option><option value="ciPending">اعتبار — در حال بررسی</option><option value="ciAbandoned">اعتبار — تکمیل نشده</option><option value="ciActZ">اعتبار زرپین — سالم</option><option value="ciActZWarn">اعتبار زرپین — حد هشدار</option><option value="ciActS">اعتبار نقره — سالم</option><option value="ciActSWarn">اعتبار نقره — حد هشدار</option><option value="ciAddS">افزایش وثیقه نقره</option><option value="ciActO">اعتبار دیگر — سالم</option><option value="ciActOWarn">اعتبار دیگر — حد هشدار</option><option value="ciWarnSheet">دیالوگ حد هشدار</option><option value="ciInst">پرداخت قسط</option><option value="ciAdd">افزایش وثیقه</option><option value="ciAddWarn">افزایش وثیقه — حد هشدار</option><option value="ciAddOk">وثیقه افزایش یافت</option><option value="ciAddFail">افزایش وثیقه ناموفق</option><option value="ciList">همه اعتبارها</option><option value="ciLiqView">اعتبار لیکوئیدشده</option></optgroup><optgroup label="وام با وثیقه طلا"><option value="loanCalc">ماشین‌حساب وام</option><option value="loanKyc">قفل وثیقه بدون احراز هویت</option><option value="loanCalcShort">ماشین‌حساب — کسری وثیقه</option><option value="loanDetails">جزئیات وام</option><option value="loanLock">قفل وثیقه (با خرید کسری)</option><option value="loanLockOk">قفل وثیقه (بدون کسری)</option><option value="loanBack">بازگشت از ونسی</option><option value="loanPending">وام — در انتظار تکمیل در ونسی</option><option value="loanActive">وام فعال</option><option value="loanActiveNew">وام تازه فعال‌شده (اولین بار + راهنمای نمودار)</option><option value="loanGaugeTour">راهنمای نمودار وثیقه</option><option value="loanWarn">وام فعال — حد هشدار</option><option value="loanWarnSheet">باتم‌شیت وام در حد هشدار (ورود به اپ)</option><option value="loanGuide">آموزش حد هشدار</option><option value="loanAdd">افزایش وثیقه</option><option value="loanSell">وام — لیکوئیدشده</option><option value="loanRejected">وام — ردشده</option><option value="loanExpired">وام — منقضی‌شده</option><option value="loanRedirect">پرداخت قسط — انتقال به ونسی</option><option value="loanMy">وام‌های من</option><option value="loanMyEmpty">وام‌های من — خالی</option></optgroup><optgroup label="واریز"><option value="topup">واریز تومان</option><option value="topupInvoice">پیش‌فاکتور واریز</option><option value="topupOk">واریز موفق</option></optgroup>
               <optgroup label="کیف پول و تاریخچه"><option value="wallet">کیف پول</option><option value="goldSheet">برگه طلای ۱۸ عیار</option><option value="history">تاریخچه — خرید و فروش</option><option value="historyDep">تاریخچه — واریز</option><option value="historyWd">تاریخچه — برداشت</option><option value="historyDel">تاریخچه — تحویل فیزیکی</option><option value="orderDetail">جزئیات سفارش</option><option value="histDate">انتخاب تاریخ</option></optgroup>
-              <optgroup label="برداشت تومان (شفاف‌سازی)"><option value="withdraw">فرم برداشت</option><option value="withdrawFilled">فرم برداشت — پر شده</option><option value="withdrawErr">خطای بیشتر از موجودی</option><option value="withdrawIban">برگه انتخاب شبا</option><option value="withdrawPaya">برگه زمان‌بندی پایا</option><option value="withdrawOtp">کد تأیید برداشت</option><option value="withdrawDone">درخواست ثبت شد</option><option value="wdQueued">پیگیری — در صف ارسال به بانک</option><option value="wdWaiting">پیگیری — منتظر سیکل پایا</option><option value="wdDone">پیگیری — واریز شد</option><option value="wdFailed">پیگیری — ناموفق</option><option value="wdCancel">پیگیری — لغوشده</option><option value="wdReceipt">رسید بانکی</option><option value="wdReceiptQueued">رسید — هنوز ارسال نشده</option><option value="wdReceiptErr">رسید — خطای دریافت</option></optgroup>
+              <optgroup label="برداشت تومان (شفاف‌سازی)"><option value="withdraw">فرم برداشت</option><option value="withdrawFilled">فرم برداشت — پر شده</option><option value="withdrawErr">خطای بیشتر از موجودی</option><option value="withdrawIban">برگه انتخاب شبا</option><option value="withdrawPaya">برگه زمان‌بندی پایا</option><option value="withdrawOtp">کد تأیید برداشت</option><option value="withdrawDone">درخواست ثبت شد</option><option value="wdQueued">پیگیری — در صف ارسال به بانک</option><option value="wdWaiting">پیگیری — منتظر سیکل پایا</option><option value="wdDone">پیگیری — واریز شد</option><option value="wdFailed">پیگیری — ناموفق</option><option value="wdCancel">پیگیری — لغوشده</option><option value="wdReceipt">رسید بانکی (انتقال به جیبیت)</option><option value="wdHistRcpt">تاریخچه — دکمه رسید زیر کارت</option><option value="wdReceiptQueued">رسید — هنوز ارسال نشده</option><option value="wdReceiptErr">رسید — خطای دریافت</option></optgroup>
               <optgroup label="درآمد طلایی"><option value="stLanding">ورود به درآمد طلایی</option><option value="stFaq">پرسش‌های متداول</option><option value="stake">سپرده جدید</option><option value="stShort">کمبود موجودی</option><option value="stConfirm">تأیید سپرده</option><option value="stContract">برگه قرارداد</option><option value="stDone">سپرده ثبت شد</option><option value="deposits">سپرده‌های من</option><option value="depositEmpty">سپرده‌های من (خالی)</option><option value="yields">درآمدهای دریافت‌شده</option><option value="yieldsEmpty">درآمدهای دریافت‌شده (خالی)</option><option value="deposit">جزئیات سپرده</option><option value="stCancel">برگه لغو</option><option value="stOtp">کد تأیید لغو</option><option value="depositMatured">جزئیات سپرده سررسیدشده</option></optgroup>
             </select>
             <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.31455 9.31175C6.11314 9.51075 6 9.78061 6 10.062C6 10.3434 6.11314 10.6132 6.31455 10.8122L11.2521 15.6893C11.4536 15.8882 11.7268 16 12.0117 16C12.2966 16 12.5698 15.8882 12.7712 15.6893L17.7088 10.8122C17.8998 10.6113 18.0042 10.3449 17.9999 10.0693C17.9955 9.79377 17.8828 9.53068 17.6856 9.33573C17.4884 9.14078 17.2221 9.02927 16.9431 9.0248C16.6641 9.02032 16.3943 9.12323 16.1908 9.31175L12.0117 13.4386L7.83364 9.31069C7.63218 9.11176 7.35897 9 7.07409 9C6.78922 9 6.51601 9.11282 6.31455 9.31175Z" fill="currentColor"/></svg>
@@ -7335,6 +7328,8 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     STK.toman -= v;
     const h = { id:'wd' + Date.now(), tab:'withdraw', title:'برداشت تومان', asset:'toman', v, fee:WD_FEE, iban:b.id, status:'queued', date:[...J_TODAY, nowHM()], code:code12() };
     HIST.unshift(h); WD.cur = h;
+    setTimeout(() => { if (h.status !== 'queued') return; h.status = 'waiting'; h.sent = nowHM(); renderHistory();
+      if (state.screen === 'wdDone') renderWdDone(h); if (state.screen === 'wdTrack' && WD.cur === h) renderWdTrack(h); }, 20000);
     renderWallet(); renderTotals(); renderHistory();
     renderWdDone(h); go('wdDone');
     sendSms(`درخواست برداشت ${T_fmt(v)} ثبت شد.\nپیش‌بینی واریز: ${wdEtaShort(h)} (سیکل پایا)`);
@@ -7388,7 +7383,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     $('#wddCode').innerHTML = `زمان ثبت: ${jFmt(h.date)} - ${h.date[3]} · شماره پیگیری <bdi>${h.code}</bdi>`;
   }
   $('#wddHome').addEventListener('click', () => { stStack = []; go('home', true); markTabs(); });
-  $('#wddTrack').addEventListener('click', () => { stStack = ['wallet']; renderWdTrack(WD.cur); go('wdTrack'); });
+  $('#wddRcpt').addEventListener('click', () => openJibit(WD.cur, $('#wddRcpt')));
 
   /* ---------- W3 tracking (from History or the done page) ---------- */
   function openWdTrack(h){ WD.cur = h; renderWdTrack(h); $('#wdtBody').scrollTop = 0; stGo('wdTrack'); }
@@ -7403,25 +7398,18 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     btn.disabled = dead; btn.classList.toggle('is-off', dead);
     $('#wdtHint').hidden = !dead; $('#wdtHint').textContent = h.status === 'cancelled_user' ? 'این درخواست به بانک ارسال نشده و رسید بانکی ندارد.' : 'برای این برداشت رسید بانکی صادر نشده است.';
   }
-  $('#wdtRcpt').addEventListener('click', async () => {
-    const h = WD.cur, btn = $('#wdtRcpt');
-    if (!h || btn.disabled) return;
+  // PRD «مشاهده رسید»: not sent to Jibit yet → message · waiting/succeed → fresh link (lives 3 min) and open Jibit · otherwise disabled
+  const wdRcptOk = h => ['queued', 'waiting', 'done'].includes(h.status);
+  async function openJibit(h, btn){
+    if (!h || !wdRcptOk(h)) return;
     if (h.status === 'queued') return showToast('<span>درخواست شما در حال ارسال به بانک است.</span>');
-    // the Jibit link lives 3 minutes → a fresh one on every tap
-    setLoading(btn, true); await wait(900); setLoading(btn, false);
+    if (btn){ setLoading(btn, true); await wait(700); setLoading(btn, false); }
     if (WD.rcptFail) return showToast('<span>دریافت رسید با مشکل مواجه شد. لطفاً دوباره تلاش کنید.</span>');
-    openReceipt(h);
-  });
-  function openReceipt(h){
-    const b = ibanOf(h.iban), done = h.status === 'done', fee = h.fee || WD_FEE;
-    const ref = 'PY' + toFa(String(1405000000 + (h.code.charCodeAt(2) * 7919 + h.code.charCodeAt(5) * 31) % 99999999));
-    $('#wdRc').innerHTML = `<div class="wd-rc-h"><small>مبلغ انتقال</small><b>${T_fmt(h.v - fee)}</b><em class="od-badge ${done ? 'ok' : 'open'}">${done ? 'انتقال انجام شد' : 'در انتظار تسویه پایا'}</em></div>`
-      + irow('نوع انتقال', 'پایا') + irow('بانک مقصد', b.bank) + irow('شبای مقصد', `<bdi dir="ltr">${ibanFa(b.iban)}</bdi>`)
-      + irow('شناسه پیگیری بانک', `<bdi dir="ltr">${ref}</bdi>`) + irow('زمان ثبت در بانک', `${jFmt(h.date)} - ${h.sent || h.date[3]}`)
-      + (done ? irow('زمان تسویه', `${jFmt(h.date)} - ${h.paid || ''}`) : irow('سیکل تسویه', `${dayFa(wdCycle(h).d)} ساعت ${m2hm(wdCycle(h).c)}`))
-      + '<p class="wd-rc-by">این رسید از سرویس جیبیت دریافت شده است.</p>';
-    openModal($('#wdRcptModal'));
+    $('#rdSpin img').src = $('#brSpin img').src; $('#screenRedir h2').textContent = 'در حال انتقال به جیبیت'; stGo('redir');
+    setTimeout(() => { $('#screenRedir h2').textContent = 'در حال انتقال به ونسی'; if (state.screen !== 'redir') return;
+      showToast('<span>در نسخه واقعی، اینجا رسید بانکی در سایت جیبیت باز می‌شود</span>'); stBack(); }, 1800);
   }
+  $('#wdtRcpt').addEventListener('click', () => openJibit(WD.cur, $('#wdtRcpt')));
 
   // a plain market buy of N grams (used by درآمد طلایی when free gold is short): same sheet, same 30 s hold
   function openBuyQuote(g, done){
@@ -8046,6 +8034,10 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
         <button type="button" class="hs-more" data-dlv="${h.dlv}">پیگیری وضعیت ${'<svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.6882 6.31455C14.4893 6.11314 14.2194 6 13.938 6C13.6566 6 13.3868 6.11314 13.1878 6.31455L8.31069 11.2521C8.11176 11.4536 8 11.7268 8 12.0117C8 12.2966 8.11176 12.5698 8.31069 12.7712L13.1878 17.7088C13.3887 17.8998 13.6551 18.0042 13.9307 17.9999C14.2062 17.9955 14.4693 17.8828 14.6643 17.6856C14.8592 17.4884 14.9707 17.2221 14.9752 16.9431C14.9797 16.6641 14.8768 16.3943 14.6882 16.1908L10.5614 12.0117L14.6893 7.83364C14.8882 7.63218 15 7.35897 15 7.0741C15 6.78922 14.8872 6.51601 14.6882 6.31455Z" fill="currentColor"/></svg>'}</button></article>`;
     }
     const dep = h.dep ? ` data-dep="${h.dep}"` : ` data-tx="${h.id}"`;
+    if (isWd(h)) return `<article class="hs-card tap"${dep}><div class="hs-cols"><div class="hs-r">
+        <div class="hs-title">${hTitle(h)} ${tri(false)}</div><div class="hs-st ${sc}">${st}</div><div class="hs-m">${hDate(h)}</div></div>
+      <div class="hs-l"><b>${amt(h)}</b><div class="hs-m">${WD_LIVE.includes(h.status) ? 'پیش‌بینی واریز: ' + wdEtaShort(h) : hDesc(h)}</div><div class="hs-m">شماره پیگیری: <bdi>${h.code}</bdi></div></div></div>
+      <button type="button" class="hs-more" data-rcpt="${h.id}"${wdRcptOk(h) ? '' : ' disabled'}>مشاهده رسید بانکی ${WD_CHEV}</button></article>`;
     return `<article class="hs-card flat tap"${dep}><div class="hs-cols"><div class="hs-r">
         <div class="hs-title">${hTitle(h)} ${tri(h.tab === 'deposit')}</div><div class="hs-st ${sc}">${st}</div><div class="hs-m">${hDate(h)}</div></div>
       <div class="hs-l"><b>${amt(h)}</b><div class="hs-m">${isWd(h) && WD_LIVE.includes(h.status) ? 'پیش‌بینی واریز: ' + wdEtaShort(h) : hDesc(h)}</div><div class="hs-m">شماره پیگیری: <bdi>${h.code}</bdi></div></div></div></article>`;
@@ -8101,6 +8093,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     $('#odBody').scrollTop = 0; stGo('order');
   }
   $('#hsList').addEventListener('click', e => {
+    const r = e.target.closest('[data-rcpt]'); if (r){ if (!r.disabled) openJibit(HIST.find(h => h.id === r.dataset.rcpt), r); return; }
     const v = e.target.closest('[data-dlv]'); if (v) return openTrack(v.dataset.dlv);
     const d = e.target.closest('[data-dep]'); if (d) return openDep(STK.deposits.find(x => x.id === d.dataset.dep));
     const t = e.target.closest('[data-tx]'); if (t) return openTx(HIST.find(h => h.id === t.dataset.tx));
@@ -9900,6 +9893,7 @@ button.wal-card.wal-toman{border:1px solid var(--border-subtle)}   /* same borde
     wdDone:      () => { JUMPS.historyWd(); setTimeout(() => openWdTrack(HIST.find(h => isWd(h) && h.status === 'done')), 300); },
     wdFailed:    () => { JUMPS.historyWd(); setTimeout(() => openWdTrack(HIST.find(h => isWd(h) && h.status === 'failed')), 300); },
     wdCancel:    () => { JUMPS.historyWd(); setTimeout(() => openWdTrack(HIST.find(h => isWd(h) && h.status === 'cancelled_user')), 300); },
+    wdHistRcpt:  () => { JUMPS.historyWd(); setTimeout(() => $('#hsList [data-rcpt]:not(:disabled)')?.scrollIntoView({ block:'center' }), 300); },
     wdReceipt:   () => { JUMPS.wdWaiting(); setTimeout(() => $('#wdtRcpt').click(), 700); },
     wdReceiptQueued: () => { JUMPS.wdQueued(); setTimeout(() => $('#wdtRcpt').click(), 700); },
     wdReceiptErr:() => { JUMPS.wdWaiting(); setTimeout(() => { WD.rcptFail = true; $('#wdtRcpt').click(); }, 700); },
